@@ -1,0 +1,57 @@
+$primary-color-1: #d20000;
+$primary-color-2: #191919;
+$primary-color-3: #000000;
+$primary-color-4: #acacac;
+$primary-color-5: #f5f4f5;
+$primary-color-6: #d4d4d4;
+$primary-color-7: #d5d5d5;
+$base-font-family: "Red Hat Display";
+
+:root {
+  /* Primary Colors */
+  --primary-color-1: #{$primary-color-1};
+  --primary-color-2: #{$primary-color-2};
+  --primary-color-3: #{$primary-color-3};
+  --primary-color-4: #{$primary-color-4};
+  --primary-color-5: #{$primary-color-5};
+  --primary-color-6: #{$primary-color-6};
+
+  /* Colors */
+  --dark-bg: #383838;
+  --hover: #ffffff;
+  --flushed: #e25858;
+
+  /* Grey Tones */
+  --white: #ffffff;
+
+  /* Font Size */
+  --base-font-size: 16px;
+
+  /* Font Weight */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Page Background Color & Border color */
+  --base-color: #{$primary-color-5};
+
+  /* warning color */
+  --yellow: #ffde55;
+
+  /* Opacity */
+  --low-opacity: 0.1;
+  --medium-opacity: 0.5;
+  --high-opacity: 0.8;
+
+  /* Borders */
+  --no-border: 0px;
+  --thin-border: 1px solid;
+  --thicker-border: 2px solid;
+  --bolder-border: 4px solid;
+
+  /* Border Color */
+  --border-color: #{$primary-color-7};
+
+  /* Border Radius */
+  --border-radius: 4px;
+}

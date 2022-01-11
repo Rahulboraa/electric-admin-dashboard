@@ -1,0 +1,163 @@
+import React, { useEffect, useState } from "react";
+import axios from "../../api/instance";
+
+const RecentPublications = () => {
+  const [date, setDate] = useState("");
+  const [text, setText] = useState("");
+
+  const [recent_image, setImageSelected] = useState("");
+
+  const getToken = localStorage.getItem("token");
+
+  const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
+
+  const addProduct = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("recent_image", recent_image);
+    formData.append("date", date);
+    formData.append("text", text);
+    axios
+      .post(`/recentPub/add`, formData, {
+        headers: {
+          "x-access-token": getToken ? getToken : parsedLogin,
+        },
+      })
+      .then((result) => {
+        // console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const [data, setData] = useState([]);
+
+  const handleRecentPublication = () => {
+    axios
+      .get("/recentPub")
+      .then((result) => {
+        setData(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    handleRecentPublication();
+  }, []);
+
+  const handleRecentPublicationId = (id) => {
+    axios
+      .post(
+        `/update/${id}`,
+        { text: "hello" },
+        {
+          headers: {
+            "x-access-token": getToken ? getToken : parsedLogin,
+          },
+        }
+      )
+      .then((result) => {
+        console.log(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const RemoveRecentPublication = (id) => {
+    axios
+      .get(`/recentPub/delete/${id}`, {
+        headers: {
+          "x-access-token": getToken ? getToken : parsedLogin,
+        },
+      })
+      .then((result) => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  return (
+    <>
+      <form className="text-center" onSubmit={addProduct}>
+        <h3>Recent Publication</h3>
+        <input
+          className="text-center"
+          type="file"
+          onChange={(e) => {
+            setImageSelected(e.target.files[0]);
+          }}
+        />
+        <div>
+          <label htmlFor="Date">Date:&nbsp; </label>
+          <input
+            type="date"
+            value={date}
+            onChange={(e) => {
+              setDate(e.target.value);
+            }}
+          />
+        </div>
+        <br />
+        <div>
+          <label htmlFor="Name">Name:&nbsp;</label>
+          <input
+            type="text"
+            value={text}
+            onChange={(e) => {
+              setText(e.target.value);
+            }}
+          />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+
+      <br />
+
+      <div>
+        <h3>Display Recent Publications</h3>
+        <div className="explore_heading" id="RecentPublication">
+          <div className="topWrapper"></div>
+          <p className="exploreCreative">Recent Publications</p>
+        </div>
+        {data.map((item) => {
+          return (
+            <React.Fragment key={item?.id}>
+              <div style={{ border: "1px solid black", marginBottom: "16px" }}>
+                <p>{item?.title}</p>
+                <p>{item?.text}</p>
+                <p>{item?.date}</p>
+                <p>{item?.image}</p>
+                <figure>
+                  <img src={item?.image} alt="" />
+                </figure>
+                <button
+                  onClick={() => {
+                    handleRecentPublicationId(item?.id);
+                  }}
+                >
+                  Update Recent Publication
+                </button>
+
+                <br />
+                <br />
+                <button
+                  onClick={() => {
+                    RemoveRecentPublication(item?.id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            </React.Fragment>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
+export default RecentPublications;

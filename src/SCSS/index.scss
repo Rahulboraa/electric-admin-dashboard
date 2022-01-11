@@ -1,0 +1,26 @@
+// @import "./reset";
+@import "./theme";
+@import "./text";
+@import "./mixin";
+
+// pages
+
+@import "./pages/Login/login.scss";
+@import "./pages/Login/signup.scss";
+@import "./pages/Login/verification.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.d-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-control-next,
+.carousel-control-prev {
+  width: 5%;
+}

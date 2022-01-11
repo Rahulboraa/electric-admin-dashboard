@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700&display=swap");
+
+body {
+  font-family: $base-font-family !important;
+  font-size: var(--base-font-size) !important;
+  font-weight: var(--font-weight-regular) !important;
+  color: var(--primary-color-2) !important;
+  line-height: 20px !important;
+  // background-color: rgb(229, 229, 229) !important;
+}
+
+#root {
+  overflow-x: hidden;
+}

@@ -1,0 +1,418 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700&display=swap");
+:root {
+  /* Primary Colors */
+  --primary-color-1: #d20000;
+  --primary-color-2: #191919;
+  --primary-color-3: #000000;
+  --primary-color-4: #acacac;
+  --primary-color-5: #f5f4f5;
+  --primary-color-6: #d4d4d4;
+  /* Colors */
+  --dark-bg: #383838;
+  --hover: #ffffff;
+  --flushed: #e25858;
+  /* Grey Tones */
+  --white: #ffffff;
+  /* Font Size */
+  --base-font-size: 16px;
+  /* Font Weight */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  /* Page Background Color & Border color */
+  --base-color: #f5f4f5;
+  /* warning color */
+  --yellow: #ffde55;
+  /* Opacity */
+  --low-opacity: 0.1;
+  --medium-opacity: 0.5;
+  --high-opacity: 0.8;
+  /* Borders */
+  --no-border: 0px;
+  --thin-border: 1px solid;
+  --thicker-border: 2px solid;
+  --bolder-border: 4px solid;
+  /* Border Color */
+  --border-color: #d5d5d5;
+  /* Border Radius */
+  --border-radius: 4px;
+}
+
+body {
+  font-family: "Red Hat Display" !important;
+  font-size: var(--base-font-size) !important;
+  font-weight: var(--font-weight-regular) !important;
+  color: var(--primary-color-2) !important;
+  line-height: 20px !important;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+.loginContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  background: #e5e5e5;
+}
+
+.loginCard {
+  padding-top: 2.8125rem;
+  padding-bottom: 3.125rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  background: #ffffff;
+  border-radius: 0px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .loginCard {
+    padding: 2.0625rem 2.375rem 2.375rem 2.375rem;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .loginCard {
+    padding: 1.375rem 1.875rem 1.5625rem 1.875rem;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .loginCard {
+    padding: 1rem 1.5rem 1.25rem 1.5rem;
+  }
+}
+
+.inputStyles {
+  padding-top: 1.0625rem;
+  padding-bottom: 1.0625rem;
+  padding-left: 1rem;
+  padding-right: 15.125rem;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 160%;
+  color: #acacac;
+  background: #f5f4f5;
+  outline: none;
+  border: none;
+}
+
+@media only screen and (max-width: 1300px) {
+  .inputStyles {
+    padding: 1.0625rem 11.875rem 1.0625rem 1.0625rem;
+  }
+}
+
+.signInButton {
+  background: #191919;
+  color: #fff;
+  text-align: center;
+  padding: 1.3125rem 11.6875rem;
+  outline: none;
+  border: none;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.125rem;
+}
+
+@media only screen and (max-width: 1300px) {
+  .signInButton {
+    padding: 1.0625rem 10rem;
+  }
+}
+
+.login {
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.75rem;
+  line-height: 140%;
+  margin-bottom: 1.0625rem;
+}
+
+.topIconBorder {
+  width: 2.9375rem;
+  height: 0.25rem;
+  background: #d20000;
+  position: absolute;
+  margin-top: -2.75rem;
+}
+
+@media only screen and (max-width: 1300px) {
+  .topIconBorder {
+    margin-top: -1.4375rem;
+  }
+}
+
+.loginLabel {
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 160%;
+  color: #191919;
+}
+
+.textContainer {
+  margin-top: .4375rem;
+}
+
+.passwordContainer {
+  margin-top: .5rem;
+}
+
+.btnContainer {
+  margin-top: 1.5rem;
+  margin-bottom: 1.3125rem;
+}
+
+.horizontalRule {
+  border: 1px solid #d5d5d5;
+}
+
+.forgotPassword {
+  margin-top: 1.75rem;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 160%;
+  cursor: default;
+}
+
+.signUp {
+  margin-top: .5rem;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 160%;
+  color: #191919;
+}
+
+.signupBtn {
+  cursor: default;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 160%;
+}
+
+.facebookBtn {
+  text-decoration: underline;
+}
+
+.googleBtn {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 599px) {
+  .loginCard {
+    padding-left: 3.125rem;
+    padding-right: 3.125rem;
+  }
+  .loginCard .login,
+  .loginCard .loginLabel {
+    font-size: 0.75rem;
+  }
+  .loginCard .inputStyles {
+    font-size: 0.625rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+  }
+  .loginCard .signInButton {
+    font-size: 0.5rem;
+    line-height: 0.5rem;
+    padding: 0.625rem;
+    width: 100%;
+  }
+  .loginCard .forgotPassword,
+  .loginCard .signUp,
+  .loginCard .signupBtn,
+  .loginCard .aside {
+    margin-top: 0.75rem;
+    font-size: 0.6875rem;
+    line-height: 70%;
+    text-align: center;
+  }
+  .loginCard .forgotPassword .facebook,
+  .loginCard .forgotPassword .google,
+  .loginCard .signUp .facebook,
+  .loginCard .signUp .google,
+  .loginCard .signupBtn .facebook,
+  .loginCard .signupBtn .google,
+  .loginCard .aside .facebook,
+  .loginCard .aside .google {
+    height: 1.25rem;
+    font-size: 0.6875rem;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 959px) {
+  .loginCard {
+    padding-left: 3.125rem;
+    padding-right: 3.125rem;
+  }
+  .loginCard .login,
+  .loginCard .loginLabel {
+    font-size: 0.9375rem;
+  }
+  .loginCard .inputStyles {
+    font-size: 0.625rem;
+    padding-top: 0.9375rem;
+    padding-bottom: 0.9375rem;
+    width: 100%;
+  }
+  .loginCard .signInButton {
+    font-size: 0.625rem;
+    line-height: 0.5rem;
+    padding: 0.625rem 9.375rem;
+  }
+  .loginCard .forgotPassword,
+  .loginCard .signUp,
+  .loginCard .signupBtn,
+  .loginCard .aside {
+    margin-top: 0.75rem;
+    font-size: 0.6875rem;
+    line-height: 70%;
+  }
+  .loginCard .forgotPassword .facebook,
+  .loginCard .forgotPassword .google,
+  .loginCard .signUp .facebook,
+  .loginCard .signUp .google,
+  .loginCard .signupBtn .facebook,
+  .loginCard .signupBtn .google,
+  .loginCard .aside .facebook,
+  .loginCard .aside .google {
+    height: 0.9375rem;
+    font-size: 0.5rem;
+  }
+}
+
+.firstName {
+  padding-top: 17px;
+  padding-bottom: 17px;
+  padding-left: 14px;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 160%;
+  color: #acacac;
+  background: #f5f4f5;
+  outline: none;
+  border: none;
+}
+
+.createAccount {
+  margin-top: 41px;
+}
+
+.firstLastName {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 55px;
+}
+
+@media screen and (max-width: 599px) {
+  .firstLastName {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 0.3125rem;
+  }
+  .firstLastName .firstName {
+    font-size: 0.625rem;
+    padding-top: 0.625rem;
+    width: 100%;
+    padding-bottom: 0.4375rem;
+  }
+  .createAccount {
+    margin-top: 1.125rem;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 959px) {
+  .firstLastName {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 0.3125rem;
+  }
+  .firstLastName .firstName {
+    font-size: 0.625rem;
+    padding-top: 0.9375rem;
+    width: 100%;
+    padding-bottom: 0.625rem;
+  }
+}
+
+.resendBtn {
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  text-transform: capitalize;
+  color: #191919;
+  background: #ffffff;
+  outline: none;
+  border: 1px solid black;
+  padding: 8px 16px;
+}
+
+.verify {
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  text-transform: capitalize;
+  color: #fff;
+  background: #000;
+  outline: none;
+  border: 1px solid black;
+  padding: 8px 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  overflow: hidden;
+}
+
+.d-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  width: 5%;
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,241 @@
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #e5e5e5;
+}
+
+.loginCard {
+  padding-top: 2.8125rem;
+  padding-bottom: 3.125rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  background: #ffffff;
+  border-radius: 0px;
+}
+
+@media only screen and (max-width: 1400px) {
+  .loginCard {
+    padding: 2.0625rem 2.375rem 2.375rem 2.375rem;
+  }
+}
+@media only screen and (max-width: 1300px) {
+  .loginCard {
+    padding: 1.375rem 1.875rem 1.5625rem 1.875rem;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .loginCard {
+    padding: 1rem 1.5rem 1.25rem 1.5rem;
+  }
+}
+
+.inputStyles {
+  padding-top: 1.0625rem;
+  padding-bottom: 1.0625rem;
+  padding-left: 1rem;
+  padding-right: 15.125rem;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 160%;
+  color: #acacac;
+  background: #f5f4f5;
+  outline: none;
+  border: none;
+}
+
+@media only screen and (max-width: 1300px) {
+  .inputStyles {
+    padding: 1.0625rem 11.875rem 1.0625rem 1.0625rem;
+  }
+}
+
+.signInButton {
+  background: #191919;
+  color: #fff;
+  text-align: center;
+  padding: 1.3125rem 11.6875rem;
+  outline: none;
+  border: none;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.125rem;
+}
+
+@media only screen and (max-width: 1300px) {
+  .signInButton {
+    padding: 1.0625rem 10rem;
+  }
+}
+
+.login {
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.75rem;
+  line-height: 140%;
+  margin-bottom: 1.0625rem;
+}
+
+.topIconBorder {
+  width: 2.9375rem;
+  height: 0.25rem;
+  background: #d20000;
+  position: absolute;
+  margin-top: -2.75rem;
+}
+
+@media only screen and (max-width: 1300px) {
+  .topIconBorder {
+    margin-top: -1.4375rem;
+  }
+}
+
+.loginLabel {
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 160%;
+  color: #191919;
+}
+
+.textContainer {
+  margin-top: .4375rem;
+}
+
+.passwordContainer {
+  margin-top: .5rem;
+}
+
+.btnContainer {
+  margin-top: 1.5rem;
+  margin-bottom: 1.3125rem;
+}
+
+.horizontalRule {
+  border: 1px solid #d5d5d5;
+}
+
+.forgotPassword {
+  margin-top: 1.75rem;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 160%;
+  cursor: default;
+}
+.signUp {
+  margin-top: .5rem;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 160%;
+  color: #191919;
+}
+
+.signupBtn {
+  cursor: default;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 160%;
+}
+
+.facebookBtn {
+  text-decoration: underline;
+}
+.googleBtn {
+  text-decoration: underline;
+}
+
+@include xs {
+  .loginCard {
+    padding-left: 3.125rem;
+    padding-right: 3.125rem;
+    // height: 95%;
+
+    .login,
+    .loginLabel {
+      font-size: 0.75rem;
+    }
+
+    .inputStyles {
+      font-size: 0.625rem;
+      padding-top: 0.625rem;
+      padding-bottom: 0.625rem;
+    }
+
+    .signInButton {
+      font-size: 0.5rem;
+      line-height: 0.5rem;
+      padding: 0.625rem;
+      width: 100%;
+    }
+
+    .forgotPassword,
+    .signUp,
+    .signupBtn,
+    .aside {
+      margin-top: 0.75rem;
+      font-size: 0.6875rem;
+      line-height: 70%;
+      text-align: center;
+
+      .facebook,
+      .google {
+        height: 1.25rem;
+        font-size: 0.6875rem;
+      }
+    }
+  }
+}
+
+@include sm {
+  .loginCard {
+    padding-left: 3.125rem;
+    padding-right: 3.125rem;
+    // height: 95%;
+
+    .login,
+    .loginLabel {
+      font-size: 0.9375rem;
+    }
+
+    .inputStyles {
+      font-size: 0.625rem;
+      padding-top: 0.9375rem;
+      padding-bottom: 0.9375rem;
+      width: 100%;
+    }
+
+    .signInButton {
+      font-size: 0.625rem;
+      line-height: 0.5rem;
+      padding: 0.625rem 9.375rem;
+    }
+
+    .forgotPassword,
+    .signUp,
+    .signupBtn,
+    .aside {
+      margin-top: 0.75rem;
+      font-size: 0.6875rem;
+      line-height: 70%;
+
+      .facebook,
+      .google {
+        height: 0.9375rem;
+        font-size: 0.5rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+.firstName {
+  padding-top: 17px;
+  padding-bottom: 17px;
+  padding-left: 14px;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 160%;
+  color: #acacac;
+  background: #f5f4f5;
+  outline: none;
+  border: none;
+}
+
+.createAccount {
+  margin-top: 41px;
+}
+
+.firstLastName {
+  display: flex;
+  gap: 55px;
+}
+
+@include xs {
+  .firstLastName {
+    flex-direction: column;
+    gap: 0.3125rem;
+
+    .firstName {
+      font-size: 0.625rem;
+      padding-top: 0.625rem;
+      width: 100%;
+      padding-bottom: 0.4375rem;
+    }
+  }
+
+  .createAccount {
+    margin-top: 1.125rem;
+  }
+}
+
+@include sm {
+  .firstLastName {
+    flex-direction: column;
+    gap: 0.3125rem;
+    
+    .firstName {
+      font-size: 0.625rem;
+      padding-top: 0.9375rem;
+      width: 100%;
+      padding-bottom: 0.625rem;
+    }
+  }
+}
