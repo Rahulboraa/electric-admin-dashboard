@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "../../api/instance";
 
 const RecentPublications = () => {
+
   const [date, setDate] = useState("");
   const [text, setText] = useState("");
-
   const [recent_image, setImageSelected] = useState("");
 
   const getToken = localStorage.getItem("token");
 
   const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
-
+  
   const addProduct = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -24,7 +24,7 @@ const RecentPublications = () => {
         },
       })
       .then((result) => {
-        // console.log(result);
+        console.log(result);
       })
       .catch((err) => {
         console.log(err);
@@ -33,6 +33,7 @@ const RecentPublications = () => {
 
   const [data, setData] = useState([]);
 
+  // !FETCH RECENT PUBLICATIONS
   const handleRecentPublication = () => {
     axios
       .get("/recentPub")
@@ -48,6 +49,7 @@ const RecentPublications = () => {
     handleRecentPublication();
   }, []);
 
+  // !UPDATE RECENT PUBLICATION
   const handleRecentPublicationId = (id) => {
     axios
       .post(
@@ -67,6 +69,7 @@ const RecentPublications = () => {
       });
   };
 
+  // !Delete RECENT PUBLICATION
   const RemoveRecentPublication = (id) => {
     axios
       .get(`/recentPub/delete/${id}`, {
@@ -74,7 +77,11 @@ const RecentPublications = () => {
           "x-access-token": getToken ? getToken : parsedLogin,
         },
       })
-      .then((result) => {})
+      .then((result) => {
+        if (result.data.status === true) {
+          handleRecentPublication();
+        }
+      })
       .catch((err) => {
         console.log(err);
       });
