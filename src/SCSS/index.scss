@@ -13,6 +13,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: default;
+  font-family: "Red Hat Display";
 }
 
 .d-row {
@@ -23,4 +25,41 @@
 .carousel-control-next,
 .carousel-control-prev {
   width: 5%;
+}
+
+tr > td {
+  padding-top: 1.5625rem !important;
+  padding-left: 3.625rem !important;
+  padding-bottom: 1.9375rem !important;
+}
+
+tr > th {
+  padding-top: 1.625rem !important;
+  padding-bottom: 1.5rem !important;
+  padding-left: 3.625rem !important;
+}
+
+// !Selecting
+td:nth-last-child(-n + 1) {
+  color: green !important;
+}
+
+.table {
+  border-color: #d4d4d4 !important;
+}
+
+.navbar {
+  margin-bottom: 2.5625rem;
+  font-size: 18px;
+  line-height: 160%;
+  color: #191919;
+  // &:hover {
+  //   font-family: Red Hat Display;
+  //   font-style: normal;
+  //   font-weight: bold;
+  //   font-size: 19px;
+  //   line-height: 160%;
+  //   text-transform: capitalize;
+  //   color: #191919;
+  // }
 }

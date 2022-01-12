@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "../../api/instance";
 
 const RecentPublications = () => {
-
   const [date, setDate] = useState("");
   const [text, setText] = useState("");
   const [recent_image, setImageSelected] = useState("");
@@ -10,7 +9,7 @@ const RecentPublications = () => {
   const getToken = localStorage.getItem("token");
 
   const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
-  
+
   const addProduct = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -72,7 +71,7 @@ const RecentPublications = () => {
   // !Delete RECENT PUBLICATION
   const RemoveRecentPublication = (id) => {
     axios
-      .get(`/recentPub/delete/${id}`, {
+      .delete(`/recentPub/delete/${id}`, {
         headers: {
           "x-access-token": getToken ? getToken : parsedLogin,
         },
@@ -130,20 +129,23 @@ const RecentPublications = () => {
           <div className="topWrapper"></div>
           <p className="exploreCreative">Recent Publications</p>
         </div>
-        {data.map((item) => {
+        {data?.map(({ title, text, date, image, id }) => {
           return (
-            <React.Fragment key={item?.id}>
+            <React.Fragment key={id}>
               <div style={{ border: "1px solid black", marginBottom: "16px" }}>
-                <p>{item?.title}</p>
-                <p>{item?.text}</p>
-                <p>{item?.date}</p>
-                <p>{item?.image}</p>
+                <p>{title}</p>
+                <p>{text}</p>
+                <p>{date}</p>
                 <figure>
-                  <img src={item?.image} alt="" />
+                  <img
+                    src={image}
+                    alt=""
+                    style={{ width: "300px", height: "200px" }}
+                  />
                 </figure>
                 <button
                   onClick={() => {
-                    handleRecentPublicationId(item?.id);
+                    handleRecentPublicationId(id);
                   }}
                 >
                   Update Recent Publication
@@ -153,7 +155,7 @@ const RecentPublications = () => {
                 <br />
                 <button
                   onClick={() => {
-                    RemoveRecentPublication(item?.id);
+                    RemoveRecentPublication(id);
                   }}
                 >
                   Delete
