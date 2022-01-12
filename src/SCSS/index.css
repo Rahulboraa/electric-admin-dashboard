@@ -391,12 +391,100 @@ body {
   padding: 8px 16px;
 }
 
+.actionButtons {
+  margin-bottom: 2.5rem;
+}
+
+.vehicleLabel {
+  font-family: "Red Hat Display";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 160%;
+  font-size: 1rem;
+  text-transform: capitalize;
+  color: #191919;
+}
+
+.formInputStyle {
+  font-family: "Red Hat Display";
+  font-size: 1rem;
+  color: #acacac;
+  background: #f5f4f5;
+  line-height: 160%;
+  font-style: normal;
+  font-weight: normal;
+  outline: none;
+  border: none;
+  padding-top: 1.0625rem;
+  padding-bottom: 1.0625rem;
+  padding-left: 1rem;
+  padding-right: 4.5625rem;
+}
+
+.visibilityHidden {
+  visibility: hidden;
+}
+
+.textAreaStyles {
+  background: #f5f4f5;
+  resize: none;
+  width: 27rem;
+  height: 9.625rem;
+  padding-top: 1.0625rem;
+  padding-left: 1rem;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 160%;
+  color: #acacac;
+  border: none;
+}
+
+.dimensions > input {
+  width: 4.5625rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-right: 0.875rem;
+  height: 3.4375rem;
+  text-align: center;
+  background: #f5f4f5;
+  border: none;
+}
+
+.cancelBtn {
+  padding: 21px 32px;
+  background-color: #fff;
+  color: #191919;
+  border: 1px solid #000000;
+  text-align: center;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 18px;
+}
+
+.SaveNextBtn {
+  padding: 21px 32px;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 18px;
+  color: #ffffff;
+  background: #191919;
+  outline: none;
+  border: none;
+}
+
 * {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  overflow: hidden;
+  cursor: default;
+  font-family: "Red Hat Display";
 }
 
 .d-row {
@@ -414,5 +502,69 @@ body {
 .carousel-control-next,
 .carousel-control-prev {
   width: 5%;
+}
+
+tr > td {
+  padding-top: 1.5625rem !important;
+  padding-left: 3.625rem !important;
+  padding-bottom: 1.9375rem !important;
+}
+
+tr > th {
+  padding-top: 1.625rem !important;
+  padding-bottom: 1.5rem !important;
+  padding-left: 3.625rem !important;
+}
+
+td:nth-last-child(-n + 1) {
+  color: green !important;
+}
+
+.table {
+  border-color: #d4d4d4 !important;
+}
+
+.navbar {
+  margin-bottom: 2.5625rem;
+  font-size: 18px;
+  line-height: 160%;
+  color: #191919;
+}
+
+.navbarTop {
+  margin-top: 5.0625rem;
+  margin-left: 5rem;
+}
+
+.navbarTopHeading {
+  margin-bottom: 3.8125rem;
+  margin-top: 5.0625rem;
+}
+
+.navbarContainer {
+  margin-bottom: 2.5625rem;
+}
+
+.navbarContainer span {
+  margin-right: 2.5625rem;
+}
+
+.actionButtons {
+  margin-top: 80px;
+  gap: 1.5rem;
+}
+
+* {
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #d5d5d5;
+  border-radius: 20px;
+  border: 3px solid #d5d5d5;
 }
 /*# sourceMappingURL=index.css.map */

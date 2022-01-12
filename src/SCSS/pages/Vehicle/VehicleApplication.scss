@@ -1,0 +1,72 @@
+.actionButtons {
+  margin-bottom: 2.5rem;
+}
+
+.vehicleLabel {
+  @include formLabels;
+}
+
+.formInputStyle {
+  @include inputLabelStyle;
+  padding-top: 1.0625rem;
+  padding-bottom: 1.0625rem;
+  padding-left: 1rem;
+  padding-right: 4.5625rem;
+}
+
+.visibilityHidden {
+  visibility: hidden;
+}
+
+.textAreaStyles {
+  background: #f5f4f5;
+  resize: none;
+  width: 27rem;
+  height: 9.625rem;
+  padding-top: 1.0625rem;
+  padding-left: 1rem;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 160%;
+  color: #acacac;
+  border: none;
+}
+
+.dimensions > input {
+  width: 4.5625rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-right: 0.875rem;
+  height: 3.4375rem;
+  text-align: center;
+  background: #f5f4f5;
+  border: none;
+}
+
+.cancelBtn {
+  padding: 21px 32px;
+  background-color: #fff;
+  color: #191919;
+  border: 1px solid #000000;
+  text-align: center;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 18px;
+}
+
+.SaveNextBtn {
+  padding: 21px 32px;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 18px;
+  color: #ffffff;
+  background: #191919;
+  outline: none;
+  border: none;
+}

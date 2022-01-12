@@ -8,6 +8,7 @@
 @import "./pages/Login/login.scss";
 @import "./pages/Login/signup.scss";
 @import "./pages/Login/verification.scss";
+@import "./pages/Vehicle/VehicleApplication.scss";
 
 * {
   margin: 0;
@@ -79,4 +80,26 @@ td:nth-last-child(-n + 1) {
   span {
     margin-right: 2.5625rem;
   }
+}
+
+.actionButtons {
+  margin-top: 80px;
+  gap: 1.5rem;
+}
+
+// !Styles for ScrollBar
+
+* {
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+
+*::-webkit-scrollbar-thumb {
+  background-color: #d5d5d5;
+  border-radius: 20px;
+  border: 3px solid #d5d5d5;
 }
