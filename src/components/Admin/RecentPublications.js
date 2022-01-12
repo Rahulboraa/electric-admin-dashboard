@@ -4,7 +4,8 @@ import axios from "../../api/instance";
 const RecentPublications = () => {
   const [date, setDate] = useState("");
   const [text, setText] = useState("");
-  const [recent_image, setImageSelected] = useState("");
+  const [recent, setImageSelected] = useState("");
+  const [recentPDF, setImageSelected2] = useState("");
 
   const getToken = localStorage.getItem("token");
 
@@ -13,9 +14,10 @@ const RecentPublications = () => {
   const addProduct = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("recent_image", recent_image);
+    formData.append("recent", recent);
     formData.append("date", date);
     formData.append("text", text);
+    formData.append("recentPDF", recentPDF);
     axios
       .post(`/recentPub/add`, formData, {
         headers: {
@@ -52,7 +54,7 @@ const RecentPublications = () => {
   const handleRecentPublicationId = (id) => {
     axios
       .post(
-        `/update/${id}`,
+        `/recentPub/update/${id}`,
         { text: "hello" },
         {
           headers: {

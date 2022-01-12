@@ -49,3 +49,52 @@ $screen-xl-max: 5000px;
     @content;
   }
 }
+
+// !Common Mixing's
+
+//?FORM LABELS
+@mixin formLabels {
+  font-family: $base-font-family;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 160%;
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+// ?INPUT LABELS
+@mixin inputLabelStyle {
+  font-family: $base-font-family;
+  font-size: 1rem;
+  color: $primary-color-4;
+  background: $primary-color-5;
+  line-height: 160%;
+  font-style: normal;
+  font-weight: normal;
+  outline: none;
+  border: none;
+}
+
+//? MODAL FORM SUBMIT BUTTON
+@mixin formSubmitCtaBtn {
+  background: $primary-color-2;
+  font-family: $base-font-family;
+  color: $secondary-color-1;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.25rem;
+  line-height: 1.125rem;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+}
+
+//? MODAL TITLE
+@mixin modalTitle {
+  font-family: $base-font-family;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 2.625rem;
+  text-transform: capitalize;
+}

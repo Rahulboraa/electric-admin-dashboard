@@ -63,3 +63,20 @@ td:nth-last-child(-n + 1) {
   //   color: #191919;
   // }
 }
+
+.navbarTop {
+  margin-top: 5.0625rem;
+  margin-left: 5rem;
+}
+
+.navbarTopHeading {
+  margin-bottom: 3.8125rem;
+  margin-top: 5.0625rem;
+}
+
+.navbarContainer {
+  margin-bottom: 2.5625rem;
+  span {
+    margin-right: 2.5625rem;
+  }
+}

@@ -5,11 +5,11 @@ const Vehicle = () => {
   return (
     <>
       <div style={{ marginLeft: "81px" }}>
-        <h3 style={{ marginBottom: "61px", marginTop: "81px" }}>Vehicles</h3>
-        <nav style={{ marginBottom: "41px" }}>
-          <span style={{ marginRight: "41px" }}>Vehicle </span>
-          <span style={{ marginRight: "41px" }}>Vehicles</span>
-          <span style={{ marginRight: "41px" }}>Brand</span>
+        <h3 className="navbarTopHeading">Vehicles</h3>
+        <nav className="navbarContainer">
+          <span>Vehicle </span>
+          <span>Vehicles</span>
+          <span>Brand</span>
         </nav>
         <div
           style={{

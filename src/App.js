@@ -8,6 +8,7 @@ import VehicleTable from "./components/Vehicle/VehicleTable";
 import Vehicle from "./components/Vehicle/Vehicle";
 import Brands from "./components/brands/brands";
 import AddBrands from "./components/brands/Dialogs/AddBrands";
+import AddVehicle from "./components/Vehicle/VehicleApplication";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/vehicle" component={Vehicle} />
           <Route exact path="/brands" component={Brands} />
           <Route exact path="/addbrands" component={AddBrands} />
+          <Route exact path="/addvehicle" component={AddVehicle} />
         </Switch>
       </Router>
     </>
