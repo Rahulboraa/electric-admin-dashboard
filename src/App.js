@@ -1,6 +1,11 @@
 import React from "react";
 import "./SCSS/index.scss";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useHistory,
+} from "react-router-dom";
 import Login from "./components/Admin/Login";
 import SignUp from "./components/Admin/Signup";
 import RecentPublications from "./components/Admin/RecentPublications";
@@ -12,88 +17,96 @@ import AddVehicle from "./components/Vehicle/VehicleApplication";
 import VehicleStepper from "./components/Vehicle/VehicleStepper";
 import Sidebar from "./components/common/sidebar";
 function App() {
-
+  const history = useHistory();
+  console.log(window.location.pathname === "/");
   const Routes = [
     {
       path: "/",
       exact: true,
-      main: () => <Login/>
+      main: () => <Login />,
     },
     {
       path: "/signup",
-      main: () => <SignUp/>
+      main: () => <SignUp />,
     },
     {
       path: "/recentpublication",
-      main: () => <RecentPublications/>
+      main: () => <RecentPublications />,
     },
     {
       path: "/vehicleapplication",
-      main: () => <VehicleTable/>
+      main: () => <VehicleTable />,
     },
     {
       path: "/vehicle",
-      main: () => <Vehicle/>
+      main: () => <Vehicle />,
     },
     {
       path: "/brands",
-      main: () => <Brands/>
-    }, {
+      main: () => <Brands />,
+    },
+    {
       path: "/addbrands",
-      main: () => <AddBrands/>
+      main: () => <AddBrands />,
     },
     {
       path: "/addvehicle",
-      main: () => <AddVehicle/>
+      main: () => <AddVehicle />,
     },
     {
       path: "/vehiclestepper",
-      main: () => <VehicleStepper/>
-    }
-   
-  ]
-
+      main: () => <VehicleStepper />,
+    },
+  ];
 
   return (
     <>
       <Router>
-        <div style={{display:"flex"}}>
-           <div>
-             <Sidebar/>
-           </div>
-           <div>
-           <div style={{ flex: 1, padding: "10px" }}>
-          <Switch>
-            {Routes.map((route, index) => (
-              // Render more <Route>s with the same paths as
-              // above, but different components this time.
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                children={<route.main />}
-              />
-            ))}
-          </Switch>
+        <div
+          style={{
+            display:
+              window.location.pathname == "/" ||
+              window.location.pathname == "/signup"
+                ? ""
+                : "flex",
+          }}
+        >
+          <div>
+            {window.location.pathname == "/" ||
+            window.location.pathname == "/signup" ? (
+              ""
+            ) : (
+              <Sidebar />
+            )}
           </div>
-           </div>
-
+          <div>
+            <div
+              style={{
+                flex:
+                  window.location.pathname == "/" ||
+                  window.location.pathname == "/signup"
+                    ? ""
+                    : 1,
+                padding:
+                  window.location.pathname == "/" ||
+                  window.location.pathname == "/signup"
+                    ? ""
+                    : "10px",
+              }}
+            >
+              <Switch>
+                {Routes.map((route, index) => (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    exact={route.exact}
+                    children={<route.main />}
+                  />
+                ))}
+              </Switch>
+            </div>
+          </div>
         </div>
-        {/* <Switch>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route
-            exact
-            path="/recentpublication"
-            component={RecentPublications}
-          />
-          <Route exact path="/vehicleapplication" component={VehicleTable} />
-          <Route exact path="/vehicle" component={Vehicle} />
-          <Route exact path="/brands" component={Brands} />
-          <Route exact path="/addbrands" component={AddBrands} />
-          <Route exact path="/addvehicle" component={AddVehicle} />
-          <Route exact path="/vehiclestepper" component={VehicleStepper} />
-        </Switch> */}
       </Router>
     </>
   );
