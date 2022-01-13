@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import ForgotPassDialog from "../Admin/Dialogs/ForgotPassDialog";
@@ -15,6 +16,7 @@ const Login = () => {
     password: "",
   });
 
+  console.log(data)
   const handleInputChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -33,7 +35,7 @@ const Login = () => {
       .then((result) => {
         setData("");
         if (result.data.status === true) {
-          history.push("./recentpublication");
+          history.push("./home");
           localStorage.setItem(
             "loginUser",
             JSON.stringify(result.data.accessToken)
@@ -54,10 +56,13 @@ const Login = () => {
 
   return (
     <>
+    <div>
+    
       <section className="loginContainer">
         <div className="loginCard">
-          <span className="topIconBorder"></span>
+        <span className="topIconBorder"></span>
           <main>
+          
             <h3 className="login">Log in</h3>
             <div>
               <label htmlFor="Email Address" className="loginLabel">
@@ -132,6 +137,7 @@ const Login = () => {
           </footer>
         </div>
       </section>
+      </div>
     </>
   );
 };

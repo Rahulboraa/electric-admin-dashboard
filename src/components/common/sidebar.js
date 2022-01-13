@@ -15,8 +15,8 @@ const Sidebar = () => {
     history.push("./profile");
   };
 
-  const handleBooking = () => {
-    history.push("./bookings");
+  const handleVehicle = () => {
+    history.push("./vehicle");
   };
 
   const handleTestRide = () => {
@@ -72,7 +72,7 @@ const Sidebar = () => {
             <figure>
               <img src={booking} alt="booking" />
             </figure>
-            <p onClick={handleBooking}>Bookings</p>
+            <p onClick={handleVehicle}>Vehicle</p>
           </div>
 
           <div className="Sidebar__container">

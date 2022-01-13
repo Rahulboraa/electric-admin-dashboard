@@ -1,7 +1,14 @@
 import React from "react";
+import { useHistory } from "react-router";
 import CommonTable from "../common/CommonTable";
+const Vehicle = ({}) => {
+  const history = useHistory()
 
-const Vehicle = () => {
+  const handleBrand = (params) => {
+    history.push("./brands")
+  }
+  
+
   return (
     <>
       <div style={{ marginLeft: "81px" }}>
@@ -9,7 +16,7 @@ const Vehicle = () => {
         <nav className="navbarContainer">
           <span>Vehicle </span>
           <span>Vehicles</span>
-          <span>Brand</span>
+          <span onClick={handleBrand}>Brand</span>
         </nav>
         <div
           style={{

@@ -10,12 +10,76 @@ import Brands from "./components/brands/brands";
 import AddBrands from "./components/brands/Dialogs/AddBrands";
 import AddVehicle from "./components/Vehicle/VehicleApplication";
 import VehicleStepper from "./components/Vehicle/VehicleStepper";
-
+import Sidebar from "./components/common/sidebar";
 function App() {
+
+  const Routes = [
+    {
+      path: "/",
+      exact: true,
+      main: () => <Login/>
+    },
+    {
+      path: "/signup",
+      main: () => <SignUp/>
+    },
+    {
+      path: "/recentpublication",
+      main: () => <RecentPublications/>
+    },
+    {
+      path: "/vehicleapplication",
+      main: () => <VehicleTable/>
+    },
+    {
+      path: "/vehicle",
+      main: () => <Vehicle/>
+    },
+    {
+      path: "/brands",
+      main: () => <Brands/>
+    }, {
+      path: "/addbrands",
+      main: () => <AddBrands/>
+    },
+    {
+      path: "/addvehicle",
+      main: () => <AddVehicle/>
+    },
+    {
+      path: "/vehiclestepper",
+      main: () => <VehicleStepper/>
+    }
+   
+  ]
+
+
   return (
     <>
       <Router>
-        <Switch>
+        <div style={{display:"flex"}}>
+           <div>
+             <Sidebar/>
+           </div>
+           <div>
+           <div style={{ flex: 1, padding: "10px" }}>
+          <Switch>
+            {Routes.map((route, index) => (
+              // Render more <Route>s with the same paths as
+              // above, but different components this time.
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                children={<route.main />}
+              />
+            ))}
+          </Switch>
+          </div>
+           </div>
+
+        </div>
+        {/* <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route
@@ -29,7 +93,7 @@ function App() {
           <Route exact path="/addbrands" component={AddBrands} />
           <Route exact path="/addvehicle" component={AddVehicle} />
           <Route exact path="/vehiclestepper" component={VehicleStepper} />
-        </Switch>
+        </Switch> */}
       </Router>
     </>
   );
