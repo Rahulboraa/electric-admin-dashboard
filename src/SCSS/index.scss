@@ -10,7 +10,7 @@
 @import "./pages/Login/verification.scss";
 @import "./pages/Vehicle/VehicleApplication.scss";
 @import "./pages/Vehicle/Sidebar.scss";
-
+@import "./pages/Home/Home.scss";
 * {
   margin: 0;
   padding: 0;
@@ -97,7 +97,6 @@ td:nth-last-child(-n + 1) {
 *::-webkit-scrollbar {
   width: 12px;
 }
-
 
 *::-webkit-scrollbar-thumb {
   background-color: #d5d5d5;

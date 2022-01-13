@@ -29,7 +29,7 @@ function App() {
           <Route exact path="/addbrands" component={AddBrands} />
           <Route exact path="/addvehicle" component={AddVehicle} />
           <Route exact path="/vehiclestepper" component={VehicleStepper} />
-          {/* <Route exact path="/home" component={Home} /> */}
+          <Route exact path="/home" component={Home} />
         </Switch>
       </Router>
     </>

@@ -3,6 +3,11 @@ import axios from "../../api/instance";
 import VehicleDropdown from "./VehicleDropdown";
 
 const AddVehicle = () => {
+  const [data2, setData2] = useState({
+    Length: "",
+    Height: "",
+    Width: "",
+  });
   const [data, setData] = useState({
     text: "",
     productName: "",
@@ -22,6 +27,8 @@ const AddVehicle = () => {
     scooterImage: "",
     maxSpeed: "",
   });
+
+  console.table(data2);
 
   const {
     productName,
@@ -43,10 +50,19 @@ const AddVehicle = () => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
+  const handleVehicleChange2 = (e) => {
+    setData2({ ...data2, [e.target.name]: e.target.value });
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    let data3 = {
+      ...data,
+      dimension: `${data2.Length} X ${data2.Width} X ${data2.Height}`,
+    };
+
     axios
-      .post(`/product/add`, data, {
+      .post(`/product/add`, data3, {
         header: {
           "x-access-token": "x-access-token",
         },
@@ -291,18 +307,24 @@ const AddVehicle = () => {
               <div className="dimensions">
                 <input
                   type="text"
+                  name="Length"
                   placeholder="Length"
-                  onChange={handleVehicleChange}
+                  value={data2.Length}
+                  onChange={handleVehicleChange2}
                 />
                 <input
                   type="text"
+                  name="Width"
+                  value={data2.Width}
                   placeholder="Width"
-                  onChange={handleVehicleChange}
+                  onChange={handleVehicleChange2}
                 />
                 <input
+                  name="Height"
                   type="text"
+                  value={data2.Height}
                   placeholder="Height"
-                  onChange={handleVehicleChange}
+                  onChange={handleVehicleChange2}
                 />
               </div>
             </div>
