@@ -1,10 +1,69 @@
 import React, { useState } from "react";
+import axios from "../../api/instance";
+import Sidebar from "../common/sidebar";
 import VehicleDropdown from "./VehicleDropdown";
 
 const AddVehicle = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    text: "",
+    productName: "",
+    price: "",
+    discription: "",
+    vehicleType: "",
+    speed: "",
+    range: "",
+    charge: "",
+    display: "",
+    motor: "",
+    battery: "",
+    loadCapacity: "",
+    dimension: "",
+    vehicleWeight: "",
+    brand: "",
+    scooterImage: "",
+    maxSpeed: "",
+  });
 
-  const handleVehicleChange = () => {};
+  const {
+    text,
+    productName,
+    price,
+    discription,
+    vehicleType,
+    speed,
+    range,
+    charge,
+    display,
+    motor,
+    battery,
+    loadCapacity,
+    dimension,
+    brand,
+    scooterImage,
+    maxSpeed,
+    vehicleWeight,
+  } = data;
+
+  const handleVehicleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(`/product/add`, data, {
+        header: {
+          "x-access-token": "x-access-token",
+        },
+      })
+      .then((result) => {
+        console.log(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <div className="navbarTop">
@@ -18,7 +77,7 @@ const AddVehicle = () => {
 
         <h5>Basic Information</h5>
 
-        <form>
+        <form onSubmit={handleFormSubmit}>
           <section className="d-flex justify-content-between">
             <div>
               <label className="vehicleLabel" htmlFor="Vehicle Name">
@@ -29,7 +88,9 @@ const AddVehicle = () => {
                   type="text"
                   className="formInputStyle"
                   placeholder="Enter the Vehicle Name"
+                  value={productName}
                   onChange={handleVehicleChange}
+                  name="productName"
                 />
               </div>
             </div>
@@ -44,6 +105,8 @@ const AddVehicle = () => {
                   className="formInputStyle"
                   placeholder="Enter the Brand Name"
                   onChange={handleVehicleChange}
+                  value={brand}
+                  name="brand"
                 />
               </div>
             </div>
@@ -53,7 +116,13 @@ const AddVehicle = () => {
                 Vehicle Description
               </label>
               <div>
-                <textarea name="textarea" className="textAreaStyles">
+                <textarea
+                  name="textarea"
+                  className="textAreaStyles"
+                  value={discription}
+                  name={discription}
+                  onChange={handleVehicleChange}
+                >
                   Write something here
                 </textarea>
               </div>
@@ -70,6 +139,8 @@ const AddVehicle = () => {
                   type="text"
                   className="formInputStyle"
                   placeholder="Enter the Price Range"
+                  value={price}
+                  name="price"
                   onChange={handleVehicleChange}
                 />
               </div>
@@ -84,6 +155,7 @@ const AddVehicle = () => {
               </div>
             </div>
 
+            {/* Hidden TextArea */}
             <div className="visibilityHidden">
               <label className="vehicleLabel" htmlFor="Vehicle Description">
                 Vehicle Description
@@ -113,6 +185,9 @@ const AddVehicle = () => {
                   type="text"
                   placeholder="Enter the Maximum Speed"
                   className="formInputStyle"
+                  value={maxSpeed}
+                  name="maxSpeed"
+                  onChange={handleVehicleChange}
                 />
               </div>
             </div>
@@ -125,6 +200,9 @@ const AddVehicle = () => {
                   type="text"
                   placeholder="Enter the Vehicle Range"
                   className="formInputStyle"
+                  onChange={handleVehicleChange}
+                  value={range}
+                  name="range"
                 />
               </div>
             </div>
@@ -137,6 +215,9 @@ const AddVehicle = () => {
                   type="text"
                   placeholder="Enter the Charge Time"
                   className="formInputStyle"
+                  value={charge}
+                  name="charge"
+                  onChange={handleVehicleChange}
                 />
               </div>
             </div>
@@ -154,6 +235,9 @@ const AddVehicle = () => {
                   type="text"
                   placeholder="Enter the display size"
                   className="formInputStyle"
+                  value={display}
+                  name="display"
+                  onChange={handleVehicleChange}
                 />
               </div>
             </div>
@@ -166,6 +250,9 @@ const AddVehicle = () => {
                   type="text"
                   placeholder="Enter the Vehicle motor"
                   className="formInputStyle"
+                  value={motor}
+                  name="motor"
+                  onChange={handleVehicleChange}
                 />
               </div>
             </div>
@@ -178,6 +265,9 @@ const AddVehicle = () => {
                   type="text"
                   placeholder="Enter the  battery"
                   className="formInputStyle"
+                  value={battery}
+                  name="battery"
+                  onChange={handleVehicleChange}
                 />
               </div>
             </div>
@@ -193,6 +283,9 @@ const AddVehicle = () => {
                   type="text"
                   placeholder="Enter the Load Capacity"
                   className="formInputStyle"
+                  value={loadCapacity}
+                  name="loadCapacity"
+                  onChange={handleVehicleChange}
                 />
               </div>
             </div>
@@ -201,9 +294,21 @@ const AddVehicle = () => {
                 Dimensions
               </label>
               <div className="dimensions">
-                <input type="text" placeholder="Length" />
-                <input type="text" placeholder="Width" />
-                <input type="text" placeholder="Height" />
+                <input
+                  type="text"
+                  placeholder="Length"
+                  onChange={handleVehicleChange}
+                />
+                <input
+                  type="text"
+                  placeholder="Width"
+                  onChange={handleVehicleChange}
+                />
+                <input
+                  type="text"
+                  placeholder="Height"
+                  onChange={handleVehicleChange}
+                />
               </div>
             </div>
             <div>
@@ -215,6 +320,9 @@ const AddVehicle = () => {
                   type="text"
                   placeholder="Enter the  Weight"
                   className="formInputStyle"
+                  onChange={handleVehicleChange}
+                  value={vehicleWeight}
+                  name="vehicleWeight"
                 />
               </div>
             </div>
@@ -222,7 +330,9 @@ const AddVehicle = () => {
 
           <div className="d-flex justify-content-end actionButtons">
             <button className="cancelBtn">Cancel</button>
-            <button className="SaveNextBtn">Save And Next</button>
+            <button className="SaveNextBtn" type="submit">
+              Next
+            </button>
           </div>
         </form>
       </div>

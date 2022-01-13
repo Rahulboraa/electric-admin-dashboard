@@ -9,6 +9,7 @@ import Vehicle from "./components/Vehicle/Vehicle";
 import Brands from "./components/brands/brands";
 import AddBrands from "./components/brands/Dialogs/AddBrands";
 import AddVehicle from "./components/Vehicle/VehicleApplication";
+import VehicleStepper from "./components/Vehicle/VehicleStepper";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route exact path="/brands" component={Brands} />
           <Route exact path="/addbrands" component={AddBrands} />
           <Route exact path="/addvehicle" component={AddVehicle} />
+          <Route exact path="/vehiclestepper" component={VehicleStepper} />
         </Switch>
       </Router>
     </>
