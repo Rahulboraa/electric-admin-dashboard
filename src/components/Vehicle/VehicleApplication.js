@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "../../api/instance";
-import Sidebar from "../common/sidebar";
 import VehicleDropdown from "./VehicleDropdown";
 
 const AddVehicle = () => {
@@ -25,12 +24,9 @@ const AddVehicle = () => {
   });
 
   const {
-    text,
     productName,
     price,
     discription,
-    vehicleType,
-    speed,
     range,
     charge,
     display,
@@ -39,7 +35,6 @@ const AddVehicle = () => {
     loadCapacity,
     dimension,
     brand,
-    scooterImage,
     maxSpeed,
     vehicleWeight,
   } = data;

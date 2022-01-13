@@ -16,6 +16,8 @@ import AddBrands from "./components/brands/Dialogs/AddBrands";
 import AddVehicle from "./components/Vehicle/VehicleApplication";
 import VehicleStepper from "./components/Vehicle/VehicleStepper";
 import Sidebar from "./components/common/sidebar";
+import StoreApplication from "./components/Store/StoreApplication";
+import Store from "./components/Store/Store.js";
 function App() {
   const history = useHistory();
   console.log(window.location.pathname === "/");
@@ -56,6 +58,14 @@ function App() {
     {
       path: "/vehiclestepper",
       main: () => <VehicleStepper />,
+    },
+    {
+      path: "/storeApplication",
+      main: () => <StoreApplication />,
+    },
+    {
+      path: "/store",
+      main: () => <Store />,
     },
   ];
 

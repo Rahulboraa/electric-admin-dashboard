@@ -2,12 +2,11 @@ import React from "react";
 import { useHistory } from "react-router";
 import CommonTable from "../common/CommonTable";
 const Vehicle = ({}) => {
-  const history = useHistory()
+  const history = useHistory();
 
   const handleBrand = (params) => {
-    history.push("./brands")
-  }
-  
+    history.push("./brands");
+  };
 
   return (
     <>
@@ -29,8 +28,8 @@ const Vehicle = ({}) => {
           <h4> Vehicles </h4>
           <button style={{ marginBottom: "8px" }}>Add Vehicle</button>
         </div>
+        <CommonTable />
       </div>
-      <CommonTable />
     </>
   );
 };
