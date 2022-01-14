@@ -20,13 +20,16 @@ import AddDealer from "./components/Dealer/AddDealer";
 import UpcomingBookings from "./components/Bookings/UpcomingBookings";
 import PastBooking from "./components/Bookings/PastBooking";
 import TeamMember from "./components/Teams/TeamMember";
+import AddTeamMember from "./components/Teams/AddTeamMember";
+import Merchandise from "./components/Merchandise/Merchandise";
+import VisitingCard from "./components/Merchandise/VisitingCard";
 
 function App() {
   return (
     <>
       <Router>
         <Switch>
-          <Route exact path="/" component={Login} />
+          <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route
             exact
@@ -35,10 +38,11 @@ function App() {
           />
           <Route exact path="/vehicleapplication" component={VehicleTable} />
           <Route exact path="/vehicle" component={Vehicle} />
+          <Route exact path="/vehiclestepper" component={VehicleStepper} />
+          <Route exact path="/addvehicle" component={AddVehicle} />
+
           <Route exact path="/brands" component={Brands} />
           <Route exact path="/addbrands" component={AddBrands} />
-          <Route exact path="/addvehicle" component={AddVehicle} />
-          <Route exact path="/vehiclestepper" component={VehicleStepper} />
           <Route exact path="/storeapplication" component={StoreApplication} />
           <Route exact path="/store" component={Store} />
           <Route exact path="/addstore" component={AddStore} />
@@ -53,6 +57,9 @@ function App() {
           <Route exact path="/upcommingbookings" component={UpcomingBookings} />
           <Route exact path="/pastbooking" component={PastBooking} />
           <Route exact path="/teammember" component={TeamMember} />
+          <Route exact path="/addteamember" component={AddTeamMember} />
+          <Route exact path="/merchandise" component={Merchandise} />
+          <Route exact path="/visitingcard" component={VisitingCard} />
         </Switch>
       </Router>
     </>

@@ -1,8 +1,14 @@
 import React from "react";
+import { useHistory } from "react-router";
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
 
 const DealarForm = () => {
+  const history = useHistory();
+  const handleAddDealer = () => {
+    history.push("./adddealer");
+  };
+
   return (
     <>
       <div className="d-flex">
@@ -21,8 +27,10 @@ const DealarForm = () => {
             }}
             className="d-flex justify-content-between"
           >
-            <h4> Stores</h4>
-            <button> Add Store</button>
+            <h4> Dealers</h4>
+            <button onClick={handleAddDealer} className="mainAddBtn">
+              Add Dealer
+            </button>
           </div>
           <Table bordered responsive borderless>
             <thead>

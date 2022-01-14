@@ -1,9 +1,6 @@
-import React, { useState } from "react";
-import Sidebar from "../common/sidebar";
+import React from "react";
 
-const AddStore = () => {
-  const [data, setData] = useState({});
-
+const AddTeamMember = () => {
   return (
     <>
       <form
@@ -25,7 +22,7 @@ const AddStore = () => {
           }}
         >
           <div>
-            <h2>Add Store</h2>
+            <h2>Add Team Member</h2>
           </div>
           <div>
             <h4>X</h4>
@@ -34,74 +31,44 @@ const AddStore = () => {
         <hr />
         <main>
           <div>
-            <label className="modalFormLabels">01. Dealer ID </label>
+            <label className="modalFormLabels">01. Profile Picture</label>
             <div>
               <input
                 type="text"
-                placeholder="20967576042"
+                placeholder="No file selected"
                 className="inputModalStyles"
               />
             </div>
           </div>
           <div>
-            <label className="modalFormLabels">02. Dealer Name </label>
+            <label className="modalFormLabels">02. Name</label>
             <div>
               <input
                 type="text"
-                placeholder="Sharda Electric Vehicles"
+                placeholder="Enter the Name"
                 className="inputModalStyles"
               />
             </div>
           </div>
           <div>
-            <label className="modalFormLabels">
-              03. Enter your preferred city for dealership *
+            <label className="modalFormLabels">03. Designation</label>
+            <div>
+              <input
+                type="text"
+                placeholder="Enter the Designation"
+                className="inputModalStyles"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label className="modalFormLabels" htmlFor="04.  Email">
+              04. Email
             </label>
             <div>
               <input
                 type="text"
-                placeholder="First Preference"
-                className="inputModalStyles"
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                placeholder="Second Preference"
-                className="inputModalStyles"
-              />
-            </div>
-          </div>
-          <div>
-            <label className="modalFormLabels">04. Investment Budget</label>
-            <div>
-              <input
-                type="text"
-                placeholder="Choose an option"
-                className="inputModalStyles"
-              />
-            </div>
-          </div>
-          <div>
-            <label className="modalFormLabels" htmlFor="Choose an option">
-              05. Property/Showroom
-            </label>
-            <div>
-              <input
-                type="text"
-                placeholder="Choose an option"
-                className="inputModalStyles"
-              />
-            </div>
-          </div>
-          <div>
-            <label className="modalFormLabels" htmlFor="06.  Showroom Area">
-              06. Showroom Area
-            </label>
-            <div>
-              <input
-                type="text"
-                placeholder="Choose an option"
+                placeholder="Enter the Email Address"
                 className="inputModalStyles"
               />
             </div>
@@ -123,4 +90,4 @@ const AddStore = () => {
   );
 };
 
-export default AddStore;
+export default AddTeamMember;

@@ -38,7 +38,7 @@ const Sidebar = () => {
   };
 
   const handleDealer = () => {
-    history.push("./dealarform");
+    history.push("./delarapplication");
   };
 
   const handleBooking = () => {
@@ -47,6 +47,10 @@ const Sidebar = () => {
 
   const handleTeams = () => {
     history.push("./teammember");
+  };
+
+  const handleMerchendice = () => {
+    history.push("./merchandise");
   };
 
   // !logout User
@@ -111,7 +115,7 @@ const Sidebar = () => {
 
           <div className="Sidebar__container">
             <img src={merchendice} alt="logout" />
-            <p onClick={handleLogOut}>Merchandise</p>
+            <p onClick={handleMerchendice}>Merchandise</p>
           </div>
           <div className="Sidebar__container">
             <img src={teams} alt="logout" />

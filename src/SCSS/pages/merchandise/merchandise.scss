@@ -1,0 +1,8 @@
+.formInputStyle {
+  @include inputLabelStyle;
+  border: 1px solid #191919;
+  background-color: #fff;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding-right: 13rem;
+}

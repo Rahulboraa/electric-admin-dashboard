@@ -396,6 +396,7 @@ body {
 }
 
 .vehicleLabel {
+  margin-bottom: 0.5rem;
   font-family: "Red Hat Display";
   font-style: normal;
   font-weight: normal;
@@ -418,7 +419,7 @@ body {
   padding-top: 1.0625rem;
   padding-bottom: 1.0625rem;
   padding-left: 1rem;
-  padding-right: 4.5625rem;
+  padding-right: 3rem;
 }
 
 .visibilityHidden {
@@ -428,8 +429,8 @@ body {
 .textAreaStyles {
   background: #f5f4f5;
   resize: none;
-  width: 27rem;
-  height: 9.625rem;
+  width: 22rem;
+  height: 8rem;
   padding-top: 1.0625rem;
   padding-left: 1rem;
   font-family: Red Hat Display;
@@ -466,11 +467,11 @@ body {
 }
 
 .SaveNextBtn {
-  padding: 21px 32px;
+  padding: 14px 24px;
   font-family: Red Hat Display;
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 1rem;
   line-height: 18px;
   color: #ffffff;
   background: #191919;
@@ -484,6 +485,10 @@ body {
   text-align: center;
 }
 
+.basic__information {
+  margin-bottom: 1.5rem;
+}
+
 * {
   cursor: default;
 }
@@ -493,7 +498,6 @@ body {
   margin-top: 4rem;
   width: 20vw;
   border-right: 1px solid #d5d5d5;
-  position: fixed;
 }
 
 .Sidebar__container {
@@ -592,6 +596,23 @@ body {
   padding: 20px 0 0 0;
 }
 
+.formInputStyle {
+  font-family: "Red Hat Display";
+  font-size: 1rem;
+  color: #acacac;
+  background: #f5f4f5;
+  line-height: 160%;
+  font-style: normal;
+  font-weight: normal;
+  outline: none;
+  border: none;
+  border: 1px solid #191919;
+  background-color: #fff;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding-right: 13rem;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -646,7 +667,7 @@ td:nth-last-child(-n + 1) {
 }
 
 .navbarTop {
-  margin-top: 5.0625rem;
+  margin-top: 2rem;
   margin-left: 5rem;
 }
 
@@ -716,5 +737,22 @@ td:nth-last-child(-n + 1) {
   color: #d20000;
   overflow: none;
   border: none;
+}
+
+.mainAddBtn {
+  padding: 0.5rem 1.25rem;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 160%;
+  color: #ffffff;
+  background-color: #191919;
+  outline: none;
+  border: none;
+}
+
+figure {
+  margin: 0 !important;
 }
 /*# sourceMappingURL=index.css.map */

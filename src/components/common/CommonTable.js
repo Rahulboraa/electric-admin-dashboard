@@ -4,7 +4,7 @@ import { Table } from "reactstrap";
 const CommonTable = () => {
   return (
     <>
-      <Table size="sm" bordered responsive borderless>
+      <Table bordered responsive borderless>
         <thead>
           <tr>
             <th>Application Number</th>
