@@ -1,21 +1,13 @@
 import React from "react";
 import { useHistory } from "react-router";
+import { NavLink } from "react-router-dom";
 import CommonTable from "../common/CommonTable";
 import Sidebar from "../common/sidebar";
 
 const Brands = () => {
   const history = useHistory();
-
-  const handleVehicleApplication = () => {
-    history.push("./vehicleapplication");
-  };
-
   const handleBrand = () => {
     history.push("./addbrands");
-  };
-
-  const handleVehicle = () => {
-    history.push("./vehicle");
   };
 
   return (
@@ -27,9 +19,29 @@ const Brands = () => {
         <div style={{ marginLeft: "81px" }}>
           <h3 className="navbarTopHeading">Vehicles</h3>
           <nav className="navbarContainer">
-            <span onClick={handleVehicleApplication}>Vehicle Application</span>
-            <span onClick={handleVehicle}>Vehicles</span>
-            <span>Brand</span>
+            <NavLink
+              to="/vehicleapplication"
+              className="navlinkUnactive"
+              activeClassName="navbaractive"
+            >
+              <span>Vehicles Application</span>
+            </NavLink>
+
+            <NavLink
+              to="/vehicle"
+              className="navlinkUnactive"
+              activeClassName="navbaractive"
+            >
+              <span>Vehicles</span>
+            </NavLink>
+
+            <NavLink
+              to="/brands"
+              className="navlinkUnactive"
+              activeClassName="navbaractive"
+            >
+              <span>Brand</span>
+            </NavLink>
           </nav>
           <div
             style={{

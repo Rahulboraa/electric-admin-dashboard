@@ -1,5 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
+import { NavLink } from "react-router-dom";
+
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
 const Vehicle = ({}) => {
@@ -26,9 +28,29 @@ const Vehicle = ({}) => {
         <div style={{ marginLeft: "81px" }}>
           <h3 className="navbarTopHeading">Vehicles</h3>
           <nav className="navbarContainer">
-            <span onClick={handleVehicleApplication}>Vehicles Application</span>
-            <span>Vehicles</span>
-            <span onClick={handleBrand}>Brand</span>
+            <NavLink
+              to="/vehicleapplication"
+              className="navlinkUnactive"
+              activeClassName="navbaractive"
+            >
+              <span>Vehicles Application</span>
+            </NavLink>
+
+            <NavLink
+              to="/vehicle"
+              className="navlinkUnactive"
+              activeClassName="navbaractive"
+            >
+              <span>Vehicles</span>
+            </NavLink>
+
+            <NavLink
+              to="/brands"
+              className="navlinkUnactive"
+              activeClassName="navbaractive"
+            >
+              <span>Brand</span>
+            </NavLink>
           </nav>
           <div
             style={{

@@ -13,44 +13,13 @@ import vehicle from "../../assets/Admin/vehicle.svg";
 import website from "../../assets/Admin/website.svg";
 import merchendice from "../../assets/Admin/merchendice.svg";
 import { useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
+  // !Home Redirect
   const history = useHistory();
-
-  const handlehome = () => {
-    history.push("./home");
-  };
-
-  const handleVehicle = () => {
-    history.push("./vehicle");
-  };
-
-  const handleTestRide = () => {
-    history.push("./testride");
-  };
-
-  const handleSupport = () => {
-    history.push("./helpsupport");
-  };
-
-  const handleStore = () => {
-    history.push("./store");
-  };
-
-  const handleDealer = () => {
-    history.push("./delarapplication");
-  };
-
-  const handleBooking = () => {
-    history.push("./upcommingbookings");
-  };
-
-  const handleTeams = () => {
-    history.push("./teammember");
-  };
-
-  const handleMerchendice = () => {
-    history.push("./merchandise");
+  const homeRedirect = () => {
+    history.push("/home");
   };
 
   // !logout User
@@ -58,10 +27,6 @@ const Sidebar = () => {
     window.localStorage.removeItem("token");
     window.localStorage.removeItem("loginUser");
     history.push("./login");
-  };
-
-  const homeRedirect = () => {
-    history.push("/home");
   };
 
   return (
@@ -86,50 +51,100 @@ const Sidebar = () => {
           <div className="Sidebar__container mainHeading">
             <img src={User} alt="User" />
             <div>
-              <p onClick={handlehome}>Dashboard</p>
+              <NavLink
+                to="/home"
+                className="navlink"
+                activeClassName="activeLink"
+              >
+                Dashboard
+              </NavLink>
             </div>
           </div>
 
           <div className="Sidebar__container">
             <img src={vehicle} alt="booking" />
-            <p onClick={handleVehicle}>Vehicles</p>
+            <NavLink
+              to="/vehicle"
+              className="navlink"
+              activeClassName="activeLink"
+            >
+              Vehicles
+            </NavLink>
           </div>
 
           <div className="Sidebar__container">
             <img src={store} alt="booking" />
-            <p onClick={handleStore}>Store</p>
+            <NavLink
+              to="/store"
+              className="navlink"
+              activeClassName="activeLink"
+            >
+              Store
+            </NavLink>
           </div>
 
           <div className="Sidebar__container">
             <img src={dealers} alt="dealers" />
-            <p onClick={handleDealer}>Dealers</p>
+            <NavLink
+              to="/delarapplication"
+              className="navlink"
+              activeClassName="activeLink"
+            >
+              Dealers
+            </NavLink>
           </div>
         </aside>
 
         <hr className="horizontalRule" />
-        <section>
+
+        <navbar>
           <div className="Sidebar__container mainHeading">
             <img src={booking} alt="Support" />
-            <p onClick={handleBooking}>Booking</p>
+            <NavLink
+              to="/upcommingbookings"
+              className="navlink"
+              activeClassName="activeLink"
+            >
+              Booking
+            </NavLink>
           </div>
 
           <div className="Sidebar__container">
             <img src={merchendice} alt="logout" />
-            <p onClick={handleMerchendice}>Merchandise</p>
+            <NavLink
+              to="/merchandise"
+              className="navlink"
+              activeClassName="activeLink"
+            >
+              Merchandise
+            </NavLink>
           </div>
           <div className="Sidebar__container">
             <img src={teams} alt="logout" />
-            <p onClick={handleTeams}>Teams</p>
+            <NavLink
+              to="/teammember"
+              className="navlink"
+              activeClassName="activeLink"
+            >
+              Teams
+            </NavLink>
           </div>
           <div className="Sidebar__container">
             <img src={website} alt="logout" />
-            <p onClick={handleLogOut}>Website</p>
+            <NavLink
+              to="/website"
+              className="navlink"
+              activeClassName="activeLink"
+            >
+              Website
+            </NavLink>
           </div>
+
           <div className="Sidebar__container">
             <img src={logout} alt="logout" />
             <p onClick={handleLogOut}>Logout</p>
           </div>
-        </section>
+        </navbar>
       </section>
     </>
   );

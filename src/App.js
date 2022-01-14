@@ -60,6 +60,8 @@ function App() {
           <Route exact path="/addteamember" component={AddTeamMember} />
           <Route exact path="/merchandise" component={Merchandise} />
           <Route exact path="/visitingcard" component={VisitingCard} />
+          <Route exact path="/visitingcard" component={VisitingCard} />
+          <Route exact path="/website" component={VisitingCard} />
         </Switch>
       </Router>
     </>
