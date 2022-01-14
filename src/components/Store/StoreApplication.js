@@ -22,7 +22,7 @@ const StoreApplication = () => {
           <thead>
             <tr>
               <th>Date</th>
-              <th>Application Number</th>
+              <th>Application Number</th>   
               <th>Dealer Name</th>
               <th>Location</th>
               <th>Store Type</th>

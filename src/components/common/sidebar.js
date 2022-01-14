@@ -5,14 +5,20 @@ import booking from "../../assets/Admin/booking.svg";
 import testRide from "../../assets/Admin/testride.svg";
 // import becomeDealer from "../Img&Svg/Admin/becomeDealer.svg";
 import Support from "../../assets/Admin/support.svg";
+import store from "../../assets/Admin/store.svg";
+import teams from "../../assets/Admin/teams.svg";
 import logout from "../../assets/Admin/logout.svg";
+import dealers from "../../assets/Admin/dealers.svg";
+import vehicle from "../../assets/Admin/vehicle.svg";
+import website from "../../assets/Admin/website.svg";
+import merchendice from "../../assets/Admin/merchendice.svg";
 import { useHistory } from "react-router-dom";
 
 const Sidebar = () => {
   const history = useHistory();
 
-  const handleProfile = () => {
-    history.push("./profile");
+  const handlehome = () => {
+    history.push("./home");
   };
 
   const handleVehicle = () => {
@@ -27,6 +33,22 @@ const Sidebar = () => {
     history.push("./helpsupport");
   };
 
+  const handleStore = () => {
+    history.push("./store");
+  };
+
+  const handleDealer = () => {
+    history.push("./dealarform");
+  };
+
+  const handleBooking = () => {
+    history.push("./upcommingbookings");
+  };
+
+  const handleTeams = () => {
+    history.push("./teammember");
+  };
+
   // !logout User
   const handleLogOut = () => {
     window.localStorage.removeItem("token");
@@ -35,21 +57,19 @@ const Sidebar = () => {
   };
 
   const homeRedirect = () => {
-    history.push("/");
+    history.push("/home");
   };
 
   return (
     <>
       <section className="sidebar__Main">
         <div className="sidebarContainer">
-          <figure>
-            <img
-              src={logo}
-              alt="electric-one logo"
-              className="SidebarMain_logo"
-              onClick={homeRedirect}
-            />
-          </figure>
+          <img
+            src={logo}
+            alt="electric-one logo"
+            className="SidebarMain_logo"
+            onClick={homeRedirect}
+          />
 
           <h4 className="Sidebar__title">
             Hello <span className="admin__name">Anurag,</span>
@@ -60,43 +80,50 @@ const Sidebar = () => {
 
         <aside>
           <div className="Sidebar__container mainHeading">
-            <figure>
-              <img src={User} alt="User" />
-            </figure>
+            <img src={User} alt="User" />
             <div>
-              <p onClick={handleProfile}>Profile</p>
+              <p onClick={handlehome}>Dashboard</p>
             </div>
           </div>
 
           <div className="Sidebar__container">
-            <figure>
-              <img src={booking} alt="booking" />
-            </figure>
-            <p onClick={handleVehicle}>Vehicle</p>
+            <img src={vehicle} alt="booking" />
+            <p onClick={handleVehicle}>Vehicles</p>
           </div>
 
           <div className="Sidebar__container">
-            <figure>
-              <img src={testRide} alt="testRide" />
-            </figure>
-            <p onClick={handleTestRide}>Test Rides</p>
+            <img src={store} alt="booking" />
+            <p onClick={handleStore}>Store</p>
+          </div>
+
+          <div className="Sidebar__container">
+            <img src={dealers} alt="dealers" />
+            <p onClick={handleDealer}>Dealers</p>
           </div>
         </aside>
 
         <hr className="horizontalRule" />
         <section>
           <div className="Sidebar__container mainHeading">
-            <figure>
-              <img src={Support} alt="Support" />
-            </figure>
-            <p onClick={handleSupport}>Support</p>
+            <img src={booking} alt="Support" />
+            <p onClick={handleBooking}>Booking</p>
           </div>
 
           <div className="Sidebar__container">
-            <figure>
-              <img src={logout} alt="logout" />
-            </figure>
-            <p onClick={handleLogOut}>Log Out</p>
+            <img src={merchendice} alt="logout" />
+            <p onClick={handleLogOut}>Merchandise</p>
+          </div>
+          <div className="Sidebar__container">
+            <img src={teams} alt="logout" />
+            <p onClick={handleTeams}>Teams</p>
+          </div>
+          <div className="Sidebar__container">
+            <img src={website} alt="logout" />
+            <p onClick={handleLogOut}>Website</p>
+          </div>
+          <div className="Sidebar__container">
+            <img src={logout} alt="logout" />
+            <p onClick={handleLogOut}>Logout</p>
           </div>
         </section>
       </section>

@@ -1,0 +1,59 @@
+.Home__Container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.Home__First__Container {
+  width: 23%;
+}
+
+.Home__Second__Container {
+  width: 75%;
+}
+
+.Home__Inner__Container__1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 12.5rem;
+  width: 100%;
+  padding-top: 100px;
+}
+
+.Home__Inner__Container__2 {
+  padding-top: 150px;
+}
+
+.Home__Inner__1 {
+  height: 180%;
+  max-height: 445px;
+  width: 30%;
+  border: #d4d4d4 1px solid;
+  border-top-width: 2px;
+  padding: 20px;
+}
+
+.Home__Inner__Img {
+  position: absolute;
+  top: 6.3rem;
+  margin-left: 0.625rem;
+  width: 6%;
+}
+
+.Home__p1 {
+  font-size: var(--base-font-size);
+}
+
+.Home__p2 {
+  font-size: 40px;
+  text-transform: uppercase;
+  color: #acacac;
+}
+
+.Home__Inner__div__1 {
+  padding: 20px 0 0 0;
+}
+/*# sourceMappingURL=Home.css.map */
