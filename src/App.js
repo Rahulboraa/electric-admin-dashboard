@@ -3,7 +3,6 @@ import "./SCSS/index.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Admin/Login";
 import SignUp from "./components/Admin/Signup";
-import RecentPublications from "./components/Admin/RecentPublications";
 import VehicleTable from "./components/Vehicle/VehicleTable";
 import Vehicle from "./components/Vehicle/Vehicle";
 import Brands from "./components/brands/brands";
@@ -23,6 +22,13 @@ import TeamMember from "./components/Teams/TeamMember";
 import AddTeamMember from "./components/Teams/AddTeamMember";
 import Merchandise from "./components/Merchandise/Merchandise";
 import VisitingCard from "./components/Merchandise/VisitingCard";
+import RecentPublication from "./components/Website/RecentPublication/RecentPublication";
+import AddRecentPublications from "./components/Website/RecentPublication/AddRecentPublications";
+import EditRecentPublication from "./components/Website/RecentPublication/EditRecentPublication";
+import Testimonials from "./components/Website/Testimonial/Testimonials";
+import AddTestimonial from "./components/Website/Testimonial/AddTestimonial";
+import Gallery from "./components/Website/Gallery/Gallery";
+import AddGallery from "./components/Website/Gallery/AddGallery";
 
 function App() {
   return (
@@ -31,11 +37,6 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/signup" component={SignUp} />
-          <Route
-            exact
-            path="/recentpublication"
-            component={RecentPublications}
-          />
           <Route exact path="/vehicleapplication" component={VehicleTable} />
           <Route exact path="/vehicle" component={Vehicle} />
           <Route exact path="/vehiclestepper" component={VehicleStepper} />
@@ -60,8 +61,25 @@ function App() {
           <Route exact path="/addteamember" component={AddTeamMember} />
           <Route exact path="/merchandise" component={Merchandise} />
           <Route exact path="/visitingcard" component={VisitingCard} />
-          <Route exact path="/visitingcard" component={VisitingCard} />
-          <Route exact path="/website" component={VisitingCard} />
+          <Route
+            exact
+            path="/recentpublications"
+            component={RecentPublication}
+          />
+          <Route
+            exact
+            path="/addrecentpublication"
+            component={AddRecentPublications}
+          />
+          <Route
+            exact
+            path="/editrecentpublication"
+            component={EditRecentPublication}
+          />
+          <Route exact path="/testimonials" component={Testimonials} />
+          <Route exact path="/addtestimonial" component={AddTestimonial} />
+          <Route exact path="/gallery" component={Gallery} />
+          <Route exact path="/addgallery" component={AddGallery} />
         </Switch>
       </Router>
     </>

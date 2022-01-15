@@ -1,15 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
 import member from "../../assets/Team/member.svg";
 import member2 from "../../assets/Team/member2.svg";
+import axios from "../../api/instance";
 
 const TeamMember = () => {
   const history = useHistory();
   const handleAddTeam = () => {
     history.push("./addteamember");
   };
+
+  const [team, setTeam] = useState(null);
+
+  const getStore = () => {
+    axios
+      .get(`/Team`)
+      .then((result) => {
+        setTeam(result.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  React.useEffect(() => {
+    getStore();
+  }, []);
+
   return (
     <>
       <section>
@@ -43,45 +62,30 @@ const TeamMember = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>555-0112</td>
-                  <td>
-                    <img
-                      src={member2}
-                      alt="member"
-                      style={{ marginRight: "10px" }}
-                    />
-                    Dianne Russell
-                  </td>
-                  <td>Associate Director</td>
-                  <td>sara.cruz@example.com</td>
-                </tr>
-                <tr>
-                  <td>555-0112</td>
-                  <td>
-                    <img
-                      src={member}
-                      alt="member"
-                      style={{ marginRight: "10px" }}
-                    />
-                    Dianne Russell
-                  </td>
-                  <td>Associate Director</td>
-                  <td>sara.cruz@example.com</td>
-                </tr>
-                <tr>
-                  <td>555-0112</td>
-                  <td>
-                    <img
-                      src={member}
-                      alt="member"
-                      style={{ marginRight: "10px" }}
-                    />
-                    Dianne Russell
-                  </td>
-                  <td>Associate Director</td>
-                  <td>sara.cruz@example.com</td>
-                </tr>
+                {team?.map(
+                  ({ id, name, emailId, designation, Profile_pic }) => (
+                    <React.Fragment key={id}>
+                      <tr>
+                        <td>{id}</td>
+                        <td>
+                          <img
+                            src={member2}
+                            alt="member"
+                            style={{ marginRight: "10px" }}
+                          />
+                          {/* <img
+                            src={Profile_pic}
+                            alt="member"
+                            style={{ marginRight: "10px" }}
+                          /> */}
+                          {name}
+                        </td>
+                        <td>{designation}</td>
+                        <td>{emailId}</td>
+                      </tr>
+                    </React.Fragment>
+                  )
+                )}
               </tbody>
             </Table>
           </div>

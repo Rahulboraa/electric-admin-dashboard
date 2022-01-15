@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
+import axios from "../../api/instance";
 
 const Store = () => {
+  // !Fetching Store
+  const [data, setData] = useState(null);
+
+  const AddStore = () => {
+    axios
+      .get(`/store`)
+      .then((result) => {
+        setData(result.data.storedata);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    AddStore();
+  }, []);
+
   const history = useHistory();
 
   const handleAddStore = () => {
@@ -57,29 +76,28 @@ const Store = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>555-0112</td>
-                <td>Hero Electic</td>
-                <td>LO:EV</td>
-                <td>Barone LLC.</td>
-
-                <td>View Application</td>
-              </tr>
-              <tr>
-                <td>555-0112</td>
-                <td>Hero Electic</td>
-                <td>LO:EV</td>
-                <td>Barone LLC.</td>
-
-                <td>View Application</td>
-              </tr>
-              <tr>
-                <td>555-0112</td>
-                <td>Hero Electic</td>
-                <td>LO:EV</td>
-                <td>Barone LLC.</td>
-                <td>View Application</td>
-              </tr>
+              {data?.length > 0 &&
+                data?.map(
+                  ({
+                    id,
+                    dealerId,
+                    dealerName,
+                    city1,
+                    storeType,
+                    budget,
+                    storeArea,
+                  }) => (
+                    <React.Fragment key={id}>
+                      <tr>
+                        <td>{id}</td>
+                        <td>{storeType}</td>
+                        <td>{city1}</td>
+                        <td>{dealerName}</td>
+                        <td>{dealerId}</td>
+                      </tr>
+                    </React.Fragment>
+                  )
+                )}
             </tbody>
           </Table>
         </div>

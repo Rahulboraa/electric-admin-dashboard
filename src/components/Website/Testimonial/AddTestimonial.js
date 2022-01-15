@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddBrands = () => {
+const AddTestimonial = () => {
   return (
     <>
       <form
@@ -22,7 +22,7 @@ const AddBrands = () => {
           }}
         >
           <div>
-            <h2>Add Brand</h2>
+            <h2>Add Testimonial</h2>
           </div>
           <div>
             <h4>X</h4>
@@ -31,21 +31,41 @@ const AddBrands = () => {
         <hr />
         <main>
           <div>
-            <label className="modalFormLabels">01. Brand Name </label>
+            <label className="modalFormLabels">01. Dealer Name</label>
             <div>
               <input
                 type="text"
-                placeholder="Enter the Brand Name"
+                placeholder="Enter the Dealer Name"
                 className="inputModalStyles"
               />
             </div>
           </div>
           <div>
-            <label className="modalFormLabels">02. Brand Logo</label>
+            <label className="modalFormLabels">02. Dealer’s Image</label>
             <div>
               <input
                 type="text"
                 placeholder="No file selected"
+                className="inputModalStyles"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="modalFormLabels">03. Dealership Type</label>
+            <div>
+              <input
+                type="text"
+                placeholder="Select the Dealership Type"
+                className="inputModalStyles"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="modalFormLabels">04. Review</label>
+            <div>
+              <input
+                type="text"
+                placeholder="Enter the Full Review"
                 className="inputModalStyles"
               />
             </div>
@@ -67,4 +87,4 @@ const AddBrands = () => {
   );
 };
 
-export default AddBrands;
+export default AddTestimonial;

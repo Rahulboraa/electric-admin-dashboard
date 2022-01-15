@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddBrands = () => {
+const AddGallery = () => {
   return (
     <>
       <form
@@ -22,7 +22,7 @@ const AddBrands = () => {
           }}
         >
           <div>
-            <h2>Add Brand</h2>
+            <h2>Add Image</h2>
           </div>
           <div>
             <h4>X</h4>
@@ -30,18 +30,8 @@ const AddBrands = () => {
         </div>
         <hr />
         <main>
-          <div>
-            <label className="modalFormLabels">01. Brand Name </label>
-            <div>
-              <input
-                type="text"
-                placeholder="Enter the Brand Name"
-                className="inputModalStyles"
-              />
-            </div>
-          </div>
-          <div>
-            <label className="modalFormLabels">02. Brand Logo</label>
+          <div style={{ marginTop: "2rem" }}>
+            <label className="modalFormLabels">01. Feature Image</label>
             <div>
               <input
                 type="text"
@@ -49,11 +39,16 @@ const AddBrands = () => {
                 className="inputModalStyles"
               />
             </div>
+            <article style={{ marginBottom: "3rem" }}>
+              <p>1. File should be in PNG, JPG, JPEG, BMP</p>
+              <p>2. The size of the image should be exceeds the 2MP </p>
+              <p>3. The Minimum Size of the image should be 4200 x 3486 px</p>
+            </article>
           </div>
         </main>
         <div
           className="d-flex justify-content-between align-items-center"
-          style={{ width: "600px", marginBottom: "2rem" }}
+          style={{ width: "600px", marginBottom: "2rem", marginTop: "2rem" }}
         >
           <div>
             <button className="SaveNextBtn">Submit</button>
@@ -67,4 +62,4 @@ const AddBrands = () => {
   );
 };
 
-export default AddBrands;
+export default AddGallery;

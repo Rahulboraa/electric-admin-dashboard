@@ -26,7 +26,7 @@ const Sidebar = () => {
   const handleLogOut = () => {
     window.localStorage.removeItem("token");
     window.localStorage.removeItem("loginUser");
-    history.push("./login");
+    history.push("./");
   };
 
   return (
@@ -97,7 +97,7 @@ const Sidebar = () => {
 
         <hr className="horizontalRule" />
 
-        <navbar>
+        <nav>
           <div className="Sidebar__container mainHeading">
             <img src={booking} alt="Support" />
             <NavLink
@@ -132,7 +132,7 @@ const Sidebar = () => {
           <div className="Sidebar__container">
             <img src={website} alt="logout" />
             <NavLink
-              to="/website"
+              to="/recentpublications"
               className="navlink"
               activeClassName="activeLink"
             >
@@ -144,7 +144,7 @@ const Sidebar = () => {
             <img src={logout} alt="logout" />
             <p onClick={handleLogOut}>Logout</p>
           </div>
-        </navbar>
+        </nav>
       </section>
     </>
   );
