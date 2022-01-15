@@ -1,13 +1,9 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import Sidebar from "../common/sidebar";
 import upload from "./../../assets/vehicles/upload.svg";
 
 const Merchandise = () => {
-  const history = useHistory();
-  const visitingCard = () => {
-    history.push("./visitingcard");
-  };
   return (
     <>
       <section>
@@ -19,8 +15,22 @@ const Merchandise = () => {
           <div className="navbarTop">
             <h3 className="navbarTopHeading">Merchandise</h3>
             <nav className="navbarContainer">
-              <span>Letterhead</span>
-              <span onClick={visitingCard}>Visiting Card</span>
+              <NavLink
+                to="/merchandise"
+                className="navlinkUnactive"
+                activeClassName="navbaractive"
+              >
+                <span>Letterhead</span>
+              </NavLink>
+
+              <NavLink
+                to="/visitingcard"
+                className="navlinkUnactive"
+                activeClassName="navbaractive"
+              >
+                <span>Visiting Card</span>
+              </NavLink>
+
               <hr />
             </nav>
 
@@ -65,11 +75,11 @@ const Merchandise = () => {
               </div>
             </section>
 
-            <aside>
+            {/* <aside>
               <figure>
                 <img src="" alt="merchandise" />
               </figure>
-            </aside>
+            </aside> */}
 
             <div className="d-flex" style={{ gap: "20px", marginTop: "63px" }}>
               <button className="SaveNextBtn">Save Changes</button>

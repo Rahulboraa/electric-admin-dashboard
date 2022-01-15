@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
+import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
 
@@ -18,8 +19,20 @@ const DealarForm = () => {
         <div className="navbarTop">
           <h3 className="navbarTopHeading">Dealer</h3>
           <nav className="navbarContainer">
-            <span>Dealer Applications</span>
-            <span>Dealers</span>
+            <NavLink
+              to="/delarapplication"
+              className="navlinkUnactive"
+              activeClassName="navbaractive"
+            >
+              <span>Dealer Applications</span>
+            </NavLink>
+            <NavLink
+              to="/dealarform"
+              className="navlinkUnactive"
+              activeClassName="navbaractive"
+            >
+              <span>Dealers</span>
+            </NavLink>
           </nav>
           <div
             style={{

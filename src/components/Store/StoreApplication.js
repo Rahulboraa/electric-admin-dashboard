@@ -1,14 +1,9 @@
 import React from "react";
 import { Table } from "reactstrap";
-import { useHistory } from "react-router";
 import Sidebar from "../common/sidebar";
+import { NavLink } from "react-router-dom";
 
 const StoreApplication = () => {
-  const history = useHistory();
-  const handleStore = () => {
-    history.push("./store");
-  };
-
   return (
     <>
       <div className="d-flex">
@@ -18,8 +13,21 @@ const StoreApplication = () => {
         <div className="navbarTop">
           <h3 className="navbarTopHeading">Stores</h3>
           <nav className="navbarContainer">
-            <span>Store Application </span>
-            <span onClick={handleStore}>Stores</span>
+            <NavLink
+              to="/storeapplication"
+              className="navlinkUnactive"
+              activeClassName="navbaractive"
+            >
+              <span>Store Application </span>
+            </NavLink>
+            
+            <NavLink
+              to="/store"
+              className="navlinkUnactive"
+              activeClassName="navbaractive"
+            >
+              <span>Stores</span>
+            </NavLink>
           </nav>
           <h4 style={{ marginBottom: "2.18rem" }}> Store Applications</h4>
 

@@ -29,7 +29,7 @@ function App() {
     <>
       <Router>
         <Switch>
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/" component={Login} />
           <Route exact path="/signup" component={SignUp} />
           <Route
             exact

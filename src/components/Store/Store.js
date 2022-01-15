@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
+import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
 
@@ -8,10 +9,6 @@ const Store = () => {
 
   const handleAddStore = () => {
     history.push("./addstore");
-  };
-
-  const handleNewStoreApplication = () => {
-    history.push("./storeapplication");
   };
 
   return (
@@ -23,10 +20,20 @@ const Store = () => {
         <div className="navbarTop">
           <h3 className="navbarTopHeading">Stores</h3>
           <nav className="navbarContainer">
-            <span onClick={handleNewStoreApplication}>
-              New Store Applications
-            </span>
-            <span>Stores</span>
+            <NavLink
+              to="/storeapplication"
+              className="navlinkUnactive"
+              activeClassName="navbaractive"
+            >
+              <span> New Store Applications</span>
+            </NavLink>
+            <NavLink
+              to="/store"
+              className="navlinkUnactive"
+              activeClassName="navbaractive"
+            >
+              <span>Stores</span>
+            </NavLink>
           </nav>
           <div
             style={{

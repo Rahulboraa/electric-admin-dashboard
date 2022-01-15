@@ -1,13 +1,10 @@
 import React from "react";
 import { useHistory } from "react-router";
+import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
 
 const DealerApplications = () => {
-  const history = useHistory();
-  const handleDealer = () => {
-    history.push("./dealarform");
-  };
   return (
     <>
       <div>
@@ -18,8 +15,20 @@ const DealerApplications = () => {
           <div className="navbarTop">
             <h3 className="navbarTopHeading">Dealer</h3>
             <nav className="navbarContainer">
-              <span>Dealership Applications</span>
-              <span onClick={handleDealer}>Dealers</span>
+              <NavLink
+                to="/delarapplication"
+                className="navlinkUnactive"
+                activeClassName="navbaractive"
+              >
+                <span>Dealership Applications</span>
+              </NavLink>
+              <NavLink
+                to="/dealarform"
+                className="navlinkUnactive"
+                activeClassName="navbaractive"
+              >
+                <span>Dealers</span>
+              </NavLink>
             </nav>
             <h4 style={{ marginBottom: "2.18rem" }}>Dealership Applications</h4>
             <Table bordered responsive borderless>

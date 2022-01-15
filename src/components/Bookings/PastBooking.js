@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router";
+import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
 
@@ -18,8 +19,21 @@ const PastBooking = () => {
           <div className="navbarTop">
             <h3 className="navbarTopHeading">Bookings</h3>
             <nav className="navbarContainer">
-              <span onClick={handleUpcommingBooking}>Upcoming Bookings</span>
-              <span>Past Bookings</span>
+              <NavLink
+                to="/upcommingbookings"
+                className="navlinkUnactive"
+                activeClassName="navbaractive"
+              >
+                <span>Upcoming Bookings</span>
+              </NavLink>
+
+              <NavLink
+                to="/pastbooking"
+                className="navlinkUnactive"
+                activeClassName="navbaractive"
+              >
+                <span>Past Bookings</span>
+              </NavLink>
             </nav>
             <h4 style={{ marginBottom: "2.18rem" }}>Past Booking</h4>
             <Table bordered responsive borderless>

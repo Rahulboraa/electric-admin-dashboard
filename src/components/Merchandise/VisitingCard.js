@@ -1,14 +1,10 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import Sidebar from "../common/sidebar";
 import upload from "./../../assets/vehicles/upload.svg";
 import visiting from "../../assets/Merchandise/visiting.svg";
+import { NavLink } from "react-router-dom";
 
 const VisitingCard = () => {
-  const history = useHistory();
-  const handleLetterHead = () => {
-    history.push("./merchandise");
-  };
   return (
     <>
       <section>
@@ -20,8 +16,21 @@ const VisitingCard = () => {
           <div className="navbarTop">
             <h3 className="navbarTopHeading">Merchandise</h3>
             <nav className="navbarContainer">
-              <span onClick={handleLetterHead}>Letterhead</span>
-              <span>Visiting Card</span>
+              <NavLink
+                to="/merchandise"
+                className="navlinkUnactive"
+                activeClassName="navbaractive"
+              >
+                <span>Letterhead</span>
+              </NavLink>
+
+              <NavLink
+                to="/visitingcard"
+                className="navlinkUnactive"
+                activeClassName="navbaractive"
+              >
+                <span>Visiting Card</span>
+              </NavLink>
               <hr />
             </nav>
 
