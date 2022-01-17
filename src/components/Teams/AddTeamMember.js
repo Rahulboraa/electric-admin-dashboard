@@ -47,25 +47,8 @@ const AddTeamMember = () => {
 
   return (
     <>
-      <form
-        onSubmit={handleAddTeamMember}
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-          background: "#E5E5E5",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "600px",
-            alignItems: "center",
-            marginTop: "62px",
-          }}
-        >
+      <form onSubmit={handleAddTeamMember} className="addform">
+        <div className="addformInner">
           <div>
             <h2>Add Team Member</h2>
           </div>

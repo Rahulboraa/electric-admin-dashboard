@@ -118,7 +118,7 @@ const RecentPublication = () => {
             </NavLink>
 
             <NavLink
-              to="/visitingcard"
+              to="/gallery"
               className="navlinkUnactive"
               activeClassName="navbaractive"
             >

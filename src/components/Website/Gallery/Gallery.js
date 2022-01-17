@@ -1,16 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Sidebar from "../../common/sidebar";
 import gallery from "../../../assets/Gallery/gallery.svg";
 import gallery2 from "../../../assets/Gallery/gallery2.svg";
 import gallery3 from "../../../assets/Gallery/galllery3.svg";
 import { useHistory } from "react-router-dom";
+import axios from "../../../api/instance";
 
 const Gallery = () => {
   const history = useHistory();
   const handleAddImage = () => {
     history.push("./addgallery");
   };
+
+  // !Fetch Gallery
+  const [data, setData] = useState([]);
+  const FetchGallery = () => {
+    axios
+      .get("/gallery")
+      .then((result) => {
+        setData(result.data.data);
+        console.log(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    FetchGallery();
+  }, []);
 
   return (
     <>
@@ -72,14 +91,20 @@ const Gallery = () => {
               }}
             >
               <figure>
+                {data?.map((item) => (
+                  <>
+                    <figure key={item.id}>
+                      <img src={item.imageUrl} alt="gallery" />
+                    </figure>
+                  </>
+                ))}
+              </figure>
+              {/* <figure>
                 <img src={gallery} alt="gallery" />
               </figure>
               <figure>
                 <img src={gallery} alt="gallery" />
-              </figure>
-              <figure>
-                <img src={gallery} alt="gallery" />
-              </figure>
+              </figure> */}
             </section>
 
             {/* Dummy Image Section */}

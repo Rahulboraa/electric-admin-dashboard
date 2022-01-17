@@ -3,24 +3,8 @@ import React from "react";
 const AddRecentPublications = () => {
   return (
     <>
-      <form
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-          background: "#E5E5E5",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "600px",
-            alignItems: "center",
-            marginTop: "62px",
-          }}
-        >
+      <form className="addform">
+        <div className="addformInner">
           <div>
             <h2>Add Publication</h2>
           </div>

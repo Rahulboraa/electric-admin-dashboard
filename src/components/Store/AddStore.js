@@ -1,29 +1,51 @@
 import React, { useState } from "react";
-import Sidebar from "../common/sidebar";
+import axios from "../../api/instance";
+import Select from "react-select";
 
 const AddStore = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState({
+    dealerId: "",
+    dealerName: "",
+    city1: "",
+    city2: "",
+    budget: "",
+    storeType: "",
+    storeArea: "",
+  });
+
+  const { dealerName, dealerId, city1, city2, budget, storeType, storeArea } =
+    data;
+
+  const handleInputChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setData({ ...data, [name]: value });
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(`/store/add`, data)
+      .then((result) => {
+        console.log(result.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // !Dummy Data for Dropdown
+  const [selectedOption, setSelectedOption] = useState(null);
+  const options = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+  ];
 
   return (
     <>
-      <form
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
-          background: "#E5E5E5",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "600px",
-            alignItems: "center",
-            marginTop: "62px",
-          }}
-        >
+      <form className="addform" onSubmit={handleFormSubmit}>
+        <div className="addformInner">
           <div>
             <h2>Add Store</h2>
           </div>
@@ -40,6 +62,9 @@ const AddStore = () => {
                 type="text"
                 placeholder="20967576042"
                 className="inputModalStyles"
+                name="dealerId"
+                onChange={handleInputChange}
+                value={dealerId}
               />
             </div>
           </div>
@@ -50,6 +75,9 @@ const AddStore = () => {
                 type="text"
                 placeholder="Sharda Electric Vehicles"
                 className="inputModalStyles"
+                name="dealerName"
+                onChange={handleInputChange}
+                value={dealerName}
               />
             </div>
           </div>
@@ -57,28 +85,29 @@ const AddStore = () => {
             <label className="modalFormLabels">
               03. Enter your preferred city for dealership *
             </label>
-            <div>
-              <input
-                type="text"
-                placeholder="First Preference"
-                className="inputModalStyles"
+            <div style={{ marginTop: "1rem" }}>
+              <Select
+                defaultValue={selectedOption}
+                onChange={setSelectedOption}
+                options={options}
               />
             </div>
             <div>
-              <input
-                type="text"
-                placeholder="Second Preference"
-                className="inputModalStyles"
+              <Select
+                defaultValue={selectedOption}
+                onChange={setSelectedOption}
+                options={options}
               />
             </div>
           </div>
+
           <div>
             <label className="modalFormLabels">04. Investment Budget</label>
             <div>
-              <input
-                type="text"
-                placeholder="Choose an option"
-                className="inputModalStyles"
+              <Select
+                defaultValue={selectedOption}
+                onChange={setSelectedOption}
+                options={options}
               />
             </div>
           </div>
@@ -91,6 +120,9 @@ const AddStore = () => {
                 type="text"
                 placeholder="Choose an option"
                 className="inputModalStyles"
+                name="storeType"
+                onChange={handleInputChange}
+                value={storeType}
               />
             </div>
           </div>
@@ -103,6 +135,9 @@ const AddStore = () => {
                 type="text"
                 placeholder="Choose an option"
                 className="inputModalStyles"
+                name="storeArea"
+                onChange={handleInputChange}
+                value={storeArea}
               />
             </div>
           </div>
