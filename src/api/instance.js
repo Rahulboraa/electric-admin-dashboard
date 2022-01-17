@@ -1,8 +1,6 @@
 import axios from "axios";
-const base_url = process.env.Base_Url;
-
+const baseURL = process.env.REACT_APP_BASE_URL;
 const instance = axios.create({
-  baseURL: "http://be-electricone-v2.antino.ca",
-  // baseURL: base_url,
+  baseURL,
 });
 export default instance;
