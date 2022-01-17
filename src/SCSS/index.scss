@@ -229,3 +229,22 @@ figure {
   align-items: center;
   margin-top: 62px;
 }
+
+// !Gallery List
+
+.gallery_list {
+  display: grid;
+  // margin: 0 147px;
+  margin-left: 0.625rem;
+  margin-right: 0.625rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 47px;
+}
+
+.gallery_list .gallery_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin: 10px; */
+  /* padding-left: 300px; */
+}

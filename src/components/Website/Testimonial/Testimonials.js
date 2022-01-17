@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
+import axios from "../../../api/instance";
 import member from "../../../assets/Team/member.svg";
 import member2 from "../../../assets/Team/member2.svg";
 import Sidebar from "../../common/sidebar";
@@ -11,6 +12,24 @@ const Testimonials = () => {
   const handleTestimonial = () => {
     history.push("./addtestimonial");
   };
+
+  const [data, setData] = useState([]);
+  const fetchTestimonial = () => {
+    axios
+      .get("/review")
+      .then((result) => {
+        setData(result.data.data);
+        console.log(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchTestimonial();
+  }, []);
+
   return (
     <>
       <section>

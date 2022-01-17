@@ -83,38 +83,31 @@ const Gallery = () => {
 
             {/* Dummy Image Section */}
 
-            <section
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                gap: "2.5rem",
-              }}
-            >
-              <figure>
-                {data?.map((item) => (
-                  <>
-                    <figure key={item.id}>
-                      <img src={item.imageUrl} alt="gallery" />
-                    </figure>
-                  </>
-                ))}
-              </figure>
-              {/* <figure>
-                <img src={gallery} alt="gallery" />
-              </figure>
-              <figure>
-                <img src={gallery} alt="gallery" />
-              </figure> */}
+            <section className="gallery_list">
+              {data?.map((item, i) => (
+                <>
+                  <div className="gallery_item">
+                    <img
+                      src={item?.imageUrl}
+                      style={{
+                        objectFit: "cover",
+                        width: "247px",
+                        height: "190px",
+                      }}
+                    />
+                  </div>
+                </>
+              ))}
             </section>
 
             {/* Dummy Image Section */}
-
             <section
               style={{
                 display: "flex",
                 justifyContent: "space-between",
                 gap: "2.5rem",
                 marginTop: "1.5rem",
+                visibility: "hidden",
               }}
             >
               <figure>
@@ -125,27 +118,6 @@ const Gallery = () => {
               </figure>
               <figure>
                 <img src={gallery2} alt="gallery" />
-              </figure>
-            </section>
-
-            {/* Dummy Image Section */}
-
-            <section
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                gap: "2.5rem",
-                marginTop: "1.5rem",
-              }}
-            >
-              <figure>
-                <img src={gallery3} alt="gallery" />
-              </figure>
-              <figure>
-                <img src={gallery3} alt="gallery" />
-              </figure>
-              <figure>
-                <img src={gallery3} alt="gallery" />
               </figure>
             </section>
           </div>

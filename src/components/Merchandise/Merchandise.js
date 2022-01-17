@@ -7,9 +7,9 @@ import upload from "./../../assets/vehicles/upload.svg";
 const Merchandise = () => {
   const [uploadfile, setUploadfile] = useState({});
   const [data, setData] = useState({
-    number: "hello",
-    address: "hello",
-    emailId: "hello",
+    number: "",
+    address: "",
+    emailId: "",
   });
 
   const [see, setsee] = useState("");

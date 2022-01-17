@@ -6,7 +6,7 @@ const AddTeamMember = () => {
   const getToken = localStorage.getItem("token");
   const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
 
-  const [Profile_pic, setImageSelected] = useState("");
+  const [profilePic, setImageSelected] = useState("");
 
   const [data, setData] = useState({
     name: "",
@@ -30,9 +30,9 @@ const AddTeamMember = () => {
     formData.append("name", name);
     formData.append("emailId", emailId);
     formData.append("designation", designation);
-    formData.append("Profile_pic", Profile_pic);
+    formData.append("profilePic", profilePic);
     axios
-      .post(`/recentPub/add`, formData, {
+      .post(`/Team/add`, formData, {
         headers: {
           "x-access-token": getToken ? getToken : parsedLogin,
         },
