@@ -156,7 +156,7 @@ const RecentPublication = () => {
             </thead>
             <tbody>
               <tr>
-                <td>1 Dec, 2021</td>
+                {/* <td>1 Dec, 2021</td>
                 <td>
                   <img
                     src={member2}
@@ -166,33 +166,19 @@ const RecentPublication = () => {
                 </td>
                 <td>Associate Director</td>
                 <td>Example.pdf</td>
-                <td>Edit Publication</td>
-              </tr>
-              <tr>
-                <td>1 Dec, 2021</td>
-                <td>
-                  <img
-                    src={member}
-                    alt="member"
-                    style={{ marginRight: "10px" }}
-                  />
-                </td>
-                <td>Associate Director</td>
-                <td>Example.pdf</td>
-                <td>Edit Publication</td>
-              </tr>
-              <tr>
-                <td>1 Dec, 2021</td>
-                <td>
-                  <img
-                    src={member}
-                    alt="member"
-                    style={{ marginRight: "10px" }}
-                  />
-                </td>
-                <td>Associate Director</td>
-                <td>Example.pdf</td>
-                <td>Edit Publication</td>
+                <td>Edit Publication</td> */}
+                {data.length > 0 &&
+                  data?.map((items) => (
+                    <>
+                      <td></td>
+                      <td>
+                        <img src="" alt="" />
+                      </td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </>
+                  ))}
               </tr>
             </tbody>
           </Table>
