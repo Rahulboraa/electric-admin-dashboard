@@ -5,6 +5,10 @@ import Sidebar from "../common/sidebar";
 import VehicleDropdown from "./VehicleDropdown";
 
 const AddVehicle = () => {
+  //!Getting User Token
+  const getToken = localStorage.getItem("token");
+  const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
+
   const [data2, setData2] = useState({
     Length: "",
     Height: "",
@@ -12,12 +16,10 @@ const AddVehicle = () => {
   });
 
   const [data, setData] = useState({
-    text: "",
     productName: "",
     price: "",
     discription: "",
     vehicleType: "",
-    speed: "",
     range: "",
     charge: "",
     display: "",
@@ -27,11 +29,8 @@ const AddVehicle = () => {
     dimension: "",
     vehicleWeight: "",
     brand: "",
-    scooterImage: "",
     maxSpeed: "",
   });
-
-  console.table(data2);
 
   const {
     productName,
@@ -43,18 +42,21 @@ const AddVehicle = () => {
     motor,
     battery,
     loadCapacity,
-    dimension,
     brand,
     maxSpeed,
     vehicleWeight,
   } = data;
 
   const handleVehicleChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
+    const name = e.target.name;
+    const value = e.target.value;
+    setData({ ...data, [name]: value });
   };
 
   const handleVehicleChange2 = (e) => {
-    setData2({ ...data2, [e.target.name]: e.target.value });
+    const name = e.target.name;
+    const value = e.target.value;
+    setData2({ ...data2, [name]: value });
   };
 
   const handleFormSubmit = (e) => {
@@ -67,11 +69,12 @@ const AddVehicle = () => {
     axios
       .post(`/product/add`, data3, {
         header: {
-          "x-access-token": "x-access-token",
+          "x-access-token": getToken ? getToken : parsedLogin,
         },
       })
       .then((result) => {
         console.log(result.data.data);
+        history.push("./vehiclestepper");
       })
       .catch((err) => {
         console.log(err);
@@ -79,10 +82,6 @@ const AddVehicle = () => {
   };
 
   const history = useHistory();
-
-  const handleStepper = () => {
-    history.push("./vehiclestepper");
-  };
 
   return (
     <>
@@ -138,20 +137,25 @@ const AddVehicle = () => {
               </div>
 
               <div>
-                <label className="vehicleLabel" htmlFor="Vehicle Description">
-                  Vehicle Description
-                </label>
+                <label className="vehicleLabel">Vehicle Description</label>
                 <div>
-                  <textarea
+                  {/* <textarea
                     style={{ marginRight: "20px" }}
                     name="textarea"
                     className="textAreaStyles"
-                    value={discription}
                     name={discription}
                     onChange={handleVehicleChange}
+                    value={discription}
                   >
                     Write something here
-                  </textarea>
+                  </textarea> */}
+                  <input
+                    type="text"
+                    className="textAreaStyles"
+                    name={discription}
+                    onChange={handleVehicleChange}
+                    value={discription}
+                  />
                 </div>
               </div>
             </section>
@@ -324,7 +328,7 @@ const AddVehicle = () => {
                 <label
                   className="vehicleLabel"
                   htmlFor="Battery"
-                  style={{ marginTop: "1rem" }}
+                  style={{ marginTop: "1rem", marginBottom: "2rem" }}
                 >
                   Dimensions
                 </label>
@@ -375,11 +379,7 @@ const AddVehicle = () => {
 
             <div className="d-flex justify-content-end actionButtons">
               <button className="cancelBtn">Cancel</button>
-              <button
-                className="SaveNextBtn"
-                type="submit"
-                onClick={handleStepper}
-              >
+              <button className="SaveNextBtn" type="submit">
                 Save and Next
               </button>
             </div>

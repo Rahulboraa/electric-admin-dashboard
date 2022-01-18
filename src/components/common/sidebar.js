@@ -14,8 +14,14 @@ import website from "../../assets/Admin/website.svg";
 import merchendice from "../../assets/Admin/merchendice.svg";
 import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Sidebar = () => {
+  const loginDetails = useSelector((state) => state.login.user);
+
+  const { firstName } = loginDetails;
+  console.log(firstName);
+
   // !Home Redirect
   const history = useHistory();
   const homeRedirect = () => {
@@ -41,7 +47,7 @@ const Sidebar = () => {
           />
 
           <h4 className="Sidebar__title">
-            Hello <span className="admin__name">Anurag,</span>
+            Hello <span className="admin__name">{firstName},</span>
           </h4>
 
           <hr className="horizontalRule" />

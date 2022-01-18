@@ -3,12 +3,22 @@ import { useHistory } from "react-router";
 import { NavLink } from "react-router-dom";
 import CommonTable from "../common/CommonTable";
 import Sidebar from "../common/sidebar";
+import { useQuery } from "react-query";
+import axios from "../../api/instance";
 
 const Brands = () => {
   const history = useHistory();
   const handleBrand = () => {
     history.push("./addbrands");
   };
+
+  const fetchBrands = () => {
+    return axios.get(`/brand`).catch((err) => {
+      console.log(err);
+    });
+  };
+
+  const { data } = useQuery("brands", fetchBrands);
 
   return (
     <>

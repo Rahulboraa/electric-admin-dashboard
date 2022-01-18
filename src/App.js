@@ -29,59 +29,74 @@ import Testimonials from "./components/Website/Testimonial/Testimonials";
 import AddTestimonial from "./components/Website/Testimonial/AddTestimonial";
 import Gallery from "./components/Website/Gallery/Gallery";
 import AddGallery from "./components/Website/Gallery/AddGallery";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
     <>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Login} />
-          <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/vehicleapplication" component={VehicleTable} />
-          <Route exact path="/vehicle" component={Vehicle} />
-          <Route exact path="/vehiclestepper" component={VehicleStepper} />
-          <Route exact path="/addvehicle" component={AddVehicle} />
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Login} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/vehicleapplication" component={VehicleTable} />
+            <Route exact path="/vehicle" component={Vehicle} />
+            <Route exact path="/vehiclestepper" component={VehicleStepper} />
+            <Route exact path="/addvehicle" component={AddVehicle} />
 
-          <Route exact path="/brands" component={Brands} />
-          <Route exact path="/addbrands" component={AddBrands} />
-          <Route exact path="/storeapplication" component={StoreApplication} />
-          <Route exact path="/store" component={Store} />
-          <Route exact path="/addstore" component={AddStore} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/dealarform" component={DealarForm} />
-          <Route
-            exact
-            path="/delarapplication"
-            component={DealerApplications}
-          />
-          <Route exact path="/adddealer" component={AddDealer} />
-          <Route exact path="/upcommingbookings" component={UpcomingBookings} />
-          <Route exact path="/pastbooking" component={PastBooking} />
-          <Route exact path="/teammember" component={TeamMember} />
-          <Route exact path="/addteamember" component={AddTeamMember} />
-          <Route exact path="/merchandise" component={Merchandise} />
-          <Route exact path="/visitingcard" component={VisitingCard} />
-          <Route
-            exact
-            path="/recentpublications"
-            component={RecentPublication}
-          />
-          <Route
-            exact
-            path="/addrecentpublication"
-            component={AddRecentPublications}
-          />
-          <Route
-            exact
-            path="/editrecentpublication"
-            component={EditRecentPublication}
-          />
-          <Route exact path="/testimonials" component={Testimonials} />
-          <Route exact path="/addtestimonial" component={AddTestimonial} />
-          <Route exact path="/gallery" component={Gallery} />
-          <Route exact path="/addgallery" component={AddGallery} />
-        </Switch>
-      </Router>
+            <Route exact path="/brands" component={Brands} />
+            <Route exact path="/addbrands" component={AddBrands} />
+            <Route
+              exact
+              path="/storeapplication"
+              component={StoreApplication}
+            />
+            <Route exact path="/store" component={Store} />
+            <Route exact path="/addstore" component={AddStore} />
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/dealarform" component={DealarForm} />
+            <Route
+              exact
+              path="/delarapplication"
+              component={DealerApplications}
+            />
+            <Route exact path="/adddealer" component={AddDealer} />
+            <Route
+              exact
+              path="/upcommingbookings"
+              component={UpcomingBookings}
+            />
+            <Route exact path="/pastbooking" component={PastBooking} />
+            <Route exact path="/teammember" component={TeamMember} />
+            <Route exact path="/addteamember" component={AddTeamMember} />
+            <Route exact path="/merchandise" component={Merchandise} />
+            <Route exact path="/visitingcard" component={VisitingCard} />
+            <Route
+              exact
+              path="/recentpublications"
+              component={RecentPublication}
+            />
+            <Route
+              exact
+              path="/addrecentpublication"
+              component={AddRecentPublications}
+            />
+            <Route
+              exact
+              path="/editrecentpublication"
+              component={EditRecentPublication}
+            />
+            <Route exact path="/testimonials" component={Testimonials} />
+            <Route exact path="/addtestimonial" component={AddTestimonial} />
+            <Route exact path="/gallery" component={Gallery} />
+            <Route exact path="/addgallery" component={AddGallery} />
+          </Switch>
+        </Router>
+        <ReactQueryDevtools initialIsOpen="false" position="bottom-right" />
+      </QueryClientProvider>
     </>
   );
 }

@@ -6,6 +6,11 @@ import upload from "./../../assets/vehicles/upload.svg";
 
 const Merchandise = () => {
   const [uploadfile, setUploadfile] = useState({});
+
+  //!Getting User Token
+  const getToken = localStorage.getItem("token");
+  const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
+
   const [data, setData] = useState({
     number: "",
     address: "",
@@ -13,6 +18,7 @@ const Merchandise = () => {
   });
 
   const [see, setsee] = useState("");
+  
   const handleUpload = async () => {
     let formData = new FormData();
     formData.append("logo", uploadfile);
@@ -23,7 +29,7 @@ const Merchandise = () => {
     let config = {
       headers: {
         "content-type": "multipart/form-data",
-        "x-access-token": JSON.parse(localStorage.getItem("loginUser")),
+        "x-access-token": getToken ? getToken : parsedLogin,
       },
     };
 
@@ -35,6 +41,7 @@ const Merchandise = () => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
   };
+
   return (
     <>
       <section>
