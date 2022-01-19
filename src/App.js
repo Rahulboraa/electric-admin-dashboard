@@ -95,7 +95,7 @@ function App() {
             <Route exact path="/addgallery" component={AddGallery} />
           </Switch>
         </Router>
-        <ReactQueryDevtools initialIsOpen="false" position="bottom-right" />
+        <ReactQueryDevtools initialIsOpen="true" position="bottom-right" />
       </QueryClientProvider>
     </>
   );

@@ -81,6 +81,18 @@ const AddVehicle = () => {
       });
   };
 
+  // !Vehicle Type
+  const FetchVehicle = () => {
+    axios
+      .get(`/category`)
+      .then((result) => {
+        console.log(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const history = useHistory();
 
   return (
@@ -207,6 +219,7 @@ const AddVehicle = () => {
             <hr />
             <h5 className="basic__information">Features</h5>
             <section className="d-flex justify-content-between">
+              
               <div>
                 <label className="vehicleLabel" htmlFor="Maximum Speed">
                   Maximum Speed
@@ -257,6 +270,7 @@ const AddVehicle = () => {
             <hr />
             <h5 className="basic__information">Specifications</h5>
             <section className="d-flex justify-content-between">
+
               <div>
                 <label className="vehicleLabel" htmlFor="Display">
                   Display
@@ -272,6 +286,7 @@ const AddVehicle = () => {
                   />
                 </div>
               </div>
+
               <div>
                 <label className="vehicleLabel" htmlFor="Motor">
                   Motor
@@ -287,6 +302,7 @@ const AddVehicle = () => {
                   />
                 </div>
               </div>
+
               <div>
                 <label className="vehicleLabel" htmlFor="Battery">
                   Battery
@@ -302,6 +318,7 @@ const AddVehicle = () => {
                   />
                 </div>
               </div>
+
             </section>
 
             <section className="d-flex justify-content-between">
