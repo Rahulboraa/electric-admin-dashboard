@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { NavLink } from "react-router-dom";
-import axios from "../../api/instance";
-
 import { Table } from "reactstrap";
+import axios from "../../api/instance";
 import Sidebar from "../common/sidebar";
+import Navigation from "./Navigation/Navigation";
+
 const Vehicle = ({}) => {
   const history = useHistory();
 
@@ -47,29 +47,7 @@ const Vehicle = ({}) => {
         <div style={{ marginLeft: "81px" }}>
           <h3 className="navbarTopHeading">Vehicles</h3>
           <nav className="navbarContainer">
-            <NavLink
-              to="/vehicleapplication"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Vehicles Application</span>
-            </NavLink>
-
-            <NavLink
-              to="/vehicle"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Vehicles</span>
-            </NavLink>
-
-            <NavLink
-              to="/brands"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Brand</span>
-            </NavLink>
+            <Navigation />
           </nav>
           <div
             style={{

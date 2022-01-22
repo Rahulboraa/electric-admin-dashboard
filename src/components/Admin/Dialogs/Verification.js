@@ -14,9 +14,7 @@ const Verification = ({ setVerify, verify }) => {
     if (loginDetails) {
       axios
         .post(`/user/sendOtp`, { email: loginDetails?.email })
-        .then((result) => {
-          console.log(`result.data.data`, result.data);
-        })
+        .then((result) => {})
         .catch((err) => {
           console.log(err);
         });

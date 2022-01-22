@@ -31,6 +31,7 @@ import Gallery from "./components/Website/Gallery/Gallery";
 import AddGallery from "./components/Website/Gallery/AddGallery";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import EditVehicle from "./components/Vehicle/EditVehicle";
 
 function App() {
   const queryClient = new QueryClient();
@@ -44,6 +45,7 @@ function App() {
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/vehicleapplication" component={VehicleTable} />
             <Route exact path="/vehicle" component={Vehicle} />
+            <Route exact path="/edit/:id" component={EditVehicle} />
             <Route exact path="/vehiclestepper" component={VehicleStepper} />
             <Route exact path="/addvehicle" component={AddVehicle} />
 
@@ -95,7 +97,7 @@ function App() {
             <Route exact path="/addgallery" component={AddGallery} />
           </Switch>
         </Router>
-        <ReactQueryDevtools initialIsOpen="true" position="bottom-right" />
+        <ReactQueryDevtools initialIsOpen="false" position="bottom-right" />
       </QueryClientProvider>
     </>
   );

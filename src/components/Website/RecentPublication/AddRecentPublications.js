@@ -3,10 +3,6 @@ import axios from "../../../api/instance";
 import { useHistory } from "react-router-dom";
 
 const AddRecentPublications = () => {
-  // !Getting Token
-  const getToken = JSON.parse(localStorage.getItem("token"));
-  const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
-
   const [data, setData] = useState({
     date: "",
     text: "",
@@ -31,11 +27,7 @@ const AddRecentPublications = () => {
     formData.append("text", text);
     formData.append("recentPDF", recentPDF);
     axios
-      .post(`/recentPub/add`, formData, {
-        headers: {
-          "x-access-token": getToken ? getToken : parsedLogin,
-        },
-      })
+      .post(`/recentPub/add`, formData)
       .then((result) => {
         console.log(result);
         setData({});
@@ -53,11 +45,14 @@ const AddRecentPublications = () => {
           <div>
             <h2>Add Publication</h2>
           </div>
+
           <div>
             <h4 onClick={() => history.goBack()}>X</h4>
           </div>
         </div>
+
         <hr />
+
         <main>
           <div>
             <label className="modalFormLabels">01. Feature Image</label>
@@ -73,6 +68,7 @@ const AddRecentPublications = () => {
               />
             </div>
           </div>
+
           <div>
             <label className="modalFormLabels">02. Publication Title</label>
             <div>
@@ -83,6 +79,7 @@ const AddRecentPublications = () => {
               />
             </div>
           </div>
+
           <div>
             <label className="modalFormLabels">03. Publication Document</label>
             <div>
@@ -94,6 +91,7 @@ const AddRecentPublications = () => {
             </div>
           </div>
         </main>
+
         <div
           className="d-flex justify-content-between align-items-center"
           style={{ width: "600px", marginBottom: "2rem" }}
@@ -103,6 +101,7 @@ const AddRecentPublications = () => {
               Submit
             </button>
           </div>
+
           <div>
             <button
               className="clearBtn"

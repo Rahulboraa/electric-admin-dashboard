@@ -2,20 +2,12 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import axios from "../../api/instance";
 import Sidebar from "../common/sidebar";
-import VehicleDropdown from "./VehicleDropdown";
+import Navigation from "./Navigation/Navigation";
 
 const AddVehicle = () => {
-  const [data2, setData2] = useState({
-    Length: "",
-    Height: "",
-    Width: "",
-  });
-
   const [data, setData] = useState({
     productName: "",
     price: "",
-    discription: "",
-    vehicleType: "",
     range: "",
     charge: "",
     display: "",
@@ -28,10 +20,15 @@ const AddVehicle = () => {
     maxSpeed: "",
   });
 
+  const [data2, setData2] = useState({
+    Length: "",
+    Height: "",
+    Width: "",
+  });
+
   const {
     productName,
     price,
-    discription,
     range,
     charge,
     display,
@@ -44,34 +41,53 @@ const AddVehicle = () => {
   } = data;
 
   const handleVehicleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setData({ ...data, [name]: value });
+    setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  const handleVehicleChange2 = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setData2({ ...data2, [name]: value });
+  // !Getting Vehicle Type
+  const [selectedOption, setSelectedOption] = useState(null);
+  const getDropdownItem = () => {
+    axios
+      .get("/category")
+      .then((result) => {
+        setSelectedOption(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  //!Getting User Token
-  const getToken = JSON.parse(localStorage.getItem("token"));
-  const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
+  React.useEffect(() => {
+    getDropdownItem();
+  }, []);
 
+  const [vehicleId, setType] = useState("");
+  const vehicleChange = (e) => {
+    setType(e.target.value);
+  };
+
+  // !Vehicle Description OnChange
+  const [discription, setValue] = useState("");
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  const handleDescriptionChange = (e) => {
+    setData2({ ...data2, [e.target.name]: e.target.value });
+  };
+
+  //!Vehicle Application Form Submit
   const handleFormSubmit = (e) => {
     e.preventDefault();
     let data3 = {
       ...data,
       dimension: `${data2.Length} X ${data2.Width} X ${data2.Height}`,
+      vehicleType: `${vehicleId}`,
+      discription,
     };
 
     axios
-      .post(`/product/add`, data3, {
-        headers: {
-          "x-access-token": getToken ? getToken : parsedLogin,
-        },
-      })
+      .post(`/product/add`, data3)
       .then((result) => {
         console.log(result.data.data);
         history.push("./vehiclestepper");
@@ -81,20 +97,7 @@ const AddVehicle = () => {
       });
   };
 
-  // !Vehicle Type
-  const FetchVehicle = () => {
-    axios
-      .get(`/category`)
-      .then((result) => {
-        console.log(result.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   const history = useHistory();
-
   return (
     <>
       <div className="d-flex">
@@ -104,9 +107,7 @@ const AddVehicle = () => {
         <div className="navbarTop">
           <h3 className="navbarTopHeading">Vehicles</h3>
           <nav className="navbarContainer">
-            <span>Vehicle Application</span>
-            <span>Vehicles</span>
-            <span>Brand</span>
+            <Navigation />
           </nav>
           <h4 style={{ marginBottom: "2.18rem" }}> Add Vehicle</h4>
 
@@ -151,23 +152,16 @@ const AddVehicle = () => {
               <div>
                 <label className="vehicleLabel">Vehicle Description</label>
                 <div>
-                  {/* <textarea
+                  <textarea
                     style={{ marginRight: "20px" }}
-                    name="textarea"
+                    id="noter-text-area"
                     className="textAreaStyles"
                     name={discription}
-                    onChange={handleVehicleChange}
+                    onChange={handleChange}
                     value={discription}
                   >
                     Write something here
-                  </textarea> */}
-                  <input
-                    type="text"
-                    className="textAreaStyles"
-                    name={discription}
-                    onChange={handleVehicleChange}
-                    value={discription}
-                  />
+                  </textarea>
                 </div>
               </div>
             </section>
@@ -194,7 +188,16 @@ const AddVehicle = () => {
                   Vehicle Type
                 </label>
                 <div>
-                  <VehicleDropdown />
+                  <select onChange={vehicleChange}>
+                    <option value="0">Select Vehicle Type</option>
+                    {selectedOption?.map((items) => {
+                      return (
+                        <React.Fragment key={items?.id}>
+                          <option value={items?.id}>{items?.title}</option>
+                        </React.Fragment>
+                      );
+                    })}
+                  </select>
                 </div>
               </div>
 
@@ -209,6 +212,8 @@ const AddVehicle = () => {
                     rows="5"
                     cols="26"
                     style={{ resize: "none" }}
+                    value="abc"
+                    onChange={handleVehicleChange}
                   >
                     Write something here
                   </textarea>
@@ -234,6 +239,7 @@ const AddVehicle = () => {
                   />
                 </div>
               </div>
+
               <div>
                 <label className="vehicleLabel" htmlFor="Range">
                   Range
@@ -249,6 +255,7 @@ const AddVehicle = () => {
                   />
                 </div>
               </div>
+
               <div>
                 <label className="vehicleLabel" htmlFor="Charge">
                   Charge
@@ -338,6 +345,7 @@ const AddVehicle = () => {
                   />
                 </div>
               </div>
+
               <div style={{ marginRight: "-25px" }}>
                 <label
                   className="vehicleLabel"
@@ -346,30 +354,34 @@ const AddVehicle = () => {
                 >
                   Dimensions
                 </label>
+
                 <div className="dimensions">
                   <input
                     type="text"
                     name="Length"
                     placeholder="Length"
                     value={data2.Length}
-                    onChange={handleVehicleChange2}
+                    onChange={handleDescriptionChange}
                   />
+
                   <input
                     type="text"
                     name="Width"
                     value={data2.Width}
                     placeholder="Width"
-                    onChange={handleVehicleChange2}
+                    onChange={handleDescriptionChange}
                   />
+
                   <input
                     name="Height"
                     type="text"
                     value={data2.Height}
                     placeholder="Height"
-                    onChange={handleVehicleChange2}
+                    onChange={handleDescriptionChange}
                   />
                 </div>
               </div>
+
               <div>
                 <label
                   className="vehicleLabel"
@@ -378,6 +390,7 @@ const AddVehicle = () => {
                 >
                   Vehicle Weight
                 </label>
+
                 <div>
                   <input
                     type="text"

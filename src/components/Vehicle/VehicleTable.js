@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
-import CommonTable from "../common/CommonTable";
 import Sidebar from "../common/sidebar";
 import axios from "../../api/instance";
+import Navigation from "./Navigation/Navigation";
+import { useHistory } from "react-router-dom";
 
 const VehicleTable = () => {
   const [data, setData] = useState();
@@ -12,7 +12,6 @@ const VehicleTable = () => {
       .get(`/product`)
       .then((result) => {
         setData(result.data.products);
-        console.log(result.data.products);
       })
       .catch((err) => {
         console.log(err);
@@ -22,6 +21,13 @@ const VehicleTable = () => {
   useEffect(() => {
     fetchVehicleDetails();
   }, []);
+
+  const history = useHistory();
+
+  const handleRedirect = (id) => {
+    history.push(`/edit/${id}`);
+  };
+
   return (
     <>
       <div className="d-flex">
@@ -31,29 +37,7 @@ const VehicleTable = () => {
         <div className="navbarTop">
           <h3 className="navbarTopHeading">Vehicles</h3>
           <nav className="navbarContainer">
-            <NavLink
-              to="/vehicleapplication"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Vehicles Application</span>
-            </NavLink>
-
-            <NavLink
-              to="/vehicle"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Vehicles</span>
-            </NavLink>
-
-            <NavLink
-              to="/brands"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Brand</span>
-            </NavLink>
+            <Navigation />
           </nav>
           <h4 style={{ marginBottom: "2.18rem" }}> Vehicles Applications</h4>
           <Table bordered responsive borderless>
@@ -77,7 +61,13 @@ const VehicleTable = () => {
                       <td>{text}</td>
                       <td> - </td>
                       <td> - </td>
-                      <td>Edit Details</td>
+                      <td
+                        onClick={() => {
+                          handleRedirect(id);
+                        }}
+                      >
+                        Edit Details
+                      </td>
                     </React.Fragment>
                   </tr>
                 );
