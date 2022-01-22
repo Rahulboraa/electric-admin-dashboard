@@ -44,7 +44,7 @@ const SignUp = () => {
   const history = useHistory();
 
   const handleSignIn = () => {
-    history.push("./login");
+    history.push("./");
   };
 
   return (

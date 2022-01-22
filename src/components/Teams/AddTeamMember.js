@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import axios from "../../api/instance";
 
 const AddTeamMember = () => {
@@ -24,6 +25,8 @@ const AddTeamMember = () => {
   };
 
   // ! Add Team Member
+
+  const history = useHistory();
   const handleAddTeamMember = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -39,6 +42,7 @@ const AddTeamMember = () => {
       })
       .then((result) => {
         setData(result);
+        history.push("./teammember");
       })
       .catch((err) => {
         console.log(err);

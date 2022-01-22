@@ -5,10 +5,6 @@ import Sidebar from "../common/sidebar";
 import VehicleDropdown from "./VehicleDropdown";
 
 const AddVehicle = () => {
-  //!Getting User Token
-  const getToken = localStorage.getItem("token");
-  const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
-
   const [data2, setData2] = useState({
     Length: "",
     Height: "",
@@ -59,6 +55,10 @@ const AddVehicle = () => {
     setData2({ ...data2, [name]: value });
   };
 
+  //!Getting User Token
+  const getToken = JSON.parse(localStorage.getItem("token"));
+  const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     let data3 = {
@@ -68,7 +68,7 @@ const AddVehicle = () => {
 
     axios
       .post(`/product/add`, data3, {
-        header: {
+        headers: {
           "x-access-token": getToken ? getToken : parsedLogin,
         },
       })
@@ -219,7 +219,6 @@ const AddVehicle = () => {
             <hr />
             <h5 className="basic__information">Features</h5>
             <section className="d-flex justify-content-between">
-              
               <div>
                 <label className="vehicleLabel" htmlFor="Maximum Speed">
                   Maximum Speed
@@ -270,7 +269,6 @@ const AddVehicle = () => {
             <hr />
             <h5 className="basic__information">Specifications</h5>
             <section className="d-flex justify-content-between">
-
               <div>
                 <label className="vehicleLabel" htmlFor="Display">
                   Display
@@ -318,7 +316,6 @@ const AddVehicle = () => {
                   />
                 </div>
               </div>
-
             </section>
 
             <section className="d-flex justify-content-between">

@@ -98,40 +98,11 @@ const Testimonials = () => {
                       alt="member"
                       style={{ marginRight: "10px" }}
                     />
-                    Dianne Russell
+                    {""} {""}Dianne
+                    {""}Russell
                   </td>
                   <td>Associate Director</td>
                   <td>Watch and pray that you might not enter...</td>
-                  <td>Edit Testimonial</td>
-                </tr>
-                <tr>
-                  <td>1 Dec, 2021</td>
-                  <td>
-                    <img
-                      src={member}
-                      alt="member"
-                      style={{ marginRight: "10px" }}
-                    />
-                    Dianne Russell
-                  </td>
-                  <td>Associate Director</td>
-                  <td>Watch and pray that you might not enter...</td>
-                  <td>Edit Testimonial</td>
-                </tr>
-                <tr>
-                  <td>1 Dec, 2021</td>
-
-                  <td>
-                    <img
-                      src={member}
-                      alt="member"
-                      style={{ marginRight: "10px" }}
-                    />
-                    Dianne Russell
-                  </td>
-                  <td>Associate Director</td>
-                  <td>Watch and pray that you might not enter...</td>
-
                   <td>Edit Testimonial</td>
                 </tr>
               </tbody>

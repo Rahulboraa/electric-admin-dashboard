@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { NavLink } from "react-router-dom";
+import axios from "../../api/instance";
 
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
@@ -18,6 +19,24 @@ const Vehicle = ({}) => {
   const addVehicle = () => {
     history.push("./addvehicle");
   };
+
+  const [data, setData] = useState();
+
+  const fetchVehicleDetails = () => {
+    axios
+      .get(`/product`)
+      .then((result) => {
+        setData(result.data.products);
+        console.log(result.data.products);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchVehicleDetails();
+  }, []);
 
   return (
     <>
@@ -80,27 +99,19 @@ const Vehicle = ({}) => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>555-0112</td>
-                <td>Hero Electic</td>
-                <td>LO:EV</td>
-                <td>Barone LLC.</td>
-                <td>On Review</td>
-              </tr>
-              <tr>
-                <td>555-0112</td>
-                <td>Hero Electic</td>
-                <td>LO:EV</td>
-                <td>Barone LLC.</td>
-                <td>On Review</td>
-              </tr>
-              <tr>
-                <td>555-0112</td>
-                <td>Hero Electic</td>
-                <td>LO:EV</td>
-                <td>Barone LLC.</td>
-                <td>On Review</td>
-              </tr>
+              {data?.map(({ id, productName, vehicleType, text }) => {
+                return (
+                  <tr>
+                    <React.Fragment key={id}>
+                      <td>{id}</td>
+                      <td>{productName}</td>
+                      <td>{text}</td>
+                      <td>{vehicleType}</td>
+                      <td>Edit Details</td>
+                    </React.Fragment>
+                  </tr>
+                );
+              })}
             </tbody>
           </Table>
         </div>

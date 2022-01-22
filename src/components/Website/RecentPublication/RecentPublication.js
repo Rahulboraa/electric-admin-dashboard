@@ -6,37 +6,10 @@ import { Table } from "reactstrap";
 import { useHistory } from "react-router-dom";
 
 const RecentPublication = () => {
-  const [date, setDate] = useState("");
-  const [text, setText] = useState("");
-  const [recent, setImageSelected] = useState("");
-  const [recentPDF, setImageSelected2] = useState("");
-
-  const getToken = localStorage.getItem("token");
-
-  const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
-
-  const addProduct = (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("recent", recent);
-    formData.append("date", date);
-    formData.append("text", text);
-    formData.append("recentPDF", recentPDF);
-    axios
-      .post(`/recentPub/add`, formData, {
-        headers: {
-          "x-access-token": getToken ? getToken : parsedLogin,
-        },
-      })
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   const [data, setData] = useState([]);
+  // !Getting Token
+  const getToken = JSON.parse(localStorage.getItem("token"));
+  const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
 
   // !FETCH RECENT PUBLICATIONS
   const handleRecentPublication = () => {
@@ -53,6 +26,8 @@ const RecentPublication = () => {
   useEffect(() => {
     handleRecentPublication();
   }, []);
+
+  console.log(data);
 
   // !UPDATE RECENT PUBLICATION
   const handleRecentPublicationId = (id) => {
@@ -153,31 +128,30 @@ const RecentPublication = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                {/* <td>1 Dec, 2021</td>
-                <td>
-                  <img
-                    src={member2}
-                    alt="member"
-                    style={{ marginRight: "10px" }}
-                  />
-                </td>
-                <td>Associate Director</td>
-                <td>Example.pdf</td>
-                <td>Edit Publication</td> */}
-                {data.length > 0 &&
-                  data?.map((items) => (
-                    <>
-                      <td></td>
+              {data.length > 0 &&
+                data?.map((items) => (
+                  <tr>
+                    <React.Fragment key={items.id}>
+                      <td>{items.descripiton}</td>
                       <td>
-                        <img src="" alt="" />
+                        <img
+                          src={items.image}
+                          alt="Image"
+                          style={{ width: "200px", height: "100px" }}
+                        />
                       </td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </>
-                  ))}
-              </tr>
+                      <td>{items.title}</td>
+                      <td>
+                        <img
+                          src={items.recentPDF}
+                          alt="recentPDF"
+                          style={{ width: "200px", height: "100px" }}
+                        />
+                      </td>
+                      <td>Edit Publication</td>
+                    </React.Fragment>
+                  </tr>
+                ))}
             </tbody>
           </Table>
         </div>
