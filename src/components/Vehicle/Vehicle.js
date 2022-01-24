@@ -39,10 +39,8 @@ const Vehicle = () => {
         <Sidebar />
         <div className="vehicleFull">
           <h3 className="navbarTopHeading">Vehicles</h3>
-          <nav className="navbarContainer">
-            <Navigation />
-          </nav>
-          <div className="addBrandNav">
+          <Navigation />
+          <div className="subHeadingButton">
             <h4> Vehicles </h4>
             <button
               style={{ marginBottom: "8px" }}
@@ -53,39 +51,38 @@ const Vehicle = () => {
             </button>
           </div>
           <div className="TableInfo">
-
-          <Table bordered responsive borderless>
-            <thead>
-              <tr>
-                <th>Model Number</th>
-                <th>Brand Name</th>
-                <th>Vehicle Name</th>
-                <th>Vehicle Type</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data?.map(({ id, vehicleType, vehicleName, brand }) => {
-                return (
-                  <tr>
-                    <React.Fragment key={id}>
-                      <td>{id}</td>
-                      <td>{brand}</td>
-                      <td>{vehicleName}</td>
-                      <td>{vehicleType}</td>
-                      <td
-                        onClick={() => {
-                          handleRedirect(id);
-                        }}
-                      >
-                        Edit Details
-                      </td>
-                    </React.Fragment>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </Table>
+            <Table bordered responsive borderless>
+              <thead>
+                <tr>
+                  <th>Model Number</th>
+                  <th>Brand Name</th>
+                  <th>Vehicle Name</th>
+                  <th>Vehicle Type</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data?.map(({ id, vehicleType, vehicleName, brand }) => {
+                  return (
+                    <tr>
+                      <React.Fragment key={id}>
+                        <td>{id}</td>
+                        <td>{brand}</td>
+                        <td>{vehicleName}</td>
+                        <td>{vehicleType}</td>
+                        <td
+                          onClick={() => {
+                            handleRedirect(id);
+                          }}
+                        >
+                          Edit Details
+                        </td>
+                      </React.Fragment>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
           </div>
         </div>
       </div>

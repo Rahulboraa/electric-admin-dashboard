@@ -34,14 +34,7 @@ const DealarForm = () => {
               <span>Dealers</span>
             </NavLink>
           </nav>
-          <div
-            style={{
-              marginBottom: "2.18rem",
-              width: "90%",
-              alignItems: "baseline",
-            }}
-            className="d-flex justify-content-between"
-          >
+          <div className="subHeadingButton">
             <h4> Dealers</h4>
             <button onClick={handleAddDealer} className="mainAddBtn">
               Add Dealer

@@ -96,11 +96,11 @@ const Home = () => {
             </div>
           </div>
           <div className="Home__Inner__Container__2">
-            <Line
+            {/* <Line
               options={options}
               data={data}
               style={{ height: "400px", width: "700px" }}
-            />
+            /> */}
           </div>
           <div className="Home__Inner__Container__2">
             <CommonTable />

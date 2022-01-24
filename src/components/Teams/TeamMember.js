@@ -37,10 +37,7 @@ const TeamMember = () => {
           <div className="navbarTop">
             <h3 className="navbarTopHeading">Teams</h3>
 
-            <div
-              className="d-flex align-items-center justify-content-between"
-              style={{ marginBottom: "2.18rem" }}
-            >
+            <div className="subHeadingButton">
               <div>
                 <h4>Team Member</h4>
               </div>

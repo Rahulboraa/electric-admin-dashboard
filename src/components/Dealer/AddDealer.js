@@ -1,6 +1,7 @@
 import React from "react";
-
+import { useHistory } from "react-router-dom";
 const AddDealer = () => {
+  let history = useHistory();
   return (
     <>
       <form
@@ -18,7 +19,7 @@ const AddDealer = () => {
               <h2>Add Dealer</h2>
             </div>
             <div>
-              <h4>X</h4>
+              <h4 onClick={() => history.goBack()}>X</h4>
             </div>
           </div>
           <hr />

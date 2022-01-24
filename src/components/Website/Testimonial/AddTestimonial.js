@@ -52,11 +52,9 @@ const AddTestimonial = () => {
   return (
     <>
       <form className="addform" onSubmit={handleAddTestimonial}>
-        <div className="addformInner">
+        <div className="addFormWidth">
           <div className="addformInner">
             <h2>Add Testimonial</h2>
-          </div>
-          <div>
             <h4 onClick={() => history.goBack()}>X</h4>
           </div>
 
@@ -128,13 +126,15 @@ const AddTestimonial = () => {
             </div>
 
             <div>
-              <button className="clearBtn">Clear All</button>
+              <button
+                className="clearBtn"
+                onClick={handleClearAll}
+                type="reset"
+              >
+                Clear All
+              </button>
             </div>
           </div>
-
-          <button className="clearBtn" onClick={handleClearAll} type="reset">
-            Clear All
-          </button>
         </div>
       </form>
     </>

@@ -41,46 +41,20 @@ const AddRecentPublications = () => {
   return (
     <>
       <form className="addform" onSubmit={addProduct}>
-      <div className="addFormWidth">
-        <div className="addformInner">
-          <div>
-            <h2>Add Publication</h2>
-          </div>
-
-          <div>
-            <h4 onClick={() => history.goBack()}>X</h4>
-          </div>
-        </div>
-
-        <hr />
-
-        <main>
-          <div>
-            <label className="modalFormLabels">01. Feature Image</label>
+        <div className="addFormWidth">
+          <div className="addformInner">
             <div>
-              <input
-                type="text"
-                placeholder="No file selected"
-                className="inputModalStyles"
-                type="file"
-                onChange={(e) => {
-                  setImageSelected(e.target.files[0]);
-                }}
-              />
+              <h2>Add Publication</h2>
+            </div>
+
+            <div>
+              <h4 onClick={() => history.goBack()}>X</h4>
             </div>
           </div>
 
-          <div>
-            <label className="modalFormLabels">02. Publication Title</label>
-            <div>
-              <h4>X</h4>
-            </div>
-          </div>
           <hr />
-          <main>
 
-          <div>
-            <label className="modalFormLabels">03. Publication Document</label>
+          <main>
             <div>
               <label className="modalFormLabels">01. Feature Image</label>
               <div>
@@ -88,65 +62,83 @@ const AddRecentPublications = () => {
                   type="text"
                   placeholder="No file selected"
                   className="inputModalStyles"
+                  type="file"
+                  onChange={(e) => {
+                    setImageSelected(e.target.files[0]);
+                  }}
                 />
               </div>
             </div>
+
             <div>
               <label className="modalFormLabels">02. Publication Title</label>
               <div>
-                <input
-                  type="text"
-                  placeholder="Enter the Publication Title"
-                  className="inputModalStyles"
-                />
+                <h4>X</h4>
               </div>
             </div>
-            <div>
-              <label className="modalFormLabels">
-                03. Publication Document
-              </label>
+            <hr />
+            <main>
               <div>
-                <input
-                  type="text"
-                  placeholder="No file selected"
-                  className="inputModalStyles"
-                />
+                <label className="modalFormLabels">
+                  03. Publication Document
+                </label>
+                <div>
+                  <label className="modalFormLabels">01. Feature Image</label>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="No file selected"
+                      className="inputModalStyles"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="modalFormLabels">
+                    02. Publication Title
+                  </label>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Enter the Publication Title"
+                      className="inputModalStyles"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="modalFormLabels">
+                    03. Publication Document
+                  </label>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="No file selected"
+                      className="inputModalStyles"
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-            </div>
+            </main>
           </main>
+
           <div className="d-flex justify-content-between align-items-center inputModalStylesBtn">
             <div>
-              <button className="SaveNextBtn">Submit</button>
+              <button className="SaveNextBtn" type="submit">
+                Submit
+              </button>
             </div>
+
             <div>
-              <button className="clearBtn">Clear All</button>
+              <button
+                className="clearBtn"
+                type="reset"
+                onClick={() => {
+                  setData({});
+                }}
+              >
+                Clear All
+              </button>
             </div>
           </div>
-        </main>
-
-        <div
-          className="d-flex justify-content-between align-items-center"
-          style={{ width: "600px", marginBottom: "2rem" }}
-        >
-          <div>
-            <button className="SaveNextBtn" type="submit">
-              Submit
-            </button>
-          </div>
-
-          <div>
-            <button
-              className="clearBtn"
-              type="reset"
-              onClick={() => {
-                setData({});
-              }}
-            >
-              Clear All
-            </button>
-          </div>
-        </div>
         </div>
       </form>
     </>

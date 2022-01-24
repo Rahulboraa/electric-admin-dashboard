@@ -19,10 +19,7 @@ function Gallery() {
             <GalleryNavigation />
           </nav>
 
-          <div
-            className="d-flex align-items-center justify-content-between"
-            style={{ marginBottom: "2.18rem" }}
-          >
+          <div className="subHeadingButton">
             <div>
               <h4>Gallery</h4>
             </div>

@@ -38,45 +38,51 @@ const VehicleTable = () => {
             <Navigation />
           </nav>
           <h4 style={{ marginBottom: "2.18rem" }}> Vehicles Applications</h4>
-          <div>
+          <div
+            style={{
+              marginBottom: "2rem",
+            }}
+          >
             <button className="buttonStyle">Back</button>
             <span className="VehicleHead">LOFI</span>
             <button className="buttonStyle">Back To Application</button>
           </div>
-          <Table bordered responsive borderless>
-            <thead>
-              <tr>
-                <th>Application Number</th>
-                <th>Brand Name</th>
-                <th>Vehicle Name</th>
-                <th>Dealer Name</th>
-                <th>Status</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data?.map(({ id, productName, vehicleType, text }) => {
-                return (
-                  <tr>
-                    <React.Fragment key={id}>
-                      <td>{id}</td>
-                      <td>{productName}</td>
-                      <td>{text}</td>
-                      <td> - </td>
-                      <td> - </td>
-                      <td
-                        onClick={() => {
-                          handleRedirect(id);
-                        }}
-                      >
-                        Edit Details
-                      </td>
-                    </React.Fragment>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </Table>
+          <div className="TableInfo">
+            <Table bordered responsive borderless>
+              <thead>
+                <tr>
+                  <th>Application Number</th>
+                  <th>Brand Name</th>
+                  <th>Vehicle Name</th>
+                  <th>Dealer Name</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data?.map(({ id, productName, vehicleType, text }) => {
+                  return (
+                    <tr>
+                      <React.Fragment key={id}>
+                        <td>{id}</td>
+                        <td>{productName}</td>
+                        <td>{text}</td>
+                        <td> - </td>
+                        <td> - </td>
+                        <td
+                          onClick={() => {
+                            handleRedirect(id);
+                          }}
+                        >
+                          Edit Details
+                        </td>
+                      </React.Fragment>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
+          </div>
         </div>
       </div>
     </>
