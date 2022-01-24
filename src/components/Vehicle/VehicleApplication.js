@@ -11,6 +11,7 @@ const AddVehicle = () => {
     range: "",
     charge: "",
     display: "",
+    dealerName: "",
     motor: "",
     battery: "",
     loadCapacity: "",
@@ -201,8 +202,26 @@ const AddVehicle = () => {
                 </div>
               </div>
 
+              <div>
+                <label className="vehicleLabel" htmlFor="Brand Name">
+                  Dealer Name
+                </label>
+                <div>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Enter Dealer Name"
+                      className="formInputStyle"
+                      value={maxSpeed}
+                      name="maxSpeed"
+                      onChange={handleVehicleChange}
+                    />
+                  </div>
+                </div>
+              </div>
+
               {/* Hidden TextArea */}
-              <div className="visibilityHidden">
+              {/* <div className="visibilityHidden">
                 <label className="vehicleLabel" htmlFor="Vehicle Description">
                   Vehicle Description
                 </label>
@@ -218,7 +237,7 @@ const AddVehicle = () => {
                     Write something here
                   </textarea>
                 </div>
-              </div>
+              </div> */}
             </section>
 
             <hr />

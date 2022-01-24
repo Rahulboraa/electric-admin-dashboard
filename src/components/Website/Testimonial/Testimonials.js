@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
 import axios from "../../../api/instance";
 import member from "../../../assets/Team/member.svg";

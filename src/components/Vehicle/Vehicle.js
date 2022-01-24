@@ -16,10 +16,9 @@ const Vehicle = () => {
 
   const fetchVehicleDetails = () => {
     axios
-      .get(`/product`)
+      .get(`/product/get`)
       .then((result) => {
-        setData(result.data.products);
-        console.log(result.data.products);
+        setData(result.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -66,13 +65,13 @@ const Vehicle = () => {
               </tr>
             </thead>
             <tbody>
-              {data?.map(({ id, productName, vehicleType, text }) => {
+              {data?.map(({ id, vehicleType, vehicleName, brand }) => {
                 return (
                   <tr>
                     <React.Fragment key={id}>
                       <td>{id}</td>
-                      <td>{productName}</td>
-                      <td>{text}</td>
+                      <td>{brand}</td>
+                      <td>{vehicleName}</td>
                       <td>{vehicleType}</td>
                       <td
                         onClick={() => {

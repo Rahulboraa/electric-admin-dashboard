@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import axios from "../../../api/instance";
 import Sidebar from "../../common/sidebar";
 import { Table } from "reactstrap";

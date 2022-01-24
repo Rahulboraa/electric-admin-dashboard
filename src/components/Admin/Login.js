@@ -15,7 +15,6 @@ const Login = () => {
     password: "",
   });
 
-  console.log(data);
   const handleInputChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;

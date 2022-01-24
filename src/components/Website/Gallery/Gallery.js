@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import Sidebar from "../../common/sidebar";
 import gallery from "../../../assets/Gallery/gallery.svg";
 import gallery2 from "../../../assets/Gallery/gallery2.svg";
@@ -17,7 +16,7 @@ function Gallery() {
         <div className="navbarTop">
           <h3 className="navbarTopHeading">Websites</h3>
           <nav className="navbarContainer">
-            <GalleryNavigation/>
+            <GalleryNavigation />
           </nav>
 
           <div
