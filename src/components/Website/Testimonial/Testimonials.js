@@ -6,6 +6,7 @@ import axios from "../../../api/instance";
 import member from "../../../assets/Team/member.svg";
 import member2 from "../../../assets/Team/member2.svg";
 import Sidebar from "../../common/sidebar";
+import GalleryNavigation from "../Gallery/Navigation/GalleryNavigation";
 
 const Testimonials = () => {
   const history = useHistory();
@@ -40,30 +41,7 @@ const Testimonials = () => {
           <div className="navbarTop">
             <h3 className="navbarTopHeading">Websites</h3>
             <nav className="navbarContainer">
-              <NavLink
-                to="/recentpublications"
-                className="navlinkUnactive"
-                activeClassName="navbaractive"
-              >
-                <span>Recent Publications</span>
-              </NavLink>
-
-              <NavLink
-                to="/visitingcard"
-                className="navlinkUnactive"
-                activeClassName="navbaractive"
-              >
-                <span>Gallery</span>
-              </NavLink>
-
-              <NavLink
-                to="/testimonials"
-                className="navlinkUnactive"
-                activeClassName="navbaractive"
-              >
-                <span>Testimonials</span>
-              </NavLink>
-              <hr />
+              <GalleryNavigation />
             </nav>
 
             <div
@@ -98,8 +76,7 @@ const Testimonials = () => {
                       alt="member"
                       style={{ marginRight: "10px" }}
                     />
-                    {""} {""}Dianne
-                    {""}Russell
+                    <p>Dianne Russell</p>
                   </td>
                   <td>Associate Director</td>
                   <td>Watch and pray that you might not enter...</td>

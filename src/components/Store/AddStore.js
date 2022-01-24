@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "../../api/instance";
-import Select from "react-select";
+import { useHistory } from "react-router-dom";
 
 const AddStore = () => {
   const [data, setData] = useState({
@@ -34,13 +34,12 @@ const AddStore = () => {
       });
   };
 
-  // !Dummy Data for Dropdown
-  const [selectedOption, setSelectedOption] = useState(null);
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
+  // !Clear Form
+  const handleReset = () => {
+    setData({});
+  };
+
+  let history = useHistory();
 
   return (
     <>
@@ -50,7 +49,7 @@ const AddStore = () => {
             <h2>Add Store</h2>
           </div>
           <div>
-            <h4>X</h4>
+            <h4 onClick={() => history.goBack()}>X</h4>
           </div>
         </div>
         <hr />
@@ -85,31 +84,13 @@ const AddStore = () => {
             <label className="modalFormLabels">
               03. Enter your preferred city for dealership *
             </label>
-            <div style={{ marginTop: "1rem" }}>
-              <Select
-                defaultValue={selectedOption}
-                onChange={setSelectedOption}
-                options={options}
-              />
-            </div>
-            <div>
-              <Select
-                defaultValue={selectedOption}
-                onChange={setSelectedOption}
-                options={options}
-              />
-            </div>
+            <div style={{ marginTop: "1rem" }}></div>
+            <div></div>
           </div>
 
           <div>
             <label className="modalFormLabels">04. Investment Budget</label>
-            <div>
-              <Select
-                defaultValue={selectedOption}
-                onChange={setSelectedOption}
-                options={options}
-              />
-            </div>
+            <div></div>
           </div>
           <div>
             <label className="modalFormLabels" htmlFor="Choose an option">
@@ -150,7 +131,9 @@ const AddStore = () => {
             <button className="SaveNextBtn">Submit</button>
           </div>
           <div>
-            <button className="clearBtn">Clear All</button>
+            <button className="clearBtn" type="reset" onClick={handleReset}>
+              Clear All
+            </button>
           </div>
         </div>
       </form>

@@ -5,16 +5,8 @@ import axios from "../../api/instance";
 import Sidebar from "../common/sidebar";
 import Navigation from "./Navigation/Navigation";
 
-const Vehicle = ({}) => {
+const Vehicle = () => {
   const history = useHistory();
-
-  const handleBrand = () => {
-    history.push("./brands");
-  };
-
-  const handleVehicleApplication = () => {
-    history.push("./vehicleapplication");
-  };
 
   const addVehicle = () => {
     history.push("./addvehicle");
@@ -38,6 +30,10 @@ const Vehicle = ({}) => {
     fetchVehicleDetails();
   }, []);
 
+  const handleRedirect = (id) => {
+    history.push(`./vehicle/edit/${id}`);
+  };
+
   return (
     <>
       <div className="d-flex">
@@ -49,14 +45,7 @@ const Vehicle = ({}) => {
           <nav className="navbarContainer">
             <Navigation />
           </nav>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: "2.18rem",
-            }}
-          >
+          <div className="addBrandNav">
             <h4> Vehicles </h4>
             <button
               style={{ marginBottom: "8px" }}
@@ -85,7 +74,13 @@ const Vehicle = ({}) => {
                       <td>{productName}</td>
                       <td>{text}</td>
                       <td>{vehicleType}</td>
-                      <td>Edit Details</td>
+                      <td
+                        onClick={() => {
+                          handleRedirect(id);
+                        }}
+                      >
+                        Edit Details
+                      </td>
                     </React.Fragment>
                   </tr>
                 );

@@ -4,12 +4,10 @@ import axios from "../../../api/instance";
 import Sidebar from "../../common/sidebar";
 import { Table } from "reactstrap";
 import { useHistory } from "react-router-dom";
+import GalleryNavigation from "../Gallery/Navigation/GalleryNavigation";
 
 const RecentPublication = () => {
   const [data, setData] = useState([]);
-  // !Getting Token
-  const getToken = JSON.parse(localStorage.getItem("token"));
-  const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
 
   // !FETCH RECENT PUBLICATIONS
   const handleRecentPublication = () => {
@@ -32,15 +30,7 @@ const RecentPublication = () => {
   // !UPDATE RECENT PUBLICATION
   const handleRecentPublicationId = (id) => {
     axios
-      .post(
-        `/recentPub/update/${id}`,
-        { text: "hello" },
-        {
-          headers: {
-            "x-access-token": getToken ? getToken : parsedLogin,
-          },
-        }
-      )
+      .post(`/recentPub/update/${id}`, { text: "hello" })
       .then((result) => {
         console.log(result.data.data);
       })
@@ -52,11 +42,7 @@ const RecentPublication = () => {
   // !Delete RECENT PUBLICATION
   const RemoveRecentPublication = (id) => {
     axios
-      .delete(`/recentPub/delete/${id}`, {
-        headers: {
-          "x-access-token": getToken ? getToken : parsedLogin,
-        },
-      })
+      .delete(`/recentPub/delete/${id}`)
       .then((result) => {
         if (result.data.status === true) {
           handleRecentPublication();
@@ -82,30 +68,7 @@ const RecentPublication = () => {
         <div className="navbarTop">
           <h3 className="navbarTopHeading">Websites</h3>
           <nav className="navbarContainer">
-            <NavLink
-              to="/recentpublications"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Recent Publications</span>
-            </NavLink>
-
-            <NavLink
-              to="/gallery"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Gallery</span>
-            </NavLink>
-
-            <NavLink
-              to="/testimonials"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Testimonials</span>
-            </NavLink>
-            <hr />
+            <GalleryNavigation />
           </nav>
           <div
             style={{ marginBottom: "2.18rem" }}

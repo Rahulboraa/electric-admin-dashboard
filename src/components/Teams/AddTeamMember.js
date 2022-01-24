@@ -1,12 +1,8 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import axios from "../../api/instance";
 
 const AddTeamMember = () => {
-  //!Getting User Token
-  const getToken = localStorage.getItem("token");
-  const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
-
   const [profilePic, setImageSelected] = useState("");
 
   const [data, setData] = useState({
@@ -26,7 +22,6 @@ const AddTeamMember = () => {
 
   // ! Add Team Member
 
-  const history = useHistory();
   const handleAddTeamMember = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -35,11 +30,7 @@ const AddTeamMember = () => {
     formData.append("designation", designation);
     formData.append("profilePic", profilePic);
     axios
-      .post(`/Team/add`, formData, {
-        headers: {
-          "x-access-token": getToken ? getToken : parsedLogin,
-        },
-      })
+      .post(`/Team/add`, formData)
       .then((result) => {
         setData(result);
         history.push("./teammember");
@@ -49,6 +40,12 @@ const AddTeamMember = () => {
       });
   };
 
+  const handleReset = () => {
+    setData({});
+  };
+
+  const history = useHistory();
+
   return (
     <>
       <form onSubmit={handleAddTeamMember} className="addform">
@@ -57,7 +54,7 @@ const AddTeamMember = () => {
             <h2>Add Team Member</h2>
           </div>
           <div>
-            <h4>X</h4>
+            <h4 onClick={() => history.goBack()}>X</h4>
           </div>
         </div>
         <hr />
@@ -126,7 +123,9 @@ const AddTeamMember = () => {
             <button className="SaveNextBtn">Submit</button>
           </div>
           <div>
-            <button className="clearBtn">Clear All</button>
+            <button className="clearBtn" type="reset" onClick={handleReset}>
+              Clear All
+            </button>
           </div>
         </div>
       </form>
