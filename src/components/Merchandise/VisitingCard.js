@@ -49,9 +49,7 @@ const VisitingCard = () => {
     <>
       <section>
         <div className="d-flex">
-          <div>
-            <Sidebar />
-          </div>
+          <Sidebar />
 
           <div className="navbarTop">
             <h3 className="navbarTopHeading">Merchandise</h3>

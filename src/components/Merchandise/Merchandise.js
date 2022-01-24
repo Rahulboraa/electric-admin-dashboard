@@ -18,7 +18,7 @@ const Merchandise = () => {
   });
 
   const [see, setsee] = useState("");
-  
+
   const handleUpload = async () => {
     let formData = new FormData();
     formData.append("logo", uploadfile);
@@ -46,9 +46,7 @@ const Merchandise = () => {
     <>
       <section>
         <div className="d-flex">
-          <div>
-            <Sidebar />
-          </div>
+          <Sidebar />
 
           <div className="navbarTop">
             <h3 className="navbarTopHeading">Merchandise</h3>

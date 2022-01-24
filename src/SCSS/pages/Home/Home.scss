@@ -1,11 +1,28 @@
 .Home__Container {
   display: flex;
 }
+
+@include xs {
+  .Home__Container {
+    justify-content: center;
+  }
+}
 .Home__First__Container {
   width: 23%;
 }
 .Home__Second__Container {
   width: 75%;
+}
+@include xs {
+  .Home__Second__Container {
+    position: relative;
+  }
+}
+
+@include sm {
+  .Home__Second__Container {
+    position: relative;
+  }
 }
 .Home__Inner__Container__1 {
   display: flex;
@@ -16,6 +33,23 @@
 }
 .Home__Inner__Container__2 {
   padding-top: 150px;
+}
+
+@include xs {
+  .Home__Inner__Container__2 {
+    padding-top: 100px;
+  }
+}
+
+@include sm {
+  .Home__Inner__Container__2 {
+    padding-top: 100px;
+  }
+}
+@include md {
+  .Home__Inner__Container__2 {
+    padding-top: 100px;
+  }
 }
 .Home__Inner__1 {
   height: 180%;
@@ -38,6 +72,24 @@
   font-size: 40px;
   text-transform: uppercase;
   color: #acacac;
+}
+
+@include xs {
+  .Home__p2 {
+    font-size: 20px;
+  }
+}
+
+@include sm {
+  .Home__p2 {
+    font-size: 20px;
+  }
+}
+
+@include md {
+  .Home__p2 {
+    font-size: 20px;
+  }
 }
 .Home__Inner__div__1 {
   padding: 20px 0 0 0;

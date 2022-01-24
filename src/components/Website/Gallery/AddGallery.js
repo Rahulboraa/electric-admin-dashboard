@@ -23,48 +23,47 @@ const AddGallery = () => {
   return (
     <>
       <form className="addform">
-        <div className="addformInner">
-          <div>
-            <h2>Add Image</h2>
-          </div>
-          <div>
-            <h4>X</h4>
-          </div>
-        </div>
-        <hr />
-
-        <main>
-          <div style={{ marginTop: "2rem" }}>
-            <label className="modalFormLabels">01. Feature Image</label>
+        <div className="addFormWidth">
+          <div className="addformInner">
             <div>
-              <input
-                type="file"
-                placeholder="No file selected"
-                className="inputModalStyles"
-                onChange={(e) => {
-                  setImageSelected(e.target.files[0]);
-                }}
-              />
+              <h2>Add Image</h2>
             </div>
-            <article style={{ marginBottom: "3rem" }}>
-              <p>1. File should be in PNG, JPG, JPEG, BMP</p>
-              <p>2. The size of the image should be exceeds the 2MP </p>
-              <p>3. The Minimum Size of the image should be 4200 x 3486 px</p>
-            </article>
+            <div>
+              <h4>X</h4>
+            </div>
           </div>
-        </main>
+          <hr />
 
-        <div
-          className="d-flex justify-content-between align-items-center"
-          style={{ width: "600px", marginBottom: "2rem", marginTop: "2rem" }}
-        >
-          <div>
-            <button className="SaveNextBtn" onClick={handleAddGallery}>
-              Submit
-            </button>
-          </div>
-          <div>
-            <button className="clearBtn">Clear All</button>
+          <main>
+            <div style={{ marginTop: "2rem" }}>
+              <label className="modalFormLabels">01. Feature Image</label>
+              <div>
+                <input
+                  type="file"
+                  placeholder="No file selected"
+                  className="inputModalStyles"
+                  onChange={(e) => {
+                    setImageSelected(e.target.files[0]);
+                  }}
+                />
+              </div>
+              <article style={{ marginBottom: "3rem" }}>
+                <p>1. File should be in PNG, JPG, JPEG, BMP</p>
+                <p>2. The size of the image should be exceeds the 2MP </p>
+                <p>3. The Minimum Size of the image should be 4200 x 3486 px</p>
+              </article>
+            </div>
+          </main>
+
+          <div className="d-flex justify-content-between align-items-center inputModalStylesBtn">
+            <div>
+              <button className="SaveNextBtn" onClick={handleAddGallery}>
+                Submit
+              </button>
+            </div>
+            <div>
+              <button className="clearBtn">Clear All</button>
+            </div>
           </div>
         </div>
       </form>

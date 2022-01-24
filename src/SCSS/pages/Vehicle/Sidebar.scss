@@ -2,12 +2,171 @@
   cursor: default;
 }
 
+#crossToggle {
+  float: right;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
+@include sm {
+  #crossToggle {
+    display: block !important;
+  }
+}
+
+@include xs {
+  #crossToggle {
+    display: block !important;
+  }
+}
+
+@include md {
+  #crossToggle {
+    display: none !important;
+  }
+}
+
+@include lg {
+  #crossToggle {
+    display: none !important;
+  }
+}
+
+.toggleButton {
+  position: absolute;
+  display: none !important;
+  height: max-content;
+  z-index: 10;
+}
+
+@include sm {
+  .toggleButton {
+    display: block !important;
+  }
+}
+
+@include xs {
+  .toggleButton {
+    display: block !important;
+  }
+}
+
+@include lg {
+  .toggleButton {
+    display: none !important;
+  }
+}
+
 .sidebar__Main {
   margin-left: 2rem;
   margin-top: 4rem;
-  width: 20vw;
+  width: auto;
   border-right: 1px solid #d5d5d5;
   // position: fixed;
+  .Sidebar__container_maindiv {
+    margin-right: 2rem;
+  }
+}
+
+.sidebarHide {
+  // display: none !important;
+  position: relative;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 20;
+  // display: block;
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  background-color: black;
+  opacity: 0.5;
+}
+
+@include lg {
+  .sidebarHide {
+    display: none !important;
+  }
+}
+
+@include sm {
+  .sidebarHide {
+    display: none !important;
+  }
+}
+
+.block {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.sidebarHideDiv {
+  // display: none !important;
+
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 30;
+  width: 16rem;
+  overflow-y: auto;
+  transform: translateX(0px);
+  transition-duration: 300ms;
+  border-right-width: 2px;
+  background-color: white;
+}
+
+@include lg {
+  .sidebarHideDiv {
+    transform: translateX(0px);
+    position: static;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+  }
+}
+
+@include md {
+  .sidebarHideDiv {
+    transform: translateX(0px);
+    position: static;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+  }
+}
+
+@include sm {
+  .sidebarHideDiv {
+    display: block !important;
+  }
+}
+
+@include md {
+  .sidebarHideDiv {
+    display: block !important;
+  }
+}
+@include lg {
+  .sidebarHideDiv {
+    display: block !important;
+  }
+}
+
+.Sidebarhideopena {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transform: translateX(0px);
+}
+
+.Sidebarhideopenb {
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  transform: -translateY(100%);
 }
 
 .Sidebar__container {

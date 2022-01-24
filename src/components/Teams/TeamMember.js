@@ -33,9 +33,7 @@ const TeamMember = () => {
     <>
       <section>
         <div className="d-flex">
-          <div>
-            <Sidebar />
-          </div>
+          <Sidebar />
           <div className="navbarTop">
             <h3 className="navbarTopHeading">Teams</h3>
 
@@ -52,42 +50,44 @@ const TeamMember = () => {
                 </button>
               </div>
             </div>
-            <Table bordered responsive borderless style={{ width: "880px" }}>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Designation</th>
-                  <th>Email</th>
-                </tr>
-              </thead>
-              <tbody>
-                {team?.map(
-                  ({ id, name, emailId, designation, Profile_pic }) => (
-                    <React.Fragment key={id}>
-                      <tr>
-                        <td>{id}</td>
-                        <td>
-                          <img
-                            src={member2}
-                            alt="member"
-                            style={{ marginRight: "10px" }}
-                          />
-                          {/* <img
+            <div className="TableInfo">
+              <Table bordered responsive borderless>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Designation</th>
+                    <th>Email</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {team?.map(
+                    ({ id, name, emailId, designation, Profile_pic }) => (
+                      <React.Fragment key={id}>
+                        <tr>
+                          <td>{id}</td>
+                          <td>
+                            <img
+                              src={member2}
+                              alt="member"
+                              style={{ marginRight: "10px" }}
+                            />
+                            {/* <img
                             src={Profile_pic}
                             alt="member"
                             style={{ marginRight: "10px" }}
                           /> */}
-                          {name}
-                        </td>
-                        <td>{designation}</td>
-                        <td>{emailId}</td>
-                      </tr>
-                    </React.Fragment>
-                  )
-                )}
-              </tbody>
-            </Table>
+                            {name}
+                          </td>
+                          <td>{designation}</td>
+                          <td>{emailId}</td>
+                        </tr>
+                      </React.Fragment>
+                    )
+                  )}
+                </tbody>
+              </Table>
+            </div>
           </div>
         </div>
       </section>

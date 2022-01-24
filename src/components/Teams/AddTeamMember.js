@@ -48,81 +48,80 @@ const AddTeamMember = () => {
   return (
     <>
       <form onSubmit={handleAddTeamMember} className="addform">
-        <div className="addformInner">
-          <div>
-            <h2>Add Team Member</h2>
-          </div>
-          <div>
-            <h4>X</h4>
-          </div>
-        </div>
-        <hr />
-        <main>
-          <div>
-            <label className="modalFormLabels">01. Profile Picture</label>
+        <div className="addFormWidth">
+          <div className="addformInner">
             <div>
-              <input
-                type="file"
-                placeholder="No file selected"
-                className="inputModalStyles"
-                onChange={(e) => {
-                  setImageSelected(e.target.files[0]);
-                }}
-              />
+              <h2>Add Team Member</h2>
+            </div>
+            <div>
+              <h4>X</h4>
             </div>
           </div>
-          <div>
-            <label className="modalFormLabels">02. Name</label>
+          <hr />
+          <main>
             <div>
-              <input
-                type="text"
-                placeholder="Enter the Name"
-                className="inputModalStyles"
-                name="name"
-                value={name}
-                onChange={handleAddTeamChange}
-              />
+              <label className="modalFormLabels">01. Profile Picture</label>
+              <div>
+                <input
+                  type="file"
+                  placeholder="No file selected"
+                  className="inputModalStyles"
+                  onChange={(e) => {
+                    setImageSelected(e.target.files[0]);
+                  }}
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <label className="modalFormLabels">03. Designation</label>
             <div>
-              <input
-                type="text"
-                placeholder="Enter the Designation"
-                className="inputModalStyles"
-                name="designation"
-                value={designation}
-                onChange={handleAddTeamChange}
-              />
+              <label className="modalFormLabels">02. Name</label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Enter the Name"
+                  className="inputModalStyles"
+                  name="name"
+                  value={name}
+                  onChange={handleAddTeamChange}
+                />
+              </div>
             </div>
-          </div>
+            <div>
+              <label className="modalFormLabels">03. Designation</label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Enter the Designation"
+                  className="inputModalStyles"
+                  name="designation"
+                  value={designation}
+                  onChange={handleAddTeamChange}
+                />
+              </div>
+            </div>
 
-          <div>
-            <label className="modalFormLabels" htmlFor="04.Email">
-              04. Email
-            </label>
             <div>
-              <input
-                type="text"
-                placeholder="Enter the Email Address"
-                className="inputModalStyles"
-                name="emailId"
-                value={emailId}
-                onChange={handleAddTeamChange}
-              />
+              <label className="modalFormLabels" htmlFor="04.Email">
+                04. Email
+              </label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Enter the Email Address"
+                  className="inputModalStyles"
+                  name="emailId"
+                  value={emailId}
+                  onChange={handleAddTeamChange}
+                />
+              </div>
             </div>
-          </div>
-        </main>
-        <div
-          className="d-flex justify-content-between align-items-center"
-          style={{ width: "600px", marginBottom: "2rem" }}
-        >
-          <div>
-            <button className="SaveNextBtn">Submit</button>
-          </div>
-          <div>
-            <button className="clearBtn">Clear All</button>
+          </main>
+          <div className="d-flex justify-content-between align-items-center inputModalStylesBtn">
+            <div>
+              <button className="SaveNextBtn">Submit</button>
+            </div>
+            <div>
+              <button className="clearBtn">Clear All</button>
+            </div>
           </div>
         </div>
       </form>

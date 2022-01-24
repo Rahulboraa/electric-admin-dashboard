@@ -33,9 +33,7 @@ const Store = () => {
   return (
     <>
       <div className="d-flex">
-        <div>
-          <Sidebar />
-        </div>
+        <Sidebar />
         <div className="navbarTop">
           <h3 className="navbarTopHeading">Stores</h3>
           <nav className="navbarContainer">
@@ -58,48 +56,50 @@ const Store = () => {
             style={{
               marginBottom: "2.18rem",
             }}
-            className="d-flex justify-content-between"
+            className="subHeadingButton"
           >
             <h4> Stores</h4>
             <button className="mainAddBtn" onClick={handleAddStore}>
               Add Store
             </button>
           </div>
-          <Table bordered responsive borderless style={{ width: "860px" }}>
-            <thead>
-              <tr>
-                <th>Store ID</th>
-                <th>Store Type</th>
-                <th>Location</th>
-                <th>Dealer</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data?.length > 0 &&
-                data?.map(
-                  ({
-                    id,
-                    dealerId,
-                    dealerName,
-                    city1,
-                    storeType,
-                    budget,
-                    storeArea,
-                  }) => (
-                    <React.Fragment key={id}>
-                      <tr>
-                        <td>{id}</td>
-                        <td>{storeType}</td>
-                        <td>{city1}</td>
-                        <td>{dealerName}</td>
-                        <td>{dealerId}</td>
-                      </tr>
-                    </React.Fragment>
-                  )
-                )}
-            </tbody>
-          </Table>
+          <div className="TableInfo">
+            <Table bordered responsive borderless>
+              <thead>
+                <tr>
+                  <th>Store ID</th>
+                  <th>Store Type</th>
+                  <th>Location</th>
+                  <th>Dealer</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data?.length > 0 &&
+                  data?.map(
+                    ({
+                      id,
+                      dealerId,
+                      dealerName,
+                      city1,
+                      storeType,
+                      budget,
+                      storeArea,
+                    }) => (
+                      <React.Fragment key={id}>
+                        <tr>
+                          <td>{id}</td>
+                          <td>{storeType}</td>
+                          <td>{city1}</td>
+                          <td>{dealerName}</td>
+                          <td>{dealerId}</td>
+                        </tr>
+                      </React.Fragment>
+                    )
+                  )}
+              </tbody>
+            </Table>
+          </div>
         </div>
       </div>
     </>

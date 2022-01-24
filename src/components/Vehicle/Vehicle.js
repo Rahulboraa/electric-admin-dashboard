@@ -22,10 +22,8 @@ const Vehicle = ({}) => {
   return (
     <>
       <div className="d-flex">
-        <div>
-          <Sidebar />
-        </div>
-        <div style={{ marginLeft: "81px" }}>
+        <Sidebar />
+        <div className="vehicleFull">
           <h3 className="navbarTopHeading">Vehicles</h3>
           <nav className="navbarContainer">
             <NavLink
@@ -59,6 +57,7 @@ const Vehicle = ({}) => {
               alignItems: "center",
               marginBottom: "2.18rem",
             }}
+            className="subHeadingButton"
           >
             <h4> Vehicles </h4>
             <button
@@ -69,40 +68,42 @@ const Vehicle = ({}) => {
               Add Vehicle
             </button>
           </div>
-          <Table style={{ width: "880px" }} bordered responsive borderless>
-            <thead>
-              <tr>
-                <th>Model Number</th>
-                <th>Brand Name</th>
-                <th>Vehicle Name</th>
-                <th>Vehicle Type</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>555-0112</td>
-                <td>Hero Electic</td>
-                <td>LO:EV</td>
-                <td>Barone LLC.</td>
-                <td>On Review</td>
-              </tr>
-              <tr>
-                <td>555-0112</td>
-                <td>Hero Electic</td>
-                <td>LO:EV</td>
-                <td>Barone LLC.</td>
-                <td>On Review</td>
-              </tr>
-              <tr>
-                <td>555-0112</td>
-                <td>Hero Electic</td>
-                <td>LO:EV</td>
-                <td>Barone LLC.</td>
-                <td>On Review</td>
-              </tr>
-            </tbody>
-          </Table>
+          <div className="TableInfo">
+            <Table bordered responsive borderless>
+              <thead>
+                <tr>
+                  <th>Model Number</th>
+                  <th>Brand Name</th>
+                  <th>Vehicle Name</th>
+                  <th>Vehicle Type</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>555-0112</td>
+                  <td>Hero Electic</td>
+                  <td>LO:EV</td>
+                  <td>Barone LLC.</td>
+                  <td>On Review</td>
+                </tr>
+                <tr>
+                  <td>555-0112</td>
+                  <td>Hero Electic</td>
+                  <td>LO:EV</td>
+                  <td>Barone LLC.</td>
+                  <td>On Review</td>
+                </tr>
+                <tr>
+                  <td>555-0112</td>
+                  <td>Hero Electic</td>
+                  <td>LO:EV</td>
+                  <td>Barone LLC.</td>
+                  <td>On Review</td>
+                </tr>
+              </tbody>
+            </Table>
+          </div>
         </div>
       </div>
     </>

@@ -35,32 +35,30 @@ const Gallery = () => {
     <>
       <section>
         <div className="d-flex">
-          <div>
-            <Sidebar />
-          </div>
+          <Sidebar />
           <div className="navbarTop">
             <h3 className="navbarTopHeading">Websites</h3>
             <nav className="navbarContainer">
               <NavLink
                 to="/recentpublications"
-                className="navlinkUnactive"
-                activeClassName="navbaractive"
+                className="navlinkUnactiveRecentPublication"
+                activeClassName="navbaractiveRecentPublication"
               >
                 <span>Recent Publications</span>
               </NavLink>
 
               <NavLink
                 to="/gallery"
-                className="navlinkUnactive"
-                activeClassName="navbaractive"
+                className="navlinkUnactiveRecentPublication"
+                activeClassName="navbaractiveRecentPublication"
               >
                 <span>Gallery</span>
               </NavLink>
 
               <NavLink
                 to="/testimonials"
-                className="navlinkUnactive"
-                activeClassName="navbaractive"
+                className="navlinkUnactiveRecentPublication"
+                activeClassName="navbaractiveRecentPublication"
               >
                 <span>Testimonials</span>
               </NavLink>
@@ -68,8 +66,8 @@ const Gallery = () => {
             </nav>
 
             <div
-              className="d-flex align-items-center justify-content-between"
-              style={{ marginBottom: "2.18rem" }}
+              className="subHeadingButton"
+              style={{ marginBottom: "2.18rem", width: "85%" }}
             >
               <div>
                 <h4>Gallery</h4>

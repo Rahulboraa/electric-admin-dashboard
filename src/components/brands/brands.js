@@ -1,10 +1,10 @@
 import React from "react";
+import { useQuery } from "react-query";
 import { useHistory } from "react-router";
 import { NavLink } from "react-router-dom";
+import axios from "../../api/instance";
 import CommonTable from "../common/CommonTable";
 import Sidebar from "../common/sidebar";
-import { useQuery } from "react-query";
-import axios from "../../api/instance";
 
 const Brands = () => {
   const history = useHistory();
@@ -23,10 +23,8 @@ const Brands = () => {
   return (
     <>
       <div className="d-flex">
-        <div>
-          <Sidebar />
-        </div>
-        <div style={{ marginLeft: "81px" }}>
+        <Sidebar />
+        <div className="vehicleFull">
           <h3 className="navbarTopHeading">Vehicles</h3>
           <nav className="navbarContainer">
             <NavLink
@@ -60,6 +58,7 @@ const Brands = () => {
               alignItems: "center",
               marginBottom: "2.18rem",
             }}
+            className="subHeadingButton"
           >
             <h4> Brands </h4>
             <button

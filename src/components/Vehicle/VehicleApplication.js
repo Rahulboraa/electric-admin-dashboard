@@ -113,7 +113,7 @@ const AddVehicle = () => {
           <h5 className="basic__information">Basic Information</h5>
 
           <form onSubmit={handleFormSubmit}>
-            <section className="d-flex justify-content-between">
+            <section className="d-flex justify-content-between formData">
               <div>
                 <label className="vehicleLabel" htmlFor="Vehicle Name">
                   Vehicle Name
@@ -172,7 +172,7 @@ const AddVehicle = () => {
               </div>
             </section>
 
-            <section className="d-flex justify-content-between align-items-center">
+            <section className="d-flex justify-content-between align-items-center formData">
               <div>
                 <label className="vehicleLabel" htmlFor="Brand Name">
                   Price Range
@@ -218,8 +218,7 @@ const AddVehicle = () => {
 
             <hr />
             <h5 className="basic__information">Features</h5>
-            <section className="d-flex justify-content-between">
-              
+            <section className="d-flex justify-content-between formData">
               <div>
                 <label className="vehicleLabel" htmlFor="Maximum Speed">
                   Maximum Speed
@@ -269,8 +268,7 @@ const AddVehicle = () => {
 
             <hr />
             <h5 className="basic__information">Specifications</h5>
-            <section className="d-flex justify-content-between">
-
+            <section className="d-flex justify-content-between formData">
               <div>
                 <label className="vehicleLabel" htmlFor="Display">
                   Display
@@ -318,10 +316,9 @@ const AddVehicle = () => {
                   />
                 </div>
               </div>
-
             </section>
 
-            <section className="d-flex justify-content-between">
+            <section className="d-flex justify-content-between formData">
               <div>
                 <label
                   className="vehicleLabel"
@@ -394,7 +391,7 @@ const AddVehicle = () => {
               </div>
             </section>
 
-            <div className="d-flex justify-content-end actionButtons">
+            <div className="d-flex justify-content-end actionButtons formData">
               <button className="cancelBtn">Cancel</button>
               <button className="SaveNextBtn" type="submit">
                 Save and Next

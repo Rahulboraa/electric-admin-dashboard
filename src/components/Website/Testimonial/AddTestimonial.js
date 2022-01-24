@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "../../../api/instance";
 
 const AddTestimonial = () => {
-
   const [data, setData] = useState({
     text: "",
     author: "",
@@ -33,87 +32,86 @@ const AddTestimonial = () => {
   return (
     <>
       <form className="addform" onSubmit={handleAddTestimonial}>
-        <div className="addformInner">
-          <div>
-            <h2>Add Testimonial</h2>
-          </div>
-          <div>
-            <h4>X</h4>
-          </div>
-        </div>
-
-        <hr />
-
-        <main>
-          <div>
-            <label className="modalFormLabels">01. Dealer Name</label>
+        <div className="addFormWidth">
+          <div className="addformInner">
             <div>
-              <input
-                type="text"
-                placeholder="Enter the Dealer Name"
-                className="inputModalStyles"
-                name="text"
-                value={text}
-                onChange={handleInputChange}
-              />
+              <h2>Add Testimonial</h2>
+            </div>
+            <div>
+              <h4>X</h4>
             </div>
           </div>
 
-          <div>
-            <label className="modalFormLabels">02. Dealer’s Image</label>
-            <div>
-              <input
-                type="text"
-                placeholder="No file selected"
-                className="inputModalStyles"
-                name="author"
-                value={author}
-                onChange={handleInputChange}
-              />
-            </div>
-          </div>
+          <hr />
 
-          <div>
-            <label className="modalFormLabels">03. Dealership Type</label>
+          <main className="inputGaping">
             <div>
-              <input
-                type="text"
-                placeholder="Select the Dealership Type"
-                className="inputModalStyles"
-                name="videoUrl"
-                value={videoUrl}
-                onChange={handleInputChange}
-              />
+              <label className="modalFormLabels">01. Dealer Name</label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Enter the Dealer Name"
+                  className="inputModalStyles"
+                  name="text"
+                  value={text}
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
-          </div>
 
-          <div>
-            <label className="modalFormLabels">04. Review</label>
             <div>
-              <input
-                type="text"
-                placeholder="Enter the Full Review"
-                className="inputModalStyles"
-                name="companyName"
-                value={companyName}
-                onChange={handleInputChange}
-              />
+              <label className="modalFormLabels">02. Dealer’s Image</label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="No file selected"
+                  className="inputModalStyles"
+                  name="author"
+                  value={author}
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
-          </div>
-        </main>
 
-        <div
-          className="d-flex justify-content-between align-items-center"
-          style={{ width: "600px", marginBottom: "2rem" }}
-        >
-          <div>
-            <button className="SaveNextBtn" type="submit">
-              Submit
-            </button>
-          </div>
-          
-          <div>
-            <button className="clearBtn">Clear All</button>
+            <div>
+              <label className="modalFormLabels">03. Dealership Type</label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Select the Dealership Type"
+                  className="inputModalStyles"
+                  name="videoUrl"
+                  value={videoUrl}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="modalFormLabels">04. Review</label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Enter the Full Review"
+                  className="inputModalStyles"
+                  name="companyName"
+                  value={companyName}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+          </main>
+
+          <div className="d-flex justify-content-between align-items-center inputModalStylesBtn">
+            <div>
+              <button className="SaveNextBtn" type="submit">
+                Submit
+              </button>
+            </div>
+
+            <div>
+              <button className="clearBtn">Clear All</button>
+            </div>
           </div>
         </div>
       </form>

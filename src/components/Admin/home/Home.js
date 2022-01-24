@@ -62,11 +62,11 @@ const Home = () => {
   return (
     <div>
       <div className="Home__Container">
-        <div className="Home__First__Container">
+        <div>
           <Sidebar />
         </div>
         <div className="Home__Second__Container">
-            <div className="Home__Inner__Container__1">
+          <div className="Home__Inner__Container__1">
             <div className="Home__Inner__1">
               <img src={rectangle} className="Home__Inner__Img" />
               <div className="Home__Inner__div__1">

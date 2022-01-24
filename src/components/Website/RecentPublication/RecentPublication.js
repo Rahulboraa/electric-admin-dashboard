@@ -100,61 +100,56 @@ const RecentPublication = () => {
   return (
     <>
       <section className="d-flex">
-        <div>
-          <Sidebar />
-        </div>
+        <Sidebar />
 
         <div className="navbarTop">
           <h3 className="navbarTopHeading">Websites</h3>
           <nav className="navbarContainer">
             <NavLink
               to="/recentpublications"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
+              className="navlinkUnactiveRecentPublication"
+              activeClassName="navbaractiveRecentPublication"
             >
               <span>Recent Publications</span>
             </NavLink>
 
             <NavLink
               to="/gallery"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
+              className="navlinkUnactiveRecentPublication"
+              activeClassName="navbaractiveRecentPublication"
             >
               <span>Gallery</span>
             </NavLink>
 
             <NavLink
               to="/testimonials"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
+              className="navlinkUnactiveRecentPublication"
+              activeClassName="navbaractiveRecentPublication"
             >
               <span>Testimonials</span>
             </NavLink>
             <hr />
           </nav>
-          <div
-            style={{ marginBottom: "2.18rem" }}
-            className="d-flex justify-content-between align-items-center"
-          >
+          <div style={{ marginBottom: "2.18rem" }} className="subHeadingButton">
             <h4>Recent Publications</h4>
             <button className="mainAddBtn" onClick={addRecentPublication}>
               New Publication
             </button>
           </div>
-
-          <Table bordered responsive borderless>
-            <thead>
-              <tr>
-                <th>Publication Date</th>
-                <th>Feature Image</th>
-                <th>Publication Title</th>
-                <th>Publication Document</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                {/* <td>1 Dec, 2021</td>
+          <div className="TableInfo">
+            <Table bordered responsive borderless>
+              <thead>
+                <tr>
+                  <th>Publication Date</th>
+                  <th>Feature Image</th>
+                  <th>Publication Title</th>
+                  <th>Publication Document</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  {/* <td>1 Dec, 2021</td>
                 <td>
                   <img
                     src={member2}
@@ -165,21 +160,22 @@ const RecentPublication = () => {
                 <td>Associate Director</td>
                 <td>Example.pdf</td>
                 <td>Edit Publication</td> */}
-                {data.length > 0 &&
-                  data?.map((items) => (
-                    <>
-                      <td></td>
-                      <td>
-                        <img src="" alt="" />
-                      </td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </>
-                  ))}
-              </tr>
-            </tbody>
-          </Table>
+                  {data.length > 0 &&
+                    data?.map((items) => (
+                      <>
+                        <td></td>
+                        <td>
+                          <img src="" alt="" />
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </>
+                    ))}
+                </tr>
+              </tbody>
+            </Table>
+          </div>
         </div>
       </section>
     </>

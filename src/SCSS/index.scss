@@ -12,7 +12,6 @@
 @import "./pages/Vehicle/Sidebar.scss";
 @import "./pages/Home/Home.scss";
 @import "./pages/merchandise/merchandise.scss";
-
 * {
   margin: 0;
   padding: 0;
@@ -32,9 +31,132 @@
 }
 
 tr > td {
-  padding-top: 1.5625rem !important;
-  padding-left: 3.625rem !important;
-  padding-bottom: 1.9375rem !important;
+  padding: 1.5rem 0 1.5rem 2rem !important ;
+}
+
+tr > .tableTd {
+  padding-top: 1.5rem !important;
+  padding-left: 0 !important;
+  padding-bottom: 1rem !important;
+}
+
+.navbarContainer {
+  margin-bottom: 2.5625rem;
+  display: flex;
+  gap: 2rem;
+}
+
+@include sm {
+  .navbarContainer {
+    justify-content: space-between;
+  }
+}
+
+@include sm {
+  .TableInfo {
+    width: 90% !important;
+  }
+}
+
+@include xs {
+  .TableInfo {
+    width: 90% !important;
+  }
+}
+
+@include xsl {
+  .TableInfo {
+    width: 90% !important;
+  }
+}
+
+.vehicleFull {
+  width: 100%;
+  margin-left: 5.0625rem;
+}
+
+.subHeadingButton {
+  display: flex !important;
+  justify-content: space-between;
+}
+@include xs {
+  .subHeadingButton {
+    gap: 1rem;
+    width: 90% !important;
+    align-items: center;
+
+    h4 {
+      font-size: 18px !important;
+    }
+  }
+}
+
+@include sm {
+  .subHeadingButton {
+    gap: 1rem;
+    width: 90% !important;
+    font-size: 18px !important;
+  }
+}
+
+@include xsl {
+  .vehicleFull {
+    margin: 0 auto;
+  }
+}
+
+@include xs {
+  .vehicleFull {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    margin: 1rem 2rem;
+  }
+}
+
+@include sm {
+  .vehicleFull {
+    margin: 0 auto;
+  }
+}
+
+.TableTr {
+  display: flex;
+  justify-content: space-between;
+}
+
+@include xs {
+  .TableTr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@include sm {
+  .TableTr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@include sm {
+  .formData {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+}
+
+@include xs {
+  .formData {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
 }
 
 tr > th {
@@ -72,18 +194,35 @@ td:nth-last-child(-n + 1) {
   // margin-top: 5.0625rem;
   margin-top: 1rem;
   margin-left: 5rem;
+  margin-right: 5rem;
+  width: 100%;
+}
+
+@include sm {
+  .navbarTop {
+    margin: 1rem 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+  }
+}
+
+@include xs {
+  .navbarTop {
+    margin: 1rem 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // align-items: center;
+  }
 }
 
 .navbarTopHeading {
   margin-bottom: 3.8125rem;
   margin-top: 5.0625rem;
-}
-
-.navbarContainer {
-  margin-bottom: 2.5625rem;
-  span {
-    margin-right: 2.5625rem;
-  }
 }
 
 .actionButtons {
@@ -107,13 +246,17 @@ td:nth-last-child(-n + 1) {
   border: 3px solid #d5d5d5;
 }
 
+.inputGaping {
+  display: grid;
+  gap: 1rem;
+}
+
 .inputModalStyles {
   border: none;
   outline: none;
   background-color: #e5e5e5;
   border-bottom: 1px solid #191919;
-  margin-bottom: 4.875rem;
-  width: 600px;
+  width: 100%;
   margin-top: 1rem;
   font-family: Red Hat Display;
   font-style: normal;
@@ -121,6 +264,11 @@ td:nth-last-child(-n + 1) {
   font-size: 20px;
   line-height: 160%;
   color: #191919;
+}
+
+.inputModalStylesBtn {
+  margin: 2rem 0;
+  width: 100%;
 }
 
 .modalFormLabels {
@@ -200,6 +348,47 @@ figure {
   }
 }
 
+@include xs {
+  .navlinkUnactive {
+    font-size: 1.1rem;
+  }
+}
+
+@include sm {
+  .navlinkUnactive {
+    font-size: 1.1rem;
+  }
+}
+
+.navlinkUnactiveRecentPublication {
+  text-decoration: none;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 160%;
+  color: #191919;
+
+  &:hover {
+    list-style: none;
+    color: #191919;
+  }
+}
+
+@include xs {
+  .navlinkUnactiveRecentPublication {
+    max-width: min-content;
+    font-size: 1.1rem;
+  }
+}
+
+@include sm {
+  .navlinkUnactiveRecentPublication {
+    max-width: min-content;
+    font-size: 1.1rem;
+  }
+}
+
 // !navbarActive
 .navbaractive {
   text-decoration: underline;
@@ -214,6 +403,47 @@ figure {
   color: #191919;
 }
 
+@include xs {
+  .navbaractive {
+    font-size: 1.1rem;
+    width: max-content;
+  }
+}
+
+@include sm {
+  .navbaractive {
+    font-size: 1.1rem;
+    width: max-content;
+  }
+}
+
+.navbaractiveRecentPublication {
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 160%;
+  text-transform: capitalize;
+  color: #191919;
+}
+
+@include xs {
+  .navbaractiveRecentPublication {
+    font-size: 1.1rem;
+    width: min-content;
+  }
+}
+
+@include sm {
+  .navbaractiveRecentPublication {
+    font-size: 1.1rem;
+    width: min-content;
+  }
+}
+
 // !AddForm Common Classes
 .addform {
   display: flex;
@@ -223,10 +453,38 @@ figure {
   background: #e5e5e5;
 }
 
+@include xs {
+  .addform {
+    font-size: 1.1rem;
+  }
+}
+
+@include sm {
+  .addform {
+    font-size: 1.1rem;
+  }
+}
+
+.addFormWidth {
+  width: 600px;
+}
+
+@include xs {
+  .addFormWidth {
+    width: 300px;
+  }
+}
+
+@include sm {
+  .addFormWidth {
+    width: 500px;
+  }
+}
+
 .addformInner {
   display: flex;
   justify-content: space-between;
-  width: 600px;
+  width: 100%;
   align-items: center;
   margin-top: 62px;
 }
@@ -248,4 +506,35 @@ figure {
   justify-content: center;
   /* margin: 10px; */
   /* padding-left: 300px; */
+}
+
+.vehicleTableData {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.tableData {
+  font-weight: 500;
+  color: #000000;
+}
+
+.tableHeading {
+  color: #acacac;
+}
+
+.hrLine {
+  // color: #d5d5d5;
+  // border-width: 1px;
+}
+
+.buttonStyle {
+  background-color: white;
+  border: 1px solid #acacac;
+  color: #acacac;
+  padding: 0.5rem;
+}
+.VehicleHead {
+  font-weight: 900;
+  margin: 0 1rem;
 }

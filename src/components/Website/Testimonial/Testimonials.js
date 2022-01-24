@@ -34,32 +34,30 @@ const Testimonials = () => {
     <>
       <section>
         <div className="d-flex">
-          <div>
-            <Sidebar />
-          </div>
+          <Sidebar />
           <div className="navbarTop">
             <h3 className="navbarTopHeading">Websites</h3>
             <nav className="navbarContainer">
               <NavLink
                 to="/recentpublications"
-                className="navlinkUnactive"
-                activeClassName="navbaractive"
+                className="navlinkUnactiveRecentPublication"
+                activeClassName="navbaractiveRecentPublication"
               >
                 <span>Recent Publications</span>
               </NavLink>
 
               <NavLink
                 to="/visitingcard"
-                className="navlinkUnactive"
-                activeClassName="navbaractive"
+                className="navlinkUnactiveRecentPublication"
+                activeClassName="navbaractiveRecentPublication"
               >
                 <span>Gallery</span>
               </NavLink>
 
               <NavLink
                 to="/testimonials"
-                className="navlinkUnactive"
-                activeClassName="navbaractive"
+                className="navlinkUnactiveRecentPublication"
+                activeClassName="navbaractiveRecentPublication"
               >
                 <span>Testimonials</span>
               </NavLink>
@@ -67,7 +65,7 @@ const Testimonials = () => {
             </nav>
 
             <div
-              className="d-flex align-items-center justify-content-between"
+              className="subHeadingButton"
               style={{ marginBottom: "2.18rem" }}
             >
               <div>
@@ -79,63 +77,65 @@ const Testimonials = () => {
                 </button>
               </div>
             </div>
-            <Table bordered responsive borderless style={{ width: "880px" }}>
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Customer </th>
-                  <th>Dealership Type</th>
-                  <th>Reviews</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1 Dec, 2021</td>
-                  <td>
-                    <img
-                      src={member2}
-                      alt="member"
-                      style={{ marginRight: "10px" }}
-                    />
-                    Dianne Russell
-                  </td>
-                  <td>Associate Director</td>
-                  <td>Watch and pray that you might not enter...</td>
-                  <td>Edit Testimonial</td>
-                </tr>
-                <tr>
-                  <td>1 Dec, 2021</td>
-                  <td>
-                    <img
-                      src={member}
-                      alt="member"
-                      style={{ marginRight: "10px" }}
-                    />
-                    Dianne Russell
-                  </td>
-                  <td>Associate Director</td>
-                  <td>Watch and pray that you might not enter...</td>
-                  <td>Edit Testimonial</td>
-                </tr>
-                <tr>
-                  <td>1 Dec, 2021</td>
+            <div className="TableInfo">
+              <Table bordered responsive borderless>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Customer </th>
+                    <th>Dealership Type</th>
+                    <th>Reviews</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1 Dec, 2021</td>
+                    <td>
+                      <img
+                        src={member2}
+                        alt="member"
+                        style={{ marginRight: "10px" }}
+                      />
+                      Dianne Russell
+                    </td>
+                    <td>Associate Director</td>
+                    <td>Watch and pray that you might not enter...</td>
+                    <td>Edit Testimonial</td>
+                  </tr>
+                  <tr>
+                    <td>1 Dec, 2021</td>
+                    <td>
+                      <img
+                        src={member}
+                        alt="member"
+                        style={{ marginRight: "10px" }}
+                      />
+                      Dianne Russell
+                    </td>
+                    <td>Associate Director</td>
+                    <td>Watch and pray that you might not enter...</td>
+                    <td>Edit Testimonial</td>
+                  </tr>
+                  <tr>
+                    <td>1 Dec, 2021</td>
 
-                  <td>
-                    <img
-                      src={member}
-                      alt="member"
-                      style={{ marginRight: "10px" }}
-                    />
-                    Dianne Russell
-                  </td>
-                  <td>Associate Director</td>
-                  <td>Watch and pray that you might not enter...</td>
+                    <td>
+                      <img
+                        src={member}
+                        alt="member"
+                        style={{ marginRight: "10px" }}
+                      />
+                      Dianne Russell
+                    </td>
+                    <td>Associate Director</td>
+                    <td>Watch and pray that you might not enter...</td>
 
-                  <td>Edit Testimonial</td>
-                </tr>
-              </tbody>
-            </Table>
+                    <td>Edit Testimonial</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
           </div>
         </div>
       </section>
