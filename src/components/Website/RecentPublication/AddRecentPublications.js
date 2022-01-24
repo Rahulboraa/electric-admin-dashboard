@@ -1,20 +1,86 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "../../../api/instance";
+import { useHistory } from "react-router-dom";
 
 const AddRecentPublications = () => {
+  const [data, setData] = useState({
+    date: "",
+    text: "",
+    recentPDF: "",
+  });
+
+  const { date, text, recentPDF } = data;
+
+  const [recent, setImageSelected] = useState();
+
+  const handleInputChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setData({ ...data, [name]: value });
+  };
+
+  const addProduct = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("recent", recent);
+    formData.append("date", date);
+    formData.append("text", text);
+    formData.append("recentPDF", recentPDF);
+    axios
+      .post(`/recentPub/add`, formData)
+      .then((result) => {
+        console.log(result);
+        setData({});
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  let history = useHistory();
+
   return (
     <>
-      <form className="addform">
-        <div className="addFormWidth">
-          <div className="addformInner">
+      <form className="addform" onSubmit={addProduct}>
+      <div className="addFormWidth">
+        <div className="addformInner">
+          <div>
+            <h2>Add Publication</h2>
+          </div>
+
+          <div>
+            <h4 onClick={() => history.goBack()}>X</h4>
+          </div>
+        </div>
+
+        <hr />
+
+        <main>
+          <div>
+            <label className="modalFormLabels">01. Feature Image</label>
             <div>
-              <h2>Add Publication</h2>
+              <input
+                type="text"
+                placeholder="No file selected"
+                className="inputModalStyles"
+                type="file"
+                onChange={(e) => {
+                  setImageSelected(e.target.files[0]);
+                }}
+              />
             </div>
+          </div>
+
+          <div>
+            <label className="modalFormLabels">02. Publication Title</label>
             <div>
               <h4>X</h4>
             </div>
           </div>
           <hr />
           <main>
+
+          <div>
+            <label className="modalFormLabels">03. Publication Document</label>
             <div>
               <label className="modalFormLabels">01. Feature Image</label>
               <div>
@@ -47,6 +113,7 @@ const AddRecentPublications = () => {
                 />
               </div>
             </div>
+            </div>
           </main>
           <div className="d-flex justify-content-between align-items-center inputModalStylesBtn">
             <div>
@@ -56,86 +123,32 @@ const AddRecentPublications = () => {
               <button className="clearBtn">Clear All</button>
             </div>
           </div>
+        </main>
+
+        <div
+          className="d-flex justify-content-between align-items-center"
+          style={{ width: "600px", marginBottom: "2rem" }}
+        >
+          <div>
+            <button className="SaveNextBtn" type="submit">
+              Submit
+            </button>
+          </div>
+
+          <div>
+            <button
+              className="clearBtn"
+              type="reset"
+              onClick={() => {
+                setData({});
+              }}
+            >
+              Clear All
+            </button>
+          </div>
+        </div>
         </div>
       </form>
-
-      {/* <form className="text-center"                                                                                                                                                        onSubmit={addProduct}>
-        <h3>Recent Publication</h3>
-        <input
-        className="text-center"
-        type="file"
-        onChange={(e) => {
-            setImageSelected(e.target.files[0]);
-        }}
-        />
-        <div>
-        <label htmlFor="Date">Date:&nbsp; </label>
-        <input
-        type="date"
-        value={date}
-            onChange={(e) => {
-                setDate(e.target.value);
-            }}
-            />
-            </div>
-            <br />
-            <div>
-            <label htmlFor="Name">Name:&nbsp;</label>
-            <input
-            type="text"
-            value={text}
-            onChange={(e) => {
-                setText(e.target.value);
-            }}
-            />
-            </div>
-            <button type="submit">Submit</button>
-            </form>
-            
-            <br />
-            
-            <div>
-            <h3>Display Recent Publications</h3>
-            <div className="explore_heading" id="RecentPublication">
-            <div className="topWrapper"></div>
-            <p className="exploreCreative">Recent Publications</p>
-            </div>
-            {data?.map(({ title, text, date, image, id }) => {
-                return (
-                    <React.Fragment key={id}>
-                    <div style={{ border: "1px solid black", marginBottom: "16px" }}>
-                    <p>{title}</p>
-                    <p>{text}</p>
-                    <p>{date}</p>
-                <figure>
-                <img
-                src={image}
-                    alt=""
-                    style={{ width: "300px", height: "200px" }}
-                    />
-                    </figure>
-                    <button
-                    onClick={() => {
-                        handleRecentPublicationId(id);
-                    }}
-                    >
-                    Update Recent Publication
-                    </button>
-                    
-                    <br />
-                    <br />
-                    <button
-                    onClick={() => {
-                        RemoveRecentPublication(id);
-                    }}
-                    >
-                    Delete
-                    </button>
-                    </div>
-                    </React.Fragment>
-                    );
-                })}
-            </div> */}
     </>
   );
 };

@@ -15,7 +15,6 @@ const Login = () => {
     password: "",
   });
 
-  console.log(data);
   const handleInputChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -26,11 +25,7 @@ const Login = () => {
 
   const handleSubmitForm = () => {
     axios
-      .post(`/user/login`, data, {
-        headers: {
-          authorization: getToken,
-        },
-      })
+      .post(`/user/login`, data)
       .then((result) => {
         setData("");
         if (result.data.status === true) {

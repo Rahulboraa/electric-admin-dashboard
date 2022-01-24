@@ -1,104 +1,67 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import Sidebar from "../../common/sidebar";
 import gallery from "../../../assets/Gallery/gallery.svg";
 import gallery2 from "../../../assets/Gallery/gallery2.svg";
 import gallery3 from "../../../assets/Gallery/galllery3.svg";
-import { useHistory } from "react-router-dom";
-import axios from "../../../api/instance";
+import GalleryNavigation from "./Navigation/GalleryNavigation";
+// import InfiniteScroll from "react-infinite-scroll-component";
 
-const Gallery = () => {
-  const history = useHistory();
-  const handleAddImage = () => {
-    history.push("./addgallery");
-  };
-
-  // !Fetch Gallery
-  const [data, setData] = useState([]);
-  const FetchGallery = () => {
-    axios
-      .get("/gallery")
-      .then((result) => {
-        setData(result.data.data);
-        console.log(result.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  useEffect(() => {
-    FetchGallery();
-  }, []);
-
+function Gallery() {
   return (
     <>
-      <section>
-        <div className="d-flex">
+      <div className="d-flex">
+        <div>
           <Sidebar />
-          <div className="navbarTop">
-            <h3 className="navbarTopHeading">Websites</h3>
-            <nav className="navbarContainer">
-              <NavLink
-                to="/recentpublications"
-                className="navlinkUnactiveRecentPublication"
-                activeClassName="navbaractiveRecentPublication"
-              >
-                <span>Recent Publications</span>
-              </NavLink>
+        </div>
+        <div className="navbarTop">
+          <h3 className="navbarTopHeading">Websites</h3>
+          <nav className="navbarContainer">
+            <GalleryNavigation />
+          </nav>
 
-              <NavLink
-                to="/gallery"
-                className="navlinkUnactiveRecentPublication"
-                activeClassName="navbaractiveRecentPublication"
-              >
-                <span>Gallery</span>
-              </NavLink>
-
-              <NavLink
-                to="/testimonials"
-                className="navlinkUnactiveRecentPublication"
-                activeClassName="navbaractiveRecentPublication"
-              >
-                <span>Testimonials</span>
-              </NavLink>
-              <hr />
-            </nav>
-
-            <div
-              className="subHeadingButton"
-              style={{ marginBottom: "2.18rem", width: "85%" }}
-            >
-              <div>
-                <h4>Gallery</h4>
-              </div>
-              <div>
-                <button className="mainAddBtn" onClick={handleAddImage}>
-                  Add Image
-                </button>
-              </div>
+          <div
+            className="d-flex align-items-center justify-content-between"
+            style={{ marginBottom: "2.18rem" }}
+          >
+            <div>
+              <h4>Gallery</h4>
             </div>
-
-            {/* Dummy Image Section */}
-
+            <div>
+              <button className="mainAddBtn">Add Image</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <InfiniteScroll
+        // dataLength={items.length}
+        // next={fetchData}
+        // hasMore={hasMore}
+        loader={<h2>Loading ....</h2>}
+        endMessage={
+          <h3 style={{ textAlign: "center" }}>You have came to an end!</h3>
+        }
+      > */}
+      <div className="container">
+        <div className="row m-2">
+          <>
             <section className="gallery_list">
-              {data?.map((item, i) => (
-                <>
-                  <div className="gallery_item">
-                    <img
-                      src={item?.imageUrl}
-                      style={{
-                        objectFit: "cover",
-                        width: "247px",
-                        height: "190px",
-                      }}
-                    />
-                  </div>
-                </>
-              ))}
+              <>
+                <div
+                  className="gallery_item"
+                  style={{ display: "flex" }}
+                  // key={item.id}
+                >
+                  <img
+                    // src={item?.imageUrl}
+                    style={{
+                      objectFit: "cover",
+                      width: "247px",
+                      height: "190px",
+                    }}
+                  />
+                </div>
+              </>
             </section>
-
-            {/* Dummy Image Section */}
             <section
               style={{
                 display: "flex",
@@ -118,11 +81,12 @@ const Gallery = () => {
                 <img src={gallery2} alt="gallery" />
               </figure>
             </section>
-          </div>
+          </>
         </div>
-      </section>
+      </div>
+      {/* </InfiniteScroll> */}
     </>
   );
-};
+}
 
 export default Gallery;

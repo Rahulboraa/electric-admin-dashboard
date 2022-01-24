@@ -1,11 +1,8 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "../../api/instance";
 
 const AddTeamMember = () => {
-  //!Getting User Token
-  const getToken = localStorage.getItem("token");
-  const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
-
   const [profilePic, setImageSelected] = useState("");
 
   const [data, setData] = useState({
@@ -24,6 +21,7 @@ const AddTeamMember = () => {
   };
 
   // ! Add Team Member
+
   const handleAddTeamMember = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -32,24 +30,38 @@ const AddTeamMember = () => {
     formData.append("designation", designation);
     formData.append("profilePic", profilePic);
     axios
-      .post(`/Team/add`, formData, {
-        headers: {
-          "x-access-token": getToken ? getToken : parsedLogin,
-        },
-      })
+      .post(`/Team/add`, formData)
       .then((result) => {
         setData(result);
+        history.push("./teammember");
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
+  const handleReset = () => {
+    setData({});
+  };
+
+  const history = useHistory();
+
   return (
     <>
       <form onSubmit={handleAddTeamMember} className="addform">
-        <div className="addFormWidth">
-          <div className="addformInner">
+      <div className="addFormWidth">
+        <div className="addformInner">
+          <div>
+            <h2>Add Team Member</h2>
+          </div>
+          <div>
+            <h4 onClick={() => history.goBack()}>X</h4>
+          </div>
+        </div>
+        <hr />
+        <main>
+          <div>
+            <label className="modalFormLabels">01. Profile Picture</label>
             <div>
               <h2>Add Team Member</h2>
             </div>
@@ -123,6 +135,20 @@ const AddTeamMember = () => {
               <button className="clearBtn">Clear All</button>
             </div>
           </div>
+        </main>
+        <div
+          className="d-flex justify-content-between align-items-center"
+          style={{ width: "600px", marginBottom: "2rem" }}
+        >
+          <div>
+            <button className="SaveNextBtn">Submit</button>
+          </div>
+          <div>
+            <button className="clearBtn" type="reset" onClick={handleReset}>
+              Clear All
+            </button>
+          </div>
+        </div>
         </div>
       </form>
     </>

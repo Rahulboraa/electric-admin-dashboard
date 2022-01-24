@@ -1,22 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { NavLink } from "react-router-dom";
-
 import { Table } from "reactstrap";
+import axios from "../../api/instance";
 import Sidebar from "../common/sidebar";
-const Vehicle = ({}) => {
+import Navigation from "./Navigation/Navigation";
+
+const Vehicle = () => {
   const history = useHistory();
-
-  const handleBrand = () => {
-    history.push("./brands");
-  };
-
-  const handleVehicleApplication = () => {
-    history.push("./vehicleapplication");
-  };
 
   const addVehicle = () => {
     history.push("./addvehicle");
+  };
+
+  const [data, setData] = useState();
+
+  const fetchVehicleDetails = () => {
+    axios
+      .get(`/product/get`)
+      .then((result) => {
+        setData(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchVehicleDetails();
+  }, []);
+
+  const handleRedirect = (id) => {
+    history.push(`./vehicle/edit/${id}`);
   };
 
   return (
@@ -26,39 +40,9 @@ const Vehicle = ({}) => {
         <div className="vehicleFull">
           <h3 className="navbarTopHeading">Vehicles</h3>
           <nav className="navbarContainer">
-            <NavLink
-              to="/vehicleapplication"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Vehicles Application</span>
-            </NavLink>
-
-            <NavLink
-              to="/vehicle"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Vehicles</span>
-            </NavLink>
-
-            <NavLink
-              to="/brands"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Brand</span>
-            </NavLink>
+            <Navigation />
           </nav>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: "2.18rem",
-            }}
-            className="subHeadingButton"
-          >
+          <div className="addBrandNav">
             <h4> Vehicles </h4>
             <button
               style={{ marginBottom: "8px" }}
@@ -69,40 +53,39 @@ const Vehicle = ({}) => {
             </button>
           </div>
           <div className="TableInfo">
-            <Table bordered responsive borderless>
-              <thead>
-                <tr>
-                  <th>Model Number</th>
-                  <th>Brand Name</th>
-                  <th>Vehicle Name</th>
-                  <th>Vehicle Type</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>555-0112</td>
-                  <td>Hero Electic</td>
-                  <td>LO:EV</td>
-                  <td>Barone LLC.</td>
-                  <td>On Review</td>
-                </tr>
-                <tr>
-                  <td>555-0112</td>
-                  <td>Hero Electic</td>
-                  <td>LO:EV</td>
-                  <td>Barone LLC.</td>
-                  <td>On Review</td>
-                </tr>
-                <tr>
-                  <td>555-0112</td>
-                  <td>Hero Electic</td>
-                  <td>LO:EV</td>
-                  <td>Barone LLC.</td>
-                  <td>On Review</td>
-                </tr>
-              </tbody>
-            </Table>
+
+          <Table bordered responsive borderless>
+            <thead>
+              <tr>
+                <th>Model Number</th>
+                <th>Brand Name</th>
+                <th>Vehicle Name</th>
+                <th>Vehicle Type</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data?.map(({ id, vehicleType, vehicleName, brand }) => {
+                return (
+                  <tr>
+                    <React.Fragment key={id}>
+                      <td>{id}</td>
+                      <td>{brand}</td>
+                      <td>{vehicleName}</td>
+                      <td>{vehicleType}</td>
+                      <td
+                        onClick={() => {
+                          handleRedirect(id);
+                        }}
+                      >
+                        Edit Details
+                      </td>
+                    </React.Fragment>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
           </div>
         </div>
       </div>

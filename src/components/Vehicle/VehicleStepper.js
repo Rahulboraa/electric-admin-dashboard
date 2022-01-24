@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import {
   Dropdown,
   DropdownToggle,
@@ -7,6 +8,7 @@ import {
 } from "reactstrap";
 import Sidebar from "../common/sidebar";
 import upload from "./../../assets/vehicles/upload.svg";
+import Navigation from "./Navigation/Navigation";
 
 const VehicleStepper = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -21,9 +23,7 @@ const VehicleStepper = () => {
         <div className="navbarTop">
           <h3 className="navbarTopHeading">Vehicles</h3>
           <nav className="navbarContainer">
-            <span>Vehicle Application</span>
-            <span>Vehicles</span>
-            <span>Brand</span>
+            <Navigation />
           </nav>
           <h4 style={{ marginBottom: "2.18rem" }}> Add Vehicle</h4>
 

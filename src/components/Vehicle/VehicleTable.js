@@ -1,9 +1,33 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
-import VerticalLinearStepper from "./VehicleStepperData";
+import axios from "../../api/instance";
+import Navigation from "./Navigation/Navigation";
+import { useHistory } from "react-router-dom";
 
 const VehicleTable = () => {
+  const [data, setData] = useState();
+  const fetchVehicleDetails = () => {
+    axios
+      .get(`/product`)
+      .then((result) => {
+        setData(result.data.products);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchVehicleDetails();
+  }, []);
+
+  const history = useHistory();
+
+  const handleRedirect = (id) => {
+    history.push(`/edit/${id}`);
+  };
+
   return (
     <>
       <div className="d-flex">
@@ -11,75 +35,48 @@ const VehicleTable = () => {
         <div className="vehicleFull">
           <h3 className="navbarTopHeading">Vehicles</h3>
           <nav className="navbarContainer">
-            <NavLink
-              to="/vehicleapplication"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Vehicles Application</span>
-            </NavLink>
-
-            <NavLink
-              to="/vehicle"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Vehicles</span>
-            </NavLink>
-
-            <NavLink
-              to="/brands"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Brand</span>
-            </NavLink>
+            <Navigation />
           </nav>
           <h4 style={{ marginBottom: "2.18rem" }}> Vehicles Applications</h4>
-          {/* <CommonTable /> */}
           <div>
             <button className="buttonStyle">Back</button>
             <span className="VehicleHead">LOFI</span>
             <button className="buttonStyle">Back To Application</button>
           </div>
-          <tr className="TableTr">
-            <td className="tableTd">
-              <span className="tableHeading">Date of application</span>
-              <p className="tableData">Aug 22,2021</p>
+          <Table bordered responsive borderless>
+            <thead>
               <tr>
-                <td className="tableTd">
-                  <span className="tableHeading">Investment Budget</span>
-                  <p className="tableData">10-15Lacs</p>
-                </td>
+                <th>Application Number</th>
+                <th>Brand Name</th>
+                <th>Vehicle Name</th>
+                <th>Dealer Name</th>
+                <th>Status</th>
+                <th>Action</th>
               </tr>
-            </td>
-            <td className="tableTd">
-              <span className="tableHeading">Application No.</span>
-              <p className="tableData">ST-4213730012021</p>
-              <tr>
-                <td className="tableTd">
-                  <span className="tableHeading">Property/Showroom</span>
-                  <p className="tableData">Own Property</p>
-                </td>
-              </tr>
-            </td>
-            <td className="tableTd">
-              <span className="tableHeading">Preferred City & State</span>
-              <p className="tableData">Gurugram</p>
-              <tr>
-                <td className="tableTd">
-                  <span className="tableHeading">Showroom Area</span>
-                  <p className="tableData">Less than 1000 sqft</p>
-                </td>
-              </tr>
-            </td>
-            <td className="tableTd">
-              <span className="tableHeading">Store Format</span>
-              <p className="tableData">Flagship</p>
-            </td>
-          </tr>
-          <hr className="hrLine" />
-          <VerticalLinearStepper />
+            </thead>
+            <tbody>
+              {data?.map(({ id, productName, vehicleType, text }) => {
+                return (
+                  <tr>
+                    <React.Fragment key={id}>
+                      <td>{id}</td>
+                      <td>{productName}</td>
+                      <td>{text}</td>
+                      <td> - </td>
+                      <td> - </td>
+                      <td
+                        onClick={() => {
+                          handleRedirect(id);
+                        }}
+                      >
+                        Edit Details
+                      </td>
+                    </React.Fragment>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
         </div>
       </div>
     </>

@@ -3,7 +3,6 @@ import logo from "../../assets/Admin/logo.svg";
 import User from "../../assets/Admin/user.svg";
 import booking from "../../assets/Admin/booking.svg";
 import testRide from "../../assets/Admin/testride.svg";
-// import becomeDealer from "../Img&Svg/Admin/becomeDealer.svg";
 import Support from "../../assets/Admin/support.svg";
 import store from "../../assets/Admin/store.svg";
 import teams from "../../assets/Admin/teams.svg";

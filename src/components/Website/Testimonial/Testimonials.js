@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
 import axios from "../../../api/instance";
 import member from "../../../assets/Team/member.svg";
 import member2 from "../../../assets/Team/member2.svg";
 import Sidebar from "../../common/sidebar";
+import GalleryNavigation from "../Gallery/Navigation/GalleryNavigation";
 
 const Testimonials = () => {
   const history = useHistory();
@@ -38,30 +38,7 @@ const Testimonials = () => {
           <div className="navbarTop">
             <h3 className="navbarTopHeading">Websites</h3>
             <nav className="navbarContainer">
-              <NavLink
-                to="/recentpublications"
-                className="navlinkUnactiveRecentPublication"
-                activeClassName="navbaractiveRecentPublication"
-              >
-                <span>Recent Publications</span>
-              </NavLink>
-
-              <NavLink
-                to="/visitingcard"
-                className="navlinkUnactiveRecentPublication"
-                activeClassName="navbaractiveRecentPublication"
-              >
-                <span>Gallery</span>
-              </NavLink>
-
-              <NavLink
-                to="/testimonials"
-                className="navlinkUnactiveRecentPublication"
-                activeClassName="navbaractiveRecentPublication"
-              >
-                <span>Testimonials</span>
-              </NavLink>
-              <hr />
+              <GalleryNavigation />
             </nav>
 
             <div

@@ -537,4 +537,10 @@ figure {
 .VehicleHead {
   font-weight: 900;
   margin: 0 1rem;
+  .addBrandNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.18rem;
+  }
 }

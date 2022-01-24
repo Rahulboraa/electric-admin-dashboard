@@ -51,15 +51,7 @@ const Brands = () => {
               <span>Brand</span>
             </NavLink>
           </nav>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              marginBottom: "2.18rem",
-            }}
-            className="subHeadingButton"
-          >
+          <div className="addBrandNav">
             <h4> Brands </h4>
             <button
               style={{ marginBottom: "8px" }}
