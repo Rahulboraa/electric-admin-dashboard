@@ -16,7 +16,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Sidebar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const loginDetails = useSelector((state) => state.login.user);
 
