@@ -6,7 +6,7 @@ import rectangle from "../../../assets/Admin/rectangle.png";
 function NewStore() {
   return (
     <div className="Home__Container">
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", width: "100%" }}>
         <Sidebar />
         <div className="Home__Second__Container">
           <h2>Widgets</h2>
