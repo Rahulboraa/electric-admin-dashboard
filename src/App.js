@@ -33,6 +33,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import EditVehicle from "./components/Vehicle/EditVehicle";
 import EditVehicleTable from "./components/Vehicle/EditVehicleTable";
+import NewDealers from "./components/Admin/home/NewDealers";
+import NewStore from "./components/Admin/home/NewStore";
 
 function App() {
   const queryClient = new QueryClient();
@@ -47,7 +49,11 @@ function App() {
             <Route exact path="/vehicleapplication" component={VehicleTable} />
             <Route exact path="/vehicle" component={Vehicle} />
             <Route exact path="/edit/:id" component={EditVehicle} />
-            <Route exact path="/vehicle/edit/:id" component={EditVehicleTable} />
+            <Route
+              exact
+              path="/vehicle/edit/:id"
+              component={EditVehicleTable}
+            />
             <Route exact path="/vehiclestepper" component={VehicleStepper} />
             <Route exact path="/addvehicle" component={AddVehicle} />
 
@@ -61,6 +67,9 @@ function App() {
             <Route exact path="/store" component={Store} />
             <Route exact path="/addstore" component={AddStore} />
             <Route exact path="/home" component={Home} />
+            <Route exact path="/vehiclesales" component={Home} />
+            <Route exact path="/newdealers" component={NewDealers} />
+            <Route exact path="/newstore" component={NewStore} />
             <Route exact path="/dealarform" component={DealarForm} />
             <Route
               exact

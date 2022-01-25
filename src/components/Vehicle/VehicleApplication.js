@@ -102,14 +102,10 @@ const AddVehicle = () => {
   return (
     <>
       <div className="d-flex">
-        <div>
-          <Sidebar />
-        </div>
+        <Sidebar />
         <div className="navbarTop">
           <h3 className="navbarTopHeading">Vehicles</h3>
-          <nav className="navbarContainer">
-            <Navigation />
-          </nav>
+          <Navigation />
           <h4 style={{ marginBottom: "2.18rem" }}> Add Vehicle</h4>
 
           <h5 className="basic__information">Basic Information</h5>

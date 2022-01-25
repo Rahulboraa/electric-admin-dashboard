@@ -58,16 +58,6 @@ const AddStore = () => {
           </div>
           <hr />
           <main>
-            <div>
-              <label className="modalFormLabels">01. Dealer ID </label>
-              <div>
-                <h2>Add Store</h2>
-              </div>
-              <div>
-                <h4>X</h4>
-              </div>
-            </div>
-            <hr />
             <main className="inputGaping">
               <div>
                 <label className="modalFormLabels">01. Dealer ID </label>
@@ -161,23 +151,12 @@ const AddStore = () => {
                 <button className="SaveNextBtn">Submit</button>
               </div>
               <div>
-                <button className="clearBtn">Clear All</button>
+                <button className="clearBtn" type="reset" onClick={handleReset}>
+                  Clear All
+                </button>
               </div>
             </div>
           </main>
-          <div
-            className="d-flex justify-content-between align-items-center"
-            style={{ width: "600px", marginBottom: "2rem" }}
-          >
-            <div>
-              <button className="SaveNextBtn">Submit</button>
-            </div>
-            <div>
-              <button className="clearBtn" type="reset" onClick={handleReset}>
-                Clear All
-              </button>
-            </div>
-          </div>
         </div>
       </form>
     </>

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <div>
+    <nav className="navbarContainer">
       <NavLink
         to="/vehicleapplication"
         className="navlinkUnactive"
@@ -25,7 +25,7 @@ const Navigation = () => {
       >
         <span>Brand</span>
       </NavLink>
-    </div>
+    </nav>
   );
 };
 

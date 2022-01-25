@@ -45,59 +45,54 @@ const Gallery = () => {
               <GalleryNavigation />
             </nav>
 
-            <div
-              className="d-flex align-items-center justify-content-between"
-              style={{ marginBottom: "2.18rem" }}
-            >
+            <div className="subHeadingButton">
               <div>
                 <h4>Gallery</h4>
               </div>
               <div>
-                <button className="mainAddBtn" onClick={handleAddImage}>
-                  Add Image
-                </button>
+                <button className="mainAddBtn">Add Image</button>
               </div>
+
+              {/* Dummy Image Section */}
+
+              <section className="gallery_list">
+                {data?.map((item, i) => (
+                  <>
+                    <div className="gallery_item">
+                      <img
+                        src={item?.imageUrl}
+                        style={{
+                          objectFit: "cover",
+                          width: "247px",
+                          height: "190px",
+                        }}
+                      />
+                    </div>
+                  </>
+                ))}
+              </section>
+
+              {/* Dummy Image Section */}
+              <section
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  gap: "2.5rem",
+                  marginTop: "1.5rem",
+                  visibility: "hidden",
+                }}
+              >
+                <figure>
+                  <img src={gallery2} alt="gallery" />
+                </figure>
+                <figure>
+                  <img src={gallery2} alt="gallery" />
+                </figure>
+                <figure>
+                  <img src={gallery2} alt="gallery" />
+                </figure>
+              </section>
             </div>
-
-            {/* Dummy Image Section */}
-
-            <section className="gallery_list">
-              {data?.map((item, i) => (
-                <>
-                  <div className="gallery_item">
-                    <img
-                      src={item?.imageUrl}
-                      style={{
-                        objectFit: "cover",
-                        width: "247px",
-                        height: "190px",
-                      }}
-                    />
-                  </div>
-                </>
-              ))}
-            </section>
-
-            {/* Dummy Image Section */}
-            <section
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                gap: "2.5rem",
-                marginTop: "1.5rem",
-                visibility: "hidden",
-              }}
-            >
-              <figure>
-                <img src={gallery2} alt="gallery" />
-              </figure>
-              <figure>
-                <img src={gallery2} alt="gallery" />
-              </figure>
-              <figure>
-                <img src={gallery2} alt="gallery" />
-              </figure>
-            </section>
           </div>
         </div>
       </section>

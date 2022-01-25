@@ -5,23 +5,29 @@
 @include xs {
   .Home__Container {
     justify-content: center;
+    margin: 0.5rem;
   }
 }
 .Home__First__Container {
   width: 23%;
 }
+
 .Home__Second__Container {
-  width: 75%;
+  width: 100%;
+  margin: 3rem 3rem;
 }
+
 @include xs {
   .Home__Second__Container {
     position: relative;
+    margin: 3rem 0rem;
   }
 }
 
 @include sm {
   .Home__Second__Container {
     position: relative;
+    margin: 3rem 0rem;
   }
 }
 .Home__Inner__Container__1 {
@@ -29,10 +35,18 @@
   justify-content: space-around;
   height: 12.5rem;
   width: 100%;
-  padding-top: 100px;
+  padding-top: 30px;
+  height: 9rem;
+}
+
+@include xs {
+  .Home__Inner__Container__1 {
+    flex-direction: column;
+    height: auto;
+  }
 }
 .Home__Inner__Container__2 {
-  padding-top: 150px;
+  padding-top: 100px;
 }
 
 @include xs {
@@ -59,11 +73,47 @@
   border-top-width: 2px;
   padding: 20px;
 }
+
+@include xs {
+  .Home__Inner__1 {
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
 .Home__Inner__Img {
   position: absolute;
-  top: 6.3rem;
+  top: 7.5rem;
   margin-left: 0.625rem;
   width: 6%;
+}
+
+@include xs {
+  .Home__Inner__Img {
+    position: absolute;
+    top: 5.1rem;
+    margin-left: 0.625rem;
+    width: 6%;
+    height: 0.2rem;
+  }
+}
+@include sm {
+  .Home__Inner__Img {
+    position: absolute;
+    top: 4.3rem;
+    margin-left: 0.625rem;
+    width: 6%;
+    height: 0.3rem;
+  }
+}
+
+@include md {
+  .Home__Inner__Img {
+    position: absolute;
+    top: 7.5rem;
+    margin-left: 0.625rem;
+    width: 6%;
+    height: 0.3rem;
+  }
 }
 .Home__p1 {
   font-size: var(--base-font-size);

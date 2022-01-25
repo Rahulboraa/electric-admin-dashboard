@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import axios from "../../api/instance";
 import CommonTable from "../common/CommonTable";
 import Sidebar from "../common/sidebar";
+import Navigation from "../Vehicle/Navigation/Navigation";
 
 const Brands = () => {
   const history = useHistory();
@@ -26,32 +27,8 @@ const Brands = () => {
         <Sidebar />
         <div className="vehicleFull">
           <h3 className="navbarTopHeading">Vehicles</h3>
-          <nav className="navbarContainer">
-            <NavLink
-              to="/vehicleapplication"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Vehicles Application</span>
-            </NavLink>
-
-            <NavLink
-              to="/vehicle"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Vehicles</span>
-            </NavLink>
-
-            <NavLink
-              to="/brands"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span>Brand</span>
-            </NavLink>
-          </nav>
-          <div className="addBrandNav">
+          <Navigation />
+          <div className="subHeadingButton">
             <h4> Brands </h4>
             <button
               style={{ marginBottom: "8px" }}

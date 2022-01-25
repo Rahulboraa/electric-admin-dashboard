@@ -41,10 +41,7 @@ const Testimonials = () => {
               <GalleryNavigation />
             </nav>
 
-            <div
-              className="subHeadingButton"
-              style={{ marginBottom: "2.18rem" }}
-            >
+            <div className="subHeadingButton">
               <div>
                 <h4>Testimonials</h4>
               </div>

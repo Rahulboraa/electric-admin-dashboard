@@ -35,54 +35,51 @@ const AddBrands = () => {
   return (
     <>
       <form className="addform" onSubmit={handleFormSubmit}>
-      <div className="addFormWidth">
-        <div className="addformInner">
-          <div>
-            <h2>Add Brand</h2>
-          </div>
-          <div>
-            <h4 onClick={() => history.goBack()}>X</h4>
-          </div>
-        </div>
-        <hr />
-        <main>
-          <div>
-            <label className="modalFormLabels">01. Brand Name </label>
+        <div className="addFormWidth">
+          <div className="addformInner">
             <div>
-              <input
-                type="text"
-                placeholder="Enter the Brand Name"
-                className="inputModalStyles"
-                onChange={handleBrandChagne}
-              />
+              <h2>Add Brand</h2>
             </div>
             <div>
-              <input
-                type="file"
-                placeholder="No file selected"
-                className="inputModalStyles"
-                onChange={(e) => {
-                  setImageSelected(e.target.files[0]);
-                }}
-              />
+              <h4 onClick={() => history.goBack()}>X</h4>
             </div>
           </div>
-        </main>
-        <div
-          className="d-flex justify-content-between align-items-center"
-          style={{ width: "600px", marginBottom: "2rem" }}
-        >
-          <div>
-            <button className="SaveNextBtn" type="submit">
-              Submit
-            </button>
+          <hr />
+          <main>
+            <div>
+              <label className="modalFormLabels">01. Brand Name </label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Enter the Brand Name"
+                  className="inputModalStyles"
+                  onChange={handleBrandChagne}
+                />
+              </div>
+              <div>
+                <input
+                  type="file"
+                  placeholder="No file selected"
+                  className="inputModalStyles"
+                  onChange={(e) => {
+                    setImageSelected(e.target.files[0]);
+                  }}
+                />
+              </div>
+            </div>
+          </main>
+          <div className="addformInner">
+            <div>
+              <button className="SaveNextBtn" type="submit">
+                Submit
+              </button>
+            </div>
+            <div>
+              <button className="clearBtn" type="reset" onClick={handleReset}>
+                Clear All
+              </button>
+            </div>
           </div>
-          <div>
-            <button className="clearBtn" type="reset" onClick={handleReset}>
-              Clear All
-            </button>
-          </div>
-        </div>
         </div>
       </form>
     </>
