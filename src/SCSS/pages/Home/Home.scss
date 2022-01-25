@@ -2,10 +2,6 @@
   display: flex;
 }
 
-.Home__Second__Container {
-  margin: 0rem 3rem;
-}
-
 @include xs {
   .Home__Container {
     justify-content: center;
@@ -15,19 +11,23 @@
 .Home__First__Container {
   width: 23%;
 }
+
 .Home__Second__Container {
   width: 100%;
-  margin: 3rem 0rem;
+  margin: 3rem 3rem;
 }
+
 @include xs {
   .Home__Second__Container {
     position: relative;
+    margin: 3rem 0rem;
   }
 }
 
 @include sm {
   .Home__Second__Container {
     position: relative;
+    margin: 3rem 0rem;
   }
 }
 .Home__Inner__Container__1 {
