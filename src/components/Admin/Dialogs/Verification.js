@@ -66,7 +66,7 @@ const Verification = ({ setVerify, verify }) => {
           </p>
           <div>
             <input
-              type="text"
+              type="number"
               placeholder="Enter Verification Code"
               className="emailAddress"
               value={otp}

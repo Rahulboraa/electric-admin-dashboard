@@ -6,12 +6,13 @@ import Sidebar from "../common/sidebar";
 import axios from "../../api/instance";
 
 const Store = () => {
+
   // !Fetching Store
   const [data, setData] = useState(null);
 
   const AddStore = () => {
     axios
-      .get(`/store`)
+      .get(`/dropdowns/getAllInterests`)
       .then((result) => {
         setData(result.data.storedata);
       })
