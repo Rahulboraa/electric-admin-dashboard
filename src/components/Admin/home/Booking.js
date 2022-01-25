@@ -9,7 +9,7 @@ import faker from "faker";
 import NavigationUp from "./sub-components/NavigationUp";
 import NavigationDown from "./sub-components/NavigationDown";
 
-function NewStore() {
+function Booking() {
   const options = {
     responsive: true,
     plugins: {
@@ -113,11 +113,11 @@ function NewStore() {
           <div className="Home__Inner__Container__2">
             <NavigationDown />
           </div>
-          <h2>New Store</h2>
+          <h2>Booking</h2>
         </div>
       </div>
     </div>
   );
 }
 
-export default NewStore;
+export default Booking;

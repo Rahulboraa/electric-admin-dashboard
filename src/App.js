@@ -35,6 +35,7 @@ import EditVehicle from "./components/Vehicle/EditVehicle";
 import EditVehicleTable from "./components/Vehicle/EditVehicleTable";
 import NewDealers from "./components/Admin/home/NewDealers";
 import NewStore from "./components/Admin/home/NewStore";
+import Booking from "./components/Admin/home/Booking";
 
 function App() {
   const queryClient = new QueryClient();
@@ -68,6 +69,7 @@ function App() {
             <Route exact path="/addstore" component={AddStore} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/vehiclesales" component={Home} />
+            <Route exact path="/booking" component={Booking} />
             <Route exact path="/newdealers" component={NewDealers} />
             <Route exact path="/newstore" component={NewStore} />
             <Route exact path="/dealarform" component={DealarForm} />

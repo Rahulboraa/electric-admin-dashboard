@@ -4,7 +4,7 @@
 
 @include xs {
   .Home__Container {
-    justify-content: center;
+    // justify-content: center;
     margin: 0.5rem;
   }
 }
@@ -82,7 +82,7 @@
 }
 .Home__Inner__Img {
   position: absolute;
-  top: 7.5rem;
+  top: 7.8rem;
   margin-left: 0.625rem;
   width: 6%;
 }
@@ -90,7 +90,7 @@
 @include xs {
   .Home__Inner__Img {
     position: absolute;
-    top: 5.1rem;
+    top: 5.3rem;
     margin-left: 0.625rem;
     width: 6%;
     height: 0.2rem;
@@ -99,7 +99,7 @@
 @include sm {
   .Home__Inner__Img {
     position: absolute;
-    top: 4.3rem;
+    top: 4.5rem;
     margin-left: 0.625rem;
     width: 6%;
     height: 0.3rem;
@@ -109,7 +109,7 @@
 @include md {
   .Home__Inner__Img {
     position: absolute;
-    top: 7.5rem;
+    top: 7.7rem;
     margin-left: 0.625rem;
     width: 6%;
     height: 0.3rem;
@@ -142,5 +142,8 @@
   }
 }
 .Home__Inner__div__1 {
+  display: flex;
+  align-items: baseline;
+  gap: 0 1rem;
   padding: 20px 0 0 0;
 }

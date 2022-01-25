@@ -22,7 +22,7 @@
 
 @include md {
   #crossToggle {
-    display: none !important;
+    display: block !important;
   }
 }
 
@@ -51,6 +51,12 @@
   }
 }
 
+@include md {
+  .toggleButton {
+    display: block !important;
+  }
+}
+
 @include lg {
   .toggleButton {
     display: none !important;
@@ -64,7 +70,7 @@
   border-right: 1px solid #d5d5d5;
   // position: fixed;
   .Sidebar__container_maindiv {
-    margin-right: 2rem;
+    // margin-right: 2rem;
   }
 }
 
@@ -112,7 +118,7 @@
   bottom: 0px;
   left: 0px;
   z-index: 30;
-  width: 16rem;
+  width: 24rem;
   overflow-y: auto;
   transform: translateX(0px);
   transition-duration: 300ms;
@@ -122,8 +128,10 @@
 
 @include lg {
   .sidebarHideDiv {
+    display: block !important;
     transform: translateX(0px);
     position: static;
+    width: 24rem;
     top: 0px;
     right: 0px;
     bottom: 0px;
@@ -134,7 +142,9 @@
 @include md {
   .sidebarHideDiv {
     transform: translateX(0px);
-    position: static;
+    display: block !important;
+    // position: static;
+    width: 24rem;
     top: 0px;
     right: 0px;
     bottom: 0px;
@@ -145,17 +155,20 @@
 @include sm {
   .sidebarHideDiv {
     display: block !important;
+    width: 16rem;
   }
 }
 
-@include md {
+@include xs {
   .sidebarHideDiv {
     display: block !important;
+    width: 16rem;
   }
 }
-@include lg {
+@include sm {
   .sidebarHideDiv {
     display: block !important;
+    width: 16rem;
   }
 }
 
