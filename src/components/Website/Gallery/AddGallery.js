@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "../../../api/instance";
+import { useHistory } from "react-router-dom";
 
 const AddGallery = () => {
   const [galleryImageFile, setImageSelected] = useState("");
@@ -20,6 +21,8 @@ const AddGallery = () => {
       });
   };
 
+  let history = useHistory();
+
   return (
     <>
       <form className="addform">
@@ -29,7 +32,7 @@ const AddGallery = () => {
               <h2>Add Image</h2>
             </div>
             <div>
-              <h4>X</h4>
+              <h4 onClick={() => history.goBack()}>X</h4>
             </div>
           </div>
           <hr />
@@ -57,12 +60,18 @@ const AddGallery = () => {
 
           <div className="d-flex justify-content-between align-items-center inputModalStylesBtn">
             <div>
-              <button className="SaveNextBtn" onClick={handleAddGallery}>
+              <button
+                className="SaveNextBtn"
+                onClick={handleAddGallery}
+                type="submit"
+              >
                 Submit
               </button>
             </div>
             <div>
-              <button className="clearBtn">Clear All</button>
+              <button className="clearBtn" type="reset">
+                Clear All
+              </button>
             </div>
           </div>
         </div>

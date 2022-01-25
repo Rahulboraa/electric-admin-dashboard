@@ -25,7 +25,7 @@ const Verification = ({ setVerify, verify }) => {
     handleOTPVerification();
   }, []);
 
-  const [otp, setVerificationCode] = useState("");
+  const [otp, setVerificationCode] = useState(null);
 
   const handleInputChange = (e) => {
     setVerificationCode(e.target.value);

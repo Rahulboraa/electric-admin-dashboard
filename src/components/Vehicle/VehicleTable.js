@@ -38,11 +38,11 @@ const VehicleTable = () => {
             <Navigation />
           </nav>
           <h4 style={{ marginBottom: "2.18rem" }}> Vehicles Applications</h4>
-          <div>
+          {/* <div>
             <button className="buttonStyle">Back</button>
             <span className="VehicleHead">LOFI</span>
             <button className="buttonStyle">Back To Application</button>
-          </div>
+          </div> */}
           <Table bordered responsive borderless>
             <thead>
               <tr>

@@ -11,7 +11,7 @@ const AddVehicle = () => {
     range: "",
     charge: "",
     display: "",
-    dealerName: "",
+    // dealerName: "",
     motor: "",
     battery: "",
     loadCapacity: "",
@@ -219,25 +219,6 @@ const AddVehicle = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Hidden TextArea */}
-              {/* <div className="visibilityHidden">
-                <label className="vehicleLabel" htmlFor="Vehicle Description">
-                  Vehicle Description
-                </label>
-                <div>
-                  <textarea
-                    name="textarea"
-                    rows="5"
-                    cols="26"
-                    style={{ resize: "none" }}
-                    value="abc"
-                    onChange={handleVehicleChange}
-                  >
-                    Write something here
-                  </textarea>
-                </div>
-              </div> */}
             </section>
 
             <hr />
