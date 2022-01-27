@@ -31,7 +31,7 @@ const Verification = ({ setVerify, verify }) => {
     setVerificationCode(e.target.value);
   };
 
-  const userOTpData = { email: loginDetails?.email, otp };
+  const userOTpData = { email: loginDetails?.email, otp: +otp };
 
   //! Storing Auth
   const handleSubmitOtp = () => {
@@ -69,7 +69,7 @@ const Verification = ({ setVerify, verify }) => {
               type="number"
               placeholder="Enter Verification Code"
               className="emailAddress"
-              value={otp}
+              value={parseInt(otp)}
               onChange={handleInputChange}
             />
           </div>
