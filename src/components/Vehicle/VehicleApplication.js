@@ -86,7 +86,6 @@ const AddVehicle = () => {
       vehicleType: `${vehicleId}`,
       discription,
     };
-
     axios
       .post(`/product/add`, data3)
       .then((result) => {

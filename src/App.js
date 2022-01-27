@@ -36,10 +36,12 @@ import EditVehicleTable from "./components/Vehicle/EditVehicleTable";
 import NewDealers from "./components/Admin/home/NewDealers";
 import NewStore from "./components/Admin/home/NewStore";
 import Booking from "./components/Admin/home/Booking";
+import EditBrands from "./components/brands/EditBrands";
+import EditTeamMember from "./components/Teams/EditTeamMember";
+import EditStore from "./components/Store/EditStore";
 
 function App() {
   const queryClient = new QueryClient();
-
   return (
     <>
       <QueryClientProvider client={queryClient}>
@@ -59,6 +61,7 @@ function App() {
             <Route exact path="/addvehicle" component={AddVehicle} />
 
             <Route exact path="/brands" component={Brands} />
+            <Route exact path="/brands/edit/:id" component={EditBrands} />
             <Route exact path="/addbrands" component={AddBrands} />
             <Route
               exact
@@ -66,6 +69,7 @@ function App() {
               component={StoreApplication}
             />
             <Route exact path="/store" component={Store} />
+            <Route exact path="/editstore/:id" component={EditStore} />
             <Route exact path="/addstore" component={AddStore} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/vehiclesales" component={Home} />
@@ -86,6 +90,7 @@ function App() {
             />
             <Route exact path="/pastbooking" component={PastBooking} />
             <Route exact path="/teammember" component={TeamMember} />
+            <Route exact path="/teams/edit/:id" component={EditTeamMember} />
             <Route exact path="/addteamember" component={AddTeamMember} />
             <Route exact path="/merchandise" component={Merchandise} />
             <Route exact path="/visitingcard" component={VisitingCard} />
@@ -101,7 +106,7 @@ function App() {
             />
             <Route
               exact
-              path="/editrecentpublication"
+              path="/editrecentpublication:id"
               component={EditRecentPublication}
             />
             <Route exact path="/testimonials" component={Testimonials} />

@@ -1,18 +1,38 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-} from "reactstrap";
 import Sidebar from "../common/sidebar";
 import upload from "./../../assets/vehicles/upload.svg";
 import Navigation from "./Navigation/Navigation";
+import axios from "../../api/instance";
+import AddVehicleStepper from "./AddVehicleStepper";
 
 const VehicleStepper = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggle = () => setDropdownOpen((prevState) => !prevState);
+  // !Getting Vehicle Type
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const getDropdownItem = () => {
+    axios
+      .get("/color")
+      .then((result) => {
+        setSelectedOption(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  React.useEffect(() => {
+    getDropdownItem();
+  }, []);
+
+  const [vehicleId, setType] = useState("");
+  const vehicleChange = (e) => {
+    setType(e.target.value);
+  };
+
+  const [addVehicle, setAddVehicle] = useState(false);
+  const handleAddBtn = () => {
+    setAddVehicle(true);
+  };
 
   return (
     <>
@@ -25,24 +45,23 @@ const VehicleStepper = () => {
           </nav>
           <h4 style={{ marginBottom: "2.18rem" }}> Add Vehicle</h4>
 
-          <section
-            className="d-flex  justify-content-between align-items-center"
-            style={{
-              border: "1px solid #D4D4D4",
-              paddingTop: "24px",
-              paddingBottom: "24px",
-              paddingLeft: "30px",
-            }}
-          >
-            <div style={{ marginRight: "20px" }}>
-              <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-                <DropdownToggle caret>Choose Color</DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem>Scooter</DropdownItem>
-                  <DropdownItem>Electric Bicycle</DropdownItem>
-                  <DropdownItem>Moped</DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
+          <section className="d-flex  justify-content-between align-items-center vehicleStepper">
+            <div style={{ marginRight: "30px" }}>
+              <select
+                onChange={vehicleChange}
+                style={{
+                  padding: "1rem",
+                }}
+              >
+                <option value="0">Choose the Vehicle Color</option>
+                {selectedOption?.map((items) => {
+                  return (
+                    <React.Fragment key={items.id}>
+                      <option value={items.id}>{items.color}</option>
+                    </React.Fragment>
+                  );
+                })}
+              </select>
             </div>
 
             <div
@@ -66,6 +85,19 @@ const VehicleStepper = () => {
               </figure>
             </div>
           </section>
+
+          <button
+            onClick={handleAddBtn}
+            style={addVehicle ? { display: "none" } : {}}
+          >
+            Add More
+          </button>
+
+          {addVehicle && (
+            <div style={{ marginTop: "2rem" }}>
+              <AddVehicleStepper />
+            </div>
+          )}
         </div>
       </div>
     </>

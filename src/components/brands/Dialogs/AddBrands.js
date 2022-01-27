@@ -34,54 +34,71 @@ const AddBrands = () => {
   const history = useHistory();
   return (
     <>
-      <form className="addform" onSubmit={handleFormSubmit}>
-        <div className="addFormWidth">
-          <div className="addformInner">
-            <div>
-              <h2>Add Brand</h2>
-            </div>
-            <div>
-              <h4 onClick={() => history.goBack()}>X</h4>
-            </div>
-          </div>
-          <hr />
-          <main>
-            <div>
-              <label className="modalFormLabels">01. Brand Name </label>
+      <section className="addform">
+        <form onSubmit={handleFormSubmit}>
+          <div className="addFormWidth">
+            <div className="addformInner" style={{ marginTop: "100px" }}>
               <div>
-                <input
-                  type="text"
-                  placeholder="Enter the Brand Name"
-                  className="inputModalStyles"
-                  onChange={handleBrandChagne}
-                />
+                <h2>Add Brand</h2>
               </div>
               <div>
-                <input
-                  type="file"
-                  placeholder="No file selected"
-                  className="inputModalStyles"
-                  onChange={(e) => {
-                    setImageSelected(e.target.files[0]);
-                  }}
-                />
+                <h4 onClick={() => history.goBack()}>X</h4>
               </div>
             </div>
-          </main>
-          <div className="addformInner">
-            <div>
-              <button className="SaveNextBtn" type="submit">
-                Submit
-              </button>
-            </div>
-            <div>
-              <button className="clearBtn" type="reset" onClick={handleReset}>
-                Clear All
-              </button>
+            <hr style={{ marginTop: "18px" }} />
+            <main>
+              <div>
+                <label
+                  className="modalFormLabels"
+                  style={{ marginTop: "48px" }}
+                >
+                  01. Brand Name
+                </label>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Enter the Brand Name"
+                    className="inputModalStyles"
+                    onChange={handleBrandChagne}
+                  />
+                </div>
+                <div>
+                  <label
+                    className="modalFormLabels"
+                    style={{ marginTop: "48px" }}
+                  >
+                    02. Brand Logo
+                  </label>
+                  <input
+                    style={{ marginTop: "48px" }}
+                    type="file"
+                    placeholder="No file selected"
+                    className="inputModalStyles"
+                    onChange={(e) => {
+                      setImageSelected(e.target.files[0]);
+                    }}
+                  />
+                </div>
+              </div>
+            </main>
+            <div
+              className="addformInner"
+              style={{ marginTop: "48px", marginBottom: "2rem" }}
+            >
+              <div>
+                <button className="SaveNextBtn" type="submit">
+                  Submit
+                </button>
+              </div>
+              <div>
+                <button className="clearBtn" type="reset" onClick={handleReset}>
+                  Clear All
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </section>
     </>
   );
 };

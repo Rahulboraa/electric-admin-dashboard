@@ -26,12 +26,6 @@ const EditVehicleTable = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    await axios.put(`/users/${id}`, user);
-    history.push("/");
-  };
-
   // !FETCH USER
   const loadUser = async () => {
     const result = await axios.get(`/product/single/${id}`);
@@ -41,6 +35,12 @@ const EditVehicleTable = () => {
   useEffect(() => {
     loadUser();
   }, []);
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await axios.put(`/users/${id}`, user);
+    history.push("/");
+  };
 
   // !DELETE VEHICLE
   const deleteVehicle = (id) => {

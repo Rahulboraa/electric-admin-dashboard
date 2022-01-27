@@ -20,6 +20,7 @@ const Sidebar = () => {
 
   // !Home Redirect
   const history = useHistory();
+
   const homeRedirect = () => {
     history.push("/home");
   };

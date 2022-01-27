@@ -20,11 +20,10 @@ const AddStore = () => {
     data;
 
   const handleInputChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setData({ ...data, [name]: value });
+    setData({ ...data, [e.target.name]: e.target.value });
   };
 
+  // !Submit Form
   const handleFormSubmit = (e) => {
     e.preventDefault();
     axios
@@ -66,8 +65,8 @@ const AddStore = () => {
                     type="text"
                     placeholder="20967576042"
                     className="inputModalStyles"
-                    name="dealerId"
                     onChange={handleInputChange}
+                    name="dealerId"
                     value={dealerId}
                   />
                 </div>
@@ -79,8 +78,8 @@ const AddStore = () => {
                     type="text"
                     placeholder="Sharda Electric Vehicles"
                     className="inputModalStyles"
-                    name="dealerName"
                     onChange={handleInputChange}
+                    name="dealerName"
                     value={dealerName}
                   />
                 </div>
@@ -146,9 +145,14 @@ const AddStore = () => {
                 </div>
               </div>
             </main>
-            <div className="d-flex justify-content-between align-items-center inputModalStylesBtn">
+            <div
+              className="d-flex justify-content-between align-items-center inputModalStylesBtn"
+              style={{ marginBottom: "4rem" }}
+            >
               <div>
-                <button className="SaveNextBtn">Submit</button>
+                <button className="SaveNextBtn" type="submit">
+                  Submit
+                </button>
               </div>
               <div>
                 <button className="clearBtn" type="reset" onClick={handleReset}>

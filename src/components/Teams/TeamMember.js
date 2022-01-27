@@ -18,7 +18,7 @@ const TeamMember = () => {
     axios
       .get(`/Team`)
       .then((result) => {
-        setTeam(result.data.data);
+        setTeam(result.data.data.reverse());
       })
       .catch((error) => {
         console.log(error);
@@ -28,6 +28,10 @@ const TeamMember = () => {
   React.useEffect(() => {
     getStore();
   }, []);
+
+  const handleEditTeam = (id) => {
+    history.push(`/teams/edit/${id}`);
+  };
 
   return (
     <>
@@ -55,31 +59,37 @@ const TeamMember = () => {
                     <th>Name</th>
                     <th>Designation</th>
                     <th>Email</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                   {team?.map(
                     ({ id, name, emailId, designation, Profile_pic }) => (
-                      <React.Fragment key={id}>
-                        <tr>
-                          <td>{id}</td>
-                          <td>
-                            <img
-                              src={member2}
-                              alt="member"
-                              style={{ marginRight: "10px" }}
-                            />
-                            {/* <img
+                      <tr key={id}>
+                        <td>{id}</td>
+                        <td>
+                          <img
+                            src={member2}
+                            alt="member"
+                            style={{ marginRight: "10px" }}
+                          />
+                          {/* <img
                             src={Profile_pic}
                             alt="member"
                             style={{ marginRight: "10px" }}
                           /> */}
-                            {name}
-                          </td>
-                          <td>{designation}</td>
-                          <td>{emailId}</td>
-                        </tr>
-                      </React.Fragment>
+                          {name}
+                        </td>
+                        <td>{designation}</td>
+                        <td>{emailId}</td>
+                        <td
+                          onClick={() => {
+                            handleEditTeam(id);
+                          }}
+                        >
+                          Edit Team
+                        </td>
+                      </tr>
                     )
                   )}
                 </tbody>
