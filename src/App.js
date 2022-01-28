@@ -36,6 +36,7 @@ import EditVehicleTable from "./components/Vehicle/EditVehicleTable";
 import NewDealers from "./components/Admin/home/NewDealers";
 import NewStore from "./components/Admin/home/NewStore";
 import Booking from "./components/Admin/home/Booking";
+import Careers from "./components/Website/Careers/Careers";
 
 function App() {
   const queryClient = new QueryClient();
@@ -89,6 +90,7 @@ function App() {
             <Route exact path="/addteamember" component={AddTeamMember} />
             <Route exact path="/merchandise" component={Merchandise} />
             <Route exact path="/visitingcard" component={VisitingCard} />
+            <Route exact path="/careers" component={Careers} />
             <Route
               exact
               path="/recentpublications"
