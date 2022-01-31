@@ -1,11 +1,42 @@
-import React, { useState } from "react";
+import axios from "../../../api/instance";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
 import Sidebar from "../../common/sidebar";
 import GalleryNavigation from "../Gallery/Navigation/GalleryNavigation";
+import Kebab from "./subComponent/kabeb";
 
 function Careers() {
   const [toggle, setToggle] = useState(true);
+  const [data, setData] = useState([]);
+  const fetchJob = () => {
+    axios
+      .get("/career/getJobs")
+      .then((result) => {
+        setData(result.data.jobs);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  //POST
+  const Careers = () => {
+    const handleRecentPublicationId = (id) => {
+      axios
+        .post(`/career/addJob/${id}`, { text: "hello" })
+        .then((result) => {
+          console.log(result.data.jobs);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+  };
+
+  useEffect(() => {
+    fetchJob();
+  }, []);
+
   return (
     <section>
       <div className="d-flex">
@@ -105,63 +136,37 @@ function Careers() {
 
               {toggle ? (
                 <tbody>
-                  <tr>
-                    <td>1 Dec, 2021</td>
-                    <td>Dianne Russell</td>
-                    <td>Management</td>
-                    <td>Gurugram</td>
-                    <td>345</td>
-
-                    <td>{/* <Kebab /> */}</td>
-                  </tr>
-                  <tr>
-                    <td>1 Dec, 2021</td>
-                    <td>Dianne Russell</td>
-                    <td>Management</td>
-                    <td>Watch and pray that you might not enter...</td>
-                    <td>345</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>1 Dec, 2021</td>
-
-                    <td>Dianne Russell</td>
-                    <td>Management</td>
-                    <td>Watch and pray that you might not enter...</td>
-
-                    <td>345</td>
-                    <td></td>
-                  </tr>
+                  {data?.map((item) => (
+                    <tr>
+                      <React.Fragment key={item.id}>
+                        <td>{item.createdAt}</td>
+                        <td>{item.description}</td>
+                        <td>{item.role}</td>
+                        <td>{item.location}</td>
+                        <td>{item.experience}</td>
+                        <td>
+                          <Kebab />
+                        </td>
+                      </React.Fragment>
+                    </tr>
+                  ))}
                 </tbody>
               ) : (
                 <tbody>
-                  <tr>
-                    <td>k</td>
-                    <td>Dianne Russell</td>
-                    <td>Management</td>
-                    <td>Gurugram</td>
-                    <td>345</td>
-
-                    <td>{/* <Kebab /> */}</td>
-                  </tr>
-                  <tr>
-                    <td>1 Dec, 2021</td>
-                    <td>Dianne Russell</td>
-                    <td>Management</td>
-                    <td>Watch and pray that you might not enter...</td>
-                    <td>345</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>1 Dec, 2021</td>
-
-                    <td>Dianne Russell</td>
-                    <td>Management</td>
-                    <td>Watch and pray that you might not enter...</td>
-
-                    <td>345</td>
-                    <td></td>
-                  </tr>
+                  {data?.map((item) => (
+                    <tr>
+                      <React.Fragment key={item.id}>
+                        <td>{item.createdAt}</td>
+                        <td>{item.description}</td>
+                        <td>{item.role}</td>
+                        <td>{item.location}</td>
+                        <td>{item.experience}</td>
+                        <td>
+                          <Kebab />
+                        </td>
+                      </React.Fragment>
+                    </tr>
+                  ))}
                 </tbody>
               )}
             </Table>
