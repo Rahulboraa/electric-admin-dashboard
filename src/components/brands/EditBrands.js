@@ -1,33 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import axios from "../../api/instance";
+import moment from "moment";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const EditBrands = () => {
-  // !Toast Configure
-  toast.configure({
-    position: toast.POSITION.Top_RIGHT,
-    hideProgressBar: true,
-    autoClose: 3000,
-  });
+  let history = useHistory();
+  const { id } = useParams();
 
   const [data, setData] = useState({
-    brandName: "",
     logo: "",
+    brandName: "",
+    collaborationDate: "",
   });
+
+  const { brandName, collaborationDate } = data;
 
   const handleInputChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  const [loadData, setLoadData] = useState([]);
   //*   Fetching Brands
   const loadBrand = () => {
     axios
-      .get(`/brand`)
+      .get(`/brand/single/${id}`)
       .then((result) => {
-        setLoadData(result.data.data);
+        setData(result.data.brand[0]);
       })
       .catch((err) => {
         console.log(err);
@@ -37,6 +35,19 @@ const EditBrands = () => {
   useEffect(() => {
     loadBrand();
   }, []);
+
+  // *Update Brand
+  // !DATA WILL BE SENT IN FORM DATA FILED
+  const handleUpdateBrand = () => {
+    axios
+      .put(`/brand/${id}`, { brandName })
+      .then((result) => {
+        console.log(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   // !Delete Brand
   const deleteBrand = (id) => {
@@ -51,9 +62,6 @@ const EditBrands = () => {
         console.log(err);
       });
   };
-
-  let history = useHistory();
-  const { id } = useParams();
 
   return (
     <>
@@ -78,6 +86,8 @@ const EditBrands = () => {
               placeholder="Enter Brand Name"
               name="productName"
               onChange={handleInputChange}
+              value={brandName}
+              name="brandName"
             />
           </div>
 
@@ -86,13 +96,17 @@ const EditBrands = () => {
               type="date"
               className="form-control form-control-lg"
               placeholder="Collaboration Date"
-              name="text"
+              name="collaborationDate"
               onChange={handleInputChange}
+              value={moment(collaborationDate).format("YYYY-MM-DD")}
             />
           </div>
         </form>
-        <button className="btn btn-warning d-flex m-auto">
-          Update Vehicle
+        <button
+          className="btn btn-warning d-flex m-auto"
+          onClick={handleUpdateBrand}
+        >
+          Update Brand
         </button>
         <button
           className="btn btn-danger d-flex mt-3 m-auto"

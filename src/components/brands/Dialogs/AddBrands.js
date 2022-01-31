@@ -6,7 +6,7 @@ const AddBrands = () => {
   const [brandName, setBrandName] = useState("");
   const [logo, setImageSelected] = useState("");
 
-  const handleBrandChagne = (e) => {
+  const handleBrandChange = (e) => {
     setBrandName(e.target.value);
   };
 
@@ -59,7 +59,7 @@ const AddBrands = () => {
                     type="text"
                     placeholder="Enter the Brand Name"
                     className="inputModalStyles"
-                    onChange={handleBrandChagne}
+                    onChange={handleBrandChange}
                   />
                 </div>
                 <div>

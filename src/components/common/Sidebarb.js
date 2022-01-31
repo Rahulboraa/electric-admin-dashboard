@@ -35,7 +35,6 @@ const Sidebar = () => {
 
   // !logout User
   const handleLogOut = () => {
-    window.localStorage.removeItem("token");
     window.localStorage.removeItem("loginUser");
     history.push("./");
   };

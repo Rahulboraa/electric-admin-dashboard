@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "../../api/instance";
 import { useHistory } from "react-router-dom";
-// import Select from "react-select/dist/declarations/src/Select";
 
 const AddStore = () => {
   const [data, setData] = useState({
@@ -14,10 +13,7 @@ const AddStore = () => {
     storeArea: "",
   });
 
-  const [selectedOption, setSelectedOption] = useState();
-
-  const { dealerName, dealerId, city1, city2, budget, storeType, storeArea } =
-    data;
+  const { dealerName, dealerId, city1, budget, storeType, storeArea } = data;
 
   const handleInputChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -41,6 +37,34 @@ const AddStore = () => {
     setData({});
   };
 
+  // !Getting Vehicle Type
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const getDropdownItem = () => {
+    axios
+      .get("/color")
+      .then((result) => {
+        setSelectedOption(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  React.useEffect(() => {
+    getDropdownItem();
+  }, []);
+
+  const [vehicleId, setType] = useState("");
+  const vehicleChange = (e) => {
+    setType(e.target.value);
+  };
+
+  const [addVehicle, setAddVehicle] = useState(false);
+  const handleAddBtn = () => {
+    setAddVehicle(true);
+  };
+
   let history = useHistory();
 
   return (
@@ -55,10 +79,11 @@ const AddStore = () => {
               <h4 onClick={() => history.goBack()}>X</h4>
             </div>
           </div>
-          <hr />
-          <main>
+          <hr style={{ marginTop: "2rem" }} />
+
+          <section>
             <main className="inputGaping">
-              <div>
+              <div style={{ marginTop: "30px" }}>
                 <label className="modalFormLabels">01. Dealer ID </label>
                 <div>
                   <input
@@ -71,7 +96,8 @@ const AddStore = () => {
                   />
                 </div>
               </div>
-              <div>
+
+              <div style={{ marginTop: "1rem", marginBottom: "1rem" }}>
                 <label className="modalFormLabels">02. Dealer Name </label>
                 <div>
                   <input
@@ -84,37 +110,58 @@ const AddStore = () => {
                   />
                 </div>
               </div>
-              {/* <div>
+
+              <div>
                 <label className="modalFormLabels">
                   03. Enter your preferred city for dealership *
                 </label>
-                <div style={{ marginTop: "1rem" }}>
-                  <Select
-                    defaultValue={selectedOption}
-                    onChange={setSelectedOption}
-                    options={options}
-                  />
-                </div>
-                <div>
-                  <Select
-                    defaultValue={selectedOption}
-                    onChange={setSelectedOption}
-                    options={options}
-                  />
-                </div>
-              </div> */}
+              </div>
 
-              {/* <div>
+              <div className="d-flex justify-content-between align-items-center">
+                <div>
+                  <select className="inputModalStyles" onChange={vehicleChange}>
+                    <option value="0">Choose the Vehicle Color</option>
+                    {selectedOption?.map((items) => {
+                      return (
+                        <React.Fragment key={items.id}>
+                          <option value={items.id}>{items.color}</option>
+                        </React.Fragment>
+                      );
+                    })}
+                  </select>
+                </div>
+
+                <div>
+                  <select className="inputModalStyles" onChange={vehicleChange}>
+                    <option value="0">Choose the Vehicle Color</option>
+                    {selectedOption?.map((items) => {
+                      return (
+                        <React.Fragment key={items.id}>
+                          <option value={items.id}>{items.color}</option>
+                        </React.Fragment>
+                      );
+                    })}
+                  </select>
+                </div>
+              </div>
+
+              <div style={{ marginTop: "1rem" }}>
                 <label className="modalFormLabels">04. Investment Budget</label>
                 <div>
-                  <Select
-                    defaultValue={selectedOption}
-                    onChange={setSelectedOption}
-                    options={options}
-                  />
+                  <select className="inputModalStyles" onChange={vehicleChange}>
+                    <option value="0">Choose the Vehicle Color</option>
+                    {selectedOption?.map((items) => {
+                      return (
+                        <React.Fragment key={items.id}>
+                          <option value={items.id}>{items.color}</option>
+                        </React.Fragment>
+                      );
+                    })}
+                  </select>
                 </div>
-              </div> */}
-              <div>
+              </div>
+
+              <div style={{ marginTop: "1rem" }}>
                 <label className="modalFormLabels" htmlFor="Choose an option">
                   05. Property/Showroom
                 </label>
@@ -160,7 +207,7 @@ const AddStore = () => {
                 </button>
               </div>
             </div>
-          </main>
+          </section>
         </div>
       </form>
     </>

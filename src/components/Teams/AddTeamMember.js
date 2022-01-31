@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "../../api/instance";
 
 const AddTeamMember = () => {
@@ -33,10 +34,11 @@ const AddTeamMember = () => {
       .post(`/Team/add`, formData)
       .then((result) => {
         setData(result);
+        toast.success("Member added Successfully");
         history.push("./teammember");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        toast.error(error);
       });
   };
 

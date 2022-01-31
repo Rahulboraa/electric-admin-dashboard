@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "../../../api/instance";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const AddTestimonial = () => {
   const [data, setData] = useState({
@@ -13,13 +12,6 @@ const AddTestimonial = () => {
   });
 
   const { text, author, videoUrl, companyName } = data;
-
-  // !Toast Configure
-  toast.configure({
-    position: toast.POSITION.Top_RIGHT,
-    hideProgressBar: true,
-    autoClose: 3000,
-  });
 
   const handleInputChange = (e) => {
     const name = e.target.name;

@@ -65,7 +65,7 @@ const VehicleTable = () => {
                     <tr key={id}>
                       <td>{id}</td>
                       <td>{productName}</td>
-                      <td>{text}</td>
+                      <td> - </td>
                       <td> - </td>
                       <td> - </td>
                       <td

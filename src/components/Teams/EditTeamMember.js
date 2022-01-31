@@ -1,45 +1,55 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import axios from "../../api/instance";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const EditTeamMember = () => {
-  // !Toast Configure
-  toast.configure({
-    position: toast.POSITION.Top_RIGHT,
-    hideProgressBar: true,
-    autoClose: 3000,
-  });
+  const { id } = useParams();
+  let history = useHistory();
 
-  const [data, setData] = useState({
+  const [user, setUser] = useState({
     name: "",
-    designation: "",
     emailId: "",
+    designation: "",
     profilePic: "",
   });
 
-  const { name, designation, emailId, profilePic } = data;
+  const { name, designation, emailId } = user;
 
   const handleInputChange = (e) => {
-    setData({ ...data, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  //*   Fetching Brands
-  const loadBrand = () => {
-    axios
-      .get(`/Team/single`)
-      .then((result) => {
-        setData(result.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  // !OnSubmit
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    await axios.put(`/users/${id}`, user);
+    history.push("/");
+  };
+
+  //*   Fetching Teams
+  const loadTeam = async () => {
+    const result = await axios.get(`/Team/single/${id}`);
+    setUser(result.data.team[0]);
   };
 
   useEffect(() => {
-    loadBrand();
+    loadTeam();
   }, []);
+
+  // ! Update Team
+  const updateTeam = () => {
+    axios
+      .put(`Team/update/${id}`, user)
+      .then((result) => {
+        toast.success("Member Updated SuccessFully");
+        console.log(result.data.data);
+      })
+      .catch((err) => {
+        toast.error(err.message);
+        console.log(err);
+      });
+  };
 
   // !Delete Team
   const deleteTeam = (id) => {
@@ -54,9 +64,6 @@ const EditTeamMember = () => {
         console.log(err);
       });
   };
-
-  let history = useHistory();
-  const { id } = useParams();
 
   return (
     <>
@@ -107,17 +114,23 @@ const EditTeamMember = () => {
             />
           </div>
         </form>
-        <button className="btn btn-warning d-flex m-auto">
-          Update Vehicle
-        </button>
-        <button
-          className="btn btn-danger d-flex mt-3 m-auto"
-          onClick={() => {
-            deleteTeam(id);
-          }}
-        >
-          Delete
-        </button>
+
+        <div className="d-flex">
+          <button
+            className="btn btn-warning d-flex m-auto"
+            onClick={updateTeam}
+          >
+            Update Team
+          </button>
+          <button
+            className="btn btn-danger d-flex  m-auto"
+            onClick={() => {
+              deleteTeam(id);
+            }}
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </>
   );

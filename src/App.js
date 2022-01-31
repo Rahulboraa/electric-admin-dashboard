@@ -39,6 +39,8 @@ import Booking from "./components/Admin/home/Booking";
 import EditBrands from "./components/brands/EditBrands";
 import EditTeamMember from "./components/Teams/EditTeamMember";
 import EditStore from "./components/Store/EditStore";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const queryClient = new QueryClient();
@@ -106,7 +108,7 @@ function App() {
             />
             <Route
               exact
-              path="/editrecentpublication:id"
+              path="/editrecentpublication/:id"
               component={EditRecentPublication}
             />
             <Route exact path="/testimonials" component={Testimonials} />
@@ -115,6 +117,7 @@ function App() {
             <Route exact path="/addgallery" component={AddGallery} />
           </Switch>
         </Router>
+        <ToastContainer />
         <ReactQueryDevtools initialIsOpen="false" position="bottom-right" />
       </QueryClientProvider>
     </>

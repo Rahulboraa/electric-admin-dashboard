@@ -6,10 +6,6 @@ import axios from "../../api/instance";
 import { NavLink } from "react-router-dom";
 
 const VisitingCard = () => {
-  //!Getting User Token
-  const getToken = localStorage.getItem("token");
-  const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
-
   const [logo, setImageSelected] = useState({});
   const [data, setData] = useState({
     number: "",
@@ -32,11 +28,7 @@ const VisitingCard = () => {
     formData.append("emailId", data.emailId);
 
     axios
-      .post("/visingCard/add", formData, {
-        headers: {
-          "x-access-token": getToken ? getToken : parsedLogin,
-        },
-      })
+      .post("/visingCard/add", formData)
       .then((result) => {
         console.log(result.data.data);
       })

@@ -4,6 +4,7 @@ import { Table } from "reactstrap";
 import axios from "../../api/instance";
 import Sidebar from "../common/sidebar";
 import Navigation from "../Vehicle/Navigation/Navigation";
+import moment from "moment";
 
 const Brands = () => {
   const handleBrand = () => {
@@ -60,10 +61,10 @@ const Brands = () => {
                 </tr>
               </thead>
               <tbody>
-                {data?.map(({ brandName, id, logo }) => (
+                {data?.map(({ brandName, id, logo, collaborationDate }) => (
                   <tr key={id}>
                     <td>{brandName}</td>
-                    <td> - </td>
+                    <td>{moment(collaborationDate).format("MMMM Do, YYYY")}</td>
                     <td
                       onClick={() => {
                         handleEditBrand(id);

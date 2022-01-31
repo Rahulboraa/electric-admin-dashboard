@@ -40,7 +40,6 @@ const Verification = ({ setVerify, verify }) => {
       .then((result) => {
         if (result.data) {
           history.push("/");
-          localStorage.setItem("token", JSON.stringify(result.data.token));
         }
       })
       .catch((err) => {

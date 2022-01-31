@@ -4,13 +4,8 @@ import ForgotPassDialog from "../Admin/Dialogs/ForgotPassDialog";
 import Verification from "../Admin/Dialogs/Verification";
 import axios from "../../api/instance";
 import moment from "moment";
-
+import { toast } from "react-toastify";
 const Login = () => {
-  const dd = moment().format("MMMM Do, YYYY");
-  console.log("date :>> ", dd);
-
-  // const newDate = moment(new Date()).format("DD/MM/YYYY");
-
   //  !Modal State
   const [openModal, setOpenModal] = useState(false);
   const [verify, setVerify] = useState(false);
@@ -27,8 +22,6 @@ const Login = () => {
     setData({ ...data, [name]: value });
   };
 
-  const getToken = localStorage.getItem("token");
-
   const handleSubmitForm = () => {
     axios
       .post(`/user/login`, data)
@@ -40,9 +33,11 @@ const Login = () => {
             "loginUser",
             JSON.stringify(result.data.accessToken)
           );
+          toast.success("Login SuccessFully");
         }
       })
       .catch((err) => {
+        toast.error(err.message);
         console.log(err);
       });
   };

@@ -2,16 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import axios from "../../api/instance";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const EditVehicleTable = () => {
-  // !Toast Configure
-  toast.configure({
-    position: toast.POSITION.Top_RIGHT,
-    hideProgressBar: true,
-    autoClose: 3000,
-  });
-
   const { id } = useParams();
 
   const [user, setUser] = useState({

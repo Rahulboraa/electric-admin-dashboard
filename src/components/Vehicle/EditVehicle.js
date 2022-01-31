@@ -2,16 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import axios from "../../api/instance";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const EditVehicle = () => {
-  // !Toast Configure
-  toast.configure({
-    position: toast.POSITION.Top_RIGHT,
-    hideProgressBar: true,
-    autoClose: 3000,
-  });
-
   let history = useHistory();
   const { id } = useParams();
 
