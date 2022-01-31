@@ -43,9 +43,9 @@ const VehicleTable = () => {
               marginBottom: "2rem",
             }}
           >
-            <button className="buttonStyle">Back</button>
+            {/* <button className="buttonStyle">Back</button>
             <span className="VehicleHead">LOFI</span>
-            <button className="buttonStyle">Back To Application</button>
+            <button className="buttonStyle">Back To Application</button> */}
           </div>
           <div className="TableInfo">
             <Table bordered responsive borderless>
@@ -62,21 +62,19 @@ const VehicleTable = () => {
               <tbody>
                 {data?.map(({ id, productName, vehicleType, text }) => {
                   return (
-                    <tr>
-                      <React.Fragment key={id}>
-                        <td>{id}</td>
-                        <td>{productName}</td>
-                        <td>{text}</td>
-                        <td> - </td>
-                        <td> - </td>
-                        <td
-                          onClick={() => {
-                            handleRedirect(id);
-                          }}
-                        >
-                          Edit Details
-                        </td>
-                      </React.Fragment>
+                    <tr key={id}>
+                      <td>{id}</td>
+                      <td>{productName}</td>
+                      <td>{text}</td>
+                      <td> - </td>
+                      <td> - </td>
+                      <td
+                        onClick={() => {
+                          handleRedirect(id);
+                        }}
+                      >
+                        Edit Details
+                      </td>
                     </tr>
                   );
                 })}

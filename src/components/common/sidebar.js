@@ -18,13 +18,9 @@ import { useSelector } from "react-redux";
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  const loginDetails = useSelector((state) => state.login.user);
-
-  const { firstName } = loginDetails;
-  console.log(firstName);
-
   // !Home Redirect
   const history = useHistory();
+
   const homeRedirect = () => {
     history.push("/home");
   };
@@ -39,11 +35,9 @@ const Sidebar = () => {
   React.useEffect(() => {
     // setIsSidebarOpen(true);
     toggleButton();
-    console.log("Toggle Useefect");
   }, []);
 
   const toggleButton = (e) => {
-    console.log("toggle clicked");
     setIsSidebarOpen(!isSidebarOpen);
   };
 
@@ -62,8 +56,8 @@ const Sidebar = () => {
             viewBox="0 0 50 50"
             overflow="visible"
             stroke="black"
-            stroke-width="10"
-            stroke-linecap="round"
+            strokeWidth="10"
+            strokeLinecap="round"
             id="crossToggle"
             onClick={toggleButton}
           >
@@ -80,7 +74,7 @@ const Sidebar = () => {
               />
 
               <h4 className="Sidebar__title">
-                Hello <span className="admin__name">{firstName},</span>
+                Hello <span className="admin__name">Anurag,</span>
               </h4>
 
               <hr className="horizontalRule" />

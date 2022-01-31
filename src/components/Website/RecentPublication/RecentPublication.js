@@ -57,6 +57,12 @@ const RecentPublication = () => {
   const addRecentPublication = () => {
     history.push("./addrecentpublication");
   };
+
+  const handleEditPublications = (id) => {
+    console.log(id);
+    history.push(`/editrecentpublication/${id}`);
+  };
+
   return (
     <>
       <section className="d-flex">
@@ -74,21 +80,20 @@ const RecentPublication = () => {
             </button>
           </div>
           <div className="TableInfo">
-          <Table bordered responsive borderless>
-            <thead>
-              <tr>
-                <th>Publication Date</th>
-                <th>Feature Image</th>
-                <th>Publication Title</th>
-                <th>Publication Document</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.length > 0 &&
-                data?.map((items) => (
-                  <tr>
-                    <React.Fragment key={items.id}>
+            <Table bordered responsive borderless>
+              <thead>
+                <tr>
+                  <th>Publication Date</th>
+                  <th>Feature Image</th>
+                  <th>Publication Title</th>
+                  <th>Publication Document</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.length > 0 &&
+                  data?.map((items) => (
+                    <tr key={items.id}>
                       <td>{items.descripiton}</td>
                       <td>
                         <img
@@ -105,12 +110,17 @@ const RecentPublication = () => {
                           style={{ width: "200px", height: "100px" }}
                         />
                       </td>
-                      <td>Edit Publication</td>
-                    </React.Fragment>
-                  </tr>
-                ))}
-            </tbody>
-          </Table>
+                      <td
+                        onClick={() => {
+                          handleEditPublications(items.id);
+                        }}
+                      >
+                        Edit Publication
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </Table>
           </div>
         </div>
       </section>

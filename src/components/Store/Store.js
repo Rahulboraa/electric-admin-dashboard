@@ -24,11 +24,14 @@ const Store = () => {
     AddStore();
   }, []);
 
-  const history = useHistory();
-
   const handleAddStore = () => {
     history.push("./addstore");
   };
+
+  const handleEditStore = (id) => {
+    history.push(`./editstore/${id}`);
+  };
+  const history = useHistory();
 
   return (
     <>
@@ -76,27 +79,21 @@ const Store = () => {
               </thead>
               <tbody>
                 {data?.length > 0 &&
-                  data?.map(
-                    ({
-                      id,
-                      dealerId,
-                      dealerName,
-                      city1,
-                      storeType,
-                      budget,
-                      storeArea,
-                    }) => (
-                      <React.Fragment key={id}>
-                        <tr>
-                          <td>{id}</td>
-                          <td>{storeType}</td>
-                          <td>{city1}</td>
-                          <td>{dealerName}</td>
-                          <td>{dealerId}</td>
-                        </tr>
-                      </React.Fragment>
-                    )
-                  )}
+                  data?.map(({ id, dealerName, storeType, city1 }) => (
+                    <tr key={id}>
+                      <td>{id}</td>
+                      <td>{storeType}</td>
+                      <td>{city1}</td>
+                      <td>{dealerName}</td>
+                      <td
+                        onClick={() => {
+                          handleEditStore(id);
+                        }}
+                      >
+                        Edit Store
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </Table>
           </div>

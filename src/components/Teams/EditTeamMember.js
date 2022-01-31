@@ -4,7 +4,7 @@ import axios from "../../api/instance";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const EditVehicle = () => {
+const EditTeamMember = () => {
   // !Toast Configure
   toast.configure({
     position: toast.POSITION.Top_RIGHT,
@@ -12,54 +12,57 @@ const EditVehicle = () => {
     autoClose: 3000,
   });
 
-  let history = useHistory();
-  const { id } = useParams();
-
-  const [user, setUser] = useState({
-    productName: "",
-    text: "",
-    display: "",
+  const [data, setData] = useState({
+    name: "",
+    designation: "",
+    emailId: "",
+    profilePic: "",
   });
 
-  const { productName, text, email, phone, website, display } = user;
-  const onInputChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+  const { name, designation, emailId, profilePic } = data;
+
+  const handleInputChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    await axios.put(`/users/${id}`, user);
-    history.push("/");
-  };
-
-  // !FETCH USER
-  const loadUser = async () => {
-    const result = await axios.get(`/product/single/${id}`);
-    setUser(result.data.product);
-  };
-
-  useEffect(() => {
-    loadUser();
-  }, []);
-
-  // !DELETE USER
-  const deleteVehicle = (id) => {
+  //*   Fetching Brands
+  const loadBrand = () => {
     axios
-      .delete(`/product/delete/${id}`)
+      .get(`/Team/single`)
       .then((result) => {
-        toast.success("Vehicle Deleted Successfully");
-        history.goBack();
+        setData(result.data.data);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
+  useEffect(() => {
+    loadBrand();
+  }, []);
+
+  // !Delete Team
+  const deleteTeam = (id) => {
+    axios
+      .delete(`Team/delete/${id}`)
+      .then((result) => {
+        toast.success("Member Deleted SuccessFully");
+        history.goBack();
+      })
+      .catch((err) => {
+        toast.error(err.message);
+        console.log(err);
+      });
+  };
+
+  let history = useHistory();
+  const { id } = useParams();
+
   return (
     <>
       <div className="w-75 mx-auto shadow p-5">
-        <h3 className="text-center mb-4">Edit Vehicle</h3>
-        <form onSubmit={onSubmit}>
+        <h3 className="text-center mb-4">Edit Team</h3>
+        <form>
           <div className="form-group mb-4">
             <input
               type="text"
@@ -75,10 +78,10 @@ const EditVehicle = () => {
             <input
               type="text"
               className="form-control form-control-lg"
-              placeholder="Enter Brand Name"
-              name="productName"
-              value={productName}
-              onChange={onInputChange}
+              placeholder="Enter Name"
+              name="name"
+              value={name}
+              onChange={handleInputChange}
             />
           </div>
 
@@ -86,21 +89,10 @@ const EditVehicle = () => {
             <input
               type="text"
               className="form-control form-control-lg"
-              placeholder="Enter Vehicle Name"
-              name="text"
-              value={text}
-              onChange={onInputChange}
-            />
-          </div>
-
-          <div className="form-group mb-4 ">
-            <input
-              type="email"
-              className="form-control form-control-lg"
-              placeholder="Enter Dealer Name"
-              name="display"
-              value={display}
-              onChange={onInputChange}
+              placeholder="Designation"
+              name="designation"
+              value={designation}
+              onChange={handleInputChange}
             />
           </div>
 
@@ -108,10 +100,10 @@ const EditVehicle = () => {
             <input
               type="text"
               className="form-control form-control-lg"
-              placeholder="Status"
-              name="phone"
-              value={phone}
-              onChange={onInputChange}
+              placeholder="Email"
+              name="emailId"
+              value={emailId}
+              onChange={handleInputChange}
             />
           </div>
         </form>
@@ -121,7 +113,7 @@ const EditVehicle = () => {
         <button
           className="btn btn-danger d-flex mt-3 m-auto"
           onClick={() => {
-            deleteVehicle(id);
+            deleteTeam(id);
           }}
         >
           Delete
@@ -131,4 +123,4 @@ const EditVehicle = () => {
   );
 };
 
-export default EditVehicle;
+export default EditTeamMember;

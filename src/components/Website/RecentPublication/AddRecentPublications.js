@@ -42,12 +42,12 @@ const AddRecentPublications = () => {
     <>
       <form className="addform" onSubmit={addProduct}>
         <div className="addFormWidth">
-          <div className="addformInner">
+          <div className="addformInner" style={{ marginTop: "3.5rem" }}>
             <div>
               <h2>Add Publication</h2>
             </div>
 
-            <div>
+            <div style={{ marginTop: "1.5rem" }}>
               <h4 onClick={() => history.goBack()}>X</h4>
             </div>
           </div>
@@ -55,7 +55,7 @@ const AddRecentPublications = () => {
           <hr />
 
           <main>
-            <div>
+            <div style={{ marginTop: "1.5rem" }}>
               <label className="modalFormLabels">01. Feature Image</label>
               <div>
                 <input
@@ -70,75 +70,40 @@ const AddRecentPublications = () => {
               </div>
             </div>
 
-            <div>
+            <div style={{ marginTop: "2rem" }}>
               <label className="modalFormLabels">02. Publication Title</label>
               <div>
-                <h4>X</h4>
+                <input
+                  type="text"
+                  placeholder="Enter Publication Title"
+                  className="inputModalStyles"
+                />
               </div>
             </div>
-            <hr />
-            <main>
+            <div style={{ marginTop: "3.5rem" }}>
+              <label className="modalFormLabels">
+                03. Publication Document
+              </label>
               <div>
-                <label className="modalFormLabels">
-                  03. Publication Document
-                </label>
-                <div>
-                  <label className="modalFormLabels">01. Feature Image</label>
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="No file selected"
-                      className="inputModalStyles"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="modalFormLabels">
-                    02. Publication Title
-                  </label>
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="Enter the Publication Title"
-                      className="inputModalStyles"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="modalFormLabels">
-                    03. Publication Document
-                  </label>
-                  <div>
-                    <input
-                      type="text"
-                      placeholder="No file selected"
-                      className="inputModalStyles"
-                    />
-                  </div>
-                </div>
+                <input
+                  type="file"
+                  placeholder="No file selected"
+                  className="inputModalStyles"
+                />
               </div>
-            </main>
+            </div>
+            <div
+              className="d-flex justify-content-between align-items-center inputModalStylesBtn"
+              style={{ marginBottom: "4rem" }}
+            >
+              <div>
+                <button className="SaveNextBtn">Submit</button>
+              </div>
+              <div>
+                <button className="clearBtn">Clear All</button>
+              </div>
+            </div>
           </main>
-
-          <div className="d-flex justify-content-between align-items-center inputModalStylesBtn">
-            <div>
-              <button className="SaveNextBtn" type="submit">
-                Submit
-              </button>
-            </div>
-
-            <div>
-              <button
-                className="clearBtn"
-                type="reset"
-                onClick={() => {
-                  setData({});
-                }}
-              >
-                Clear All
-              </button>
-            </div>
-          </div>
         </div>
       </form>
     </>

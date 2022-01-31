@@ -63,7 +63,7 @@ const AddTeamMember = () => {
             <main>
               <div>
                 <label className="modalFormLabels">01. Profile Picture</label>
-                <div>
+                <div style={{ marginTop: "1.5rem" }}>
                   <input
                     type="file"
                     placeholder="No file selected"
@@ -74,7 +74,7 @@ const AddTeamMember = () => {
                   />
                 </div>
               </div>
-              <div>
+              <div style={{ marginTop: "1.5rem" }}>
                 <label className="modalFormLabels">02. Name</label>
                 <div>
                   <input
@@ -87,7 +87,7 @@ const AddTeamMember = () => {
                   />
                 </div>
               </div>
-              <div>
+              <div style={{ marginTop: "1.5rem" }}>
                 <label className="modalFormLabels">03. Designation</label>
                 <div>
                   <input
@@ -101,7 +101,7 @@ const AddTeamMember = () => {
                 </div>
               </div>
 
-              <div>
+              <div style={{ marginTop: "1.5rem" }}>
                 <label className="modalFormLabels" htmlFor="04.Email">
                   04. Email
                 </label>
@@ -117,7 +117,10 @@ const AddTeamMember = () => {
                 </div>
               </div>
             </main>
-            <div className="d-flex justify-content-between align-items-center inputModalStylesBtn">
+            <div
+              className="d-flex justify-content-between align-items-center inputModalStylesBtn"
+              style={{ marginBottom: "2rem" }}
+            >
               <div>
                 <button className="SaveNextBtn">Submit</button>
               </div>

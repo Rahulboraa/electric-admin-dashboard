@@ -1,25 +1,37 @@
-import React from "react";
-import { useQuery } from "react-query";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { NavLink } from "react-router-dom";
+import { Table } from "reactstrap";
 import axios from "../../api/instance";
-import CommonTable from "../common/CommonTable";
 import Sidebar from "../common/sidebar";
 import Navigation from "../Vehicle/Navigation/Navigation";
 
 const Brands = () => {
-  const history = useHistory();
   const handleBrand = () => {
     history.push("./addbrands");
   };
 
+  const [data, setData] = useState([]);
+
   const fetchBrands = () => {
-    return axios.get(`/brand`).catch((err) => {
-      console.log(err);
-    });
+    axios
+      .get(`/brand`)
+      .then((result) => {
+        setData(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  const { data } = useQuery("brands", fetchBrands);
+  useEffect(() => {
+    fetchBrands();
+  }, []);
+
+  const handleEditBrand = (id) => {
+    history.push(`./brands/edit/${id}`);
+  };
+
+  const history = useHistory();
 
   return (
     <>
@@ -38,7 +50,32 @@ const Brands = () => {
               Add Brand
             </button>
           </div>
-          <CommonTable />
+          <div className="TableInfo">
+            <Table bordered responsive borderless>
+              <thead>
+                <tr>
+                  <th>Brand Name</th>
+                  <th>Collaboration Date </th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data?.map(({ brandName, id, logo }) => (
+                  <tr key={id}>
+                    <td>{brandName}</td>
+                    <td> - </td>
+                    <td
+                      onClick={() => {
+                        handleEditBrand(id);
+                      }}
+                    >
+                      Edit Details
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </div>
         </div>
       </div>
     </>

@@ -3,8 +3,14 @@ import { useHistory } from "react-router-dom";
 import ForgotPassDialog from "../Admin/Dialogs/ForgotPassDialog";
 import Verification from "../Admin/Dialogs/Verification";
 import axios from "../../api/instance";
+import moment from "moment";
 
 const Login = () => {
+  const dd = moment().format("MMMM Do, YYYY");
+  console.log("date :>> ", dd);
+
+  // const newDate = moment(new Date()).format("DD/MM/YYYY");
+
   //  !Modal State
   const [openModal, setOpenModal] = useState(false);
   const [verify, setVerify] = useState(false);

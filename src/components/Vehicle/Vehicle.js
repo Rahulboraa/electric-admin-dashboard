@@ -6,14 +6,11 @@ import Sidebar from "../common/sidebar";
 import Navigation from "./Navigation/Navigation";
 
 const Vehicle = () => {
-  const history = useHistory();
-
   const addVehicle = () => {
     history.push("./addvehicle");
   };
-
+  
   const [data, setData] = useState();
-
   const fetchVehicleDetails = () => {
     axios
       .get(`/product/get`)
@@ -33,6 +30,7 @@ const Vehicle = () => {
     history.push(`./vehicle/edit/${id}`);
   };
 
+  const history = useHistory();
   return (
     <>
       <div className="d-flex">
@@ -64,20 +62,18 @@ const Vehicle = () => {
               <tbody>
                 {data?.map(({ id, vehicleType, vehicleName, brand }) => {
                   return (
-                    <tr>
-                      <React.Fragment key={id}>
-                        <td>{id}</td>
-                        <td>{brand}</td>
-                        <td>{vehicleName}</td>
-                        <td>{vehicleType}</td>
-                        <td
-                          onClick={() => {
-                            handleRedirect(id);
-                          }}
-                        >
-                          Edit Details
-                        </td>
-                      </React.Fragment>
+                    <tr key={id}>
+                      <td>{id}</td>
+                      <td>{brand}</td>
+                      <td>{vehicleName}</td>
+                      <td>{vehicleType}</td>
+                      <td
+                        onClick={() => {
+                          handleRedirect(id);
+                        }}
+                      >
+                        Edit Details
+                      </td>
                     </tr>
                   );
                 })}
