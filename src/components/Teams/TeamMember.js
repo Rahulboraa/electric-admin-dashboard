@@ -16,9 +16,9 @@ const TeamMember = () => {
 
   const getStore = () => {
     axios
-      .get(`/Team`)
+      .get(`/Team?page=1&limit=10`)
       .then((result) => {
-        setTeam(result.data.data.reverse());
+        setTeam(result.data.data.results.reverse());
       })
       .catch((error) => {
         console.log(error);

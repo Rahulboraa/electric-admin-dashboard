@@ -11,9 +11,9 @@ const RecentPublication = () => {
   // !FETCH RECENT PUBLICATIONS
   const handleRecentPublication = () => {
     axios
-      .get("/recentPub")
+      .get("/recentPub?page=1&limit=20")
       .then((result) => {
-        setData(result.data.data);
+        setData(result.data.data.results);
       })
       .catch((err) => {
         console.log(err);

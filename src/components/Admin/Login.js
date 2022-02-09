@@ -3,9 +3,10 @@ import { useHistory } from "react-router-dom";
 import ForgotPassDialog from "../Admin/Dialogs/ForgotPassDialog";
 import Verification from "../Admin/Dialogs/Verification";
 import axios from "../../api/instance";
-import moment from "moment";
 import { toast } from "react-toastify";
+
 const Login = () => {
+  
   //  !Modal State
   const [openModal, setOpenModal] = useState(false);
   const [verify, setVerify] = useState(false);

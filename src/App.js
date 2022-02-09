@@ -41,6 +41,7 @@ import EditTeamMember from "./components/Teams/EditTeamMember";
 import EditStore from "./components/Store/EditStore";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import EditTestimonial from "./components/Website/Testimonial/EditTestimonial";
 
 function App() {
   const queryClient = new QueryClient();
@@ -113,6 +114,11 @@ function App() {
             />
             <Route exact path="/testimonials" component={Testimonials} />
             <Route exact path="/addtestimonial" component={AddTestimonial} />
+            <Route
+              exact
+              path="/edittestimonial/:id"
+              component={EditTestimonial}
+            />
             <Route exact path="/gallery" component={Gallery} />
             <Route exact path="/addgallery" component={AddGallery} />
           </Switch>

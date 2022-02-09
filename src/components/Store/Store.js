@@ -11,9 +11,9 @@ const Store = () => {
 
   const AddStore = () => {
     axios
-      .get(`/store`)
+      .get(`/store?page=1&limit=20`)
       .then((result) => {
-        setData(result.data.storedata);
+        setData(result.data.data.results);
       })
       .catch((err) => {
         console.log(err);

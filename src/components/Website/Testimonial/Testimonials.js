@@ -1,9 +1,8 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Table } from "reactstrap";
 import axios from "../../../api/instance";
-import member from "../../../assets/Team/member.svg";
-import member2 from "../../../assets/Team/member2.svg";
 import Sidebar from "../../common/sidebar";
 import GalleryNavigation from "../Gallery/Navigation/GalleryNavigation";
 
@@ -16,9 +15,9 @@ const Testimonials = () => {
   const [data, setData] = useState([]);
   const fetchTestimonial = () => {
     axios
-      .get("/review")
+      .get("/review?page=1&limit=20")
       .then((result) => {
-        setData(result.data.data);
+        setData(result.data.data.results);
         console.log(result.data.data);
       })
       .catch((err) => {
@@ -29,6 +28,11 @@ const Testimonials = () => {
   useEffect(() => {
     fetchTestimonial();
   }, []);
+
+  const handleTestimonialEdit = (id) => {
+    console.log(id);
+    history.push(`/edittestimonial/${id}`);
+  };
 
   return (
     <>
@@ -63,50 +67,32 @@ const Testimonials = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1 Dec, 2021</td>
-                    <td>
-                      <img
-                        src={member2}
-                        alt="member"
-                        style={{ marginRight: "10px" }}
-                      />
-                      Dianne Russell
-                    </td>
-                    <td>Associate Director</td>
-                    <td>Watch and pray that you might not enter...</td>
-                    <td>Edit Testimonial</td>
-                  </tr>
-                  <tr>
-                    <td>1 Dec, 2021</td>
-                    <td>
-                      <img
-                        src={member}
-                        alt="member"
-                        style={{ marginRight: "10px" }}
-                      />
-                      Dianne Russell
-                    </td>
-                    <td>Associate Director</td>
-                    <td>Watch and pray that you might not enter...</td>
-                    <td>Edit Testimonial</td>
-                  </tr>
-                  <tr>
-                    <td>1 Dec, 2021</td>
-
-                    <td>
-                      <img
-                        src={member}
-                        alt="member"
-                        style={{ marginRight: "10px" }}
-                      />
-                      Dianne Russell
-                    </td>
-                    <td>Associate Director</td>
-                    <td>Watch and pray that you might not enter...</td>
-
-                    <td>Edit Testimonial</td>
-                  </tr>
+                  {data?.map(
+                    ({
+                      id,
+                      dealerImage,
+                      dealerType,
+                      review,
+                      dealerName,
+                      date,
+                    }) => {
+                      return (
+                        <tr key={id}>
+                          <td>{moment(date).format("MMMM Do, YYYY")}</td>
+                          <td>{dealerName}</td>
+                          <td>{dealerType}</td>
+                          <td>{review}</td>
+                          <td
+                            onClick={() => {
+                              handleTestimonialEdit(id);
+                            }}
+                          >
+                            Edit
+                          </td>
+                        </tr>
+                      );
+                    }
+                  )}
                 </tbody>
               </Table>
             </div>

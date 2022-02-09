@@ -15,9 +15,9 @@ const Brands = () => {
 
   const fetchBrands = () => {
     axios
-      .get(`/brand`)
+      .get(`/brand?page=1&limit=10`)
       .then((result) => {
-        setData(result.data.data);
+        setData(result.data.data.results);
       })
       .catch((err) => {
         console.log(err);
