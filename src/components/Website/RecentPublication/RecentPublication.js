@@ -4,16 +4,22 @@ import Sidebar from "../../common/sidebar";
 import { Table } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import GalleryNavigation from "../Gallery/Navigation/GalleryNavigation";
+import Pagination from "../../common/Pagination/Pagination";
 
 const RecentPublication = () => {
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(2)
+  const [pageCount, setPageCount] = useState(1)
+  const itemsPerPage = 2
 
   // !FETCH RECENT PUBLICATIONS
   const handleRecentPublication = () => {
     axios
-      .get("/recentPub")
+      .get(`/recentPub?page=${currentPage}&limit=${2}`)
       .then((result) => {
-        setData(result.data.data);
+        console.log(result.data.data.results, "====");
+        setData(result.data.data.results);
+        setPageCount(Math.ceil(result.data.data.next.totalCount / itemsPerPage))
       })
       .catch((err) => {
         console.log(err);
@@ -22,9 +28,8 @@ const RecentPublication = () => {
 
   useEffect(() => {
     handleRecentPublication();
-  }, []);
+  }, [currentPage]);
 
-  console.log(data);
 
   // !UPDATE RECENT PUBLICATION
   const handleRecentPublicationId = (id) => {
@@ -63,6 +68,11 @@ const RecentPublication = () => {
     history.push(`/editrecentpublication/${id}`);
   };
 
+  const handlePageClick = (e) => {
+    console.log(e, "event");
+    setCurrentPage(e.selected + 1)
+  }
+
   return (
     <>
       <section className="d-flex">
@@ -91,7 +101,7 @@ const RecentPublication = () => {
                 </tr>
               </thead>
               <tbody>
-                {data.length > 0 &&
+                {data?.length > 0 &&
                   data?.map((items) => (
                     <tr key={items.id}>
                       <td>{items.descripiton}</td>
@@ -122,6 +132,7 @@ const RecentPublication = () => {
               </tbody>
             </Table>
           </div>
+          <Pagination handlePageClick={handlePageClick} pageCount={pageCount + 1}/>
         </div>
       </section>
     </>

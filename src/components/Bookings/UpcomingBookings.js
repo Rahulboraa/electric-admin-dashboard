@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
 
 const UpcomingBookings = () => {
+  const [data, setData] = useState([])
   return (
     <>
       <section>
