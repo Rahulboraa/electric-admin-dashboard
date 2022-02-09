@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ae03b777.css",
+    "main.js": "/static/js/main.5369ecfa.js",
+    "static/media/galllery3.svg": "/static/media/galllery3.4f95b18751a4166ac0302fad59ec6e4b.svg",
+    "static/media/gallery.svg": "/static/media/gallery.37065a2bec71e240d71046c6026d8cc5.svg",
+    "static/media/gallery2.svg": "/static/media/gallery2.81369d9ee9b3dc9c3de7130fabfdaab5.svg",
+    "static/media/dummy.svg": "/static/media/dummy.7218c1e8173a4efd6b83fac410d453be.svg",
+    "static/media/member2.svg": "/static/media/member2.4c0721b11d3e4867a3e3b554b9435f3b.svg",
+    "static/media/member.svg": "/static/media/member.572ac4ca3c67972fc488ac123b70cd8e.svg",
+    "static/media/logo.svg": "/static/media/logo.aaead77aefbedd9416b030d4611d7cbc.svg",
+    "static/media/visiting.svg": "/static/media/visiting.2963c3e1690ab83697535a8ff2227bba.svg",
+    "static/media/testride.svg": "/static/media/testride.e9e4e3606eaeb22dba92df0e50a25c0d.svg",
+    "static/media/vehicle.svg": "/static/media/vehicle.49300ebe34b2fba87bb437be3eac1da3.svg",
+    "static/media/group.svg": "/static/media/group.58ad75c38a12b40202b850ec8a05ba72.svg",
+    "static/media/store.svg": "/static/media/store.9ed3fd537fd1a3a919876864560a176f.svg",
+    "static/media/support.svg": "/static/media/support.1ba5697f4b62802ffac5a585f545b56f.svg",
+    "static/media/deal.svg": "/static/media/deal.9204f98fac2f6de7434f8525a4e29d41.svg",
+    "static/media/booking.svg": "/static/media/booking.e74b6bcfd7813d3fe3947a0a755a9cd4.svg",
+    "static/media/user.svg": "/static/media/user.3b165c29be90618d8f8a0dba0745679a.svg",
+    "static/media/teams.svg": "/static/media/teams.c70f9763b7171d8178bc1df85392584e.svg",
+    "static/media/upload.svg": "/static/media/upload.e007441556d9684534fe1b64964983cd.svg",
+    "static/media/website.svg": "/static/media/website.d0121c36f8951509a2a716d44f7f554a.svg",
+    "static/media/dealers.svg": "/static/media/dealers.8aac59160ebfd41de95f5d8de9952a71.svg",
+    "static/media/merchendice.svg": "/static/media/merchendice.236d8e46afd995233e47f7b736bd83a3.svg",
+    "index.html": "/index.html",
+    "static/media/logout.svg": "/static/media/logout.6720299d0980a8b63fc58fd8a2a94b97.svg",
+    "main.ae03b777.css.map": "/static/css/main.ae03b777.css.map",
+    "main.5369ecfa.js.map": "/static/js/main.5369ecfa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ae03b777.css",
+    "static/js/main.5369ecfa.js"
+  ]
+}
