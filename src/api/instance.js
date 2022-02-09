@@ -1,6 +1,6 @@
 import axios from "axios";
 // const baseURL = process.env.REACT_APP_BASE_URL;
-const baseURL = "https://27b3-2404-1f00-8010-d051-2c40-f946-6903-cadb.ngrok.io";
+const baseURL = "http://65.1.35.119:4041/";
 
 const parsedLogin = JSON?.parse(localStorage.getItem("loginUser"));
 
