@@ -30,6 +30,7 @@ const AddTeamMember = () => {
     formData.append("emailId", emailId);
     formData.append("designation", designation);
     formData.append("profilePic", profilePic);
+    console.log("formdata", formData);
     axios
       .post(`/Team/add`, formData)
       .then((result) => {
@@ -41,6 +42,7 @@ const AddTeamMember = () => {
         toast.error(error);
       });
   };
+
 
   const handleReset = () => {
     setData({});

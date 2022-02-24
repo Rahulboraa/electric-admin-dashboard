@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
+import axios from "../../api/instance";
 
 const UpcomingBookings = () => {
+  // !Fetch Upcoming Bookings
+  const [data, setData] = useState([]);
+  const fetchUpcomingBookings = () => {
+    axios
+      .get(`/dealerForm`)
+      .then((result) => {
+        setData(result.data.data);
+        console.log(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchUpcomingBookings();
+  }, []);
+
   return (
     <>
       <section>
@@ -42,30 +61,20 @@ const UpcomingBookings = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>555-0112</td>
-                    <td>Hero Electic</td>
-                    <td>LO:EV</td>
-                    <td>Barone LLC.</td>
-                    <td>On Review</td>
-                    <td>View Application</td>
-                  </tr>
-                  <tr>
-                    <td>555-0112</td>
-                    <td>Hero Electic</td>
-                    <td>LO:EV</td>
-                    <td>Barone LLC.</td>
-                    <td>On Review</td>
-                    <td>View Application</td>
-                  </tr>
-                  <tr>
-                    <td>555-0112</td>
-                    <td>Hero Electic</td>
-                    <td>LO:EV</td>
-                    <td>Barone LLC.</td>
-                    <td>On Review</td>
-                    <td>View Application</td>
-                  </tr>
+                  {data?.map((item) => {
+                    return (
+                      <>
+                        <tr>
+                          <td>-</td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td>Edit</td>
+                        </tr>
+                      </>
+                    );
+                  })}
                 </tbody>
               </Table>
             </div>

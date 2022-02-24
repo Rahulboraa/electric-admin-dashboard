@@ -1,10 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
+import axios from "../../api/instance";
+import { toast } from "react-toastify";
 
 const DealerApplications = () => {
+  // !Fetch Dealers
+  const [data, setData] = useState([]);
+  const fetchUpcomingBookings = () => {
+    axios
+      .get(`/dealerForm`)
+      .then((result) => {
+        setData(result.data.data);
+        console.log(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchUpcomingBookings();
+  }, []);
+
+  const history = useHistory();
+
+  // !Delete Upcoming Dealer
+  const handleDeleteDealer = (id) => {
+    axios(`dealerForm/delete/${id}`)
+      .then((result) => {
+        fetchUpcomingBookings();
+        toast.success("Dealer Deleted Successfully");
+      })
+      .catch((err) => {
+        toast.error("Error Occurred");
+      });
+  };
+
   return (
     <>
       <div>
@@ -33,7 +67,7 @@ const DealerApplications = () => {
               <Table bordered responsive borderless>
                 <thead>
                   <tr>
-                    <th>Date</th>
+                    {/* <th>SNO</th> */}
                     <th>Application No.</th>
                     <th>Dealer Name</th>
                     <th>Mobile No.</th>
@@ -42,30 +76,34 @@ const DealerApplications = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>555-0112</td>
-                    <td>Hero Electic</td>
-                    <td>LO:EV</td>
-                    <td>Barone LLC.</td>
-                    <td>On Review</td>
-                    <td>View Application</td>
-                  </tr>
-                  <tr>
-                    <td>555-0112</td>
-                    <td>Hero Electic</td>
-                    <td>LO:EV</td>
-                    <td>Barone LLC.</td>
-                    <td>On Review</td>
-                    <td>View Application</td>
-                  </tr>
-                  <tr>
-                    <td>555-0112</td>
-                    <td>Hero Electic</td>
-                    <td>LO:EV</td>
-                    <td>Barone LLC.</td>
-                    <td>On Review</td>
-                    <td>View Application</td>
-                  </tr>
+                  {data?.map((item, index) => {
+                    const { dealerId, userName, phoneNumber, emailId } = item;
+                    return (
+                      <>
+                        <tr>
+                          {/* <td>{index + 1}</td> */}
+                          <td>{dealerId}</td>
+                          <td>{userName}</td>
+                          <td>{phoneNumber}</td>
+                          <td>{emailId}</td>
+                          {/* <td
+                            onClick={() => {
+                              history.push(`./editDealer/${dealerId}`);
+                            }}
+                          >
+                            Edit
+                          </td> */}
+                          <td
+                            onClick={() => {
+                              handleDeleteDealer(dealerId);
+                            }}
+                          >
+                            Delete
+                          </td>
+                        </tr>
+                      </>
+                    );
+                  })}
                 </tbody>
               </Table>
             </div>

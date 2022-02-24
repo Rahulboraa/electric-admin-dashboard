@@ -6,7 +6,6 @@ import axios from "../../api/instance";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  
   //  !Modal State
   const [openModal, setOpenModal] = useState(false);
   const [verify, setVerify] = useState(false);
@@ -34,6 +33,7 @@ const Login = () => {
             "loginUser",
             JSON.stringify(result.data.accessToken)
           );
+          window.location.reload();
           toast.success("Login SuccessFully");
         }
       })

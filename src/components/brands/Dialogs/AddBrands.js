@@ -10,6 +10,7 @@ const AddBrands = () => {
     setBrandName(e.target.value);
   };
 
+  // !Add Brands
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -19,6 +20,7 @@ const AddBrands = () => {
       .post("/brand/add", formData)
       .then((result) => {
         console.log(result.data.data);
+        history.goBack();
       })
       .catch((err) => {
         console.log(err);

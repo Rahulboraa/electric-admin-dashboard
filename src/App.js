@@ -42,6 +42,8 @@ import EditStore from "./components/Store/EditStore";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EditTestimonial from "./components/Website/Testimonial/EditTestimonial";
+import ScrollToTop from "./components/ScrollToTop";
+import EditDealer from "./components/Dealer/EditDealer";
 
 function App() {
   const queryClient = new QueryClient();
@@ -49,6 +51,7 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <Router>
+          <ScrollToTop />
           <Switch>
             <Route exact path="/" component={Login} />
             <Route exact path="/signup" component={SignUp} />
@@ -86,6 +89,9 @@ function App() {
               component={DealerApplications}
             />
             <Route exact path="/adddealer" component={AddDealer} />
+
+            {/* <Route exact path="/editDealer/:id" component={EditDealer} /> */}
+
             <Route
               exact
               path="/upcommingbookings"

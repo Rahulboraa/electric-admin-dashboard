@@ -36,9 +36,9 @@ const DealarForm = () => {
           </nav>
           <div className="subHeadingButton">
             <h4> Dealers</h4>
-            <button onClick={handleAddDealer} className="mainAddBtn">
+            {/* <button onClick={handleAddDealer} className="mainAddBtn">
               Add Dealer
-            </button>
+            </button> */}
           </div>
           <div className="TableInfo">
             <Table bordered responsive borderless>
