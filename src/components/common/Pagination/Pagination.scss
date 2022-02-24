@@ -1,0 +1,30 @@
+.paginate {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: gainsboro;
+    border-radius: 8px;
+    &__page {
+        list-style-type: none;
+    }
+    &__active {
+        color: blue;
+    }
+    &__next {
+        list-style-type: none;
+        text-transform: capitalize;
+    }
+    &__anchor {
+        text-decoration: none !important;
+    }
+    &__prev {
+        list-style-type: none;
+        text-transform: capitalize;
+    }
+    &__anchor {
+        text-decoration: none !important;
+    }
+    &__disabled {
+        color: darkgrey;
+    }
+}

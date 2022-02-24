@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Table } from "reactstrap";
 import axios from "../../../api/instance";
+import member from "../../../assets/Team/member.svg";
+import member2 from "../../../assets/Team/member2.svg";
+import Pagination from "../../common/Pagination/Pagination";
 import Sidebar from "../../common/sidebar";
 import GalleryNavigation from "../Gallery/Navigation/GalleryNavigation";
 
@@ -13,12 +16,19 @@ const Testimonials = () => {
   };
 
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(2);
+  const [pageCount, setPageCount] = useState(1);
+  const itemsPerPage = 3;
+
   const fetchTestimonial = () => {
     axios
-      .get("/review?page=1&limit=20")
+      .get(`/review/?page=${currentPage}&limit=${2}`)
       .then((result) => {
         setData(result.data.data.results);
-        console.log(result.data.data);
+        setPageCount(
+          Math.ceil(result.data.data.next.totalCount / itemsPerPage)
+        );
+        console.log(result.data.data, "test");
       })
       .catch((err) => {
         console.log(err);
@@ -29,9 +39,9 @@ const Testimonials = () => {
     fetchTestimonial();
   }, []);
 
-  const handleTestimonialEdit = (id) => {
-    console.log(id);
-    history.push(`/edittestimonial/${id}`);
+  const handlePageClick = (e) => {
+    console.log(e, "event");
+    setCurrentPage(e.selected + 1);
   };
 
   return (
@@ -67,35 +77,35 @@ const Testimonials = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {data?.map(
-                    ({
-                      id,
-                      dealerImage,
-                      dealerType,
-                      review,
-                      dealerName,
-                      date,
-                    }) => {
-                      return (
-                        <tr key={id}>
-                          <td>{moment(date).format("MMMM Do, YYYY")}</td>
-                          <td>{dealerName}</td>
-                          <td>{dealerType}</td>
-                          <td>{review}</td>
-                          <td
-                            onClick={() => {
-                              handleTestimonialEdit(id);
+                  {data?.length > 0 &&
+                    data?.map((item) => (
+                      <tr key={item.id}>
+                        <td>{new Date(item.date).toDateString()}</td>
+                        <td>
+                          <img
+                            src={item.dealerImage[0]}
+                            alt="member"
+                            style={{
+                              marginRight: "10px",
+                              height: "2rem",
+                              width: "2rem",
+                              borderRadius: "50%",
                             }}
-                          >
-                            Edit
-                          </td>
-                        </tr>
-                      );
-                    }
-                  )}
+                          />
+                          {item.dealerName}
+                        </td>
+                        <td>{item.dealerType}</td>
+                        <td>{item.review}</td>
+                        <td>Edit Testimonial</td>
+                      </tr>
+                    ))}
                 </tbody>
               </Table>
             </div>
+            <Pagination
+              handlePageClick={handlePageClick}
+              pageCount={pageCount + 1}
+            />
           </div>
         </div>
       </section>

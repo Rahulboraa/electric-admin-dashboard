@@ -44,6 +44,7 @@ import "react-toastify/dist/ReactToastify.css";
 import EditTestimonial from "./components/Website/Testimonial/EditTestimonial";
 import ScrollToTop from "./components/ScrollToTop";
 import EditDealer from "./components/Dealer/EditDealer";
+import Approvals from "./components/Merchandise/Approvals";
 
 function App() {
   const queryClient = new QueryClient();
@@ -101,6 +102,8 @@ function App() {
             <Route exact path="/teammember" component={TeamMember} />
             <Route exact path="/teams/edit/:id" component={EditTeamMember} />
             <Route exact path="/addteamember" component={AddTeamMember} />
+            
+            <Route exact path="/approvals" component={Approvals} />
             <Route exact path="/merchandise" component={Merchandise} />
             <Route exact path="/visitingcard" component={VisitingCard} />
             <Route

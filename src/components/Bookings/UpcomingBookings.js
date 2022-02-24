@@ -1,28 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
 import axios from "../../api/instance";
 
 const UpcomingBookings = () => {
-  // !Fetch Upcoming Bookings
-  const [data, setData] = useState([]);
-  const fetchUpcomingBookings = () => {
-    axios
-      .get(`/dealerForm`)
-      .then((result) => {
-        setData(result.data.data);
-        console.log(result.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  useEffect(() => {
-    fetchUpcomingBookings();
-  }, []);
-
+  const [data, setData] = useState([])
   return (
     <>
       <section>

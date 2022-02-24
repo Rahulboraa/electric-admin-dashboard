@@ -3,13 +3,10 @@ import React, { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import Sidebar from "../common/sidebar";
 import upload from "./../../assets/vehicles/upload.svg";
+import Navigation from "./Navigation";
 
 const Merchandise = () => {
   const [uploadfile, setUploadfile] = useState({});
-
-  //!Getting User Token
-  const getToken = localStorage.getItem("token");
-  const parsedLogin = JSON.parse(localStorage.getItem("loginUser"));
 
   const [data, setData] = useState({
     number: "",
@@ -26,14 +23,7 @@ const Merchandise = () => {
     formData.append("number", data.number);
     formData.append("address", data.address);
 
-    let config = {
-      headers: {
-        "content-type": "multipart/form-data",
-        "x-access-token": getToken ? getToken : parsedLogin,
-      },
-    };
-
-    let result = await axios.post("/LetterHead/add", formData, config);
+    let result = await axios.post("/LetterHead/add", formData);
     setsee(result.data.data?.logo);
   };
 
@@ -49,27 +39,7 @@ const Merchandise = () => {
           <Sidebar />
 
           <div className="navbarTop">
-            <h3 className="navbarTopHeading">Merchandise</h3>
-            <nav className="navbarContainer">
-              <NavLink
-                to="/merchandise"
-                className="navlinkUnactive"
-                activeClassName="navbaractive"
-              >
-                <span>Letterhead</span>
-              </NavLink>
-
-              <NavLink
-                to="/visitingcard"
-                className="navlinkUnactive"
-                activeClassName="navbaractive"
-              >
-                <span>Visiting Card</span>
-              </NavLink>
-
-              <hr />
-            </nav>
-
+            <Navigation />
             <div style={{ display: "flex", alignItems: "center" }}>
               <div style={{ width: "100%" }}>
                 <section>
