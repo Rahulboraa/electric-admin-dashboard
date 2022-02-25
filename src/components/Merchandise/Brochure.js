@@ -30,7 +30,6 @@ const Brochure = () => {
         </div>
 
         <div className="navbarTop">
-          <h3 className="navbarTopHeading">Merchandise</h3>
           <Navigation />
 
           <div style={{ display: "flex", alignItems: "center" }}>

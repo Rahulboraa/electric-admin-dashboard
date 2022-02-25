@@ -12,15 +12,16 @@ const EditBrands = () => {
     logo: "",
     brandName: "",
     collaborationDate: "",
+    logo: "",
   });
 
-  const { brandName, collaborationDate } = data;
+  const { logo, brandName, collaborationDate } = data;
 
   const handleInputChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  //*   Fetching Brands
+  //! Fetching Brands
   const loadBrand = () => {
     axios
       .get(`/brand/single/${id}`)
@@ -36,19 +37,6 @@ const EditBrands = () => {
     loadBrand();
   }, []);
 
-  // *Update Brand
-  // !DATA WILL BE SENT IN FORM DATA FILED
-  const handleUpdateBrand = () => {
-    axios
-      .put(`/brand/${id}`, { brandName })
-      .then((result) => {
-        console.log(result.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   // !Delete Brand
   const deleteBrand = (id) => {
     axios
@@ -59,6 +47,49 @@ const EditBrands = () => {
       })
       .catch((err) => {
         toast.error(err.message);
+        console.log(err);
+      });
+  };
+
+  // !Preview
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState();
+
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const onSelectFile = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+    setSelectedFile(e.target.files[0]);
+  };
+
+  //!Update Brand
+  let formData = new FormData();
+  formData.append("collaborationDate", collaborationDate);
+  formData.append("brandName", brandName);
+  formData.append("logo", selectedFile);
+
+  const handleUpdateBrand = () => {
+    axios
+      .put(`/brand/${id}`, formData)
+      .then((result) => {
+        toast.success("Brand Updated SuccessFully");
+        history.goBack();
+      })
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -78,7 +109,6 @@ const EditBrands = () => {
               disabled
             />
           </div>
-
           <div className="form-group mb-4">
             <input
               type="text"
@@ -90,7 +120,38 @@ const EditBrands = () => {
               name="brandName"
             />
           </div>
-
+          <div className="d-flex justify-content-center align-content-center  m-auto">
+            {selectedFile ? (
+              <img
+                src={preview}
+                style={{
+                  width: "220px",
+                  height: "120px",
+                  marginBottom: "0.10rem",
+                }}
+              />
+            ) : (
+              <img
+                src={data?.logo}
+                alt="logo"
+                style={{
+                  width: "220px",
+                  height: "120px",
+                  marginBottom: "0.10rem",
+                }}
+              />
+            )}
+          </div>
+          
+          <div className="form-group mb-4">
+            <input
+              type="file"
+              onChange={onSelectFile}
+              className="form-control form-control-md"
+              id="formFileSm"
+            />
+          </div>
+          
           <div className="form-group mb-4">
             <input
               type="date"
@@ -101,6 +162,7 @@ const EditBrands = () => {
               value={moment(collaborationDate).format("YYYY-MM-DD")}
             />
           </div>
+
         </form>
         <button
           className="btn btn-warning d-flex m-auto"

@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
+import axios from "../../api/instance";
+import moment from "moment";
 
 const DealarForm = () => {
-  const history = useHistory();
-  const handleAddDealer = () => {
-    history.push("./adddealer");
+  // !Fetch Dealers
+  const [data, setData] = useState([]);
+  const fetchUpcomingBookings = () => {
+    axios
+      .get(`/dealerForm`)
+      .then((result) => {
+        setData(result.data.data);
+        console.log(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
+  useEffect(() => {
+    fetchUpcomingBookings();
+  }, []);
+
+  const history = useHistory();
 
   return (
     <>
@@ -36,9 +53,6 @@ const DealarForm = () => {
           </nav>
           <div className="subHeadingButton">
             <h4> Dealers</h4>
-            {/* <button onClick={handleAddDealer} className="mainAddBtn">
-              Add Dealer
-            </button> */}
           </div>
           <div className="TableInfo">
             <Table bordered responsive borderless>
@@ -53,30 +67,36 @@ const DealarForm = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>555-0112</td>
-                  <td>Hero Electic</td>
-                  <td>LO:EV</td>
-                  <td>Barone LLC.</td>
-                  <td>On Review</td>
-                  <td>View Application</td>
-                </tr>
-                <tr>
-                  <td>555-0112</td>
-                  <td>Hero Electic</td>
-                  <td>LO:EV</td>
-                  <td>Barone LLC.</td>
-                  <td>On Review</td>
-                  <td>View Application</td>
-                </tr>
-                <tr>
-                  <td>555-0112</td>
-                  <td>Hero Electic</td>
-                  <td>LO:EV</td>
-                  <td>Barone LLC.</td>
-                  <td>On Review</td>
-                  <td>View Application</td>
-                </tr>
+                {data?.map((item, index) => {
+                  const {
+                    dealerId,
+                    userName,
+                    phoneNumber,
+                    emailId,
+                    verified,
+                    date,
+                  } = item;
+                  return (
+                    <>
+                      {verified && (
+                        <tr>
+                          <td>{moment(date).format("YYYY-MM-DD")}</td>
+                          <td>{dealerId}</td>
+                          <td>{userName}</td>
+                          <td>{phoneNumber}</td>
+                          <td>{emailId}</td>
+                          <td
+                          // onClick={() => {
+                          //   history.push(`./editDealer/${dealerId}`);
+                          // }}
+                          >
+                            Edit
+                          </td>
+                        </tr>
+                      )}
+                    </>
+                  );
+                })}
               </tbody>
             </Table>
           </div>

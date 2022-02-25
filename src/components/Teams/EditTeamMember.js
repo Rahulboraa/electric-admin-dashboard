@@ -14,7 +14,7 @@ const EditTeamMember = () => {
     profilePic: "",
   });
 
-  const { name, designation, emailId } = user;
+  const { name, designation, emailId, profilePic } = user;
 
   const handleInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -37,12 +37,12 @@ const EditTeamMember = () => {
     loadTeam();
   }, []);
 
-  // ! Update Team
-  const updateTeam = () => {
+  // !Delete Team
+  const deleteTeam = (id) => {
     axios
-      .put(`Team/update/${id}`, user)
+      .delete(`Team/delete/${id}`)
       .then((result) => {
-        toast.success("Member Updated SuccessFully");
+        toast.success("Member Deleted SuccessFully");
         history.goBack();
       })
       .catch((err) => {
@@ -51,12 +51,43 @@ const EditTeamMember = () => {
       });
   };
 
-  // !Delete Team
-  const deleteTeam = (id) => {
+  // !Preview
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState();
+
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const onSelectFile = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+    setSelectedFile(e.target.files[0]);
+  };
+
+  // ! Update Team
+  let formData = new FormData();
+
+  formData.append("name", name);
+  formData.append("emailId", emailId);
+  formData.append("designation", designation);
+  formData.append("profilePic", selectedFile);
+  const updateTeam = () => {
     axios
-      .delete(`Team/delete/${id}`)
+      .put(`Team/update/${id}`, formData)
       .then((result) => {
-        toast.success("Member Deleted SuccessFully");
+        toast.success("Member Updated SuccessFully");
         history.goBack();
       })
       .catch((err) => {
@@ -111,6 +142,38 @@ const EditTeamMember = () => {
               name="emailId"
               value={emailId}
               onChange={handleInputChange}
+            />
+          </div>
+
+          <div className="d-flex justify-content-center align-content-center  m-auto">
+            {selectedFile ? (
+              <img
+                src={preview}
+                style={{
+                  width: "220px",
+                  height: "120px",
+                  marginBottom: "0.10rem",
+                }}
+              />
+            ) : (
+              <img
+                src={profilePic}
+                alt="logo"
+                style={{
+                  width: "220px",
+                  height: "120px",
+                  marginBottom: "0.10rem",
+                }}
+              />
+            )}
+          </div>
+
+          <div className="form-group mb-4">
+            <input
+              type="file"
+              onChange={onSelectFile}
+              className="form-control form-control-md"
+              id="formFileSm"
             />
           </div>
         </form>

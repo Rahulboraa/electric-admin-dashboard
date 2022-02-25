@@ -7,6 +7,7 @@ import axios from "../../api/instance";
 import { toast } from "react-toastify";
 
 const DealerApplications = () => {
+  
   // !Fetch Dealers
   const [data, setData] = useState([]);
   const fetchUpcomingBookings = () => {
@@ -25,11 +26,10 @@ const DealerApplications = () => {
     fetchUpcomingBookings();
   }, []);
 
-  const history = useHistory();
-
   // !Delete Upcoming Dealer
   const handleDeleteDealer = (id) => {
-    axios(`dealerForm/delete/${id}`)
+    axios
+      .delete(`dealerForm/deleteDealer/${id}`)
       .then((result) => {
         fetchUpcomingBookings();
         toast.success("Dealer Deleted Successfully");
@@ -39,6 +39,7 @@ const DealerApplications = () => {
       });
   };
 
+  const history = useHistory();
   return (
     <>
       <div>

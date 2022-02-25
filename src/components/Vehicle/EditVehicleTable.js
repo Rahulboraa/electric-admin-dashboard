@@ -7,12 +7,13 @@ const EditVehicleTable = () => {
   const { id } = useParams();
 
   const [user, setUser] = useState({
+    productName: "",
     brand: "",
     vehicleName: "",
     vehicleType: "",
   });
 
-  const { brand, vehicleName, vehicleType } = user;
+  const { productName, brand, vehicleName, vehicleType } = user;
 
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -81,8 +82,8 @@ const EditVehicleTable = () => {
               type="email"
               className="form-control form-control-lg"
               placeholder="Enter Vehicle Name"
-              name="vehicleName"
-              value={vehicleName}
+              name="productName"
+              value={productName}
               onChange={onInputChange}
             />
           </div>

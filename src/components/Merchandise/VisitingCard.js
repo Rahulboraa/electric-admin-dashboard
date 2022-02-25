@@ -7,20 +7,20 @@ import { NavLink } from "react-router-dom";
 import Navigation from "./Navigation";
 
 const VisitingCard = () => {
-  const [logo, setImageSelected] = useState({});
   const [data, setData] = useState({
     number: "",
     address: "",
     emailId: "",
   });
-
+  
   const { number, address, emailId } = data;
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
   };
-
+  
+  const [logo, setImageSelected] = useState({});
   const handleFormUpload = () => {
     let formData = new FormData();
     formData.append("logo", logo);
@@ -45,7 +45,6 @@ const VisitingCard = () => {
           <Sidebar />
 
           <div className="navbarTop">
-            <h3 className="navbarTopHeading">Merchandise</h3>
             <Navigation />
 
             <div className="d-flex align-items-center" style={{ gap: "2rem" }}>

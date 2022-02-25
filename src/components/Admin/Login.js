@@ -125,12 +125,12 @@ const Login = () => {
                 Forgot password?
               </p>
 
-              <p className="signUp">
+              {/* <p className="signUp">
                 Don’t have an account?
                 <span className="signupBtn" onClick={handleSignup}>
                   Sign up
                 </span>
-              </p>
+              </p> */}
             </footer>
           </div>
         </section>

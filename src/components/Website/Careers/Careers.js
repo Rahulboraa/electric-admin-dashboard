@@ -74,11 +74,6 @@ function Careers() {
                           gap: "0.3rem",
                         }}
                       >
-                        {/* <NavLink
-                          to="/careers"
-                          className="navlinkUnactive"
-                          activeClassName="navbaractive"
-                        > */}
                         <input
                           type="radio"
                           id="activated"
@@ -90,7 +85,6 @@ function Careers() {
                           }}
                         />
                         <label for="activated">Activated</label>
-                        {/* </NavLink> */}
                       </th>
                       <th
                         style={{
@@ -99,11 +93,6 @@ function Careers() {
                           gap: "0.3rem",
                         }}
                       >
-                        {/* <NavLink
-                          to="/careers"
-                          className="navlinkUnactive"
-                          activeClassName="navbaractive"
-                        > */}
                         <input
                           type="radio"
                           id="deactivated"
@@ -114,7 +103,6 @@ function Careers() {
                           }}
                         />
                         <label for="deactivated">Deactivated</label>
-                        {/* </NavLink> */}
                       </th>
                     </th>
                   </td>

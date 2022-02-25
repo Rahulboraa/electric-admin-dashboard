@@ -4,14 +4,14 @@ import { useHistory } from "react-router-dom";
 
 const AddRecentPublications = () => {
   const [data, setData] = useState({
-    date: "",
     text: "",
-    recentPDF: "",
+    descripiton: "",
   });
 
-  const { date, text, recentPDF } = data;
+  const { text, descripiton } = data;
 
   const [recent, setImageSelected] = useState();
+  const [recentPDF, setRecentPDF] = useState();
 
   const handleInputChange = (e) => {
     const name = e.target.name;
@@ -19,17 +19,19 @@ const AddRecentPublications = () => {
     setData({ ...data, [name]: value });
   };
 
+  // !Add Recent Publication
   const addProduct = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("recent", recent);
-    formData.append("date", date);
+    // formData.append("date", date);
     formData.append("text", text);
     formData.append("recentPDF", recentPDF);
+    formData.append("descripiton", descripiton);
     axios
       .post(`/recentPub/add`, formData)
       .then((result) => {
-        console.log(result);
+        history.goBack();
         setData({});
       })
       .catch((err) => {
@@ -77,18 +79,39 @@ const AddRecentPublications = () => {
                   type="text"
                   placeholder="Enter Publication Title"
                   className="inputModalStyles"
+                  name="text"
+                  value={text}
+                  onChange={handleInputChange}
                 />
               </div>
             </div>
+
+            <div style={{ marginTop: "2rem" }}>
+              <label className="modalFormLabels">03. Description</label>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Enter Publication Title"
+                  className="inputModalStyles"
+                  name="descripiton"
+                  value={descripiton}
+                  onChange={handleInputChange}
+                />
+              </div>
+            </div>
+
             <div style={{ marginTop: "3.5rem" }}>
               <label className="modalFormLabels">
-                03. Publication Document
+                04. Publication Document
               </label>
               <div>
                 <input
                   type="file"
                   placeholder="No file selected"
                   className="inputModalStyles"
+                  onChange={(e) => {
+                    setRecentPDF(e.target.files[0]);
+                  }}
                 />
               </div>
             </div>
