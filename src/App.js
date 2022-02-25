@@ -34,6 +34,8 @@ import EditVehicleTable from "./components/Vehicle/EditVehicleTable";
 import NewDealers from "./components/Admin/home/NewDealers";
 import NewStore from "./components/Admin/home/NewStore";
 import Booking from "./components/Admin/home/Booking";
+import Careers from "./components/Website/Careers/Careers";
+import EditCareer from "./components/Website/Careers/EditCareer";
 import EditBrands from "./components/brands/EditBrands";
 import EditTeamMember from "./components/Teams/EditTeamMember";
 import EditStore from "./components/Store/EditStore";
@@ -102,6 +104,9 @@ function App() {
             <Route exact path="/approvals" component={Approvals} />
             <Route exact path="/merchandise" component={Merchandise} />
             <Route exact path="/visitingcard" component={VisitingCard} />
+            <Route exact path="/careers" component={Careers} />
+            <Route exact path="/editCareer/:id" component={EditCareer} />
+
             <Route
               exact
               path="/recentpublications"

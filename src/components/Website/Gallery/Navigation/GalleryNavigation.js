@@ -27,6 +27,14 @@ const GalleryNavigation = () => {
       >
         <span>Testimonials</span>
       </NavLink>
+
+      <NavLink
+        to="/careers"
+        className="navlinkUnactive"
+        activeClassName="navbaractive"
+      >
+        <span>Careers</span>
+      </NavLink>
       <hr />
     </>
   );

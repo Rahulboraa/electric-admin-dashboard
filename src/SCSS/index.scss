@@ -78,6 +78,7 @@ tr > .tableTd {
 .subHeadingButton {
   display: flex !important;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 2.18rem;
 }
 @include xs {
