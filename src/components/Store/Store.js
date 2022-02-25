@@ -41,13 +41,6 @@ const Store = () => {
           <h3 className="navbarTopHeading">Stores</h3>
           <nav className="navbarContainer">
             <NavLink
-              to="/storeapplication"
-              className="navlinkUnactive"
-              activeClassName="navbaractive"
-            >
-              <span> New Store Applications</span>
-            </NavLink>
-            <NavLink
               to="/store"
               className="navlinkUnactive"
               activeClassName="navbaractive"

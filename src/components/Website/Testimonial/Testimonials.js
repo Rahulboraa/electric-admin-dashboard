@@ -10,6 +10,7 @@ import Sidebar from "../../common/sidebar";
 import GalleryNavigation from "../Gallery/Navigation/GalleryNavigation";
 
 const Testimonials = () => {
+  
   const history = useHistory();
   const handleTestimonial = () => {
     history.push("./addtestimonial");

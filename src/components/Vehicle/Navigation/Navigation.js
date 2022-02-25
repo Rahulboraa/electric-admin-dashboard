@@ -5,13 +5,6 @@ const Navigation = () => {
   return (
     <nav className="navbarContainer">
       <NavLink
-        to="/vehicleapplication"
-        className="navlinkUnactive"
-        activeClassName="navbaractive"
-      >
-        <span>Vehicle Application</span>
-      </NavLink>
-      <NavLink
         to="/vehicle"
         className="navlinkUnactive"
         activeClassName="navbaractive"

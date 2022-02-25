@@ -4,6 +4,7 @@ import upload from "./../../assets/vehicles/upload.svg";
 import visiting from "../../assets/Merchandise/visiting.svg";
 import axios from "../../api/instance";
 import { NavLink } from "react-router-dom";
+import Navigation from "./Navigation";
 
 const VisitingCard = () => {
   const [logo, setImageSelected] = useState({});
@@ -45,25 +46,7 @@ const VisitingCard = () => {
 
           <div className="navbarTop">
             <h3 className="navbarTopHeading">Merchandise</h3>
-            <nav className="navbarContainer">
-              <NavLink
-                to="/merchandise"
-                className="navlinkUnactive"
-                activeClassName="navbaractive"
-              >
-                <span>Letterhead</span>
-              </NavLink>
-
-              <NavLink
-                to="/visitingcard"
-                className="navlinkUnactive"
-                activeClassName="navbaractive"
-              >
-                <span>Visiting Card</span>
-              </NavLink>
-
-              <hr />
-            </nav>
+            <Navigation />
 
             <div className="d-flex align-items-center" style={{ gap: "2rem" }}>
               <form>

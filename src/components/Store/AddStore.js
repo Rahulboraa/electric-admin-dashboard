@@ -1,35 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "../../api/instance";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AddStore = () => {
   const [data, setData] = useState({
     dealerId: "",
     dealerName: "",
-    city1: "",
     city2: "",
-    budget: "",
     storeType: "",
     storeArea: "",
   });
 
-  const { dealerName, dealerId, city1, budget, storeType, storeArea } = data;
+  const { dealerName, dealerId } = data;
 
   const handleInputChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
-  };
-
-  // !Submit Form
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .post(`/store/add`, data)
-      .then((result) => {
-        console.log(result.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   // !Clear Form
@@ -37,36 +23,141 @@ const AddStore = () => {
     setData({});
   };
 
-  // !Getting Vehicle Type
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const getDropdownItem = () => {
+  // !City Dropdown
+  const [selectedCity, setSelectedCity] = useState(null);
+  const getCityDropdowns = () => {
     axios
-      .get("/color")
+      .get("/city/getCities")
       .then((result) => {
-        setSelectedOption(result.data.data);
+        setSelectedCity(result.data.cities);
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
+    getCityDropdowns();
+  }, []);
+
+  const [city1, setCityId] = useState("");
+  const cityChange = (e) => {
+    setCityId(e.target.value);
+  };
+
+  // !City Dropdown 2
+  const [selectedCityTwo, setSelectedCityTwo] = useState(null);
+
+  const getCityDropdownsTwo = () => {
+    axios
+      .get("/city/getCities")
+      .then((result) => {
+        setSelectedCityTwo(result.data.cities);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getCityDropdownsTwo();
+  }, []);
+
+  const [city2, setCityIdTwo] = useState("");
+  const cityChangeTwo = (e) => {
+    setCityIdTwo(e.target.value);
+  };
+
+  // !Getting Vehicle Budget Type
+  const [selectedOption, setSelectedOption] = useState(null);
+  const getDropdownItem = () => {
+    axios
+      .get("/dropdowns/getAllInvestmentBudget")
+      .then((result) => {
+        setSelectedOption(result.data.investmentBudgets);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
     getDropdownItem();
   }, []);
 
-  const [vehicleId, setType] = useState("");
+  const [budget, setType] = useState("");
   const vehicleChange = (e) => {
     setType(e.target.value);
   };
 
-  const [addVehicle, setAddVehicle] = useState(false);
-  const handleAddBtn = () => {
-    setAddVehicle(true);
+  // !ShowRoom Type
+  const [showRoomType, setShowRoomType] = useState(null);
+  const getShowRoomType = () => {
+    axios
+      .get("/dropdowns/getAllPropertyTypes")
+      .then((result) => {
+        setShowRoomType(result.data.propertyTypes);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getShowRoomType();
+  }, []);
+
+  const [storeType, setShowRoomTypeID] = useState("");
+  const showRoomChange = (e) => {
+    setShowRoomTypeID(e.target.value);
+  };
+
+  // !ShowRoom Area
+  const [showroomAreas, setShowroomArea] = useState(null);
+
+  const getShowroomArea = () => {
+    axios
+      .get("/dropdowns/getAllShowroomAreas")
+      .then((result) => {
+        setShowroomArea(result.data.showroomAreas);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getShowroomArea();
+  }, []);
+
+  const [storeArea, setShowroomAreaType] = useState("");
+
+  const showroomAreaChange = (e) => {
+    setShowroomAreaType(e.target.value);
+  };
+
+  // !Submit Form
+  const data2 = { ...data, city1, city2, budget, storeType, storeArea };
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post(`/store/add`, data2)
+      .then((result) => {
+        setShowroomAreaType("");
+        setShowRoomTypeID("");
+        setCityIdTwo("");
+        setCityId("");
+        setType("");
+        setData({});
+        toast.success("Store Added SuccessFully");
+        history.goBack();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   let history = useHistory();
-
   return (
     <>
       <form className="addform" onSubmit={handleFormSubmit}>
@@ -88,7 +179,7 @@ const AddStore = () => {
                 <div>
                   <input
                     type="text"
-                    placeholder="20967576042"
+                    placeholder="Enter Dealer Id"
                     className="inputModalStyles"
                     onChange={handleInputChange}
                     name="dealerId"
@@ -102,7 +193,7 @@ const AddStore = () => {
                 <div>
                   <input
                     type="text"
-                    placeholder="Sharda Electric Vehicles"
+                    placeholder="Enter Name"
                     className="inputModalStyles"
                     onChange={handleInputChange}
                     name="dealerName"
@@ -119,12 +210,12 @@ const AddStore = () => {
 
               <div className="d-flex justify-content-between align-items-center">
                 <div>
-                  <select className="inputModalStyles" onChange={vehicleChange}>
-                    <option value="0">Choose the Vehicle Color</option>
-                    {selectedOption?.map((items) => {
+                  <select className="inputModalStyles" onChange={cityChange}>
+                    <option value="0">First Preference</option>
+                    {selectedCity?.map((items) => {
                       return (
                         <React.Fragment key={items.id}>
-                          <option value={items.id}>{items.color}</option>
+                          <option value={items.id}>{items.cityName}</option>
                         </React.Fragment>
                       );
                     })}
@@ -132,12 +223,12 @@ const AddStore = () => {
                 </div>
 
                 <div>
-                  <select className="inputModalStyles" onChange={vehicleChange}>
-                    <option value="0">Choose the Vehicle Color</option>
-                    {selectedOption?.map((items) => {
+                  <select className="inputModalStyles" onChange={cityChangeTwo}>
+                    <option value="0">Second Preference</option>
+                    {selectedCityTwo?.map((items) => {
                       return (
                         <React.Fragment key={items.id}>
-                          <option value={items.id}>{items.color}</option>
+                          <option value={items.id}>{items.cityName}</option>
                         </React.Fragment>
                       );
                     })}
@@ -149,11 +240,13 @@ const AddStore = () => {
                 <label className="modalFormLabels">04. Investment Budget</label>
                 <div>
                   <select className="inputModalStyles" onChange={vehicleChange}>
-                    <option value="0">Choose the Vehicle Color</option>
+                    <option value="0">Investment Budget</option>
                     {selectedOption?.map((items) => {
                       return (
                         <React.Fragment key={items.id}>
-                          <option value={items.id}>{items.color}</option>
+                          <option value={items.id}>
+                            {items.investmentBudget}
+                          </option>
                         </React.Fragment>
                       );
                     })}
@@ -166,35 +259,46 @@ const AddStore = () => {
                   05. Property/Showroom
                 </label>
                 <div>
-                  <input
-                    type="text"
-                    placeholder="Choose an option"
+                  <select
                     className="inputModalStyles"
-                    name="storeType"
-                    onChange={handleInputChange}
-                    value={storeType}
-                  />
+                    onChange={showRoomChange}
+                  >
+                    <option value="0">Property/Showroom</option>
+                    {showRoomType?.map((items) => {
+                      return (
+                        <React.Fragment key={items.id}>
+                          <option value={items.id}>{items.propertyType}</option>
+                        </React.Fragment>
+                      );
+                    })}
+                  </select>
                 </div>
               </div>
-              <div>
+
+              <div style={{ marginTop: "1rem" }}>
                 <label className="modalFormLabels" htmlFor="06.  Showroom Area">
                   06. Showroom Area
                 </label>
                 <div>
-                  <input
-                    type="text"
-                    placeholder="Choose an option"
+                  <select
                     className="inputModalStyles"
-                    name="storeArea"
-                    onChange={handleInputChange}
-                    value={storeArea}
-                  />
+                    onChange={showroomAreaChange}
+                  >
+                    <option value="0">Property/Showroom</option>
+                    {showroomAreas?.map((items) => {
+                      return (
+                        <React.Fragment key={items.id}>
+                          <option value={items.id}>{items.showroomArea}</option>
+                        </React.Fragment>
+                      );
+                    })}
+                  </select>
                 </div>
               </div>
             </main>
             <div
               className="d-flex justify-content-between align-items-center inputModalStylesBtn"
-              style={{ marginBottom: "4rem" }}
+              style={{ marginBottom: "4rem", marginTop: "3.4rem" }}
             >
               <div>
                 <button className="SaveNextBtn" type="submit">

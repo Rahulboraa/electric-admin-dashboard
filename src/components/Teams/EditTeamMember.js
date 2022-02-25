@@ -43,7 +43,7 @@ const EditTeamMember = () => {
       .put(`Team/update/${id}`, user)
       .then((result) => {
         toast.success("Member Updated SuccessFully");
-        console.log(result.data.data);
+        history.goBack();
       })
       .catch((err) => {
         toast.error(err.message);

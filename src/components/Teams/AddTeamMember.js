@@ -10,9 +10,10 @@ const AddTeamMember = () => {
     name: "",
     emailId: "",
     designation: "",
+    discription: "",
   });
 
-  const { name, emailId, designation } = data;
+  const { name, emailId, designation, discription } = data;
 
   const handleAddTeamChange = (e) => {
     const name = e.target.name;
@@ -22,7 +23,6 @@ const AddTeamMember = () => {
   };
 
   // ! Add Team Member
-
   const handleAddTeamMember = (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -30,7 +30,7 @@ const AddTeamMember = () => {
     formData.append("emailId", emailId);
     formData.append("designation", designation);
     formData.append("profilePic", profilePic);
-    console.log("formdata", formData);
+    formData.append("discription", discription);
     axios
       .post(`/Team/add`, formData)
       .then((result) => {
@@ -42,7 +42,6 @@ const AddTeamMember = () => {
         toast.error(error);
       });
   };
-
 
   const handleReset = () => {
     setData({});
@@ -116,6 +115,21 @@ const AddTeamMember = () => {
                     className="inputModalStyles"
                     name="emailId"
                     value={emailId}
+                    onChange={handleAddTeamChange}
+                  />
+                </div>
+              </div>
+              <div style={{ marginTop: "1.5rem" }}>
+                <label className="modalFormLabels" htmlFor="discription">
+                  05. Description
+                </label>
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Enter Description"
+                    className="inputModalStyles"
+                    name="discription"
+                    value={discription}
                     onChange={handleAddTeamChange}
                   />
                 </div>

@@ -4,11 +4,8 @@ import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
 
-const PastBooking = () => {
+const RefundBooking = () => {
   const history = useHistory();
-  const handleUpcommingBooking = () => {
-    history.push("./upcommingbookings");
-  };
   return (
     <>
       <section>
@@ -22,18 +19,18 @@ const PastBooking = () => {
                 className="navlinkUnactive"
                 activeClassName="navbaractive"
               >
-                <span>Upcoming Bookings</span>
+                <span>Confirmed Bookings</span>
               </NavLink>
 
               <NavLink
-                to="/pastbooking"
+                to="/refundbooking"
                 className="navlinkUnactive"
                 activeClassName="navbaractive"
               >
-                <span>Past Bookings</span>
+                <span>Refund Bookings</span>
               </NavLink>
             </nav>
-            <h4 style={{ marginBottom: "2.18rem" }}>Past Booking</h4>
+            <h4 style={{ marginBottom: "2.18rem" }}>Refund Booking</h4>
             <div className="TableInfo">
               <Table bordered responsive borderless>
                 <thead>
@@ -81,4 +78,4 @@ const PastBooking = () => {
   );
 };
 
-export default PastBooking;
+export default RefundBooking;

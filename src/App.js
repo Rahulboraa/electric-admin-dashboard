@@ -3,13 +3,11 @@ import "./SCSS/index.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Admin/Login";
 import SignUp from "./components/Admin/Signup";
-import VehicleTable from "./components/Vehicle/VehicleTable";
 import Vehicle from "./components/Vehicle/Vehicle";
 import Brands from "./components/brands/brands";
 import AddBrands from "./components/brands/Dialogs/AddBrands";
 import AddVehicle from "./components/Vehicle/VehicleApplication";
 import VehicleStepper from "./components/Vehicle/VehicleStepper";
-import StoreApplication from "./components/Store/StoreApplication";
 import Store from "./components/Store/Store";
 import AddStore from "./components/Store/AddStore";
 import Home from "./components/Admin/home/Home";
@@ -17,7 +15,7 @@ import DealerApplications from "./components/Dealer/DealerApplications";
 import DealarForm from "./components/Dealer/DealerForm";
 import AddDealer from "./components/Dealer/AddDealer";
 import UpcomingBookings from "./components/Bookings/UpcomingBookings";
-import PastBooking from "./components/Bookings/PastBooking";
+import PastBooking from "./components/Bookings/RefundBooking";
 import TeamMember from "./components/Teams/TeamMember";
 import AddTeamMember from "./components/Teams/AddTeamMember";
 import Merchandise from "./components/Merchandise/Merchandise";
@@ -45,6 +43,8 @@ import EditTestimonial from "./components/Website/Testimonial/EditTestimonial";
 import ScrollToTop from "./components/ScrollToTop";
 import EditDealer from "./components/Dealer/EditDealer";
 import Approvals from "./components/Merchandise/Approvals";
+import RefundBooking from "./components/Bookings/RefundBooking";
+import Brochure from "./components/Merchandise/Brochure";
 
 function App() {
   const queryClient = new QueryClient();
@@ -56,7 +56,6 @@ function App() {
           <Switch>
             <Route exact path="/" component={Login} />
             <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/vehicleapplication" component={VehicleTable} />
             <Route exact path="/vehicle" component={Vehicle} />
             <Route exact path="/edit/:id" component={EditVehicle} />
             <Route
@@ -70,11 +69,7 @@ function App() {
             <Route exact path="/brands" component={Brands} />
             <Route exact path="/brands/edit/:id" component={EditBrands} />
             <Route exact path="/addbrands" component={AddBrands} />
-            <Route
-              exact
-              path="/storeapplication"
-              component={StoreApplication}
-            />
+
             <Route exact path="/store" component={Store} />
             <Route exact path="/editstore/:id" component={EditStore} />
             <Route exact path="/addstore" component={AddStore} />
@@ -98,11 +93,12 @@ function App() {
               path="/upcommingbookings"
               component={UpcomingBookings}
             />
-            <Route exact path="/pastbooking" component={PastBooking} />
+            <Route exact path="/refundbooking" component={RefundBooking} />
             <Route exact path="/teammember" component={TeamMember} />
             <Route exact path="/teams/edit/:id" component={EditTeamMember} />
             <Route exact path="/addteamember" component={AddTeamMember} />
-            
+            <Route exact path="/brochure" component={Brochure} />
+
             <Route exact path="/approvals" component={Approvals} />
             <Route exact path="/merchandise" component={Merchandise} />
             <Route exact path="/visitingcard" component={VisitingCard} />
@@ -123,11 +119,13 @@ function App() {
             />
             <Route exact path="/testimonials" component={Testimonials} />
             <Route exact path="/addtestimonial" component={AddTestimonial} />
+
             <Route
               exact
               path="/edittestimonial/:id"
               component={EditTestimonial}
             />
+
             <Route exact path="/gallery" component={Gallery} />
             <Route exact path="/addgallery" component={AddGallery} />
           </Switch>

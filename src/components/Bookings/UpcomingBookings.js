@@ -5,7 +5,7 @@ import Sidebar from "../common/sidebar";
 import axios from "../../api/instance";
 
 const UpcomingBookings = () => {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
   return (
     <>
       <section>
@@ -19,18 +19,18 @@ const UpcomingBookings = () => {
                 className="navlinkUnactive"
                 activeClassName="navbaractive"
               >
-                <span>Upcoming Bookings</span>
+                <span>Confirmed Bookings</span>
               </NavLink>
 
               <NavLink
-                to="/pastbooking"
+                to="/refundbooking"
                 className="navlinkUnactive"
                 activeClassName="navbaractive"
               >
-                <span>Past Bookings</span>
+                <span>Refund Bookings</span>
               </NavLink>
             </nav>
-            <h4 style={{ marginBottom: "2.18rem" }}>Upcoming Bookings</h4>
+            <h4 style={{ marginBottom: "2.18rem" }}>Confirmed Bookings</h4>
             <div className="TableInfo">
               <Table bordered responsive borderless>
                 <thead>
@@ -39,7 +39,8 @@ const UpcomingBookings = () => {
                     <th>Booking No.</th>
                     <th>Vehicle Name</th>
                     <th>Dealer Name</th>
-                    <th>Dealer Name</th>
+                    <th>Customer Name</th>
+                    <th>Status</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -49,6 +50,7 @@ const UpcomingBookings = () => {
                       <>
                         <tr>
                           <td>-</td>
+                          <td></td>
                           <td></td>
                           <td></td>
                           <td></td>

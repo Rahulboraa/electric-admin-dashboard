@@ -28,6 +28,7 @@ const Sidebar = () => {
     window.localStorage.removeItem("token");
     window.localStorage.removeItem("loginUser");
     history.push("./");
+    window.location.reload();
   };
 
   return (
