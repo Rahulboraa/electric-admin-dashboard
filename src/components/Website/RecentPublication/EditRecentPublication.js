@@ -3,6 +3,7 @@ import dummy from "../../../assets/recentPublicaton/dummy.svg";
 import axios from "../../../api/instance";
 import { useHistory, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import moment from "moment";
 
 const EditRecentPublication = () => {
   const handleImageReset = () => {};
@@ -10,12 +11,11 @@ const EditRecentPublication = () => {
   const [user, setUser] = useState({
     title: "",
     descripiton: "",
-    recentPDF: "",
     date: "",
     image: "",
   });
 
-  const { title, date, recentPDF, descripiton, image } = user;
+  const { title, date, descripiton, image } = user;
 
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -59,11 +59,20 @@ const EditRecentPublication = () => {
   };
 
   // !Update Recent Publication
+  const [recentPDF, setImageSelected] = useState("");
+
+  let newDate = new Date();
+  let dateFormated = moment(newDate).format("MMMM Do, YYYY");
   let formdata = new FormData();
-  formdata.append("");
+  formdata.append("title", title);
+  formdata.append("descripiton", descripiton);
+  formdata.append("dateFormated", dateFormated);
+  formdata.append("image", selectedFile);
+  formdata.append("recentPDF", recentPDF);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.put(`/recentPub/update/1645944000655/${id}`, user);
+    await axios.put(`/recentPub/update/${id}`, formdata);
+    history.goBack();
   };
 
   // !DELETE PUBLICATIONS
@@ -192,7 +201,10 @@ const EditRecentPublication = () => {
             <div className="form-group mt-4">
               <input
                 type="file"
-                // onChange={onSelectFile}
+                name="recentPDF"
+                onChange={(e) => {
+                  setImageSelected(e.target.files[0]);
+                }}
                 className="form-control form-control-md"
                 id="formFileSm"
               />

@@ -44,7 +44,7 @@ const Sidebar = () => {
             />
 
             <h4 className="Sidebar__title">
-              Hello <span className="admin__name">Anurag,</span>
+              Hello <span className="admin__name">Admin,</span>
             </h4>
 
             <hr className="horizontalRule" />
