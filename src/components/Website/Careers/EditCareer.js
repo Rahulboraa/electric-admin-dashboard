@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import axios from "../../../api/instance";
 
 const EditCareer = () => {
   const { id } = useParams();
-  console.log({ id });
+
   const [user, setUser] = useState({
     description: "",
     role: "",
@@ -34,11 +35,12 @@ const EditCareer = () => {
     setUser(result.data);
   };
 
-  const deleteCareer = (id) => {
+  const deleteCareer = () => {
     axios
       .delete(`/career/deleteJob/${id}`)
       .then((result) => {
-        console.log(result.data.jobs);
+        toast.success("Job Deleted Successfully");
+        history.goBack();
       })
       .catch((err) => {
         console.log(err);
@@ -94,12 +96,14 @@ const EditCareer = () => {
             />
           </div>
         </form>
-        <div className="d-flex justify-content-center align-content-center gap-5 mt-4">
-          <button className="btn btn-primary ">Update Brand</button>
+        <div className="d-flex justify-content-center align-content-center gap-5 mt-5">
+          <button className="btn btn-primary " onClick={onSubmit}>
+            Update Brand
+          </button>
           <button
             className="btn btn-danger"
             onClick={() => {
-              deleteCareer(id);
+              deleteCareer();
             }}
           >
             Delete

@@ -77,23 +77,31 @@ const DealerApplications = () => {
                 </thead>
                 <tbody>
                   {data?.map((item, index) => {
-                    const { dealerId, userName, phoneNumber, emailId } = item;
+                    const {
+                      dealerId,
+                      userName,
+                      phoneNumber,
+                      emailId,
+                      verified,
+                    } = item;
                     return (
                       <>
-                        <tr>
-                          {/* <td>{index + 1}</td> */}
-                          <td>{dealerId}</td>
-                          <td>{userName}</td>
-                          <td>{phoneNumber}</td>
-                          <td>{emailId}</td>
-                          <td
-                            onClick={() => {
-                              handleDeleteDealer(dealerId);
-                            }}
-                          >
-                            <button className="tableEditBtn">Delete</button>
-                          </td>
-                        </tr>
+                        {verified === false && (
+                          <tr>
+                            {/* <td>{index + 1}</td> */}
+                            <td>{dealerId}</td>
+                            <td>{userName}</td>
+                            <td>{phoneNumber}</td>
+                            <td>{emailId}</td>
+                            <td
+                              onClick={() => {
+                                handleDeleteDealer(dealerId);
+                              }}
+                            >
+                              <button className="tableEditBtn">Delete</button>
+                            </td>
+                          </tr>
+                        )}
                       </>
                     );
                   })}

@@ -59,6 +59,8 @@ const EditRecentPublication = () => {
   };
 
   // !Update Recent Publication
+  let formdata = new FormData();
+  formdata.append("");
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios.put(`/recentPub/update/1645944000655/${id}`, user);

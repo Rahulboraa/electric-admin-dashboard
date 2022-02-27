@@ -590,3 +590,25 @@ figure {
   margin: 0 auto;
   text-align: center;
 }
+
+.tableactive {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 160%;
+  text-transform: capitalize;
+  color: #191919;
+}
+
+.detailedPage {
+  outline: none;
+  border: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  text-transform: capitalize;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  background: #191919;
+}

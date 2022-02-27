@@ -1,149 +1,90 @@
-.Home__Container {
-  display: flex;
-}
-
-@include xs {
-  .Home__Container {
-    // justify-content: center;
-    margin: 0.5rem;
-  }
-}
-.Home__First__Container {
-  width: 23%;
-}
-
-.Home__Second__Container {
+.dashboard_main {
   width: 100%;
-  margin: 3rem 3rem;
-}
-
-@include xs {
-  .Home__Second__Container {
-    position: relative;
-    margin: 3rem 0rem;
+  padding-left: 4rem;
+  font-family: Red Hat Display;
+  font-style: normal;
+  margin-right: 4rem;
+  .dashboard_title {
+    font-size: 2rem;
+    margin: 5rem 0rem 5rem 0rem;
+    font-weight: 500;
+    line-height: 48px;
   }
-}
-
-@include sm {
-  .Home__Second__Container {
-    position: relative;
-    margin: 3rem 0rem;
+  .widget_title {
+    font-size: 1.5rem;
+    text-transform: capitalize;
   }
-}
-.Home__Inner__Container__1 {
-  display: flex;
-  justify-content: space-around;
-  height: 12.5rem;
-  width: 100%;
-  padding-top: 30px;
-  height: 9rem;
-}
-
-@include xs {
-  .Home__Inner__Container__1 {
-    flex-direction: column;
-    height: auto;
+  .widgetGrids {
+    display: grid;
+    grid-template-columns: 30.5% 30.5% 30.5%;
+    grid-column-gap: 2.8125rem;
+    margin-top: 1.25rem;
+    .widgetBox {
+      width: 100%;
+      border: 1px solid #e5e5e5;
+      position: relative;
+      .redline {
+        position: absolute;
+        background-color: #d20000;
+        height: 1.8px;
+        width: 5rem;
+        margin-left: 20px;
+      }
+      .widgetDetails {
+        padding: 1.5rem 1.5rem 1.25rem 1.25rem;
+        .widDetail {
+          display: flex;
+          gap: 0.9rem;
+          font-size: 14px;
+        }
+        .additionDetail {
+          color: #acacac;
+          font-weight: 700;
+          font-size: 26px;
+          line-height: 53px;
+          margin-left: 2rem;
+          margin-top: 0.25rem;
+          span {
+            font-size: 24px;
+            font-weight: 400;
+            padding-left: 10px;
+          }
+        }
+      }
+    }
   }
-}
-.Home__Inner__Container__2 {
-  padding-top: 100px;
-}
-
-@include xs {
-  .Home__Inner__Container__2 {
-    padding-top: 100px;
+  .chart_title {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    margin: 2.5rem 0rem 1.25rem 0rem;
   }
-}
-
-@include sm {
-  .Home__Inner__Container__2 {
-    padding-top: 100px;
-  }
-}
-@include md {
-  .Home__Inner__Container__2 {
-    padding-top: 100px;
-  }
-}
-.Home__Inner__1 {
-  height: 180%;
-  max-height: 445px;
-  width: 30%;
-  border: #d4d4d4 1px solid;
-  border-top-width: 2px;
-  padding: 20px;
-}
-
-@include xs {
-  .Home__Inner__1 {
+  .chartsection {
     width: 100%;
-    margin: 1rem 0;
-  }
-}
-.Home__Inner__Img {
-  position: absolute;
-  top: 7.8rem;
-  margin-left: 0.625rem;
-  width: 6%;
-}
+    height: 400px;
+    border: 1px solid #e5e5e5;
+    padding: 0.75rem 1.5rem;
+    .chartTopsection {
+      margin: 0.2rem 0rem 1.5rem 0rem;
+      font-family: Red Hat Display;
+      font-style: normal;
+      font-weight: normal;
+      display: flex;
+      justify-content: space-between;
 
-@include xs {
-  .Home__Inner__Img {
-    position: absolute;
-    top: 5.3rem;
-    margin-left: 0.625rem;
-    width: 6%;
-    height: 0.2rem;
+      .title {
+        font-size: 18px;
+        line-height: 28px;
+      }
+      .filter {
+        width: 74px;
+        height: 25px;
+        border: 1px solid #e5e5e5;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 5px 5px 10px;
+        font-size: 15px;
+      }
+    }
   }
-}
-@include sm {
-  .Home__Inner__Img {
-    position: absolute;
-    top: 4.5rem;
-    margin-left: 0.625rem;
-    width: 6%;
-    height: 0.3rem;
-  }
-}
-
-@include md {
-  .Home__Inner__Img {
-    position: absolute;
-    top: 7.7rem;
-    margin-left: 0.625rem;
-    width: 6%;
-    height: 0.3rem;
-  }
-}
-.Home__p1 {
-  font-size: var(--base-font-size);
-}
-.Home__p2 {
-  font-size: 40px;
-  text-transform: uppercase;
-  color: #acacac;
-}
-
-@include xs {
-  .Home__p2 {
-    font-size: 20px;
-  }
-}
-
-@include sm {
-  .Home__p2 {
-    font-size: 20px;
-  }
-}
-
-@include md {
-  .Home__p2 {
-    font-size: 20px;
-  }
-}
-.Home__Inner__div__1 {
-  display: flex;
-  align-items: baseline;
-  gap: 0 1rem;
-  padding: 20px 0 0 0;
 }
