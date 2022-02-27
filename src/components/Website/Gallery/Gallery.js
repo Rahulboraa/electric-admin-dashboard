@@ -7,18 +7,15 @@ import gallery3 from "../../../assets/Gallery/galllery3.svg";
 import { useHistory } from "react-router-dom";
 import axios from "../../../api/instance";
 import GalleryNavigation from "./Navigation/GalleryNavigation";
+import { toast } from "react-toastify";
 
 const Gallery = () => {
   const history = useHistory();
-  const handleAddImage = () => {
-    history.push("./addgallery");
-  };
-
   // !Fetch Gallery
   const [data, setData] = useState([]);
   const FetchGallery = () => {
     axios
-      .get(`gallery?page=1&limit=12`)
+      .get(`gallery?page=1&limit=30`)
       .then((result) => {
         setData(result.data.data.results);
         // console.log(result.data.data.results);
@@ -31,6 +28,18 @@ const Gallery = () => {
   useEffect(() => {
     FetchGallery();
   }, []);
+
+  const handleDeleteGallery = (id) => {
+    axios
+      .delete(`gallery/delete/${id}`)
+      .then((result) => {
+        toast.success("Image Deleted Successfully");
+        FetchGallery();
+      })
+      .catch((err) => {
+        toast.error("An Error Occurred");
+      });
+  };
 
   return (
     <>
@@ -45,12 +54,22 @@ const Gallery = () => {
               <GalleryNavigation />
             </nav>
 
-            <div className="subHeadingButton">
-              <div>
-                <h4>Gallery</h4>
-              </div>
-              <div>
-                <button className="mainAddBtn">Add Image</button>
+            <section>
+              <div className="d-flex justify-content-between align-content-center mb-5">
+                <div>
+                  <h4>Gallery</h4>
+                </div>
+
+                <div>
+                  <button
+                    className="mainAddBtn"
+                    onClick={() => {
+                      history.push("./addgallery");
+                    }}
+                  >
+                    Add Image
+                  </button>
+                </div>
               </div>
 
               {/* Dummy Image Section */}
@@ -58,15 +77,33 @@ const Gallery = () => {
               <section className="gallery_list">
                 {data?.map((item, i) => (
                   <>
-                    <div className="gallery_item">
+                    <div
+                      className="gallery_item"
+                      style={{ flexDirection: "column", marginBottom: "1rem" }}
+                    >
                       <img
-                        src={item?.imageUrl}
+                        src={item?.image}
                         style={{
                           objectFit: "cover",
                           width: "247px",
                           height: "190px",
                         }}
                       />
+                      <div
+                        onClick={() => {
+                          handleDeleteGallery(item.id);
+                        }}
+                        style={{
+                          display: "block",
+                          color: "red",
+                          border: "1px solid black",
+                          background: "#fff",
+                          padding: "5px",
+                          marginTop: "1rem",
+                        }}
+                      >
+                        Delete
+                      </div>
                     </div>
                   </>
                 ))}
@@ -92,7 +129,7 @@ const Gallery = () => {
                   <img src={gallery2} alt="gallery" />
                 </figure>
               </section>
-            </div>
+            </section>
           </div>
         </div>
       </section>

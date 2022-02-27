@@ -76,37 +76,40 @@ const ViewAllCareer = () => {
               </tr>
             </thead>
             <tbody>
-              {data?.map(({ firstName, id, phone, email, resume }) => (
-                <tr key={id}>
-                  <td>{firstName}</td>
-                  <td>{phone}</td>
-                  <td>{email}</td>
-                  {/* <td>-</td> */}
-                  <td>
-                    <a href={resume} rel="noopener noreferrer" download>
-                      <button
-                        style={{
-                          outline: "none",
-                          fontSize: "16px",
-                          border: "none",
-                          background: "#191919",
-                          color: "#Fff",
-                          padding: "8px",
-                        }}
-                      >
-                        Download Resume
-                      </button>
-                    </a>
-                  </td>
-                  <td
-                    onClick={() => {
-                      handleDeleteJob(id);
-                    }}
-                  >
-                    <button className="tableEditBtn">Delete</button>
-                  </td>
-                </tr>
-              ))}
+              {data?.map(
+                ({ firstName, id, phone, email, resume, lastName }) => (
+                  <tr key={id}>
+                    <td>
+                      {firstName} {lastName}
+                    </td>
+                    <td>{phone}</td>
+                    <td>{email}</td>
+                    <td>
+                      <a href={resume} rel="noopener noreferrer" download>
+                        <button
+                          style={{
+                            outline: "none",
+                            fontSize: "16px",
+                            border: "none",
+                            background: "#191919",
+                            color: "#Fff",
+                            padding: "8px",
+                          }}
+                        >
+                          Download Resume
+                        </button>
+                      </a>
+                    </td>
+                    <td
+                      onClick={() => {
+                        handleDeleteJob(id);
+                      }}
+                    >
+                      <button className="tableEditBtn">Delete</button>
+                    </td>
+                  </tr>
+                )
+              )}
             </tbody>
           </Table>
         </div>

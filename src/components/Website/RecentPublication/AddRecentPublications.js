@@ -168,14 +168,15 @@ const AddRecentPublications = () => {
               </label>
               <div style={{ marginTop: "1.5rem" }}>
                 {selectedFile2 && (
-                  <img
-                    src={preview2}
-                    style={{
-                      width: "220px",
-                      height: "120px",
-                      marginBottom: "1.2rem",
-                    }}
-                  />
+                  // <img
+                  //   src={preview2}
+                  //   style={{
+                  //     width: "220px",
+                  //     height: "120px",
+                  //     marginBottom: "1.2rem",
+                  //   }}
+                  // />
+                  <></>
                 )}
               </div>
               <div className="form-group mb-4">

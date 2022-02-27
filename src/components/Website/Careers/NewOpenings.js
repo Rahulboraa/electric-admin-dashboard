@@ -24,7 +24,6 @@ const NewOpenings = () => {
   // !Add Jobs
   const handleFormSubmit = (e) => {
     e.preventDefault();
-
     axios
       .post("/career/addJob", data)
       .then((result) => {

@@ -115,11 +115,13 @@ const RecentPublication = () => {
                       </td>
                       <td>{items.title}</td>
                       <td>
-                        <img
-                          src={items.recentPDF}
-                          alt="recentPDF"
-                          style={{ width: "200px", height: "100px" }}
-                        />
+                        <a
+                          href={items.recentPDF}
+                          rel="noopener noreferrer"
+                          download
+                        >
+                          <button className="SaveNextBtn">Download PDF</button>
+                        </a>
                       </td>
                       <td
                         onClick={() => {

@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { NavLink } from "react-router-dom";
 import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
+import axios from "../../api/instance";
+import moment from "moment";
 
 const RefundBooking = () => {
-  const history = useHistory();
+  // !fetch Refund
+  const [data, setData] = useState([]);
+  const fetchRefund = () => {
+    axios
+      .get(`payment/getPaymentsByStatus?status=refundRequest`)
+      .then((result) => {
+        setData(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    fetchRefund();
+  }, []);
+
   return (
     <>
       <section>
@@ -36,38 +54,24 @@ const RefundBooking = () => {
                 <thead>
                   <tr>
                     <th>Date</th>
-                    <th>Booking No.</th>
+                    <th>User Id</th>
                     <th>Vehicle Name</th>
-                    <th>Dealer Name</th>
                     <th>Dealer Name</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>555-0112</td>
-                    <td>Hero Electic</td>
-                    <td>LO:EV</td>
-                    <td>Barone LLC.</td>
-                    <td>On Review</td>
-                    <td>View Application</td>
-                  </tr>
-                  <tr>
-                    <td>555-0112</td>
-                    <td>Hero Electic</td>
-                    <td>LO:EV</td>
-                    <td>Barone LLC.</td>
-                    <td>On Review</td>
-                    <td>View Application</td>
-                  </tr>
-                  <tr>
-                    <td>555-0112</td>
-                    <td>Hero Electic</td>
-                    <td>LO:EV</td>
-                    <td>Barone LLC.</td>
-                    <td>On Review</td>
-                    <td>View Application</td>
-                  </tr>
+                  {data?.map(({ createdAt, userId }) => {
+                    return (
+                      <tr>
+                        <td>{moment(createdAt).format("YYYY-MM-DD")}</td>
+                        <td>{userId}</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>View Details</td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </Table>
             </div>

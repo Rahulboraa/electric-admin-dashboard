@@ -1,16 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "../../../api/instance";
 import { useHistory } from "react-router-dom";
 
 const AddGallery = () => {
-  const [galleryImageFile, setImageSelected] = useState("");
+  // !Preview
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState();
+
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const onSelectFile = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+    setSelectedFile(e.target.files[0]);
+  };
 
   // !Add Gallery
   const handleAddGallery = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("text", galleryImageFile.name);
-    formData.append("galleryImageFile", galleryImageFile);
+    formData.append("image", selectedFile);
+    formData.append("text", "gallery");
     axios
       .post(`/gallery/add`, formData)
       .then((result) => {
@@ -27,7 +50,7 @@ const AddGallery = () => {
     <>
       <form className="addform">
         <div className="addFormWidth">
-          <div className="addformInner">
+          <div className="addformInner" style={{ marginTop: "3rem" }}>
             <div>
               <h2>Add Image</h2>
             </div>
@@ -40,25 +63,53 @@ const AddGallery = () => {
           <main>
             <div style={{ marginTop: "2rem" }}>
               <label className="modalFormLabels">01. Feature Image</label>
-              <div>
-                <input
-                  type="file"
-                  placeholder="No file selected"
-                  className="inputModalStyles"
-                  onChange={(e) => {
-                    setImageSelected(e.target.files[0]);
-                  }}
-                />
+
+              <div className="d-flex justify-content-center align-content-center  m-auto mb-3">
+                {selectedFile && (
+                  <img
+                    src={preview}
+                    style={{
+                      width: "320px",
+                      height: "160px",
+                      marginTop: "1.4rem",
+                    }}
+                  />
+                )}
               </div>
-              <article style={{ marginBottom: "3rem" }}>
-                <p>1. File should be in PNG, JPG, JPEG, BMP</p>
-                <p>2. The size of the image should be exceeds the 2MP </p>
-                <p>3. The Minimum Size of the image should be 4200 x 3486 px</p>
+
+              <div
+                style={{ marginTop: "3rem", marginBottom: "1rem" }}
+                className="form-group mb-5"
+              >
+                <div className="form-group mb-5">
+                  <input
+                    type="file"
+                    onChange={onSelectFile}
+                    placeholder="No file selected"
+                    className="form-control form-control-md"
+                    id="formFileSm"
+                  />
+                </div>
+              </div>
+
+              <article style={{ marginBottom: "4rem", marginTop: "3rem" }}>
+                <p style={{ marginBottom: "1rem" }}>
+                  1. File should be in PNG, JPG, JPEG, BMP
+                </p>
+                <p style={{ marginBottom: "1rem" }}>
+                  2. The size of the image should be exceeds the 2MP
+                </p>
+                <p style={{ marginBottom: "1rem" }}>
+                  3. The Minimum Size of the image should be 4200 x 3486 px
+                </p>
               </article>
             </div>
           </main>
 
-          <div className="d-flex justify-content-between align-items-center inputModalStylesBtn">
+          <div
+            className="d-flex justify-content-between align-items-center inputModalStylesBtn"
+            style={{ marginBottom: "8rem" }}
+          >
             <div>
               <button
                 className="SaveNextBtn"

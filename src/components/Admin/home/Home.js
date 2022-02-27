@@ -98,7 +98,7 @@ const Dashboard = () => {
                 <div className="title">Total number of vehicles sold</div>
               </div>
 
-              <div className="additionDetail">{data?.Allvehichle}</div>
+              <div className="additionDetail">{data?.soldvehichle}</div>
             </div>
           </div>
 
@@ -109,7 +109,7 @@ const Dashboard = () => {
                 <img src={deal} height="20px" width="20px" alt="logo"></img>
                 <div className="title">New Dealers joined</div>
               </div>
-              <div className="additionDetail">{data?.Alldealers}</div>
+              <div className="additionDetail">{data?.newdealers}</div>
             </div>
           </div>
 
@@ -125,7 +125,7 @@ const Dashboard = () => {
                 ></img>
                 <div className="title">New Store started</div>
               </div>
-              <div className="additionDetail">{data?.AllStores}</div>
+              <div className="additionDetail">{data?.newStores}</div>
             </div>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
+import { toast } from "react-toastify";
 import axios from "../../api/instance";
 import Sidebar from "../common/sidebar";
 import Navigation from "./Navigation/Navigation";
@@ -90,7 +91,8 @@ const AddVehicle = () => {
       .post(`/product/add`, data3)
       .then((result) => {
         console.log(result.data.data);
-        history.push("./vehiclestepper");
+        toast.success("Vehicle Added");
+        // history.push("./vehiclestepper");
       })
       .catch((err) => {
         console.log(err);
