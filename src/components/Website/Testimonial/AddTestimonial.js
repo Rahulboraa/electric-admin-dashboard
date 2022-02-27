@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import axios from "../../../api/instance";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 const AddTestimonial = () => {
   const [data, setData] = useState({
-    text: "",
-    author: "",
-    videoUrl: "",
+    dealerName: "",
     companyName: "",
+    review: "",
   });
 
-  const { text, author, videoUrl, companyName } = data;
+  const { dealerImage, dealerName, review } = data;
 
   const handleInputChange = (e) => {
     const name = e.target.name;
@@ -19,10 +19,65 @@ const AddTestimonial = () => {
     setData({ ...data, [name]: value });
   };
 
+  // !Fetch Dealer Type
+  const [dealer, setDealerType] = useState(null);
+  const getDealerType = () => {
+    axios
+      .get("/dealerType")
+      .then((result) => {
+        setDealerType(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getDealerType();
+  }, []);
+
+  const [dealerType, setDealer] = useState("");
+  const showDealerChange = (e) => {
+    setDealer(e.target.value);
+  };
+
+  // !Preview
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState();
+
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+
+    //!free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const onSelectFile = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+    setSelectedFile(e.target.files[0]);
+  };
+
+  // !Submit Testimonial
+  const formData = new FormData();
+  formData.append("dealerName", dealerName);
+  formData.append("dealerImage", selectedFile);
+  formData.append("dealerType", dealerType);
+  formData.append("review", review);
+  // formData.append("date", date);
+
   const handleAddTestimonial = (e) => {
     e.preventDefault();
     axios
-      .post(`/review/add`, data)
+      .post(`review/add`, formData)
       .then((result) => {
         toast.success("Testimonial Added");
         setData({});
@@ -60,8 +115,8 @@ const AddTestimonial = () => {
                   type="text"
                   placeholder="Enter the Dealer Name"
                   className="inputModalStyles"
-                  name="text"
-                  value={text}
+                  name="dealerName"
+                  value={dealerName}
                   onChange={handleInputChange}
                 />
               </div>
@@ -69,29 +124,52 @@ const AddTestimonial = () => {
 
             <div>
               <label className="modalFormLabels">02. Dealer’s Image</label>
-              <div>
-                <input
-                  type="text"
-                  placeholder="No file selected"
-                  className="inputModalStyles"
-                  name="author"
-                  value={author}
-                  onChange={handleInputChange}
-                />
+              <div className="mt-3">
+                {selectedFile && (
+                  <img
+                    src={preview}
+                    style={{
+                      width: "220px",
+                      height: "120px",
+                      marginBottom: "1.2rem",
+                    }}
+                  />
+                )}
+                <div className="form-group mb-4">
+                  <input
+                    type="file"
+                    onChange={onSelectFile}
+                    className="form-control form-control-md"
+                    id="formFileSm"
+                  />
+                </div>
               </div>
             </div>
 
             <div>
               <label className="modalFormLabels">03. Dealership Type</label>
               <div>
-                <input
+                {/* <input
                   type="text"
                   placeholder="Select the Dealership Type"
                   className="inputModalStyles"
                   name="videoUrl"
-                  value={videoUrl}
+                  // value={videoUrl}
                   onChange={handleInputChange}
-                />
+                /> */}
+                <select
+                  className="form-select inputModalStyles"
+                  onChange={showDealerChange}
+                >
+                  <option value="0">Select the Dealership Type</option>
+                  {dealer?.map((items) => {
+                    return (
+                      <React.Fragment key={items.id}>
+                        <option value={items.id}>{items.title}</option>
+                      </React.Fragment>
+                    );
+                  })}
+                </select>
               </div>
             </div>
 
@@ -102,8 +180,8 @@ const AddTestimonial = () => {
                   type="text"
                   placeholder="Enter the Full Review"
                   className="inputModalStyles"
-                  name="companyName"
-                  value={companyName}
+                  name="review"
+                  value={review}
                   onChange={handleInputChange}
                 />
               </div>

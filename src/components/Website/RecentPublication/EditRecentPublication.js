@@ -7,35 +7,62 @@ import { toast } from "react-toastify";
 const EditRecentPublication = () => {
   const handleImageReset = () => {};
 
-  // const [user, setUser] = useState({
-  //   productName: "",
-  //   text: "",
-  //   display: "",
-  // });
+  const [user, setUser] = useState({
+    title: "",
+    descripiton: "",
+    recentPDF: "",
+    date: "",
+    image: "",
+  });
 
-  // const { productName, text, email, phone, website, display } = user;
-  // const onInputChange = (e) => {
-  //   setUser({ ...user, [e.target.name]: e.target.value });
-  // };
+  const { title, date, recentPDF, descripiton, image } = user;
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    // await axios.put(`/recentPub/single/${id}`, user);
-    history.push("/");
+  const onInputChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const { id } = useParams();
 
   // !FETCH USER
   const loadUser = async () => {
-    const result = await axios.get(`/product/single/${id}`);
-    // setUser(result.data.product);
-    console.log(result.data.data);
+    const result = await axios.get(`/recentPub/single/${id}`);
+    setUser(result.data.brand[0]);
   };
 
   useEffect(() => {
     loadUser();
   }, []);
+
+  // !Preview
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState();
+
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const onSelectFile = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+    setSelectedFile(e.target.files[0]);
+  };
+
+  // !Update Recent Publication
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await axios.put(`/recentPub/update/1645944000655/${id}`, user);
+  };
 
   // !DELETE PUBLICATIONS
   const handleDeleteBtn = (id) => {
@@ -50,15 +77,11 @@ const EditRecentPublication = () => {
       });
   };
 
-  const handleResetBtn = () => {
-    console.log("hello");
-  };
-
   let history = useHistory();
 
   return (
     <>
-      <form className="addform">
+      <form className="addform" onSubmit={handleSubmit}>
         <div
           style={{
             display: "flex",
@@ -72,7 +95,13 @@ const EditRecentPublication = () => {
             <h2>Edit Publication</h2>
           </div>
           <div>
-            <h4>X</h4>
+            <h4
+              onClick={() => {
+                history.goBack();
+              }}
+            >
+              X
+            </h4>
           </div>
         </div>
         <hr />
@@ -81,43 +110,67 @@ const EditRecentPublication = () => {
             <label className="modalFormLabels">01. Feature Image</label>
             <div>
               <figure>
-                <img
-                  src={dummy}
-                  alt="dummy"
+                {/* <img
+                  src={image}
+                  alt="image"
                   style={{
                     width: "400px",
                     height: "300px",
                     marginTop: "20px",
-                    marginBottom: "20px",
+                    marginBottom: "0px",
                   }}
-                />
+                /> */}
+                <div className="d-flex justify-content-center align-content-center  m-auto mb-3">
+                  {selectedFile ? (
+                    <img
+                      src={preview}
+                      style={{
+                        width: "400px",
+                        height: "300px",
+                        marginTop: "20px",
+                        marginBottom: "0px",
+                      }}
+                    />
+                  ) : (
+                    <img
+                      src={image}
+                      alt="image"
+                      style={{
+                        width: "400px",
+                        height: "300px",
+                        marginTop: "20px",
+                        marginBottom: "0px",
+                      }}
+                    />
+                  )}
+                </div>
               </figure>
-              <button
+
+              <div className="form-group mb-5">
+                <input
+                  type="file"
+                  onChange={onSelectFile}
+                  className="form-control form-control-md"
+                  id="formFileSm"
+                />
+              </div>
+
+              {/* <button
                 style={{
-                  marginBottom: "20px",
+                  marginBottom: "30px",
                   padding: "8px",
                   outline: "none",
                   border: "1px solid #191919",
+                  margin: "0 auto",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
                 Change Feature Image
-              </button>
-              <button
-                style={{
-                  outline: "none",
-                  color: " #D20000",
-                  border: "1px solid #D20000",
-                  marginBottom: "20px",
-                  marginLeft: "50px",
-                  padding: "8px",
-                }}
-                onClick={handleImageReset}
-              >
-                Remove Feature Image
-              </button>
+              </button> */}
             </div>
           </div>
-
           <div style={{ marginTop: "1.5rem" }}>
             <label className="modalFormLabels">02. Publication Title</label>
             <div>
@@ -125,17 +178,47 @@ const EditRecentPublication = () => {
                 type="text"
                 placeholder="Enter the Publication Title"
                 className="inputModalStyles"
+                name="title"
+                value={title}
+                onChange={onInputChange}
               />
             </div>
           </div>
 
           <div style={{ marginTop: "1.5rem" }}>
             <label className="modalFormLabels">03. Publication Document</label>
+            <div className="form-group mt-4">
+              <input
+                type="file"
+                // onChange={onSelectFile}
+                className="form-control form-control-md"
+                id="formFileSm"
+              />
+            </div>
+          </div>
+
+          <div style={{ marginTop: "1.5rem" }}>
+            <label className="modalFormLabels">04. Publication Date</label>
+            <div>
+              <input
+                type="date"
+                className="inputModalStyles"
+                name="date"
+                value={date}
+                onChange={onInputChange}
+              />
+            </div>
+          </div>
+
+          <div style={{ marginTop: "1.5rem" }}>
+            <label className="modalFormLabels">05. Description</label>
             <div>
               <input
                 type="text"
-                placeholder="No file selected"
                 className="inputModalStyles"
+                name="descripiton"
+                value={descripiton}
+                onChange={onInputChange}
               />
             </div>
           </div>

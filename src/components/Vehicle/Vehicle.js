@@ -9,7 +9,7 @@ const Vehicle = () => {
   const addVehicle = () => {
     history.push("./addvehicle");
   };
-  
+
   const [data, setData] = useState();
   const fetchVehicleDetails = () => {
     axios
@@ -67,12 +67,15 @@ const Vehicle = () => {
                       <td>{brand}</td>
                       <td>{vehicleName}</td>
                       <td>{vehicleType}</td>
-                      <td
-                        onClick={() => {
-                          handleRedirect(id);
-                        }}
-                      >
-                        Edit Details
+                      <td>
+                        <button
+                          className="tableEditBtn"
+                          onClick={() => {
+                            handleRedirect(id);
+                          }}
+                        >
+                          Edit Details
+                        </button>
                       </td>
                     </tr>
                   );

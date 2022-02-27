@@ -70,7 +70,7 @@ const Brands = () => {
                         handleEditBrand(id);
                       }}
                     >
-                      Edit Details
+                      <button className="tableEditBtn">Edit Details</button>
                     </td>
                   </tr>
                 ))}

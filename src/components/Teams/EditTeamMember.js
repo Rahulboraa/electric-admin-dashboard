@@ -134,7 +134,7 @@ const EditTeamMember = () => {
             />
           </div>
 
-          <div className="form-group mb-4">
+          <div className="form-group mb-3">
             <input
               type="text"
               className="form-control form-control-lg"
@@ -145,14 +145,15 @@ const EditTeamMember = () => {
             />
           </div>
 
-          <div className="d-flex justify-content-center align-content-center  m-auto">
+          <div className="d-flex justify-content-center align-content-center  m-auto mb-3">
             {selectedFile ? (
               <img
                 src={preview}
                 style={{
                   width: "220px",
                   height: "120px",
-                  marginBottom: "0.10rem",
+                  marginBottom: "1rem",
+                  marginTop: "0.4rem",
                 }}
               />
             ) : (
@@ -162,13 +163,15 @@ const EditTeamMember = () => {
                 style={{
                   width: "220px",
                   height: "120px",
-                  marginBottom: "0.10rem",
+                  marginBottom: "1rem",
+                  marginTop: "0.4rem",
                 }}
               />
             )}
+            
           </div>
 
-          <div className="form-group mb-4">
+          <div className="form-group mb-5">
             <input
               type="file"
               onChange={onSelectFile}
@@ -178,15 +181,12 @@ const EditTeamMember = () => {
           </div>
         </form>
 
-        <div className="d-flex">
-          <button
-            className="btn btn-warning d-flex m-auto"
-            onClick={updateTeam}
-          >
+        <div className="d-flex justify-content-center gap-5">
+          <button className="btn btn-primary" onClick={updateTeam}>
             Update Team
           </button>
           <button
-            className="btn btn-danger d-flex  m-auto"
+            className="btn btn-danger d-flex"
             onClick={() => {
               deleteTeam(id);
             }}

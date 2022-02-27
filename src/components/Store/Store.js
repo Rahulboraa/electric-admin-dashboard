@@ -83,7 +83,7 @@ const Store = () => {
                           handleEditStore(id);
                         }}
                       >
-                        Edit Store
+                        <button className="tableEditBtn"> Edit Store</button>
                       </td>
                     </tr>
                   ))}

@@ -48,7 +48,7 @@ const EditCareer = () => {
   return (
     <>
       <div className="w-75 mx-auto shadow p-5">
-        <h3 className="text-center mb-4">Edit Vehicle</h3>
+        <h3 className="text-center mb-4">Edit Job Application</h3>
         <form onSubmit={onSubmit}>
           <div className="form-group mb-4">
             <input
@@ -94,17 +94,17 @@ const EditCareer = () => {
             />
           </div>
         </form>
-        <button type={onSubmit} className="btn btn-warning d-flex m-auto">
-          Update Career
-        </button>
-        <button
-          className="btn btn-danger d-flex mt-3 m-auto"
-          onClick={() => {
-            deleteCareer(id);
-          }}
-        >
-          Delete
-        </button>
+        <div className="d-flex justify-content-center align-content-center gap-5 mt-4">
+          <button className="btn btn-primary ">Update Brand</button>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              deleteCareer(id);
+            }}
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </>
   );

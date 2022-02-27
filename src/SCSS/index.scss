@@ -31,7 +31,10 @@
 }
 
 tr > td {
-  padding: 1.5rem 0 1.5rem 2rem !important ;
+  padding-top: 1.5rem !important;
+  padding-bottom: 1rem !important;
+  margin: 0px auto;
+  text-align: center;
 }
 
 tr > .tableTd {
@@ -73,6 +76,7 @@ tr > .tableTd {
 .vehicleFull {
   width: 100%;
   margin: 0 5.0625rem;
+  margin-left: 90px;
 }
 
 .subHeadingButton {
@@ -565,4 +569,24 @@ figure {
   padding-top: 24px;
   padding-bottom: 24px;
   padding-left: 30px;
+}
+
+.tableEditBtn {
+  margin-top: -0.75rem !important;
+  outline: none;
+  background: #ffffff;
+  border: 1px solid #d4d4d4;
+  padding: 0.5rem 1rem;
+  font-family: Red Hat Display;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  text-transform: capitalize;
+  color: #191919;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
 }

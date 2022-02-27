@@ -5,6 +5,7 @@ import { Table } from "reactstrap";
 import Sidebar from "../common/sidebar";
 import axios from "../../api/instance";
 import moment from "moment";
+import { toast } from "react-toastify";
 
 const DealarForm = () => {
   // !Fetch Dealers
@@ -26,6 +27,19 @@ const DealarForm = () => {
   }, []);
 
   const history = useHistory();
+
+  // !Delete Upcoming Dealer
+  const handleDeleteDealer = (id) => {
+    axios
+      .delete(`dealerForm/deleteDealer/${id}`)
+      .then((result) => {
+        fetchUpcomingBookings();
+        toast.success("Dealer Deleted Successfully");
+      })
+      .catch((err) => {
+        toast.error("Error Occurred");
+      });
+  };
 
   return (
     <>
@@ -86,11 +100,11 @@ const DealarForm = () => {
                           <td>{phoneNumber}</td>
                           <td>{emailId}</td>
                           <td
-                          // onClick={() => {
-                          //   history.push(`./editDealer/${dealerId}`);
-                          // }}
+                            onClick={() => {
+                              handleDeleteDealer(dealerId);
+                            }}
                           >
-                            Edit
+                            <button className="tableEditBtn">Delete</button>
                           </td>
                         </tr>
                       )}

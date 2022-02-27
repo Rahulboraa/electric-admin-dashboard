@@ -1,13 +1,12 @@
-import axios from "../../../api/instance";
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import moment from "moment";
+import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { Table } from "reactstrap";
+import axios from "../../../api/instance";
 import Sidebar from "../../common/sidebar";
 import GalleryNavigation from "../Gallery/Navigation/GalleryNavigation";
-import Kebab from "./subComponent/kabeb";
 
 function Careers() {
-  const [toggle, setToggle] = useState(true);
   const [data, setData] = useState([]);
   const fetchJob = () => {
     axios
@@ -19,23 +18,12 @@ function Careers() {
         console.log(error);
       });
   };
-  //POST
-  const Careers = () => {
-    const handleRecentPublicationId = (id) => {
-      axios
-        .post(`/career/addJob/${id}`, { text: "hello" })
-        .then((result) => {
-          console.log(result.data.jobs);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    };
-  };
 
   useEffect(() => {
     fetchJob();
   }, []);
+
+  const history = useHistory();
 
   return (
     <section>
@@ -52,64 +40,27 @@ function Careers() {
               <h4>Careers</h4>
             </div>
             <div>
-              <button className="mainAddBtn">New Opening</button>
+              <button
+                className="mainAddBtn"
+                onClick={() => {
+                  history.push("./newOpening");
+                }}
+              >
+                New Opening
+              </button>
             </div>
           </div>
           <div className="TableInfo">
             <Table bordered responsive borderless>
               <thead>
                 <tr>
-                  <td colSpan={5}>
-                    <th
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "2rem",
-                      }}
-                    >
-                      <th
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "0.3rem",
-                        }}
-                      >
-                        <input
-                          type="radio"
-                          id="activated"
-                          name="select"
-                          value="activated"
-                          checked
-                          onClick={() => {
-                            setToggle(false);
-                          }}
-                        />
-                        <label for="activated">Activated</label>
-                      </th>
-                      <th
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "0.3rem",
-                        }}
-                      >
-                        <input
-                          type="radio"
-                          id="deactivated"
-                          name="select"
-                          value="deactivated"
-                          onClick={() => {
-                            setToggle(true);
-                          }}
-                        />
-                        <label for="deactivated">Deactivated</label>
-                      </th>
-                    </th>
-                  </td>
+                  <td colSpan={5}></td>
                   <td>
-                    <a href="/" style={{ color: "black", cursor: "pointer" }}>
-                      View All Resumes
-                    </a>
+                    <Link to="/viewall">
+                      <h6 style={{ color: "black", cursor: "pointer" }}>
+                        View All Resumes
+                      </h6>
+                    </Link>
                   </td>
                 </tr>
                 <tr>
@@ -122,41 +73,24 @@ function Careers() {
                 </tr>
               </thead>
 
-              {toggle ? (
-                <tbody>
-                  {data?.map((item) => (
-                    <tr>
-                      <React.Fragment key={item.id}>
-                        <td>{item.createdAt}</td>
-                        <td>{item.description}</td>
-                        <td>{item.role}</td>
-                        <td>{item.location}</td>
-                        <td>{item.experience}</td>
-                        <td>
-                          <Kebab />
-                        </td>
-                      </React.Fragment>
-                    </tr>
-                  ))}
-                </tbody>
-              ) : (
-                <tbody>
-                  {data?.map((item) => (
-                    <tr>
-                      <React.Fragment key={item.id}>
-                        <td>{item.createdAt}</td>
-                        <td>{item.description}</td>
-                        <td>{item.role}</td>
-                        <td>{item.location}</td>
-                        <td>{item.experience}</td>
-                        <td>
-                          <Kebab />
-                        </td>
-                      </React.Fragment>
-                    </tr>
-                  ))}
-                </tbody>
-              )}
+              <tbody>
+                {data?.map((item) => (
+                  <tr key={item._id}>
+                    <td> {moment(item.createdAt).format("MMMM Do, YYYY")}</td>
+                    <td>{item.description.split("\n")}</td>
+                    <td>{item.role}</td>
+                    <td>{item.location}</td>
+                    <td>-</td>
+                    <td
+                      onClick={() => {
+                        history.push(`editCareer/${item._id}`);
+                      }}
+                    >
+                      <button className="tableEditBtn">Edit Details</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </Table>
           </div>
         </div>

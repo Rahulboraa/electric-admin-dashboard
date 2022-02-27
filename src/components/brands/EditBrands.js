@@ -3,6 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import axios from "../../api/instance";
 import moment from "moment";
 import { toast } from "react-toastify";
+import Spinner from "../spinner/Spinner";
 
 const EditBrands = () => {
   let history = useHistory();
@@ -22,10 +23,12 @@ const EditBrands = () => {
   };
 
   //! Fetching Brands
+  const [loading, setLoading] = useState(true);
   const loadBrand = () => {
     axios
       .get(`/brand/single/${id}`)
       .then((result) => {
+        setLoading(false);
         setData(result.data.brand[0]);
       })
       .catch((err) => {
@@ -96,89 +99,91 @@ const EditBrands = () => {
 
   return (
     <>
-      <div className="w-75 mx-auto shadow p-5">
-        <h3 className="text-center mb-4">Edit Brand</h3>
-        <form>
-          <div className="form-group mb-4">
-            <input
-              type="text"
-              className="form-control form-control-lg"
-              placeholder="Application Number"
-              name="ID"
-              value={id}
-              disabled
-            />
-          </div>
-          <div className="form-group mb-4">
-            <input
-              type="text"
-              className="form-control form-control-lg"
-              placeholder="Enter Brand Name"
-              name="productName"
-              onChange={handleInputChange}
-              value={brandName}
-              name="brandName"
-            />
-          </div>
-          <div className="d-flex justify-content-center align-content-center  m-auto">
-            {selectedFile ? (
-              <img
-                src={preview}
-                style={{
-                  width: "220px",
-                  height: "120px",
-                  marginBottom: "0.10rem",
-                }}
+      {loading ? (
+        <Spinner />
+      ) : (
+        <div className="w-75 mx-auto shadow p-5">
+          <h3 className="text-center mb-4">Edit Brand</h3>
+          <form>
+            <div className="form-group mb-4">
+              <input
+                type="text"
+                className="form-control form-control-lg"
+                placeholder="Application Number"
+                name="ID"
+                value={id}
+                disabled
               />
-            ) : (
-              <img
-                src={data?.logo}
-                alt="logo"
-                style={{
-                  width: "220px",
-                  height: "120px",
-                  marginBottom: "0.10rem",
-                }}
+            </div>
+            <div className="form-group mb-4">
+              <input
+                type="text"
+                className="form-control form-control-lg"
+                placeholder="Enter Brand Name"
+                name="productName"
+                onChange={handleInputChange}
+                value={brandName}
+                name="brandName"
               />
-            )}
-          </div>
-          
-          <div className="form-group mb-4">
-            <input
-              type="file"
-              onChange={onSelectFile}
-              className="form-control form-control-md"
-              id="formFileSm"
-            />
-          </div>
-          
-          <div className="form-group mb-4">
-            <input
-              type="date"
-              className="form-control form-control-lg"
-              placeholder="Collaboration Date"
-              name="collaborationDate"
-              onChange={handleInputChange}
-              value={moment(collaborationDate).format("YYYY-MM-DD")}
-            />
-          </div>
+            </div>
+            <div className="d-flex justify-content-center align-content-center  m-auto">
+              {selectedFile ? (
+                <img
+                  src={preview}
+                  style={{
+                    width: "220px",
+                    height: "120px",
+                    marginBottom: "1.2rem",
+                  }}
+                />
+              ) : (
+                <img
+                  src={data?.logo}
+                  alt="logo"
+                  style={{
+                    width: "220px",
+                    height: "120px",
+                    marginBottom: "1.2rem",
+                  }}
+                />
+              )}
+            </div>
 
-        </form>
-        <button
-          className="btn btn-warning d-flex m-auto"
-          onClick={handleUpdateBrand}
-        >
-          Update Brand
-        </button>
-        <button
-          className="btn btn-danger d-flex mt-3 m-auto"
-          onClick={() => {
-            deleteBrand(id);
-          }}
-        >
-          Delete
-        </button>
-      </div>
+            <div className="form-group mb-4">
+              <input
+                type="file"
+                onChange={onSelectFile}
+                className="form-control form-control-md"
+                id="formFileSm"
+              />
+            </div>
+
+            <div className="form-group mb-4">
+              <input
+                type="date"
+                className="form-control form-control-lg"
+                placeholder="Collaboration Date"
+                name="collaborationDate"
+                onChange={handleInputChange}
+                value={moment(collaborationDate).format("YYYY-MM-DD")}
+              />
+            </div>
+          </form>
+          <div className="d-flex justify-content-center align-content-center gap-5 mt-4">
+            <button className="btn btn-primary " onClick={handleUpdateBrand}>
+              Update Brand
+            </button>
+            <button
+              className="btn btn-danger"
+              onClick={() => {
+                deleteBrand(id);
+              }}
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };

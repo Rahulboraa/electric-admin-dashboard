@@ -7,7 +7,6 @@ import axios from "../../api/instance";
 import { toast } from "react-toastify";
 
 const DealerApplications = () => {
-  
   // !Fetch Dealers
   const [data, setData] = useState([]);
   const fetchUpcomingBookings = () => {
@@ -87,19 +86,12 @@ const DealerApplications = () => {
                           <td>{userName}</td>
                           <td>{phoneNumber}</td>
                           <td>{emailId}</td>
-                          {/* <td
-                            onClick={() => {
-                              history.push(`./editDealer/${dealerId}`);
-                            }}
-                          >
-                            Edit
-                          </td> */}
                           <td
                             onClick={() => {
                               handleDeleteDealer(dealerId);
                             }}
                           >
-                            Delete
+                            <button className="tableEditBtn">Delete</button>
                           </td>
                         </tr>
                       </>

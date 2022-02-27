@@ -44,6 +44,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import Approvals from "./components/Merchandise/Approvals";
 import RefundBooking from "./components/Bookings/RefundBooking";
 import Brochure from "./components/Merchandise/Brochure";
+import ViewAllCareer from "./components/Website/Careers/ViewAllCareer";
+import NewOpenings from "./components/Website/Careers/NewOpenings";
 
 function App() {
   const queryClient = new QueryClient();
@@ -103,6 +105,8 @@ function App() {
             <Route exact path="/visitingcard" component={VisitingCard} />
             <Route exact path="/careers" component={Careers} />
             <Route exact path="/editCareer/:id" component={EditCareer} />
+            <Route exact path="/viewall" component={ViewAllCareer} />
+            <Route exact path="/newopening" component={NewOpenings} />
 
             <Route
               exact

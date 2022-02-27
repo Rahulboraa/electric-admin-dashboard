@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "../../../api/instance";
 import { useHistory } from "react-router-dom";
+import moment from "moment";
 
 const AddRecentPublications = () => {
   const [data, setData] = useState({
-    text: "",
+    title: "",
     descripiton: "",
   });
 
-  const { text, descripiton } = data;
+  const { title, text, descripiton } = data;
 
-  const [recent, setImageSelected] = useState();
   const [recentPDF, setRecentPDF] = useState();
 
   const handleInputChange = (e) => {
@@ -19,14 +19,67 @@ const AddRecentPublications = () => {
     setData({ ...data, [name]: value });
   };
 
+  // !Preview
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState();
+
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const onSelectFile = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+    setSelectedFile(e.target.files[0]);
+  };
+
+  // !Preview Publication Documents
+  const [selectedFile2, setSelectedFile2] = useState();
+  const [preview2, setPreview2] = useState();
+
+  useEffect(() => {
+    if (!selectedFile2) {
+      setPreview2(undefined);
+      return;
+    }
+
+    const objectUrl2 = URL.createObjectURL(selectedFile2);
+    setPreview2(objectUrl2);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl2);
+  }, [selectedFile2]);
+
+  const onSelectFile2 = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile2(undefined);
+      return;
+    }
+    setSelectedFile2(e.target.files[0]);
+  };
+
+  let date = new Date();
+  let DateFormat = moment(date).format("MMMM Do, YYYY");
+
   // !Add Recent Publication
   const addProduct = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("recent", recent);
-    // formData.append("date", date);
-    formData.append("text", text);
-    formData.append("recentPDF", recentPDF);
+    formData.append("recent", selectedFile);
+    formData.append("date", DateFormat);
+    formData.append("recentPDF", selectedFile2);
+    formData.append("title", title);
     formData.append("descripiton", descripiton);
     axios
       .post(`/recentPub/add`, formData)
@@ -59,16 +112,25 @@ const AddRecentPublications = () => {
           <main>
             <div style={{ marginTop: "1.5rem" }}>
               <label className="modalFormLabels">01. Feature Image</label>
-              <div>
-                <input
-                  type="text"
-                  placeholder="No file selected"
-                  className="inputModalStyles"
-                  type="file"
-                  onChange={(e) => {
-                    setImageSelected(e.target.files[0]);
-                  }}
-                />
+              <div style={{ marginTop: "1.5rem" }}>
+                {selectedFile && (
+                  <img
+                    src={preview}
+                    style={{
+                      width: "220px",
+                      height: "120px",
+                      marginBottom: "1.2rem",
+                    }}
+                  />
+                )}
+                <div className="form-group mb-4">
+                  <input
+                    type="file"
+                    onChange={onSelectFile}
+                    className="form-control form-control-md"
+                    id="formFileSm"
+                  />
+                </div>
               </div>
             </div>
 
@@ -79,8 +141,8 @@ const AddRecentPublications = () => {
                   type="text"
                   placeholder="Enter Publication Title"
                   className="inputModalStyles"
-                  name="text"
-                  value={text}
+                  name="title"
+                  value={title}
                   onChange={handleInputChange}
                 />
               </div>
@@ -104,14 +166,24 @@ const AddRecentPublications = () => {
               <label className="modalFormLabels">
                 04. Publication Document
               </label>
-              <div>
+              <div style={{ marginTop: "1.5rem" }}>
+                {selectedFile2 && (
+                  <img
+                    src={preview2}
+                    style={{
+                      width: "220px",
+                      height: "120px",
+                      marginBottom: "1.2rem",
+                    }}
+                  />
+                )}
+              </div>
+              <div className="form-group mb-4">
                 <input
                   type="file"
-                  placeholder="No file selected"
-                  className="inputModalStyles"
-                  onChange={(e) => {
-                    setRecentPDF(e.target.files[0]);
-                  }}
+                  onChange={onSelectFile2}
+                  className="form-control form-control-md"
+                  id="formFileSm"
                 />
               </div>
             </div>

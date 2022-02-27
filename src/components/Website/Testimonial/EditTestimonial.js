@@ -11,12 +11,11 @@ const EditTestimonial = () => {
   const [data, setData] = useState({
     date: "",
     dealerImage: "",
-    dealerType: "",
     review: "",
     dealerName: "",
   });
 
-  const { dealerImage, dealerType, review, dealerName, date } = data;
+  const { dealerImage, review, dealerName, date } = data;
 
   const handleInputChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -38,8 +37,29 @@ const EditTestimonial = () => {
     fetchTestimonial();
   }, []);
 
-  // *Update Brand
-  // !DATA WILL BE SENT IN FORM DATA FILED
+  // !Dealer Type
+  const [dealer, setDealerType] = useState(null);
+  const getDealerType = () => {
+    axios
+      .get("/dealerType")
+      .then((result) => {
+        setDealerType(result.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    getDealerType();
+  }, []);
+
+  const [dealerType, setDealer] = useState("");
+  const showDealerChange = (e) => {
+    setDealer(e.target.value);
+  };
+
+  // !Update Testimonial
   const handleUpdateBrand = () => {
     axios
       .put(`/brand/${id}`)
@@ -54,9 +74,9 @@ const EditTestimonial = () => {
   // !Delete Brand
   const deleteBrand = (id) => {
     axios
-      .delete(`/brand/${id}`)
+      .delete(`/review/delete/${id}`)
       .then((result) => {
-        toast.success("Brand Deleted SuccessFully");
+        toast.success("Testimonial Deleted SuccessFully");
         history.goBack();
       })
       .catch((err) => {
@@ -104,17 +124,22 @@ const EditTestimonial = () => {
           </div>
 
           <div className="form-group mb-4">
-            <input
-              type="text"
-              className="form-control form-control-lg"
-              placeholder="Dealership Type"
-              name="dealerType"
-              onChange={handleInputChange}
-              value={dealerType}
-            />
+            <select
+              className="form-select inputModalStyles"
+              onChange={showDealerChange}
+            >
+              <option value="0">Select the Dealership Type</option>
+              {dealer?.map((items) => {
+                return (
+                  <React.Fragment key={items.id}>
+                    <option value={items.id}>{items.title}</option>
+                  </React.Fragment>
+                );
+              })}
+            </select>
           </div>
 
-          <div className="form-group mb-4">
+          <div className="form-group mb-5">
             <input
               type="text"
               className="form-control form-control-lg"
@@ -126,17 +151,20 @@ const EditTestimonial = () => {
             />
           </div>
         </form>
-        <button className="btn btn-warning" onClick={handleUpdateBrand}>
-          Update Testimonial
-        </button>
-        <button
-          className="btn btn-danger "
-          onClick={() => {
-            deleteBrand(id);
-          }}
-        >
-          Delete
-        </button>
+
+        <div className="d-flex justify-content-center gap-5">
+          <button className="btn btn-primary" onClick={handleUpdateBrand}>
+            Update Testimonial
+          </button>
+          <button
+            className="btn btn-danger d-flex"
+            onClick={() => {
+              deleteBrand(id);
+            }}
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </>
   );

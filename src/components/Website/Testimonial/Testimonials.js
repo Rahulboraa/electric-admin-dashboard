@@ -10,7 +10,6 @@ import Sidebar from "../../common/sidebar";
 import GalleryNavigation from "../Gallery/Navigation/GalleryNavigation";
 
 const Testimonials = () => {
-  
   const history = useHistory();
   const handleTestimonial = () => {
     history.push("./addtestimonial");
@@ -23,7 +22,8 @@ const Testimonials = () => {
 
   const fetchTestimonial = () => {
     axios
-      .get(`/review/?page=${currentPage}&limit=${2}`)
+      // .get(`/review/?page=${currentPage}&limit=${2}`)
+      .get(`/review?page=1&limit=10`)
       .then((result) => {
         setData(result.data.data.results);
         setPageCount(
@@ -97,16 +97,24 @@ const Testimonials = () => {
                         </td>
                         <td>{item.dealerType}</td>
                         <td>{item.review}</td>
-                        <td>Edit Testimonial</td>
+                        <td
+                          onClick={() => {
+                            history.push(`edittestimonial/${item.id}`);
+                          }}
+                        >
+                          <button className="tableEditBtn">
+                            Edit Testimonial
+                          </button>
+                        </td>
                       </tr>
                     ))}
                 </tbody>
               </Table>
             </div>
-            <Pagination
+            {/* <Pagination
               handlePageClick={handlePageClick}
               pageCount={pageCount + 1}
-            />
+            /> */}
           </div>
         </div>
       </section>

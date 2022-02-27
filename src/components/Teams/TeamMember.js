@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Table } from "reactstrap";
-import Sidebar from "../common/sidebar";
-import member from "../../assets/Team/member.svg";
-import member2 from "../../assets/Team/member2.svg";
 import axios from "../../api/instance";
+import Sidebar from "../common/sidebar";
 
 const TeamMember = () => {
   const history = useHistory();
@@ -68,11 +66,6 @@ const TeamMember = () => {
                       <tr key={id}>
                         <td>{id}</td>
                         <td>
-                          {/* <img
-                            src={member2}
-                            alt="member"
-                            style={{ marginRight: "10px" }}
-                          /> */}
                           <img
                             src={profilePic}
                             alt="member"
@@ -83,7 +76,7 @@ const TeamMember = () => {
                               marginRight: "10px",
                             }}
                           />
-                          {name}
+                          <span>{name}</span>
                         </td>
                         <td>{designation}</td>
                         <td>{emailId}</td>
@@ -92,7 +85,7 @@ const TeamMember = () => {
                             handleEditTeam(id);
                           }}
                         >
-                          Edit Team
+                          <button className="tableEditBtn">Edit Team</button>
                         </td>
                       </tr>
                     )

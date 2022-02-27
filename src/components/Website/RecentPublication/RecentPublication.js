@@ -15,7 +15,7 @@ const RecentPublication = () => {
   // !FETCH RECENT PUBLICATIONS
   const handleRecentPublication = () => {
     axios
-      .get(`/recentPub?page=${currentPage}&limit=${2}`)
+      .get(`/recentPub?page=1&limit=20`)
       .then((result) => {
         console.log(result.data.data.results, "====");
         setData(result.data.data.results);
@@ -126,17 +126,19 @@ const RecentPublication = () => {
                           handleEditPublications(items.id);
                         }}
                       >
-                        Edit Publication
+                        <button className="tableEditBtn">
+                          Edit Publication
+                        </button>
                       </td>
                     </tr>
                   ))}
               </tbody>
             </Table>
           </div>
-          <Pagination
+          {/* <Pagination
             handlePageClick={handlePageClick}
             pageCount={pageCount + 1}
-          />
+          /> */}
         </div>
       </section>
     </>
