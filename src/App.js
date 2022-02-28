@@ -46,6 +46,7 @@ import RefundBooking from "./components/Bookings/RefundBooking";
 import Brochure from "./components/Merchandise/Brochure";
 import ViewAllCareer from "./components/Website/Careers/ViewAllCareer";
 import NewOpenings from "./components/Website/Careers/NewOpenings";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   const queryClient = new QueryClient();
@@ -56,84 +57,107 @@ function App() {
           <ScrollToTop />
           <Switch>
             <Route exact path="/" component={Login} />
-            {/* <Route exact path="/signup" component={SignUp} /> */}
-            <Route exact path="/vehicle" component={Vehicle} />
-            <Route exact path="/edit/:id" component={EditVehicle} />
-            <Route
+
+            <PrivateRoute exact path="/vehicle" Component={Vehicle} />
+            <PrivateRoute exact path="/edit/:id" Component={EditVehicle} />
+            <PrivateRoute
               exact
               path="/vehicle/edit/:id"
-              component={EditVehicleTable}
+              Component={EditVehicleTable}
             />
-            <Route exact path="/vehiclestepper" component={VehicleStepper} />
-            <Route exact path="/addvehicle" component={AddVehicle} />
+            <PrivateRoute
+              exact
+              path="/vehiclestepper"
+              Component={VehicleStepper}
+            />
+            <PrivateRoute exact path="/addvehicle" Component={AddVehicle} />
 
-            <Route exact path="/brands" component={Brands} />
-            <Route exact path="/brands/edit/:id" component={EditBrands} />
-            <Route exact path="/addbrands" component={AddBrands} />
+            <PrivateRoute exact path="/brands" Component={Brands} />
+            <PrivateRoute
+              exact
+              path="/brands/edit/:id"
+              Component={EditBrands}
+            />
+            <PrivateRoute exact path="/addbrands" Component={AddBrands} />
 
-            <Route exact path="/store" component={Store} />
-            <Route exact path="/editstore/:id" component={EditStore} />
-            <Route exact path="/addstore" component={AddStore} />
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/vehiclesales" component={Home} />
-            <Route exact path="/booking" component={Booking} />
-            <Route exact path="/newdealers" component={NewDealers} />
-            <Route exact path="/newstore" component={NewStore} />
-            <Route exact path="/dealarform" component={DealarForm} />
-            <Route
+            <PrivateRoute exact path="/store" Component={Store} />
+            <PrivateRoute exact path="/editstore/:id" Component={EditStore} />
+            <PrivateRoute exact path="/addstore" Component={AddStore} />
+            <PrivateRoute exact path="/home" Component={Home} />
+            <PrivateRoute exact path="/vehiclesales" Component={Home} />
+            <PrivateRoute exact path="/booking" Component={Booking} />
+            <PrivateRoute exact path="/newdealers" Component={NewDealers} />
+            <PrivateRoute exact path="/newstore" Component={NewStore} />
+            <PrivateRoute exact path="/dealarform" Component={DealarForm} />
+            <PrivateRoute
               exact
               path="/delarapplication"
-              component={DealerApplications}
+              Component={DealerApplications}
             />
-            <Route exact path="/adddealer" component={AddDealer} />
+            <PrivateRoute exact path="/adddealer" Component={AddDealer} />
 
-            {/* <Route exact path="/editDealer/:id" component={EditDealer} /> */}
-
-            <Route
+            <PrivateRoute
               exact
               path="/upcommingbookings"
-              component={UpcomingBookings}
+              Component={UpcomingBookings}
             />
-            <Route exact path="/refundbooking" component={RefundBooking} />
-            <Route exact path="/teammember" component={TeamMember} />
-            <Route exact path="/teams/edit/:id" component={EditTeamMember} />
-            <Route exact path="/addteamember" component={AddTeamMember} />
-            <Route exact path="/brochure" component={Brochure} />
+            <PrivateRoute
+              exact
+              path="/refundbooking"
+              Component={RefundBooking}
+            />
+            <PrivateRoute exact path="/teammember" Component={TeamMember} />
 
-            <Route exact path="/approvals" component={Approvals} />
-            <Route exact path="/merchandise" component={Merchandise} />
-            <Route exact path="/visitingcard" component={VisitingCard} />
-            <Route exact path="/careers" component={Careers} />
-            <Route exact path="/editCareer/:id" component={EditCareer} />
-            <Route exact path="/viewall" component={ViewAllCareer} />
-            <Route exact path="/newopening" component={NewOpenings} />
+            <PrivateRoute
+              exact
+              path="/teams/edit/:id"
+              Component={EditTeamMember}
+            />
+            <PrivateRoute
+              exact
+              path="/addteamember"
+              Component={AddTeamMember}
+            />
+            <PrivateRoute exact path="/brochure" Component={Brochure} />
 
-            <Route
+            <PrivateRoute exact path="/approvals" Component={Approvals} />
+            <PrivateRoute exact path="/merchandise" Component={Merchandise} />
+            <PrivateRoute exact path="/visitingcard" Component={VisitingCard} />
+            <PrivateRoute exact path="/careers" Component={Careers} />
+            <PrivateRoute exact path="/editCareer/:id" Component={EditCareer} />
+            <PrivateRoute exact path="/viewall" Component={ViewAllCareer} />
+            <PrivateRoute exact path="/newopening" Component={NewOpenings} />
+
+            <PrivateRoute
               exact
               path="/recentpublications"
-              component={RecentPublication}
+              Component={RecentPublication}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/addrecentpublication"
-              component={AddRecentPublications}
+              Component={AddRecentPublications}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/editrecentpublication/:id"
-              component={EditRecentPublication}
+              Component={EditRecentPublication}
             />
-            <Route exact path="/testimonials" component={Testimonials} />
-            <Route exact path="/addtestimonial" component={AddTestimonial} />
+            <PrivateRoute exact path="/testimonials" Component={Testimonials} />
+            <PrivateRoute
+              exact
+              path="/addtestimonial"
+              Component={AddTestimonial}
+            />
 
-            <Route
+            <PrivateRoute
               exact
               path="/edittestimonial/:id"
-              component={EditTestimonial}
+              Component={EditTestimonial}
             />
 
-            <Route exact path="/gallery" component={Gallery} />
-            <Route exact path="/addgallery" component={AddGallery} />
+            <PrivateRoute exact path="/gallery" Component={Gallery} />
+            <PrivateRoute exact path="/addgallery" Component={AddGallery} />
           </Switch>
         </Router>
         <ToastContainer />

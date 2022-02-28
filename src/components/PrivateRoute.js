@@ -1,10 +1,21 @@
-import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
-const PrivateRoute = () => {
+const PrivateRoute = ({ Component }) => {
+  const history = useHistory();
   const parsedLogin = JSON?.parse(localStorage.getItem("loginUser"));
 
-  return parsedLogin ? <Outlet /> : <Navigate to="/" />;
+  useEffect(() => {
+    if (!parsedLogin) {
+      history.push("./");
+    }
+  }, []);
+
+  return (
+    <>
+      <Component />
+    </>
+  );
 };
 
 export default PrivateRoute;

@@ -100,7 +100,12 @@ const EditVehicleTable = () => {
           </div>
         </form>
         <div className="d-flex justify-content-center gap-5">
-          <button className="btn btn-primary " style={{ marginRight: "20px" }}>
+          <button
+            className="btn btn-primary "
+            style={{ marginRight: "20px" }}
+            type="submit"
+            ocn
+          >
             Update Vehicle
           </button>
           <button

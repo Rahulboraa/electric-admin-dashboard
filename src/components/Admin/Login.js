@@ -33,6 +33,7 @@ const Login = () => {
             "loginUser",
             JSON.stringify(result.data.accessToken)
           );
+          window.location.reload();
           toast.success("Login SuccessFully");
         }
       })
