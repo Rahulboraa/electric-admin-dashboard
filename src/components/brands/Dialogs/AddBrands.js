@@ -1,20 +1,45 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "../../../api/instance";
 
 const AddBrands = () => {
   const [brandName, setBrandName] = useState("");
-  const [logo, setImageSelected] = useState("");
+  // const [logo, setImageSelected] = useState("");
 
   const handleBrandChange = (e) => {
     setBrandName(e.target.value);
+  };
+
+  // !Preview
+  const [selectedFile, setSelectedFile] = useState();
+  const [preview, setPreview] = useState();
+
+  useEffect(() => {
+    if (!selectedFile) {
+      setPreview(undefined);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectedFile);
+    setPreview(objectUrl);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectedFile]);
+
+  const onSelectFile = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setSelectedFile(undefined);
+      return;
+    }
+    setSelectedFile(e.target.files[0]);
   };
 
   // !Add Brands
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("logo", logo);
+    formData.append("logo", selectedFile);
     formData.append("brandName", brandName);
     axios
       .post("/brand/add", formData)
@@ -30,7 +55,7 @@ const AddBrands = () => {
   // !Clearing Inputs
   const handleReset = () => {
     setBrandName();
-    setImageSelected();
+    // setImageSelected();
   };
 
   const history = useHistory();
@@ -71,7 +96,7 @@ const AddBrands = () => {
                   >
                     02. Brand Logo
                   </label>
-                  <input
+                  {/* <input
                     style={{ marginTop: "48px" }}
                     type="file"
                     placeholder="No file selected"
@@ -79,7 +104,31 @@ const AddBrands = () => {
                     onChange={(e) => {
                       setImageSelected(e.target.files[0]);
                     }}
-                  />
+                  /> */}
+
+                  <div className="d-flex justify-content-center align-content-center  m-auto mb-3">
+                    {selectedFile && (
+                      <img
+                        src={preview}
+                        style={{
+                          width: "320px",
+                          height: "160px",
+                          marginTop: "1.4rem",
+                        }}
+                      />
+                    )}
+                  </div>
+                  <div className="form-group mb-5">
+                    <div className="form-group mb-5">
+                      <input
+                        type="file"
+                        onChange={onSelectFile}
+                        placeholder="No file selected"
+                        className="form-control form-control-md"
+                        id="formFileSm"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </main>

@@ -6,13 +6,13 @@ const Navigation = () => {
     <>
       <h3 className="navbarTopHeading">Merchandise</h3>
       <nav className="navbarContainer">
-        <NavLink
+        {/* <NavLink
           to="/approvals"
           className="navlinkUnactive"
           activeClassName="navbaractive"
         >
           <span>Approvals</span>
-        </NavLink>
+        </NavLink> */}
 
         <NavLink
           to="/merchandise"

@@ -107,17 +107,17 @@ const EditVehicle = () => {
             />
           </div>
         </form>
-        <button className="btn btn-warning d-flex m-auto">
-          Update Vehicle
-        </button>
-        <button
-          className="btn btn-danger d-flex mt-3 m-auto"
-          onClick={() => {
-            deleteVehicle(id);
-          }}
-        >
-          Delete
-        </button>
+        <div className="d-flex justify-content-center gap-5">
+          <button className="btn btn-primary">Update Vehicle</button>
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              deleteVehicle(id);
+            }}
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </>
   );

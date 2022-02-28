@@ -99,18 +99,19 @@ const EditVehicleTable = () => {
             />
           </div>
         </form>
-
-        <button className="btn btn-warning " style={{ marginRight: "20px" }}>
-          Update Vehicle
-        </button>
-        <button
-          className="btn btn-danger "
-          onClick={() => {
-            deleteVehicle(id);
-          }}
-        >
-          Delete
-        </button>
+        <div className="d-flex justify-content-center gap-5">
+          <button className="btn btn-primary " style={{ marginRight: "20px" }}>
+            Update Vehicle
+          </button>
+          <button
+            className="btn btn-danger "
+            onClick={() => {
+              deleteVehicle(id);
+            }}
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </>
   );
